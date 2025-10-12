@@ -5,7 +5,7 @@
   <title>Linceu Lighthouse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager3.png">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/icones/file_manager3.png">
   <style>
     :root {
       --main-bg: #f8f9fa;
@@ -236,7 +236,7 @@
     // Busca a versão do README.md e insere na página
     async function fetchReadmeVersion() {
       try {
-        const req = await fetch('https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/README.md');
+        const req = await fetch('https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/README.md');
         const txt = await req.text();
         // Regex: captura a versão no formato vX.X.X.X (aparece na linha do README)
         const reVersion = /v(\d+\.\d+\.\d+\.\d+)/i;
@@ -256,7 +256,7 @@
       const info = document.getElementById('latest-download-info');
       try {
         // GitHub API releases endpoint
-        const res = await fetch('https://api.github.com/repos/fernandoncidade/Linceu_Lighthouse_Binary/releases/latest');
+        const res = await fetch('https://api.github.com/repos/fernandoncidade/Linceu_Lighthouse/releases/latest');
         if (!res.ok) throw new Error("API error");
         const data = await res.json();
         if (data && data.assets && data.assets.length > 0) {
@@ -302,8 +302,8 @@
   <div class="header">
     <h1>Linceu Lighthouse</h1>
     <div class="slogan-icons">
-      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager3.png" alt="Gestão de arquivos" title="Gestão de arquivos">
-      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager4.png" alt="Gestão de arquivos 2" title="Gestão de arquivos 2">
+      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/icones/file_manager3.png" alt="Gestão de arquivos" title="Gestão de arquivos">
+      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/icones/file_manager4.png" alt="Gestão de arquivos 2" title="Gestão de arquivos 2">
     </div>
     <div id="dynamic-slogan"><!-- Slogan será injetado por JS no idioma certo --></div>
   </div>
@@ -320,7 +320,7 @@
     <div class="badge-row">
       <span id="version-badge" style="background:#eee;padding:0.3em 1.1em;border-radius:1em;font-size:1.05em;color:#222;margin-right:0.4em;"></span>
       <img id="badge-downloads"
-        src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
+        src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
         alt="Total Downloads">
     </div>
 <script>
@@ -356,7 +356,7 @@
     var badge = document.getElementById('badge-downloads');
     if (!badge) return;
     var info = BADGE_DOWNLOADS[lang] || BADGE_DOWNLOADS.ptbr;
-    badge.src = "https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=" + info.label;
+    badge.src = "https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=" + info.label;
     badge.alt = info.alt;
   }
   // Atualiza badge ao mudar idioma
@@ -386,12 +386,12 @@
         O <b>Linceu Lighthouse</b> é uma ferramenta de monitoramento que aplica os princípios de <b>Integridade de Arquivos (File Integrity Monitoring - FIM)</b> para fornecer um registro detalhado e transparente de todas as atividades em seus diretórios mais importantes. Ideal para auditoria, controle de versões, organização e investigação de eventos em arquivos.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Tela 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040254.png" alt="Tela 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042554.png" alt="Tela 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042731.png" alt="Tela 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042821.png" alt="Tela 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042900.png" alt="Tela 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Tela 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040254.png" alt="Tela 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042554.png" alt="Tela 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042731.png" alt="Tela 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042821.png" alt="Tela 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042900.png" alt="Tela 6">
       </div>
       <h3>Principais Funcionalidades</h3>
       <ul>
@@ -434,7 +434,7 @@
         <li><b>Alto consumo de recursos:</b> Evite monitorar diretórios muito grandes ou de sistema.</li>
         <li><b>Erros nas estatísticas:</b> Confirme que há eventos suficientes e todas as bibliotecas estão corretas.</li>
       </ul>
-      <p style="margin-top:1.5em;">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> no GitHub.</p>
+      <p style="margin-top:1.5em;">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> no GitHub.</p>
     </div>
     <!-- EN-US -->
     <div id="sec-enus" class="lang-section">
@@ -448,12 +448,12 @@
         <b>Linceu Lighthouse</b> is a monitoring tool that applies <b>File Integrity Monitoring (FIM)</b> principles to provide a detailed and transparent record of all activities in your most important directories. Ideal for auditing, version control, organization, and event investigation.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Screen 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005555.png" alt="Screen 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005741.png" alt="Screen 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010015.png" alt="Screen 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010046.png" alt="Screen 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010135.png" alt="Screen 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Screen 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005555.png" alt="Screen 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005741.png" alt="Screen 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010015.png" alt="Screen 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010046.png" alt="Screen 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010135.png" alt="Screen 6">
       </div>
       <h3>Main Features</h3>
       <ul>
@@ -495,7 +495,7 @@
         <li><b>High resource usage:</b> Avoid monitoring very large/system directories.</li>
         <li><b>Statistics errors:</b> Ensure enough events and all libraries are correct.</li>
       </ul>
-      <p style="margin-top:1.5em;">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> on GitHub.</p>
+      <p style="margin-top:1.5em;">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> on GitHub.</p>
     </div>
     <!-- ES-ES -->
     <div id="sec-eses" class="lang-section">
@@ -509,12 +509,12 @@
         <b>Linceu Lighthouse</b> es una herramienta de monitoreo que aplica los principios de <b>Monitoreo de Integridad de Archivos (FIM)</b> para proporcionar un registro detallado y transparente de todas las actividades en sus directorios más importantes. Ideal para auditoría, control de versiones, organización e investigación de eventos.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Pantalla 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040505.png" alt="Pantalla 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20042253.png" alt="Pantalla 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043724.png" alt="Pantalla 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Pantalla 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Pantalla 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Pantalla 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040505.png" alt="Pantalla 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20042253.png" alt="Pantalla 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043724.png" alt="Pantalla 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Pantalla 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Pantalla 6">
       </div>
       <h3>Principales Funcionalidades</h3>
       <ul>
@@ -556,7 +556,7 @@
         <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
         <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
       </ul>
-      <p style="margin-top:1.5em;">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> en GitHub.</p>
+      <p style="margin-top:1.5em;">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> en GitHub.</p>
     </div>
     <!-- FR-FR -->
     <div id="sec-frfr" class="lang-section">
@@ -570,12 +570,12 @@
         <b>Linceu Lighthouse</b> est un outil de surveillance qui applique les principes de <b>Surveillance de l’Intégrité des Fichiers (FIM)</b> pour fournir un journal détaillé et transparent de toutes les activités dans vos dossiers importants. Idéal pour l’audit, le contrôle de version, l’organisation et l’investigation d’événements.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Écran 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040631.png" alt="Écran 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20042006.png" alt="Écran 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044556.png" alt="Écran 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044618.png" alt="Écran 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044651.png" alt="Écran 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Écran 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040631.png" alt="Écran 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20042006.png" alt="Écran 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044556.png" alt="Écran 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044618.png" alt="Écran 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044651.png" alt="Écran 6">
       </div>
       <h3>Principales Fonctionnalités</h3>
       <ul>
@@ -617,7 +617,7 @@
         <li><b>Consommation élevée :</b> Évitez les dossiers volumineux ou système.</li>
         <li><b>Erreurs statistiques :</b> Vérifiez le nombre d’événements et les bibliothèques.</li>
       </ul>
-      <p style="margin-top:1.5em;">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> sur GitHub.</p>
+      <p style="margin-top:1.5em;">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> sur GitHub.</p>
     </div>
     <!-- IT-IT -->
     <div id="sec-itit" class="lang-section">
@@ -631,12 +631,12 @@
         <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integrità dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tutte le attività nelle tue directory più importanti. Ideale per auditing, controllo versioni, organizzazione e indagine eventi.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Schermata 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040749.png" alt="Schermata 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20041627.png" alt="Schermata 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045141.png" alt="Schermata 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045201.png" alt="Schermata 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045239.png" alt="Schermata 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Schermata 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040749.png" alt="Schermata 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20041627.png" alt="Schermata 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045141.png" alt="Schermata 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045201.png" alt="Schermata 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045239.png" alt="Schermata 6">
       </div>
       <h3>Funzionalità Principali</h3>
       <ul>
@@ -678,7 +678,7 @@
         <li><b>Alto consumo risorse:</b> Evita cartelle molto grandi o di sistema.</li>
         <li><b>Errori statistiche:</b> Verifica che ci siano eventi a sufficienza e librerie corrette.</li>
       </ul>
-      <p style="margin-top:1.5em;">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> su GitHub.</p>
+      <p style="margin-top:1.5em;">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> su GitHub.</p>
     </div>
     <!-- DE-DE -->
     <div id="sec-dede" class="lang-section">
@@ -692,12 +692,12 @@
         <b>Linceu Lighthouse</b> ist ein Überwachungstool, das die Prinzipien der <b>Datei-Integritätsüberwachung (FIM)</b> anwendet und ein detailliertes, transparentes Protokoll aller Aktivitäten in wichtigen Verzeichnissen liefert. Ideal für Audit, Versionskontrolle, Organisation und Ereignisanalyse.
       </p>
       <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Bildschirm 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Bildschirm 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Bildschirm 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Bildschirm 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Bildschirm 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Bildschirm 6">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Bildschirm 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Bildschirm 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Bildschirm 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Bildschirm 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Bildschirm 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Bildschirm 6">
       </div>
       <h3>Hauptfunktionen</h3>
       <ul>
@@ -739,7 +739,7 @@
         <li><b>Hohe Ressourcenlast:</b> Vermeiden Sie sehr große/Systemverzeichnisse.</li>
         <li><b>Statistikfehler:</b> Prüfen Sie auf genügend Ereignisse und korrekte Bibliotheken.</li>
       </ul>
-      <p style="margin-top:1.5em;">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> auf GitHub.</p>
+      <p style="margin-top:1.5em;">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank">README.md</a> auf GitHub.</p>
     </div>
     <script>
       // Para badge duplicado (observação)
@@ -762,8 +762,8 @@
     <div class="footer" id="footer">
       <span id="footer-main">
         Feito por Fernando Nillsson Cidade • 
-        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Veja no GitHub</a> • 
-        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>
+        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • 
+        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>
       </span>
       <br>
       <span id="footer-auto" style="font-size:0.93em;">
@@ -774,27 +774,27 @@
         // Traduções do rodapé
         const FOOTER_TRANSLATIONS = {
           ptbr: {
-            main: 'Feito por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Veja no GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Feito por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Atualizado automaticamente após novo release (integração com workflow do GitHub Actions).<br>Última versão sincronizada: <span id="version-badge3">...</span>'
           },
           enus: {
-            main: 'Made by Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">See on GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Made by Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">See on GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Automatically updated after new release (GitHub Actions workflow integration).<br>Latest synchronized version: <span id="version-badge3">...</span>'
           },
           eses: {
-            main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Actualizado automáticamente tras nuevo release (integración con GitHub Actions).<br>Última versión sincronizada: <span id="version-badge3">...</span>'
           },
           frfr: {
-            main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Mis à jour automatiquement après une nouvelle release (intégration GitHub Actions).<br>Dernière version synchronisée : <span id="version-badge3">...</span>'
           },
           itit: {
-            main: 'Realizzato da Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Vedi su GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Realizzato da Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Vedi su GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Aggiornato automaticamente dopo ogni release (integrazione con GitHub Actions).<br>Ultima versione sincronizzata: <span id="version-badge3">...</span>'
           },
           dede: {
-            main: 'Erstellt von Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Auf GitHub ansehen</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            main: 'Erstellt von Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Auf GitHub ansehen</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Automatisch aktualisiert nach neuem Release (GitHub Actions-Integration).<br>Letzte synchronisierte Version: <span id="version-badge3">...</span>'
           }
         };
