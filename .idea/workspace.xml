@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9377cd5-dbed-49f9-9410-d42b59c7969b" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2wgSyjICNomXNm17Ha61Q2bh4u8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_InterfaceMonitor.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\ferna\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="InterfaceMonitor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Linceu_Lighthouse" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ferna\WORK\Projetos_Python\File-Folder-Manager\Linceu_Lighthouse\InterfaceMonitor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Linceu_Lighthouse" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.InterfaceMonitor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
+        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9377cd5-dbed-49f9-9410-d42b59c7969b" name="Changes" comment="" />
+      <created>1746461980655</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746461980655</updated>
+      <workItem from="1746461981705" duration="1343000" />
+      <workItem from="1747257161645" duration="1251000" />
+      <workItem from="1747314549618" duration="674000" />
+      <workItem from="1747428453843" duration="249000" />
+      <workItem from="1747428918091" duration="126000" />
+      <workItem from="1749560613936" duration="290000" />
+      <workItem from="1749561122859" duration="541000" />
+      <workItem from="1749605979726" duration="1981000" />
+      <workItem from="1749700656111" duration="372000" />
+      <workItem from="1749701146099" duration="427000" />
+      <workItem from="1749701991535" duration="32000" />
+      <workItem from="1749702749705" duration="4711000" />
+      <workItem from="1749942137980" duration="899000" />
+      <workItem from="1749952168967" duration="2528000" />
+      <workItem from="1750478842004" duration="1055000" />
+      <workItem from="1750636497850" duration="1662000" />
+      <workItem from="1750640157041" duration="1324000" />
+      <workItem from="1751264027284" duration="1448000" />
+      <workItem from="1753328212226" duration="1935000" />
+      <workItem from="1753428746838" duration="918000" />
+      <workItem from="1753597180866" duration="416000" />
+      <workItem from="1753598120966" duration="245000" />
+      <workItem from="1753938604522" duration="191000" />
+      <workItem from="1753938820316" duration="54000" />
+      <workItem from="1753939335979" duration="3731000" />
+      <workItem from="1754190040189" duration="16505000" />
+      <workItem from="1754317944170" duration="381000" />
+      <workItem from="1754318491732" duration="709000" />
+      <workItem from="1754398266104" duration="2093000" />
+      <workItem from="1754492344006" duration="81000" />
+      <workItem from="1754492457899" duration="3045000" />
+      <workItem from="1754499686696" duration="2408000" />
+      <workItem from="1754529398684" duration="127000" />
+      <workItem from="1754529547801" duration="1370000" />
+      <workItem from="1754615395955" duration="117000" />
+      <workItem from="1754615582330" duration="2190000" />
+      <workItem from="1754679015349" duration="821000" />
+      <workItem from="1754865502536" duration="1116000" />
+      <workItem from="1755316295029" duration="148000" />
+      <workItem from="1755408808555" duration="7094000" />
+      <workItem from="1755562496351" duration="4396000" />
+      <workItem from="1755712877734" duration="1074000" />
+      <workItem from="1755731869463" duration="1481000" />
+      <workItem from="1756055482926" duration="6722000" />
+      <workItem from="1756516480674" duration="370000" />
+      <workItem from="1756575302862" duration="1234000" />
+      <workItem from="1756578477221" duration="10044000" />
+      <workItem from="1756606405320" duration="249000" />
+      <workItem from="1756606660002" duration="253000" />
+      <workItem from="1756607136411" duration="801000" />
+      <workItem from="1756608172920" duration="722000" />
+      <workItem from="1756608906397" duration="71000" />
+      <workItem from="1756608981493" duration="296000" />
+      <workItem from="1756609284532" duration="50000" />
+      <workItem from="1756609337710" duration="7441000" />
+      <workItem from="1756669176963" duration="143000" />
+      <workItem from="1756692087186" duration="1616000" />
+      <workItem from="1756733943867" duration="256000" />
+      <workItem from="1756753224935" duration="1359000" />
+      <workItem from="1756772907680" duration="3805000" />
+      <workItem from="1756876309162" duration="283000" />
+      <workItem from="1756876903329" duration="217000" />
+      <workItem from="1757037894713" duration="6182000" />
+      <workItem from="1757368392982" duration="13533000" />
+      <workItem from="1757429537941" duration="48000" />
+      <workItem from="1757549678200" duration="1227000" />
+      <workItem from="1758412449091" duration="275000" />
+      <workItem from="1758412813274" duration="719000" />
+      <workItem from="1758933330253" duration="2904000" />
+      <workItem from="1758954595951" duration="3631000" />
+      <workItem from="1758991244615" duration="74000" />
+      <workItem from="1759415257161" duration="1328000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Linceu_Lighthouse$main_InterfaceMonitor.coverage" NAME="main_InterfaceMonitor Coverage Results" MODIFIED="1747314616767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linceu_Lighthouse$main.coverage" NAME="main Coverage Results" MODIFIED="1758933702203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linceu_Lighthouse$InterfaceMonitor.coverage" NAME="InterfaceMonitor Coverage Results" MODIFIED="1749560805770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

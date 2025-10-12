@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Linceu Lighthouse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager3.png">
+  <style>
+    :root {
+      --main-bg: #f8f9fa;
+      --container-bg: #fff;
+      --primary: #2c3e50;
+      --header-bg: #222;
+      --header-fg: #fff;
+      --accent: #1abc9c;
+      --border: #ddd;
+      --radius: 10px;
+      --shadow: 0 2px 10px #ddd;
+    }
+    html, body { margin: 0; padding: 0; background: var(--main-bg); }
+    body { font-family: Arial, sans-serif; }
+    .header {
+      background: var(--header-bg);
+      color: var(--header-fg);
+      padding: 2rem 1rem 1.2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .header h1 { margin: 0 0 0.5rem 0; font-size: 2.2rem; letter-spacing: 1px; }
+    .header p { margin: 0; font-size: 1.16rem; color: #bafcea; }
+    .slogan-icons {
+      margin: 1.2rem auto 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .slogan-icons img {
+      width: 54px; height: 54px;
+      vertical-align: middle;
+      filter: drop-shadow(0 2px 6px #1113);
+      background: #fff; border-radius: 10px;
+      padding: 6px;
+    }
+    .slogan-text {
+      margin-top: 1rem;
+      color: #8fe7d2;
+      font-size: 1.13em;
+      font-weight: bold;
+      letter-spacing: .2px;
+    }
+    .container {
+      max-width: 980px;
+      margin: 2rem auto;
+      background: var(--container-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.2rem 1.5rem 2rem 1.5rem;
+      min-height: 65vh;
+    }
+    .languages { margin-bottom: 2rem; text-align: center; }
+    .languages b { font-weight: 500; }
+    .languages button {
+      margin: 0 0.3rem 0.7rem 0.3rem;
+      font-size: 1.18em;
+      padding: 0.22em 0.9em 0.22em 0.7em;
+      border-radius: 1em;
+      border: 1px solid var(--border);
+      background: #f8f9fa;
+      color: #2c3e50;
+      cursor: pointer;
+      transition: background 0.12s, box-shadow 0.15s;
+      box-shadow: 0 1px 5px #eee;
+      outline: none;
+    }
+    .languages button.active, .languages button:focus {
+      background: #e0fcf7;
+      border-color: var(--accent);
+      color: var(--primary);
+      font-weight: bold;
+      box-shadow: 0 1px 7px #b0f4e3;
+    }
+    .lang-section {
+      display: none;
+      animation: fadein .33s;
+      border: 1px solid #d0edfa;
+      border-radius: 10px;
+      background: #fcfeff;
+      box-shadow: 0 1px 7px #e3f9fe;
+      margin-bottom: 2.2em;
+      margin-top: 1.2em;
+      padding: 1.1em 1.4em 1.4em 1.4em;
+    }
+    .lang-section.active { display: block; }
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+    .badge-row { text-align: center; margin-bottom: 1.5rem; }
+    .badge-row img { vertical-align: middle; margin: 0 0.25em; }
+
+    h1, h2, h3, h4 { color: var(--primary); }
+    h2 { margin-top: 2.2rem; margin-bottom: 0.6rem; font-size: 1.55rem;}
+    h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.22rem;}
+    ul, ol { line-height: 1.7; }
+    li { margin-bottom: 0.3em; }
+    .screenshots { text-align: center; margin-top: 1.5em; }
+    .screenshots img { max-width: 330px; border-radius: 6px; margin: 0.7rem 1.2rem 1.7rem 0; box-shadow: 0 0 8px #eee;}
+    .screenshots img:last-child { margin-right: 0;}
+    .note, .sysreq { background: #eaf6ff; border-left: 5px solid var(--accent); padding: 0.8rem 1rem; border-radius: 6px; margin: 1.2em 0 1.2em 0;}
+    .sysreq { background: #f5ffea; border-color: #7ed957; }
+    .download-btn, .download-btn-auto {
+      display: inline-block;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 4px;
+      padding: 0.65em 1.5em;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin: 1.2rem 0 1.2rem 0;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      box-shadow: 0 1px 5px #ddd;
+      cursor: pointer;
+    }
+    .download-btn:hover, .download-btn-auto:hover { background: #159c85; }
+    .download-btn-auto[disabled] {
+      background: #aaa;
+      color: #eee;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .download-info { color: #555; font-size: 0.98em; margin-bottom: 0.5em; }
+    .footer {
+      text-align: center;
+      margin: 2.5rem 0 0 0;
+      color: #888;
+      font-size: 0.99em;
+      padding-bottom: 1.2em;
+    }
+    /* Responsivo */
+    @media (max-width: 1200px) {
+      .screenshots img { max-width: 260px; margin-right: 1rem;}
+    }
+    @media (max-width: 900px) {
+      .container { padding: 1rem 0.3rem;}
+      .screenshots img { max-width: 45vw; margin: 0.7rem 0.2rem 1.2rem 0;}
+    }
+    @media (max-width: 600px) {
+      .screenshots { display:block;}
+      .screenshots img { max-width: 98vw; margin: 0.6rem 0 0.6rem 0;}
+      .slogan-icons img { width: 37px; height: 37px;}
+      .lang-section { padding: 0.8em 0.3em 1.2em 0.8em;}
+    }
+  </style>
+  <script>
+    // Idiomas suportados
+    const LANGS = [
+      { btn: "btn-ptbr", section: "sec-ptbr", code: "ptbr" },
+      { btn: "btn-enus", section: "sec-enus", code: "enus" },
+      { btn: "btn-eses", section: "sec-eses", code: "eses" },
+      { btn: "btn-frfr", section: "sec-frfr", code: "frfr" },
+      { btn: "btn-itit", section: "sec-itit", code: "itit" },
+      { btn: "btn-dede", section: "sec-dede", code: "dede" }
+    ];
+    // Traduções dos dois blocos
+    const TRANSLATIONS = {
+      ptbr: {
+        download: assetName => `Download automático mais recente (${assetName})`,
+        slogan: `<div class="slogan-text">Visibilidade e Controle de Arquivos <br>Simples, Visual e Multilíngue</div><p>Monitoramento de Integridade de Arquivos (FIM)</p>`
+      },
+      enus: {
+        download: assetName => `Latest automatic download (${assetName})`,
+        slogan: `<div class="slogan-text">Visibility & File Control <br>Simple, Visual & Multilingual</div><p>File Integrity Monitoring (FIM)</p>`
+      },
+      eses: {
+        download: assetName => `Descarga automática más reciente (${assetName})`,
+        slogan: `<div class="slogan-text">Visibilidad y Control de Archivos <br>Sencillo, Visual y Multilingüe</div><p>Monitoreo de Integridad de Archivos (FIM)</p>`
+      },
+      frfr: {
+        download: assetName => `Téléchargement automatique le plus récent (${assetName})`,
+        slogan: `<div class="slogan-text">Visibilité et Contrôle des Fichiers <br>Simple, Visuel et Multilingue</div><p>Surveillance de l’Intégrité des Fichiers (FIM)</p>`
+      },
+      itit: {
+        download: assetName => `Download automatico più recente (${assetName})`,
+        slogan: `<div class="slogan-text">Visibilità e Controllo dei File <br>Semplice, Visivo e Multilingue</div><p>Monitoraggio dell’Integrità dei File (FIM)</p>`
+      },
+      dede: {
+        download: assetName => `Neuester automatischer Download (${assetName})`,
+        slogan: `<div class="slogan-text">Sichtbarkeit & Dateikontrolle <br>Einfach, Visuell & Mehrsprachig</div><p>Datei-Integritätsüberwachung (FIM)</p>`
+      }
+    };
+    let CURRENT_LANG = LANGS[0].code;
+    function activateLang(idObj) {
+      LANGS.forEach(l => {
+        document.getElementById(l.section).classList.remove('active');
+        document.getElementById(l.btn).classList.remove('active');
+      });
+      document.getElementById(idObj.section).classList.add('active');
+      document.getElementById(idObj.btn).classList.add('active');
+      CURRENT_LANG = idObj.code;
+      // Atualiza slogan ao trocar idioma
+      updateSlogan();
+      // Atualiza botão de download ao trocar idioma
+      updateDownloadButtonText();
+      window.scrollTo({top: document.querySelector('.languages').offsetTop-25, behavior:'smooth'});
+    }
+    function updateSlogan() {
+      const sloganBox = document.getElementById('dynamic-slogan');
+      if (sloganBox && TRANSLATIONS[CURRENT_LANG]) {
+        sloganBox.innerHTML = TRANSLATIONS[CURRENT_LANG].slogan;
+      }
+    }
+    function updateDownloadButtonText(assetName) {
+      const btn = document.getElementById('latest-download-btn');
+      if (!btn) return;
+      if (!assetName) {
+        // tenta pegar do atributo data-assetname
+        assetName = btn.getAttribute('data-assetname') || "";
+      }
+      if (btn.href && btn.href !== "#" && assetName && TRANSLATIONS[CURRENT_LANG]) {
+        btn.innerText = TRANSLATIONS[CURRENT_LANG].download(assetName);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      // Ativa ptbr como default
+      activateLang(LANGS[0]);
+      LANGS.forEach(l => {
+        document.getElementById(l.btn).addEventListener('click', () => activateLang(l));
+      });
+    });
+  </script>
+  <!-- INTEGRAÇÃO COM WORKFLOW: Carrega versão do README dinamicamente -->
+  <script>
+    // Busca a versão do README.md e insere na página
+    async function fetchReadmeVersion() {
+      try {
+        const req = await fetch('https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/README.md');
+        const txt = await req.text();
+        // Regex: captura a versão no formato vX.X.X.X (aparece na linha do README)
+        const reVersion = /v(\d+\.\d+\.\d+\.\d+)/i;
+        const match = txt.match(reVersion);
+        const version = match ? match[0] : 'v0.0.0.0';
+        document.getElementById('version-badge').innerText = version;
+      } catch {
+        document.getElementById('version-badge').innerText = "v0.0.0.0";
+      }
+    }
+    window.addEventListener('DOMContentLoaded', fetchReadmeVersion);
+  </script>
+  <script>
+    // Busca automático do link do último release
+    async function setLatestReleaseDownload() {
+      const btn = document.getElementById('latest-download-btn');
+      const info = document.getElementById('latest-download-info');
+      try {
+        // GitHub API releases endpoint
+        const res = await fetch('https://api.github.com/repos/fernandoncidade/Linceu_Lighthouse_Binary/releases/latest');
+        if (!res.ok) throw new Error("API error");
+        const data = await res.json();
+        if (data && data.assets && data.assets.length > 0) {
+          // Busca o primeiro asset executável (.exe) ou o primeiro asset, se não houver .exe
+          let asset = data.assets.find(a => a.name.endsWith('.exe')) || data.assets[0];
+          btn.href = asset.browser_download_url;
+          btn.setAttribute('data-assetname', asset.name);
+          // Tradução do texto do botão conforme idioma
+          if (typeof TRANSLATIONS !== "undefined" && TRANSLATIONS[CURRENT_LANG]) {
+            btn.innerText = TRANSLATIONS[CURRENT_LANG].download(asset.name);
+          } else {
+            btn.innerText = "Download automático mais recente ("+asset.name+")";
+          }
+          btn.removeAttribute("disabled");
+          info.innerText = "Release: " + data.name + " (" + data.tag_name + ")";
+        } else {
+          // Nenhum asset encontrado
+          btn.innerText = "Sem arquivo para download no último release";
+          btn.setAttribute("disabled", "true");
+          info.innerText = "";
+        }
+      } catch (e) {
+        btn.innerText = "Erro ao buscar release";
+        btn.setAttribute("disabled", "true");
+        info.innerText = "";
+      }
+    }
+    window.addEventListener('DOMContentLoaded', setLatestReleaseDownload);
+    // Atualiza texto do botão de download ao trocar de idioma
+    window.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.closest('.languages button')) {
+          // Espera atualização do botão
+          setTimeout(() => {
+            updateDownloadButtonText();
+          },120);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <h1>Linceu Lighthouse</h1>
+    <div class="slogan-icons">
+      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager3.png" alt="Gestão de arquivos" title="Gestão de arquivos">
+      <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/icones/file_manager4.png" alt="Gestão de arquivos 2" title="Gestão de arquivos 2">
+    </div>
+    <div id="dynamic-slogan"><!-- Slogan será injetado por JS no idioma certo --></div>
+  </div>
+  <div class="container">
+    <div class="languages">
+      <b>Idiomas / Languages:</b><br>
+      <button id="btn-ptbr" class="active">🇧🇷 Português (BR)</button>
+      <button id="btn-enus">🇺🇸 English (US)</button>
+      <button id="btn-eses">🇪🇸 Español (ES)</button>
+      <button id="btn-frfr">🇫🇷 Français (FR)</button>
+      <button id="btn-itit">🇮🇹 Italiano (IT)</button>
+      <button id="btn-dede">🇩🇪 Deutsch (DE)</button>
+    </div>
+    <div class="badge-row">
+      <span id="version-badge" style="background:#eee;padding:0.3em 1.1em;border-radius:1em;font-size:1.05em;color:#222;margin-right:0.4em;"></span>
+      <img id="badge-downloads"
+        src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
+        alt="Total Downloads">
+    </div>
+<script>
+  // Traduções para o badge de downloads (label e alt)
+  const BADGE_DOWNLOADS = {
+    ptbr: {
+      label: "Downloads%20totais%20(Linceu%20Lighthouse)",
+      alt: "Total de Downloads"
+    },
+    enus: {
+      label: "Total%20Downloads%20(Linceu%20Lighthouse)",
+      alt: "Total Downloads"
+    },
+    eses: {
+      label: "Descargas%20totales%20(Linceu%20Lighthouse)",
+      alt: "Descargas totales"
+    },
+    frfr: {
+      label: "Total%20t%C3%A9l%C3%A9chargements%20(Linceu%20Lighthouse)",
+      alt: "Nombre total de téléchargements"
+    },
+    itit: {
+      label: "Download%20totali%20(Linceu%20Lighthouse)",
+      alt: "Download totali"
+    },
+    dede: {
+      label: "Gesamte%20Downloads%20(Linceu%20Lighthouse)",
+      alt: "Gesamte Downloads"
+    }
+  };
+  function updateBadgeDownloads() {
+    var lang = CURRENT_LANG || "ptbr";
+    var badge = document.getElementById('badge-downloads');
+    if (!badge) return;
+    var info = BADGE_DOWNLOADS[lang] || BADGE_DOWNLOADS.ptbr;
+    badge.src = "https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=" + info.label;
+    badge.alt = info.alt;
+  }
+  // Atualiza badge ao mudar idioma
+  window.addEventListener('DOMContentLoaded', () => {
+    updateBadgeDownloads();
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.closest('.languages button')) {
+        setTimeout(updateBadgeDownloads, 80);
+      }
+    });
+  });
+</script>
+
+    <!-- Download automático do release mais recente -->
+    <div class="download-info" id="latest-download-info"></div>
+    <a class="download-btn-auto" id="latest-download-btn" href="#" disabled>Buscando release...</a>
+
+    <!-- PT-BR -->
+    <div id="sec-ptbr" class="lang-section active">
+      <div class="note">
+        <b>Observação:</b> Este repositório refere-se à versão <span id="version-badge2">...</span> (binário) do Linceu Lighthouse, disponível para teste gratuito de 7 dias.<br>
+        Ao final do período de teste, adquira a versão paga:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Instalar via Microsoft Store</a>
+      </div>
+      <h2>🇧🇷 O que é o Linceu Lighthouse?</h2>
+      <p>
+        O <b>Linceu Lighthouse</b> é uma ferramenta de monitoramento que aplica os princípios de <b>Integridade de Arquivos (File Integrity Monitoring - FIM)</b> para fornecer um registro detalhado e transparente de todas as atividades em seus diretórios mais importantes. Ideal para auditoria, controle de versões, organização e investigação de eventos em arquivos.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Tela 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040254.png" alt="Tela 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042554.png" alt="Tela 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042731.png" alt="Tela 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042821.png" alt="Tela 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042900.png" alt="Tela 6">
+      </div>
+      <h3>Principais Funcionalidades</h3>
+      <ul>
+        <li>Auditoria de atividades em pastas com registros detalhados</li>
+        <li>Controle de versões e projetos (histórico de alterações)</li>
+        <li>Organização e limpeza inteligente de arquivos (identifique duplicados, temporários, etc.)</li>
+        <li>Investigação de eventos específicos (descubra o que aconteceu e quando)</li>
+        <li>Filtros avançados, pesquisa e visualização estatística dos eventos</li>
+        <li>Exportação flexível dos logs para Excel, CSV, JSON, XML, etc.</li>
+        <li>Interface multilíngue: Português, Inglês, Espanhol, Francês, Italiano, Alemão</li>
+      </ul>
+      <h3>Como funciona?</h3>
+      <ol>
+        <li><b>Linha de Base:</b> Ao iniciar o monitoramento, a ferramenta faz um escaneamento inicial ("snapshot") dos arquivos e pastas.</li>
+        <li><b>Monitoramento Contínuo:</b> Registra em tempo real todos os eventos de criação, modificação, exclusão, movimentação ou renomeação.</li>
+        <li><b>Análise e Relatório:</b> Toda alteração é listada na interface, com poderosos filtros para busca, análise e exportação.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Requisitos do sistema:</b> Windows 10 ou superior.  
+        <br>
+        <b>Instalação:</b> Baixe e instale o executável. Após o período de degustação, compre na Microsoft Store.
+      </div>
+      <h3>Manual rápido de uso</h3>
+      <ol>
+        <li>Execute o aplicativo para abrir a interface gráfica.</li>
+        <li>Selecione um diretório para monitorar.</li>
+        <li>Use os botões e menus para iniciar/parar monitoramento, aplicar filtros, exportar dados e visualizar estatísticas.</li>
+      </ol>
+      <h3>Recursos Avançados</h3>
+      <ul>
+        <li><b>Filtros Avançados:</b> Por operação, data, extensão, usuário, etc.</li>
+        <li><b>Visualização de Estatísticas:</b> Gráficos de distribuição, timeline, Pareto, tipos de arquivo e mais.</li>
+        <li><b>Configuração de Colunas:</b> Customize as colunas exibidas na tabela.</li>
+        <li><b>Alteração de Idioma:</b> Acesse “Opções → Idioma” na interface para mudar o idioma.</li>
+      </ul>
+      <h3>Resolução de Problemas</h3>
+      <ul>
+        <li><b>Monitoramento não inicia:</b> Verifique permissões e se outro programa não está monitorando o diretório.</li>
+        <li><b>Eventos não aparecem:</b> Certifique-se que o monitoramento está ativo e os filtros não ocultam eventos.</li>
+        <li><b>Alto consumo de recursos:</b> Evite monitorar diretórios muito grandes ou de sistema.</li>
+        <li><b>Erros nas estatísticas:</b> Confirme que há eventos suficientes e todas as bibliotecas estão corretas.</li>
+      </ul>
+      <p style="margin-top:1.5em;">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> no GitHub.</p>
+    </div>
+    <!-- EN-US -->
+    <div id="sec-enus" class="lang-section">
+      <div class="note">
+        <b>Note:</b> This repository refers to version <span id="version-badge-en">...</span> (binary) of Linceu Lighthouse, available for 7-day free trial.<br>
+        After the trial period, purchase the full version:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Install via Microsoft Store</a>
+      </div>
+      <h2>🇺🇸 What is Linceu Lighthouse?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> is a monitoring tool that applies <b>File Integrity Monitoring (FIM)</b> principles to provide a detailed and transparent record of all activities in your most important directories. Ideal for auditing, version control, organization, and event investigation.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Screen 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005555.png" alt="Screen 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005741.png" alt="Screen 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010015.png" alt="Screen 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010046.png" alt="Screen 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010135.png" alt="Screen 6">
+      </div>
+      <h3>Main Features</h3>
+      <ul>
+        <li>Folder activity audit with detailed records</li>
+        <li>Version and project control (change history)</li>
+        <li>Intelligent file organization and cleanup (find duplicates, temp files, etc.)</li>
+        <li>Event investigation (find out what and when)</li>
+        <li>Advanced filters, search and statistical visualization</li>
+        <li>Flexible export to Excel, CSV, JSON, XML, etc.</li>
+        <li>Multilanguage interface: Portuguese, English, Spanish, French, Italian, German</li>
+      </ul>
+      <h3>How does it work?</h3>
+      <ol>
+        <li><b>Baseline:</b> On first monitoring, the tool scans files and folders to create a baseline snapshot.</li>
+        <li><b>Continuous Monitoring:</b> Registers all events (create, modify, delete, move, rename) in real time.</li>
+        <li><b>Analysis & Report:</b> Every change is listed in the interface, with powerful filters for search, analysis, and export.</li>
+      </ol>
+      <div class="sysreq">
+        <b>System requirements:</b> Windows 10 or higher.<br>
+        <b>Installation:</b> Download and install the executable. After trial, purchase from Microsoft Store.
+      </div>
+      <h3>Quick Usage Guide</h3>
+      <ol>
+        <li>Run the application to open the graphical interface.</li>
+        <li>Select a directory to monitor.</li>
+        <li>Use buttons and menus to start/stop monitoring, apply filters, export data, view statistics.</li>
+      </ol>
+      <h3>Advanced Features</h3>
+      <ul>
+        <li><b>Advanced Filters:</b> By operation, date, extension, user, etc.</li>
+        <li><b>Statistics Visualization:</b> Distribution graphs, timeline, Pareto, file types, more.</li>
+        <li><b>Column Configuration:</b> Customize displayed columns in the table.</li>
+        <li><b>Language Change:</b> Go to “Options → Language” in the app to switch language.</li>
+      </ul>
+      <h3>Troubleshooting</h3>
+      <ul>
+        <li><b>Monitoring does not start:</b> Check permissions and if another program is monitoring the directory.</li>
+        <li><b>Events do not appear:</b> Ensure monitoring is active and filters are not hiding events.</li>
+        <li><b>High resource usage:</b> Avoid monitoring very large/system directories.</li>
+        <li><b>Statistics errors:</b> Ensure enough events and all libraries are correct.</li>
+      </ul>
+      <p style="margin-top:1.5em;">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> on GitHub.</p>
+    </div>
+    <!-- ES-ES -->
+    <div id="sec-eses" class="lang-section">
+      <div class="note">
+        <b>Nota:</b> Este repositorio corresponde a la versión <span id="version-badge-es">...</span> (binario) de Linceu Lighthouse, disponible como prueba gratuita por 7 días.<br>
+        Al finalizar la prueba, adquiera la versión completa:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Instalar en Microsoft Store</a>
+      </div>
+      <h2>🇪🇸 ¿Qué es Linceu Lighthouse?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> es una herramienta de monitoreo que aplica los principios de <b>Monitoreo de Integridad de Archivos (FIM)</b> para proporcionar un registro detallado y transparente de todas las actividades en sus directorios más importantes. Ideal para auditoría, control de versiones, organización e investigación de eventos.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Pantalla 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040505.png" alt="Pantalla 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20042253.png" alt="Pantalla 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043724.png" alt="Pantalla 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Pantalla 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Pantalla 6">
+      </div>
+      <h3>Principales Funcionalidades</h3>
+      <ul>
+        <li>Auditoría de actividades en carpetas con registros detallados</li>
+        <li>Control de versiones y proyectos (historial de cambios)</li>
+        <li>Organización y limpieza inteligente de archivos (identificar duplicados, temporales, etc.)</li>
+        <li>Investigación de eventos específicos (qué sucedió y cuándo)</li>
+        <li>Filtros avanzados, búsqueda y visualización estadística</li>
+        <li>Exportación flexible de logs a Excel, CSV, JSON, XML, etc.</li>
+        <li>Interfaz multilingüe: Portugués, Inglés, Español, Francés, Italiano, Alemán</li>
+      </ul>
+      <h3>¿Cómo funciona?</h3>
+      <ol>
+        <li><b>Línea Base:</b> Al comenzar el monitoreo, la herramienta escanea archivos y carpetas.</li>
+        <li><b>Monitoreo Continuo:</b> Registra en tiempo real todos los eventos de creación, modificación, eliminación, movimiento o renombrado.</li>
+        <li><b>Análisis y Reporte:</b> Cada cambio se lista en la interfaz, con filtros poderosos para buscar, analizar y exportar.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Requisitos del sistema:</b> Windows 10 o superior.<br>
+        <b>Instalación:</b> Descargue e instale el ejecutable. Tras la prueba, adquiera en Microsoft Store.
+      </div>
+      <h3>Manual rápido de uso</h3>
+      <ol>
+        <li>Ejecute la aplicación para abrir la interfaz gráfica.</li>
+        <li>Seleccione una carpeta para monitorizar.</li>
+        <li>Utilice los botones y menús para iniciar/detener, filtrar, exportar datos y ver estadísticas.</li>
+      </ol>
+      <h3>Funcionalidades Avanzadas</h3>
+      <ul>
+        <li><b>Filtros Avanzados:</b> Por operación, fecha, extensión, usuario, etc.</li>
+        <li><b>Visualización Estadística:</b> Gráficos de distribución, línea de tiempo, Pareto, tipos de archivo y más.</li>
+        <li><b>Configuración de Columnas:</b> Personalice las columnas mostradas en la tabla.</li>
+        <li><b>Cambio de Idioma:</b> Vaya a “Opciones → Idioma” en la interfaz.</li>
+      </ul>
+      <h3>Solución de Problemas</h3>
+      <ul>
+        <li><b>El monitoreo no inicia:</b> Verifique permisos y si otro programa monitoriza la carpeta.</li>
+        <li><b>No aparecen eventos:</b> Compruebe que el monitoreo está activo y los filtros no ocultan eventos.</li>
+        <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
+        <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
+      </ul>
+      <p style="margin-top:1.5em;">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> en GitHub.</p>
+    </div>
+    <!-- FR-FR -->
+    <div id="sec-frfr" class="lang-section">
+      <div class="note">
+        <b>Remarque :</b> Ce dépôt correspond à la version <span id="version-badge-fr">...</span> (binaire) de Linceu Lighthouse, disponible en essai gratuit de 7 jours.<br>
+        À la fin de la période d'essai, achetez la version complète :<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Installer via Microsoft Store</a>
+      </div>
+      <h2>🇫🇷 Qu'est-ce que Linceu Lighthouse ?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> est un outil de surveillance qui applique les principes de <b>Surveillance de l’Intégrité des Fichiers (FIM)</b> pour fournir un journal détaillé et transparent de toutes les activités dans vos dossiers importants. Idéal pour l’audit, le contrôle de version, l’organisation et l’investigation d’événements.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Écran 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040631.png" alt="Écran 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20042006.png" alt="Écran 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044556.png" alt="Écran 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044618.png" alt="Écran 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044651.png" alt="Écran 6">
+      </div>
+      <h3>Principales Fonctionnalités</h3>
+      <ul>
+        <li>Audit d’activités dans les dossiers avec enregistrements détaillés</li>
+        <li>Contrôle de versions et de projets (historique des modifications)</li>
+        <li>Organisation et nettoyage intelligent des fichiers (doublons, temporaires, etc.)</li>
+        <li>Investigation d’événements spécifiques (quoi et quand)</li>
+        <li>Filtres avancés, recherche et visualisation statistique</li>
+        <li>Export flexible des logs vers Excel, CSV, JSON, XML, etc.</li>
+        <li>Interface multilingue : Portugais, Anglais, Espagnol, Français, Italien, Allemand</li>
+      </ul>
+      <h3>Comment ça marche ?</h3>
+      <ol>
+        <li><b>Ligne de Base :</b> Lors du démarrage, l’outil analyse les fichiers et dossiers.</li>
+        <li><b>Surveillance Continue :</b> Enregistre en temps réel tous les événements (création, modification, suppression, déplacement ou renommage).</li>
+        <li><b>Analyse & Rapport :</b> Chaque modification est listée dans l’interface, avec des filtres puissants pour la recherche, l’analyse et l’export.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Configuration requise :</b> Windows 10 ou supérieur.<br>
+        <b>Installation :</b> Téléchargez et installez l’exécutable. Après essai, achetez sur Microsoft Store.
+      </div>
+      <h3>Guide rapide d'utilisation</h3>
+      <ol>
+        <li>Lancez l’application pour ouvrir l’interface graphique.</li>
+        <li>Sélectionnez un dossier à surveiller.</li>
+        <li>Utilisez les boutons et menus pour démarrer/arrêter, filtrer, exporter des données, voir les statistiques.</li>
+      </ol>
+      <h3>Fonctionnalités avancées</h3>
+      <ul>
+        <li><b>Filtres avancés :</b> Par opération, date, extension, utilisateur, etc.</li>
+        <li><b>Visualisation Statistique :</b> Graphiques de distribution, timeline, Pareto, types de fichiers, etc.</li>
+        <li><b>Configuration des Colonnes :</b> Personnalisez les colonnes affichées.</li>
+        <li><b>Changement de langue :</b> Dans l’app, via “Options → Langue”.</li>
+      </ul>
+      <h3>Résolution de Problèmes</h3>
+      <ul>
+        <li><b>La surveillance ne démarre pas :</b> Vérifiez les permissions et si un autre programme surveille le dossier.</li>
+        <li><b>Pas d'événements :</b> Assurez-vous que la surveillance est active et que les filtres ne masquent pas les événements.</li>
+        <li><b>Consommation élevée :</b> Évitez les dossiers volumineux ou système.</li>
+        <li><b>Erreurs statistiques :</b> Vérifiez le nombre d’événements et les bibliothèques.</li>
+      </ul>
+      <p style="margin-top:1.5em;">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> sur GitHub.</p>
+    </div>
+    <!-- IT-IT -->
+    <div id="sec-itit" class="lang-section">
+      <div class="note">
+        <b>Nota:</b> Questo repository si riferisce alla versione <span id="version-badge-it">...</span> (binaria) di Linceu Lighthouse, disponibile come prova gratuita per 7 giorni.<br>
+        Al termine della prova, acquista la versione completa:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Installa tramite Microsoft Store</a>
+      </div>
+      <h2>🇮🇹 Cos'è Linceu Lighthouse?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integrità dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tutte le attività nelle tue directory più importanti. Ideale per auditing, controllo versioni, organizzazione e indagine eventi.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Schermata 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040749.png" alt="Schermata 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20041627.png" alt="Schermata 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045141.png" alt="Schermata 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045201.png" alt="Schermata 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045239.png" alt="Schermata 6">
+      </div>
+      <h3>Funzionalità Principali</h3>
+      <ul>
+        <li>Audit delle attività nelle cartelle con registri dettagliati</li>
+        <li>Controllo di versioni e progetti (storico delle modifiche)</li>
+        <li>Organizzazione e pulizia intelligente dei file (duplicati, temporanei, ecc.)</li>
+        <li>Indagine su eventi specifici (cosa è successo e quando)</li>
+        <li>Filtri avanzati, ricerca e visualizzazione statistica</li>
+        <li>Esportazione flessibile dei log su Excel, CSV, JSON, XML, ecc.</li>
+        <li>Interfaccia multilingue: Portoghese, Inglese, Spagnolo, Francese, Italiano, Tedesco</li>
+      </ul>
+      <h3>Come funziona?</h3>
+      <ol>
+        <li><b>Linea di base:</b> All’avvio, lo strumento analizza file e cartelle.</li>
+        <li><b>Monitoraggio Continuo:</b> Registra in tempo reale tutti gli eventi (creazione, modifica, cancellazione, spostamento, rinomina).</li>
+        <li><b>Analisi e Report:</b> Ogni modifica è elencata nell’interfaccia, con potenti filtri per ricerca, analisi ed export.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Requisiti di sistema:</b> Windows 10 o superiore.<br>
+        <b>Installazione:</b> Scarica e installa l’eseguibile. Dopo la prova, acquista su Microsoft Store.
+      </div>
+      <h3>Guida Rapida all'Uso</h3>
+      <ol>
+        <li>Esegui l’applicazione per aprire l’interfaccia grafica.</li>
+        <li>Seleziona una directory da monitorare.</li>
+        <li>Utilizza pulsanti e menu per avviare/arrestare, filtrare, esportare dati e visualizzare statistiche.</li>
+      </ol>
+      <h3>Funzionalità Avanzate</h3>
+      <ul>
+        <li><b>Filtri Avanzati:</b> Per operazione, data, estensione, utente, ecc.</li>
+        <li><b>Visualizzazione Statistica:</b> Grafici di distribuzione, timeline, Pareto, tipi file, altro.</li>
+        <li><b>Configurazione Colonne:</b> Personalizza le colonne mostrate.</li>
+        <li><b>Cambio lingua:</b> In app, “Opzioni → Lingua”.</li>
+      </ul>
+      <h3>Risoluzione dei Problemi</h3>
+      <ul>
+        <li><b>Il monitoraggio non parte:</b> Controlla permessi e se altri programmi monitorano la cartella.</li>
+        <li><b>Eventi non visibili:</b> Assicurati che il monitoraggio sia attivo e i filtri non nascondano eventi.</li>
+        <li><b>Alto consumo risorse:</b> Evita cartelle molto grandi o di sistema.</li>
+        <li><b>Errori statistiche:</b> Verifica che ci siano eventi a sufficienza e librerie corrette.</li>
+      </ul>
+      <p style="margin-top:1.5em;">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> su GitHub.</p>
+    </div>
+    <!-- DE-DE -->
+    <div id="sec-dede" class="lang-section">
+      <div class="note">
+        <b>Hinweis:</b> Dieses Repository bezieht sich auf Version <span id="version-badge-de">...</span> (Binary) von Linceu Lighthouse, als 7-tägige Testversion verfügbar.<br>
+        Nach der Testphase, kaufen Sie die Vollversion:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank">Im Microsoft Store installieren</a>
+      </div>
+      <h2>🇩🇪 Was ist Linceu Lighthouse?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> ist ein Überwachungstool, das die Prinzipien der <b>Datei-Integritätsüberwachung (FIM)</b> anwendet und ein detailliertes, transparentes Protokoll aller Aktivitäten in wichtigen Verzeichnissen liefert. Ideal für Audit, Versionskontrolle, Organisation und Ereignisanalyse.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Bildschirm 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Bildschirm 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Bildschirm 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Bildschirm 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Bildschirm 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse_Binary/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Bildschirm 6">
+      </div>
+      <h3>Hauptfunktionen</h3>
+      <ul>
+        <li>Ordner-Aktivitätsüberwachung mit detaillierten Logs</li>
+        <li>Versions- und Projektkontrolle (Änderungshistorie)</li>
+        <li>Intelligente Datei-Organisation und -Bereinigung (Duplikate, temporäre Dateien)</li>
+        <li>Untersuchung spezifischer Ereignisse (was und wann)</li>
+        <li>Erweiterte Filter, Suche und statistische Visualisierung</li>
+        <li>Flexibler Export zu Excel, CSV, JSON, XML, usw.</li>
+        <li>Mehrsprachige Oberfläche: Portugiesisch, Englisch, Spanisch, Französisch, Italienisch, Deutsch</li>
+      </ul>
+      <h3>Wie funktioniert es?</h3>
+      <ol>
+        <li><b>Baseline:</b> Beim Start scannt das Tool Dateien und Ordner.</li>
+        <li><b>Kontinuierliche Überwachung:</b> Protokolliert in Echtzeit alle Ereignisse (Erstellung, Änderung, Löschung, Verschieben, Umbenennen).</li>
+        <li><b>Analyse & Bericht:</b> Jede Änderung erscheint in der Oberfläche, mit leistungsstarken Filtern für Suche, Analyse und Export.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Systemanforderungen:</b> Windows 10 oder höher.<br>
+        <b>Installation:</b> Laden Sie die ausführbare Datei herunter und installieren Sie sie. Nach der Testphase kaufen Sie im Microsoft Store.
+      </div>
+      <h3>Schnellstart-Anleitung</h3>
+      <ol>
+        <li>Starten Sie die Anwendung für die grafische Oberfläche.</li>
+        <li>Wählen Sie ein Verzeichnis zum Überwachen.</li>
+        <li>Nutzen Sie Buttons und Menüs für Start/Stopp, Filter, Export, Statistiken.</li>
+      </ol>
+      <h3>Erweiterte Funktionen</h3>
+      <ul>
+        <li><b>Erweiterte Filter:</b> Nach Operation, Datum, Erweiterung, Benutzer usw.</li>
+        <li><b>Statistik-Visualisierung:</b> Verteilungsdiagramme, Timeline, Pareto, Dateitypen u.a.</li>
+        <li><b>Spaltenkonfiguration:</b> Tabellenspalten anpassen.</li>
+        <li><b>Sprachwechsel:</b> In der App unter „Optionen → Sprache“.</li>
+      </ul>
+      <h3>Fehlerbehebung</h3>
+      <ul>
+        <li><b>Überwachung startet nicht:</b> Prüfen Sie Berechtigungen und ob andere Programme das Verzeichnis überwachen.</li>
+        <li><b>Ereignisse erscheinen nicht:</b> Überwachen aktiv und Filter blenden Ereignisse nicht aus.</li>
+        <li><b>Hohe Ressourcenlast:</b> Vermeiden Sie sehr große/Systemverzeichnisse.</li>
+        <li><b>Statistikfehler:</b> Prüfen Sie auf genügend Ereignisse und korrekte Bibliotheken.</li>
+      </ul>
+      <p style="margin-top:1.5em;">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" target="_blank">README.md</a> auf GitHub.</p>
+    </div>
+    <script>
+      // Para badge duplicado (observação)
+      function setVersionBadges() {
+        const v1 = document.getElementById('version-badge');
+        if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
+          document.getElementById('version-badge2').innerText = v1.innerText;
+          document.getElementById('version-badge-en').innerText = v1.innerText;
+          document.getElementById('version-badge-es').innerText = v1.innerText;
+          document.getElementById('version-badge-fr').innerText = v1.innerText;
+          document.getElementById('version-badge-it').innerText = v1.innerText;
+          document.getElementById('version-badge-de').innerText = v1.innerText;
+        } else {
+          setTimeout(setVersionBadges, 500);
+        }
+      }
+      setTimeout(setVersionBadges, 1000);
+    </script>
+  </div>
+    <div class="footer" id="footer">
+      <span id="footer-main">
+        Feito por Fernando Nillsson Cidade • 
+        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Veja no GitHub</a> • 
+        <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>
+      </span>
+      <br>
+      <span id="footer-auto" style="font-size:0.93em;">
+        Atualizado automaticamente após novo release (integração com workflow do GitHub Actions).<br>
+        Última versão sincronizada: <span id="version-badge3">...</span>
+      </span>
+      <script>
+        // Traduções do rodapé
+        const FOOTER_TRANSLATIONS = {
+          ptbr: {
+            main: 'Feito por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Veja no GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Atualizado automaticamente após novo release (integração com workflow do GitHub Actions).<br>Última versão sincronizada: <span id="version-badge3">...</span>'
+          },
+          enus: {
+            main: 'Made by Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">See on GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Automatically updated after new release (GitHub Actions workflow integration).<br>Latest synchronized version: <span id="version-badge3">...</span>'
+          },
+          eses: {
+            main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Actualizado automáticamente tras nuevo release (integración con GitHub Actions).<br>Última versión sincronizada: <span id="version-badge3">...</span>'
+          },
+          frfr: {
+            main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Mis à jour automatiquement après une nouvelle release (intégration GitHub Actions).<br>Dernière version synchronisée : <span id="version-badge3">...</span>'
+          },
+          itit: {
+            main: 'Realizzato da Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Vedi su GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Aggiornato automaticamente dopo ogni release (integrazione con GitHub Actions).<br>Ultima versione sincronizzata: <span id="version-badge3">...</span>'
+          },
+          dede: {
+            main: 'Erstellt von Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary" id="footer-github-link">Auf GitHub ansehen</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/README.md" id="footer-readme-link">README.md</a>',
+            auto: 'Automatisch aktualisiert nach neuem Release (GitHub Actions-Integration).<br>Letzte synchronisierte Version: <span id="version-badge3">...</span>'
+          }
+        };
+        function updateFooterTranslation() {
+          var lang = typeof CURRENT_LANG === "string" ? CURRENT_LANG : "ptbr";
+          var t = FOOTER_TRANSLATIONS[lang] || FOOTER_TRANSLATIONS.ptbr;
+          document.getElementById('footer-main').innerHTML = t.main;
+          document.getElementById('footer-auto').innerHTML = t.auto;
+          setTimeout(setVersionBadge3, 50); // Corrige badge após trocar idioma
+        }
+        // Atualiza rodapé ao trocar idioma
+        window.addEventListener('DOMContentLoaded', () => {
+          updateFooterTranslation();
+          document.addEventListener('click', function(e) {
+            if (e.target && e.target.closest('.languages button')) {
+              setTimeout(updateFooterTranslation, 80);
+            }
+          });
+        });
+      </script>
+      <script>
+        // Atualiza badge do rodapé com a versão detectada mesmo após troca do idioma
+        function setVersionBadge3() {
+          const v1 = document.getElementById('version-badge');
+          if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
+            // Pode haver múltiplos spans após trocar idioma, atualize todos
+            var vb3s = document.querySelectorAll('#version-badge3');
+            vb3s.forEach(function(span){ span.innerText = v1.innerText; });
+          } else {
+            setTimeout(setVersionBadge3, 500);
+          }
+        }
+        setTimeout(setVersionBadge3, 1000);
+      </script>
+    </div>
+</body>
+</html>

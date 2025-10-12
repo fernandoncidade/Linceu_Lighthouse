@@ -1,0 +1,187 @@
+VERÖFFENTLICHUNGSHINWEISE: Version 0.0.9.0:
+
+In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
+
+Neue Statistische Diagramme:
+- Es wurden zwei neue Sankey-Diagrammtypen hinzugefügt:
+    - Sankey Ereignis → Pfad: Ermöglicht die Visualisierung des Flusses überwachter Ereignisse zu Datei- und Ordnerpfaden.
+    - Sankey Typ → Pfad: Ermöglicht die Analyse des Flusses von Dateitypen (Erweiterungen) zu überwachten Pfaden.
+    - Die Verzeichnisstruktur kann jetzt über ein neues interaktives Diagramm angezeigt werden, was die Analyse der Pfade überwachter Dateien und Ordner erleichtert.
+    - Es wurden umfassendere statistische Diagramme mit Optionen für verschiedene Arten der Datenvisualisierung hinzugefügt.
+- Die Diagramme verwenden die Plotly-Bibliothek für interaktive Visualisierung und hochauflösenden Export.
+
+Verbesserungen bei der Internationalisierung:
+- Die Titel und Texte der Diagramme werden jetzt automatisch entsprechend der in der Oberfläche ausgewählten Sprache übersetzt.
+- Die Liste der verfügbaren Diagramme wurde aktualisiert, sodass die wichtigsten Analysearten schnell ausgewählt und angezeigt werden können.
+- Das Statistik-Panel wurde angepasst, um die ideale Breite automatisch zu berechnen und so eine bessere Anpassung von Texten und Schaltflächen in der Oberfläche zu gewährleisten.
+- Anpassungen bei der Übersetzung von Kopfzeilen und Datei-/Ordnertypen im Verzeichnisbaum.
+
+Verbesserungen der Verzeichnisoberfläche:
+- Das Widget für die Verzeichnisstruktur wurde verbessert, sodass Vorgänge wie Kopieren, Ausschneiden, Einfügen, Umbenennen, Erstellen und Löschen von Dateien/Ordnern direkt über das Kontextmenü möglich sind.
+- Dynamische Übersetzung der Schaltflächen und Menüs im Verzeichnis-Panel wurde implementiert.
+
+Allgemeine Fehlerbehebungen:
+- Anpassungen in der Logik zum Wechsel zwischen Leistungs- und Verzeichnisstrukturansicht, sodass jeweils nur ein Panel aktiv ist.
+- Behebung kleinerer Fehler im Zusammenhang mit der Aktualisierung übersetzter Texte und der Diagrammdarstellung.
+- Kleine Probleme bei der Diagrammerstellung wurden behoben, wodurch der Prozess stabiler und zuverlässiger wird.
+- Verbesserungen bei der Übersetzung von Diagrammtexten und -titeln, entsprechend der vom Benutzer gewählten Sprache.
+
+Diese Verbesserungen bieten dem Benutzer ein umfassenderes und intuitiveres Erlebnis und erweitern die Möglichkeiten der statistischen Analyse sowie der Verwaltung von Dateien und Ordnern.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.8.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
+
+- Im Einstellungsmenü wurde die Funktion hinzugefügt, die Systemleistung in Echtzeit zu überwachen.
+    - Über interaktive Diagramme kann der Benutzer die Nutzung von CPU, Arbeitsspeicher (RAM) und Festplatte überwachen, was eine detaillierte Analyse der Auswirkungen der Überwachung auf die Gesamtleistung des Systems ermöglicht.
+    - Das Leistungs-Panel wird in Echtzeit aktualisiert und liefert wertvolle Einblicke für Optimierungen und erforderliche Anpassungen.
+    - Das Leistungs-Panel kann in einem separaten Fenster abgetrennt werden, sodass der Benutzer seinen Arbeitsbereich anpassen und sich während der Überwachung auf die relevantesten Metriken konzentrieren kann.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.7.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+- Korrektur des Übersetzungssystems:
+    - Bei der Anwendung einer neuen Sprache wendet das System nun automatisch die Übersetzung auf alle Widgets im Diagramm- und Grafikpanel für die statistische Analyse der überwachten Daten an.
+        - Verbesserungen bei der Erkennung von Sprachänderungen, die einen reibungsloseren Übergang ohne Unterbrechungen gewährleisten.
+        - Während der Anwendung der neuen Sprache zeichnet das System die Darstellung neu und aktualisiert gleichzeitig die angezeigten Daten, um sicherzustellen, dass alle Informationen korrekt und aktuell sind.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.6.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+- Implementierung eines neuen Diagramms; jetzt ist es möglich, die überwachten Daten mittels eines Flussdiagramms - "Sankey" - zu analysieren.
+    - Das Balkendiagramm ermöglicht eine klare und intuitive Visualisierung der Verteilung der Daten und erleichtert die Erkennung von Mustern und Trends.
+    - Die Diagrammoberfläche ist interaktiv und ermöglicht dem Benutzer, die Daten dynamisch und individuell zu erkunden.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.5.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+Verbesserung der Benutzererfahrung:
+- Es ist jetzt möglich, jede Phase der Überwachung zu pausieren.
+    - Während der Pause stoppt das System vorübergehend die Datenerfassung, sodass der Benutzer Anpassungen oder Änderungen vornehmen kann, ohne dass neue Daten verarbeitet werden.
+    - Die Pausenfunktion kann jederzeit aktiviert oder deaktiviert werden, was eine bessere Kontrolle über die Überwachung ermöglicht.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.4.0
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+Fehlerbehebungen:
+- Ein Fehler im Zusammenhang mit dem Start/Stopp-Befehl für die Analyse wurde behoben:
+    - Das Problem trat auf, wenn während des Scannens, der Anfangsphase der Überwachung, gestoppt wurde. Jetzt behandelt das System diese Situation korrekt und verhindert unerwartete Fehler.
+
+- Ein Problem beim Öffnen des "Erweiterten Farbselektors" im Einstellungsmenü wurde behoben. Beim Klicken auf die entsprechende Schaltfläche öffnete die ausführbare Datei das Dialogfenster für erweiterte Farbeinstellungen nicht, was einen Fehler darstellte.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.3.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+Verbesserte Robustheit und Stabilität:
+- Vor dem Zugriff auf Methoden und Eigenschaften von Objekten wurden Existenzprüfungen hinzugefügt, wodurch das System robuster wird und unerwartete Fehler während der Initialisierung vermieden werden.
+- Die Methode _invalidar_cache_cores_ wird jetzt nur noch aufgerufen, wenn sie tatsächlich existiert, wodurch Ausnahmen durch ungültige Aufrufe vermieden werden.
+- Das Attribut _cor_selecao_future_, das nicht definiert war, wurde entfernt, wodurch unnötige Fehlermeldungen eliminiert und ein reibungsloseres Erlebnis ermöglicht werden.
+
+Optimierung von Prozessen und Oberfläche:
+- Die Steuerung der Aufrufe zur Neübersetzung von Daten wurde optimiert: Beim Wechsel der Sprache führt das System nur die wesentlichen Operationen aus, vermeidet unnötige Verarbeitung und erhöht somit die Agilität beim Sprachwechsel.
+- Die Methoden zum Aktualisieren von Überschriften, Daten und Spaltensichtbarkeit wurden refaktoriert und mit Ausnahmebehandlung sowie Klarheitsverbesserungen versehen, sodass Änderungen in der Oberfläche genauer und schneller widerspiegelt werden.
+- Die Verwaltung von Spaltenindices wurde angepasst, um Konsistenz zu gewährleisten und Fehler zu vermeiden, sodass die Manipulation von Spalten ohne Sortier- oder Anzeigeprobleme möglich ist.
+- Die Integration zwischen Datenaktualisierung, Überschriften und Sichtbarkeit wurde verbessert, sodass alle Änderungen korrekt in der Oberfläche widergespiegelt werden.
+
+Allgemeine Korrekturen und Verbesserungen:
+- In den Verarbeitungsmethoden wurden mehrere Anpassungen vorgenommen, was zu höherer Stabilität und Leistung führt und weniger Unterbrechungen für den Benutzer verursacht.
+
+Zusammenfassung:
+
+Neuerungen in Version 0.0.3.0:
+
+- Robustheit und Stabilität:
+    - Existenzprüfungen für Attribute und Methoden, um unerwartete Fehler zu vermeiden.
+    - Entfernung undefinierter Attribute und ungültiger Aufrufe.
+
+- Optimierung von Oberfläche und Prozessen:
+    - Effiziente Steuerung der Neübersetzung beim Sprachwechsel.
+    - Refaktorierung der Methoden zur Aktualisierung der Oberfläche.
+    - Anpassung und Integration im Spaltenmanagement.
+
+- Allgemeine Verbesserungen:
+    - Kleine Korrekturen und Verbesserungen in den Verarbeitungsmethoden, die die Stabilität und Leistung des Systems erhöhen.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.2.0:
+
+In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
+
+Komplette Überarbeitung des Internationalisierungssystems:
+- Das Sprach- und Übersetzungssystem wurde vollständig neu geschrieben und verwendet jetzt die nativen Ressourcen des PySide6-Frameworks und der Qt-Bibliothek. Diese Änderung führte zu einer deutlich höheren Reaktionsfähigkeit und Leistung.
+- In ersten Tests wurde ein deutlicher Performancegewinn bei der Übersetzung von Tabellen mit bis zu 2.000 Ereignissen festgestellt. Bei größeren Datenmengen wirkt sich der Neuzeichnungsprozess der Oberfläche (Repaint) auf die Leistung aus und kann vorübergehende GUI-Blockierungen bis zum Abschluss der Arbeitslast verursachen.
+- Wichtige Empfehlung: Um Datenverlust oder ein unerwartetes Schließen der Anwendung zu vermeiden, sollte die Sprache VOR Beginn der Überwachung festgelegt werden, insbesondere bei großen Datenmengen. Ein Sprachwechsel sollte nur bei pausierter Überwachung erfolgen. NIEMALS die Sprache während einer aktiven Überwachungssitzung ändern.
+
+Hinweisfenster für Sprachwechsel:
+- Es wurde ein zweisprachiges Dialogfenster implementiert, das den Benutzer bei jedem Wechsel zwischen den unterstützten Sprachen benachrichtigt.
+
+Erweiterung und Granularität der Datenspalten:
+- Die Spalten "Größe", "Dekomprimiert" und "Binär" wurden aufgeteilt. Jede hat zu 5 neuen Spalten geführt (insgesamt 15), was eine präzisere und granularere Filterung und Analyse der Datei- und Verzeichnisgrößen ermöglicht.
+
+Neugestaltung des Statistikmoduls:
+- Die statistische Datenanalyse wurde umstrukturiert, um mit den neuen Metadatenspalten kompatibel zu sein. Dies führte zu qualitativ hochwertigeren Analysen mit besser definierten Skalen und einer robusteren Datenverarbeitung.
+
+Verbesserung der Dateiüberwachung:
+- Die Genauigkeit der Überwachung wurde verbessert, mit detaillierterer Identifikation von Dateitypen anhand ihrer Erweiterungen.
+
+Neugestaltung der Menüoberfläche:
+- Das Design des Menüsystems wurde verbessert, um alle überwachten Metadaten klarer und intuitiver zu organisieren und anzuzeigen.
+
+Nicht-modale Sekundärfenster:
+- Sekundäre Schnittstellen (interaktive Dialoge) blockieren nicht mehr die Interaktion mit dem Hauptfenster der Anwendung, was einen flüssigeren Arbeitsablauf ermöglicht.
+
+Internationalisierung des Datumsfilters:
+- Das System zur Zeitraumauswahl wurde verbessert. Die Kalenderkomponente zur Datumsauswahl ist jetzt mit dem Übersetzungssystem kompatibel und zeigt Monats- und Tagesnamen in der gewählten Sprache an.
+
+
+Zusammenfassung:
+
+Neuerungen in Version 0.0.2.0:
+
+- Natives Übersetzungssystem (Qt/PySide6): Das Sprachsystem wurde komplett neu geschrieben, um die nativen Ressourcen von Qt zu nutzen, was zu höherer Leistung und Reaktionsfähigkeit führt.
+    - Hinweis: Es wird empfohlen, die Sprache vor Beginn der Überwachung festzulegen, um Blockierungen oder Datenverlust bei großen Datenmengen zu vermeiden.
+
+- Verbesserungen der Benutzeroberfläche (UI/UX):
+    - Hinzufügen eines Bestätigungsdialogs beim Sprachwechsel.
+    - Sekundärfenster blockieren die Hauptoberfläche nicht mehr.
+    - Menüs wurden neu gestaltet, um die Metadaten besser zu organisieren.
+    - Der Kalender des Datumsfilters wird jetzt in der gewählten Sprache angezeigt.
+
+- Leistungsfähigere Datenanalyse:
+    - Die Dateigrößenspalten ("Größe", "Dekomprimiert", "Binär") wurden auf 15 neue Spalten erweitert, was viel präzisere Filter ermöglicht.
+    - Das Statistikmodul wurde aktualisiert, um die neuen Spalten zu unterstützen und detailliertere und genauere Berichte zu erstellen.
+
+- Verbesserte Überwachung:
+    - Verbesserte Erkennung von Dateitypen anhand der Erweiterung.
