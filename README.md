@@ -1,4 +1,4 @@
-<!-- Multilanguage README.md for Linceu_Lighthouse_Binary -->
+<!-- Multilanguage README.md for Linceu_Lighthouse -->
 
 <p align="center">
   <b>Selecione o idioma / Select language / Selecciona idioma / Sélectionnez la langue / Seleziona la lingua / Sprache auswählen:</b><br>
@@ -17,18 +17,18 @@
 > **Observação:** Este repositório refere-se à versão **v0.0.0.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total de downloads acumulados:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Downloads%20totais%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Clique para expandir o README em português</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Linceu Lighthouse - Português" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040254.png" alt="Linceu Lighthouse - Português" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042554.png" alt="Linceu Lighthouse - Português" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042731.png" alt="Linceu Lighthouse - Português" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042821.png" alt="Linceu Lighthouse - Português" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042900.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040254.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042554.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042731.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042821.png" alt="Linceu Lighthouse - Português" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20042900.png" alt="Linceu Lighthouse - Português" width="320">
 </p>
 
 Projeto: LINCEU LIGHTHOUSE  
@@ -194,18 +194,18 @@ Autores:
 > **Note:** This repository refers to the **v0.0.0.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total cumulative downloads:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Total%20Downloads%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20Downloads%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Click to expand the README in English</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Linceu Lighthouse - English" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005555.png" alt="Linceu Lighthouse - English" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005741.png" alt="Linceu Lighthouse - English" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010015.png" alt="Linceu Lighthouse - English" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010046.png" alt="Linceu Lighthouse - English" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010135.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005555.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20005741.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010015.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010046.png" alt="Linceu Lighthouse - English" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20010135.png" alt="Linceu Lighthouse - English" width="320">
 </p>
 
 Project: LINCEU LIGHTHOUSE  
@@ -371,18 +371,18 @@ Authors:
 > **Nota:** Este repositorio corresponde a la versión **v0.0.0.0** del instalador (binario) de Linceu Lighthouse, disponible como versión de prueba durante una semana (7 días). Al finalizar el período de prueba, es necesario adquirir la versión completa a través del enlace: [Instalar en Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Descargas acumuladas totales:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Descargas%20totales%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Descargas%20totales%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Haz clic para expandir el README en español</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Linceu Lighthouse - Español" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040505.png" alt="Linceu Lighthouse - Español" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20042253.png" alt="Linceu Lighthouse - Español" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043724.png" alt="Linceu Lighthouse - Español" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Linceu Lighthouse - Español" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040505.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20042253.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043724.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Linceu Lighthouse - Español" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Linceu Lighthouse - Español" width="320">
 </p>
 
 Proyecto: LINCEU LIGHTHOUSE  
@@ -548,18 +548,18 @@ Autores:
 > **Remarque :** Ce dépôt correspond à la version **v0.0.0.0** de l'installateur (binaire) de Linceu Lighthouse, disponible en version d'essai pendant une semaine (7 jours). À la fin de la période d'essai, il est nécessaire d'acquérir la version payante via ce lien : [Installer via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Nombre total de téléchargements cumulés :**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Total%20t%C3%A9l%C3%A9chargements%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20t%C3%A9l%C3%A9chargements%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Cliquez pour afficher le README en français</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Linceu Lighthouse - Français" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040631.png" alt="Linceu Lighthouse - Français" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20042006.png" alt="Linceu Lighthouse - Français" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044556.png" alt="Linceu Lighthouse - Français" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044618.png" alt="Linceu Lighthouse - Français" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044651.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040631.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20042006.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044556.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044618.png" alt="Linceu Lighthouse - Français" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20044651.png" alt="Linceu Lighthouse - Français" width="320">
 </p>
 
 Projet : LINCEU LIGHTHOUSE  
@@ -757,18 +757,18 @@ C'est votre gardien numérique, qui voit tout et illumine tout, offrant une surv
 > **Nota:** Questo repository si riferisce alla versione **v0.0.0.0** dell’installer (binario) di Linceu Lighthouse, disponibile in versione prova per una settimana (7 giorni). Al termine del periodo di prova è necessario acquistare la versione completa tramite il link: [Installa tramite Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Download totali cumulativi:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Download%20totali%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Download%20totali%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Fai clic per espandere il README in italiano</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Linceu Lighthouse - Italiano" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040749.png" alt="Linceu Lighthouse - Italiano" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20041627.png" alt="Linceu Lighthouse - Italiano" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045141.png" alt="Linceu Lighthouse - Italiano" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045201.png" alt="Linceu Lighthouse - Italiano" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045239.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040749.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20041627.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045141.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045201.png" alt="Linceu Lighthouse - Italiano" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20045239.png" alt="Linceu Lighthouse - Italiano" width="320">
 </p>
 
 Progetto: LINCEU LIGHTHOUSE  
@@ -934,18 +934,18 @@ Autori:
 > **Hinweis:** Dieses Repository bezieht sich auf die **v0.0.0.0** Installationsdatei (Binary) von Linceu Lighthouse, die als Testversion für eine Woche (7 Tage) verfügbar ist. Nach Ablauf des Testzeitraums muss die Vollversion über folgenden Link erworben werden: [Im Microsoft Store installieren](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Gesamte kumulierte Downloads:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse_Binary/total?label=Gesamte%20Downloads%20(Linceu%20Lighthouse))
+![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Gesamte%20Downloads%20(Linceu%20Lighthouse))
 
 <details>
 <summary>Klicken Sie hier, um das README auf Deutsch anzuzeigen</summary>
 
 <p align="center">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Linceu Lighthouse - Deutsch" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Linceu Lighthouse - Deutsch" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Linceu Lighthouse - Deutsch" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Linceu Lighthouse - Deutsch" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Linceu Lighthouse - Deutsch" width="320">
-  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse_Binary/blob/main/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Linceu Lighthouse - Deutsch" width="320">
+  <img src="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Linceu Lighthouse - Deutsch" width="320">
 </p>
 
 Projekt: LINCEU LIGHTHOUSE  
