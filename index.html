@@ -95,7 +95,7 @@
     }
     .lang-section.active { display: block; }
     @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
-    .badge-row { text-align: center; margin-bottom: 1.5rem; }
+    .badge-row { text-align: center; margin: 0 0 1.5rem 0; }
     .badge-row img { vertical-align: middle; margin: 0 0.25em; }
 
     h1, h2, h3, h4 { color: var(--primary); }
@@ -139,20 +139,9 @@
       font-size: 0.99em;
       padding-bottom: 1.2em;
     }
-    /* Responsivo */
-    @media (max-width: 1200px) {
-      .screenshots img { max-width: 260px; margin-right: 1rem;}
-    }
-    @media (max-width: 900px) {
-      .container { padding: 1rem 0.3rem;}
-      .screenshots img { max-width: 45vw; margin: 0.7rem 0.2rem 1.2rem 0;}
-    }
-    @media (max-width: 600px) {
-      .screenshots { display:block;}
-      .screenshots img { max-width: 98vw; margin: 0.6rem 0 0.6rem 0;}
-      .slogan-icons img { width: 37px; height: 37px;}
-      .lang-section { padding: 0.8em 0.3em 1.2em 0.8em;}
-    }
+    /* classes para substituir estilos inline */
+    .mt-15 { margin-top:1.5em; }
+    #footer-auto { font-size:0.93em; }
     #version-badge {
      background:#eee;
      padding:0.3em 1.1em;
@@ -442,7 +431,7 @@
         <li><b>Alto consumo de recursos:</b> Evite monitorar diretórios muito grandes ou de sistema.</li>
         <li><b>Erros nas estatísticas:</b> Confirme que há eventos suficientes e todas as bibliotecas estão corretas.</li>
       </ul>
-      <p style="margin-top:1.5em;">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> no GitHub.</p>
+      <p class="mt-15">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> no GitHub.</p>
     </div>
     <!-- EN-US -->
     <div id="sec-enus" class="lang-section">
@@ -503,7 +492,7 @@
         <li><b>High resource usage:</b> Avoid monitoring very large/system directories.</li>
         <li><b>Statistics errors:</b> Ensure enough events and all libraries are correct.</li>
       </ul>
-      <p style="margin-top:1.5em;">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
+      <p class="mt-15">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
     </div>
     <!-- ES-ES -->
     <div id="sec-eses" class="lang-section">
@@ -524,21 +513,21 @@
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Pantalla 5">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Pantalla 6">
       </div>
-      <h3>Principales Funcionalidades</h3>
+      <h3>Principais Funcionalidades</h3>
       <ul>
-        <li>Auditoría de actividades en carpetas con registros detallados</li>
-        <li>Control de versiones y proyectos (historial de cambios)</li>
-        <li>Organización y limpieza inteligente de archivos (identificar duplicados, temporales, etc.)</li>
-        <li>Investigación de eventos específicos (qué sucedió y cuándo)</li>
-        <li>Filtros avanzados, búsqueda y visualización estadística</li>
-        <li>Exportación flexible de logs a Excel, CSV, JSON, XML, etc.</li>
+        <li>Auditoría de atividades em carpetas com registros detalhados</li>
+        <li>Controle de versões e projetos (historial de cambios)</li>
+        <li>Organização e limpeza inteligente de arquivos (identificar duplicados, temporais, etc.)</li>
+        <li>Investigação de eventos específicos (qué sucedió y cuándo)</li>
+        <li>Filtros avançados, busca e visualização estatística</li>
+        <li>Exportação flexível de logs a Excel, CSV, JSON, XML, etc.</li>
         <li>Interfaz multilingüe: Portugués, Inglés, Español, Francés, Italiano, Alemán</li>
       </ul>
       <h3>¿Cómo funciona?</h3>
       <ol>
         <li><b>Línea Base:</b> Al comenzar el monitoreo, la herramienta escanea archivos y carpetas.</li>
         <li><b>Monitoreo Continuo:</b> Registra en tiempo real todos los eventos de creación, modificación, eliminación, movimiento o renombrado.</li>
-        <li><b>Análisis y Reporte:</b> Cada cambio se lista en la interfaz, con filtros poderosos para buscar, analizar y exportar.</li>
+        <li><b>Análisis y Reporte:</b> Cada cambio se lista en la interfaz, com filtros poderosos para buscar, analizar e exportar.</li>
       </ol>
       <div class="sysreq">
         <b>Requisitos del sistema:</b> Windows 10 o superior.<br>
@@ -564,7 +553,7 @@
         <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
         <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
       </ul>
-      <p style="margin-top:1.5em;">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> en GitHub.</p>
+      <p class="mt-15">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> en GitHub.</p>
     </div>
     <!-- FR-FR -->
     <div id="sec-frfr" class="lang-section">
@@ -625,7 +614,7 @@
         <li><b>Consommation élevée :</b> Évitez les dossiers volumineux ou système.</li>
         <li><b>Erreurs statistiques :</b> Vérifiez le nombre d’événements et les bibliothèques.</li>
       </ul>
-      <p style="margin-top:1.5em;">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> sur GitHub.</p>
+      <p class="mt-15">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> sur GitHub.</p>
     </div>
     <!-- IT-IT -->
     <div id="sec-itit" class="lang-section">
@@ -686,7 +675,7 @@
         <li><b>Alto consumo risorse:</b> Evita cartelle molto grandi o di sistema.</li>
         <li><b>Errori statistiche:</b> Verifica che ci siano eventi a sufficienza e librerie corrette.</li>
       </ul>
-      <p style="margin-top:1.5em;">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> su GitHub.</p>
+      <p class="mt-15">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> su GitHub.</p>
     </div>
     <!-- DE-DE -->
     <div id="sec-dede" class="lang-section">
@@ -747,7 +736,7 @@
         <li><b>Hohe Ressourcenlast:</b> Vermeiden Sie sehr große/Systemverzeichnisse.</li>
         <li><b>Statistikfehler:</b> Prüfen Sie auf genügend Ereignisse und korrekte Bibliotheken.</li>
       </ul>
-      <p style="margin-top:1.5em;">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> auf GitHub.</p>
+      <p class="mt-15">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> auf GitHub.</p>
     </div>
     <script>
       // Para badge duplicado (observação)
@@ -774,7 +763,7 @@
         <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>
       </span>
       <br>
-      <span id="footer-auto" style="font-size:0.93em;">
+      <span id="footer-auto">
         Atualizado automaticamente após novo release (integração com workflow do GitHub Actions).<br>
         Última versão sincronizada: <span id="version-badge3">...</span>
       </span>
