@@ -14,7 +14,7 @@
 
 <h2 id="ptbr">🇧🇷 Português (BR)</h2>
 
-> **Observação:** Este repositório refere-se à versão **v0.0.0.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Observação:** Este repositório refere-se à versão **v0.0.6.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total de downloads acumulados:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse))
@@ -32,7 +32,7 @@
 </p>
 
 Projeto: LINCEU LIGHTHOUSE  
-Versão: v0.0.0.0  
+Versão: v0.0.6.0  
 Autores: Fernando Nillsson Cidade  
 
 Descrição: Visibilidade e Controle sobre Seus Arquivos
@@ -191,7 +191,7 @@ Autores:
 
 <h2 id="enus">🇺🇸 English (US)</h2>
 
-> **Note:** This repository refers to the **v0.0.0.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Note:** This repository refers to the **v0.0.6.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total cumulative downloads:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20Downloads%20(Linceu%20Lighthouse))
@@ -209,7 +209,7 @@ Autores:
 </p>
 
 Project: LINCEU LIGHTHOUSE  
-Version: v0.0.0.0  
+Version: v0.0.6.0  
 Authors: Fernando Nillsson Cidade  
 
 Description: Visibility and Control Over Your Files
@@ -368,7 +368,7 @@ Authors:
 
 <h2 id="eses">🇪🇸 Español (ES)</h2>
 
-> **Nota:** Este repositorio corresponde a la versión **v0.0.0.0** del instalador (binario) de Linceu Lighthouse, disponible como versión de prueba durante una semana (7 días). Al finalizar el período de prueba, es necesario adquirir la versión completa a través del enlace: [Instalar en Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Nota:** Este repositorio corresponde a la versión **v0.0.6.0** del instalador (binario) de Linceu Lighthouse, disponible como versión de prueba durante una semana (7 días). Al finalizar el período de prueba, es necesario adquirir la versión completa a través del enlace: [Instalar en Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Descargas acumuladas totales:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Descargas%20totales%20(Linceu%20Lighthouse))
@@ -386,7 +386,7 @@ Authors:
 </p>
 
 Proyecto: LINCEU LIGHTHOUSE  
-Versión: v0.0.0.0  
+Versión: v0.0.6.0  
 Autores: Fernando Nillsson Cidade  
 
 Descripción: Visibilidad y Control sobre Sus Archivos
@@ -545,7 +545,7 @@ Autores:
 
 <h2 id="frfr">🇫🇷 Français (FR)</h2>
 
-> **Remarque :** Ce dépôt correspond à la version **v0.0.0.0** de l'installateur (binaire) de Linceu Lighthouse, disponible en version d'essai pendant une semaine (7 jours). À la fin de la période d'essai, il est nécessaire d'acquérir la version payante via ce lien : [Installer via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Remarque :** Ce dépôt correspond à la version **v0.0.6.0** de l'installateur (binaire) de Linceu Lighthouse, disponible en version d'essai pendant une semaine (7 jours). À la fin de la période d'essai, il est nécessaire d'acquérir la version payante via ce lien : [Installer via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Nombre total de téléchargements cumulés :**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20t%C3%A9l%C3%A9chargements%20(Linceu%20Lighthouse))
@@ -563,7 +563,7 @@ Autores:
 </p>
 
 Projet : LINCEU LIGHTHOUSE  
-Version : v0.0.0.0  
+Version : v0.0.6.0  
 Auteurs : Fernando Nillsson Cidade  
 
 Description : Visibilité et Contrôle sur Vos Fichiers
@@ -754,7 +754,7 @@ C'est votre gardien numérique, qui voit tout et illumine tout, offrant une surv
 
 <h2 id="itit">🇮🇹 Italiano (IT)</h2>
 
-> **Nota:** Questo repository si riferisce alla versione **v0.0.0.0** dell’installer (binario) di Linceu Lighthouse, disponibile in versione prova per una settimana (7 giorni). Al termine del periodo di prova è necessario acquistare la versione completa tramite il link: [Installa tramite Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Nota:** Questo repository si riferisce alla versione **v0.0.6.0** dell’installer (binario) di Linceu Lighthouse, disponibile in versione prova per una settimana (7 giorni). Al termine del periodo di prova è necessario acquistare la versione completa tramite il link: [Installa tramite Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Download totali cumulativi:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Download%20totali%20(Linceu%20Lighthouse))
@@ -772,7 +772,7 @@ C'est votre gardien numérique, qui voit tout et illumine tout, offrant une surv
 </p>
 
 Progetto: LINCEU LIGHTHOUSE  
-Versione: v0.0.0.0  
+Versione: v0.0.6.0  
 Autori: Fernando Nillsson Cidade  
 
 Descrizione: Visibilità e Controllo sui Tuoi File
@@ -931,7 +931,7 @@ Autori:
 
 <h2 id="dede">🇩🇪 Deutsch (DE)</h2>
 
-> **Hinweis:** Dieses Repository bezieht sich auf die **v0.0.0.0** Installationsdatei (Binary) von Linceu Lighthouse, die als Testversion für eine Woche (7 Tage) verfügbar ist. Nach Ablauf des Testzeitraums muss die Vollversion über folgenden Link erworben werden: [Im Microsoft Store installieren](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Hinweis:** Dieses Repository bezieht sich auf die **v0.0.6.0** Installationsdatei (Binary) von Linceu Lighthouse, die als Testversion für eine Woche (7 Tage) verfügbar ist. Nach Ablauf des Testzeitraums muss die Vollversion über folgenden Link erworben werden: [Im Microsoft Store installieren](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Gesamte kumulierte Downloads:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Gesamte%20Downloads%20(Linceu%20Lighthouse))
@@ -949,7 +949,7 @@ Autori:
 </p>
 
 Projekt: LINCEU LIGHTHOUSE  
-Version: v0.0.0.0  
+Version: v0.0.6.0  
 Autoren: Fernando Nillsson Cidade  
 
 Beschreibung: Sichtbarkeit und Kontrolle über Ihre Dateien
