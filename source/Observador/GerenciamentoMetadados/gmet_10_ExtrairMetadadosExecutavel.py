@@ -128,7 +128,9 @@ def extrair_metadados_executavel(caminho, loc=None):
     try:
         import pefile
         import win32api
+        import pywintypes
 
+        info = None
         try:
             info = win32api.GetFileVersionInfo(caminho, "\\")
             ms = info['FileVersionMS']
@@ -142,68 +144,101 @@ def extrair_metadados_executavel(caminho, loc=None):
                     try:
                         str_path = f'\\StringFileInfo\\{lang:04x}{codepage:04x}\\{entry}'
                         str_info[entry] = win32api.GetFileVersionInfo(caminho, str_path)
-                    except Exception as e:
-                        logger.error(f"Erro ao extrair string {entry} de versão: {e}", exc_info=True)
 
-                if 'FileVersion' in str_info:
+                    except Exception as e:
+                        logger.debug(f"Não foi possível ler string de versão {entry}: {e}")
+
+                if 'FileVersion' in str_info and str_info['FileVersion']:
                     metadados['versao'] = str_info['FileVersion']
+
                 else:
                     metadados['versao'] = versao
 
-                if 'CompanyName' in str_info:
+                if 'CompanyName' in str_info and str_info['CompanyName']:
                     metadados['empresa'] = str_info['CompanyName']
 
-                if 'FileDescription' in str_info:
+                if 'FileDescription' in str_info and str_info['FileDescription']:
                     metadados['descricao'] = str_info['FileDescription']
 
-                if 'ProductName' in str_info:
+                if 'ProductName' in str_info and str_info['ProductName']:
                     metadados['produto'] = str_info['ProductName']
 
-                if 'LegalCopyright' in str_info:
+                if 'LegalCopyright' in str_info and str_info['LegalCopyright']:
                     metadados['copyright'] = str_info['LegalCopyright']
 
             except Exception as e:
-                logger.error(f"Erro ao extrair strings de versão: {e}", exc_info=True)
+                logger.debug(f"Erro ao extrair strings de versão via win32api (fallback para pefile): {e}")
                 metadados['versao'] = versao
 
-        except Exception as e:
-            if "1813" in str(e) or "Não foi possível encontrar o tipo de recurso" in str(e):
-                logger.error(f"Arquivo {os.path.basename(caminho)} não possui informações de versão incorporadas")
-                metadados['versao'] = 'Não disponível'
+        except pywintypes.error as w32_err:
+            winerr = getattr(w32_err, 'winerror', None)
+            if winerr == 13 or (isinstance(w32_err.args, tuple) and w32_err.args and w32_err.args[0] == 13):
+                logger.debug(f"GetFileVersionInfo retornou dados inválidos para {caminho}: {w32_err}. Usando fallback pefile.")
+
             else:
-                logger.error(f"Erro com win32api: {e}", exc_info=True)
+                logger.warning(f"win32api.GetFileVersionInfo falhou para {caminho}: {w32_err}")
+
+            info = None
+
+        except Exception as e:
+            logger.warning(f"Erro ao usar win32api para obter versão: {e}")
+            info = None
+
+        try:
+            if info is None:
+                pe = pefile.PE(caminho, fast_load=True)
+
+            else:
+                pe = pefile.PE(caminho)
+
+            info_pf = None
+            if hasattr(pe, 'VS_FIXEDFILEINFO') and pe.VS_FIXEDFILEINFO:
+                if isinstance(pe.VS_FIXEDFILEINFO, (list, tuple)):
+                    info_pf = pe.VS_FIXEDFILEINFO[0]
+
+                else:
+                    info_pf = pe.VS_FIXEDFILEINFO
+
+            if info_pf and hasattr(info_pf, 'FileVersionMS') and hasattr(info_pf, 'FileVersionLS'):
+                versao = f"{info_pf.FileVersionMS >> 16}.{info_pf.FileVersionMS & 0xFFFF}.{info_pf.FileVersionLS >> 16}.{info_pf.FileVersionLS & 0xFFFF}"
+                metadados['versao'] = versao
+
+            if hasattr(pe, 'FileInfo') and pe.FileInfo:
+                for fileinfo in pe.FileInfo:
+                    for entry in fileinfo:
+                        if hasattr(entry, 'StringTable'):
+                            for st in entry.StringTable:
+                                for key, value in st.entries.items():
+                                    try:
+                                        key_str = key.decode('utf-8', errors='ignore') if isinstance(key, (bytes, bytearray)) else str(key)
+                                        val_str = value.decode('utf-8', errors='ignore') if isinstance(value, (bytes, bytearray)) else str(value)
+
+                                    except Exception:
+                                        continue
+
+                                    if key_str == 'FileVersion':
+                                        metadados['versao'] = val_str
+
+                                    elif key_str == 'CompanyName':
+                                        metadados['empresa'] = val_str
+
+                                    elif key_str == 'FileDescription':
+                                        metadados['descricao'] = val_str
+
+                                    elif key_str == 'ProductName':
+                                        metadados['produto'] = val_str
+
+                                    elif key_str == 'LegalCopyright':
+                                        metadados['copyright'] = val_str
 
             try:
-                pe = pefile.PE(caminho)
-                if hasattr(pe, 'VS_FIXEDFILEINFO'):
-                    info = pe.VS_FIXEDFILEINFO
-                    versao = f"{info.FileVersionMS >> 16}.{info.FileVersionMS & 0xFFFF}.{info.FileVersionLS >> 16}.{info.FileVersionLS & 0xFFFF}"
-                    metadados['versao'] = versao
-
-                if hasattr(pe, 'FileInfo'):
-                    for fileinfo in pe.FileInfo:
-                        for entry in fileinfo:
-                            if hasattr(entry, 'StringTable'):
-                                for st in entry.StringTable:
-                                    for key, value in st.entries.items():
-                                        key_str = key.decode('utf-8', errors='ignore')
-                                        val_str = value.decode('utf-8', errors='ignore')
-                                        if key_str == 'FileVersion':
-                                            metadados['versao'] = val_str
-
-                                        elif key_str == 'CompanyName':
-                                            metadados['empresa'] = val_str
-
-                                        elif key_str == 'FileDescription':
-                                            metadados['descricao'] = val_str
-
-                                        elif key_str == 'ProductName':
-                                            metadados['produto'] = val_str
-
                 pe.close()
 
-            except Exception as pe_error:
-                logger.error(f"Erro com pefile: {pe_error}", exc_info=True)
+            except Exception:
+                pass
+
+        except Exception as pe_error:
+            logger.debug(f"pefile não conseguiu extrair versão/strings: {pe_error}", exc_info=True)
 
         try:
             metadados['assinado'] = verificar_assinatura_executavel(caminho)

@@ -20,8 +20,20 @@ def get_autor_arquivo(item, loc):
                 import win32security
                 sd = win32security.GetFileSecurity(caminho, win32security.OWNER_SECURITY_INFORMATION)
                 owner_sid = sd.GetSecurityDescriptorOwner()
-                nome, dominio, tipo = win32security.LookupAccountSid(None, owner_sid)
-                autor = f"{dominio}\\{nome}"
+
+                try:
+                    nome, dominio, tipo = win32security.LookupAccountSid(None, owner_sid)
+                    autor = f"{dominio}\\{nome}"
+
+                except Exception as lookup_err:
+                    logger.warning(f"Não foi possível resolver SID para nome: {lookup_err}")
+                    try:
+                        sid_str = win32security.ConvertSidToStringSid(owner_sid)
+                        autor = sid_str
+
+                    except Exception as conv_err:
+                        logger.error(f"Erro ao converter SID para string: {conv_err}", exc_info=True)
+                        autor = ""
 
             except Exception as e:
                 logger.error(f"Erro ao obter proprietário da pasta: {e}", exc_info=True)
@@ -37,27 +49,56 @@ def get_autor_arquivo(item, loc):
             elif ext == ".doc":
                 import olefile
                 try:
-                    with olefile.OleFileIO(caminho) as ole:
-                        if ole.exists('\x05SummaryInformation'):
-                            props = ole.getproperties('\x05SummaryInformation')
-                            autor = props.get(4, "") or ""
-                            if isinstance(autor, bytes):
-                                autor = autor.decode("latin-1", errors="ignore")
+                    if olefile.isOleFile(caminho):
+                        with olefile.OleFileIO(caminho) as ole:
+                            if ole.exists('\x05SummaryInformation'):
+                                props = ole.getproperties('\x05SummaryInformation')
+                                autor = props.get(4, "") or ""
+                                if isinstance(autor, bytes):
+                                    autor = autor.decode("latin-1", errors="ignore")
 
-                            autor = autor.strip()
+                                autor = autor.strip()
+
+                    else:
+                        autor = ""
 
                 except Exception as e:
                     logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
                     autor = ""
 
             elif ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+                import zipfile
                 try:
-                    from openpyxl import load_workbook
-                    wb = load_workbook(caminho, read_only=True, data_only=True)
-                    if wb.properties.creator:
-                        autor = str(wb.properties.creator).strip()
+                    if zipfile.is_zipfile(caminho):
+                        try:
+                            from openpyxl import load_workbook
+                            wb = load_workbook(caminho, read_only=True, data_only=True)
+                            if wb.properties.creator:
+                                autor = str(wb.properties.creator).strip()
 
-                    wb.close()
+                            wb.close()
+
+                        except Exception as xlsx_err:
+                            try:
+                                with zipfile.ZipFile(caminho, 'r') as z:
+                                    if 'docProps/core.xml' in z.namelist():
+                                        import xml.etree.ElementTree as ET
+                                        core_xml = z.read('docProps/core.xml')
+                                        root = ET.fromstring(core_xml)
+                                        ns = {
+                                            'cp': 'http://schemas.openxmlformats.org/package/2006/metadata/core-properties',
+                                            'dc': 'http://purl.org/dc/elements/1.1/',
+                                            'dcterms': 'http://purl.org/dc/terms/'
+                                        }
+                                        node = root.find('.//dc:creator', ns)
+                                        autor = (node.text or "").strip() if node is not None else ""
+
+                            except Exception as zerr:
+                                logger.error(f"Fallback core.xml falhou: {zerr}", exc_info=True)
+                                autor = ""
+
+                    else:
+                        autor = ""
 
                 except Exception as xlsx_err:
                     logger.error(f"Erro ao ler XLSX com openpyxl: {xlsx_err}", exc_info=True)
@@ -66,14 +107,34 @@ def get_autor_arquivo(item, loc):
             elif ext == ".xls":
                 import olefile
                 try:
-                    with olefile.OleFileIO(caminho) as ole:
-                        if ole.exists('\x05SummaryInformation'):
-                            props = ole.getproperties('\x05SummaryInformation')
-                            autor = props.get(4, "") or ""
-                            if isinstance(autor, bytes):
-                                autor = autor.decode("latin-1", errors="ignore")
+                    if olefile.isOleFile(caminho):
+                        with olefile.OleFileIO(caminho) as ole:
+                            if ole.exists('\x05SummaryInformation'):
+                                props = ole.getproperties('\x05SummaryInformation')
+                                autor = props.get(4, "") or ""
+                                if isinstance(autor, bytes):
+                                    autor = autor.decode("latin-1", errors="ignore")
 
-                            autor = autor.strip()
+                                autor = autor.strip()
+
+                    else:
+                        import zipfile, xml.etree.ElementTree as ET
+                        if zipfile.is_zipfile(caminho):
+                            try:
+                                with zipfile.ZipFile(caminho, 'r') as z:
+                                    if 'docProps/core.xml' in z.namelist():
+                                        core_xml = z.read('docProps/core.xml')
+                                        root = ET.fromstring(core_xml)
+                                        ns = {'dc': 'http://purl.org/dc/elements/1.1/'}
+                                        node = root.find('.//dc:creator', ns)
+                                        autor = (node.text or "").strip() if node is not None else ""
+
+                            except Exception as e2:
+                                logger.error(f"Erro ao extrair autor via core.xml: {e2}", exc_info=True)
+                                autor = ""
+
+                        else:
+                            autor = ""
 
                 except Exception as e:
                     logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
@@ -87,14 +148,18 @@ def get_autor_arquivo(item, loc):
             elif ext == ".ppt":
                 import olefile
                 try:
-                    with olefile.OleFileIO(caminho) as ole:
-                        if ole.exists('\x05SummaryInformation'):
-                            props = ole.getproperties('\x05SummaryInformation')
-                            autor = props.get(4, "") or ""
-                            if isinstance(autor, bytes):
-                                autor = autor.decode("latin-1", errors="ignore")
+                    if olefile.isOleFile(caminho):
+                        with olefile.OleFileIO(caminho) as ole:
+                            if ole.exists('\x05SummaryInformation'):
+                                props = ole.getproperties('\x05SummaryInformation')
+                                autor = props.get(4, "") or ""
+                                if isinstance(autor, bytes):
+                                    autor = autor.decode("latin-1", errors="ignore")
 
-                            autor = autor.strip()
+                                autor = autor.strip()
+
+                    else:
+                        autor = ""
 
                 except Exception as e:
                     logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
@@ -106,30 +171,34 @@ def get_autor_arquivo(item, loc):
             elif ext == ".msg":
                 import olefile
                 try:
-                    with olefile.OleFileIO(caminho) as ole:
-                        if ole.exists('\x05SummaryInformation'):
-                            props = ole.getproperties('\x05SummaryInformation')
-                            autor = props.get(4, "") or ""
-                            if isinstance(autor, bytes):
-                                autor = autor.decode("latin-1", errors="ignore")
+                    if olefile.isOleFile(caminho):
+                        with olefile.OleFileIO(caminho) as ole:
+                            if ole.exists('\x05SummaryInformation'):
+                                props = ole.getproperties('\x05SummaryInformation')
+                                autor = props.get(4, "") or ""
+                                if isinstance(autor, bytes):
+                                    autor = autor.decode("latin-1", errors="ignore")
 
-                            autor = autor.strip()
+                                autor = autor.strip()
 
-                        elif ole.exists('__properties_version1.0'):
-                            props = ole.getproperties('__properties_version1.0')
-                            autor_val = None
-                            for prop_id in [0x0C1A, 0x0E04, 0x0042]:
-                                if prop_id in props:
-                                    autor_val = props[prop_id]
-                                    break
+                            elif ole.exists('__properties_version1.0'):
+                                props = ole.getproperties('__properties_version1.0')
+                                autor_val = None
+                                for prop_id in [0x0C1A, 0x0E04, 0x0042]:
+                                    if prop_id in props:
+                                        autor_val = props[prop_id]
+                                        break
 
-                            if isinstance(autor_val, bytes):
-                                autor_val = autor_val.decode("latin-1", errors="ignore")
+                                if isinstance(autor_val, bytes):
+                                    autor_val = autor_val.decode("latin-1", errors="ignore")
 
-                            autor = (autor_val or "").strip()
+                                autor = (autor_val or "").strip()
 
-                        else:
-                            autor = ""
+                            else:
+                                autor = ""
+
+                    else:
+                        autor = ""
 
                 except Exception as e:
                     logger.error(f"Erro ao extrair informações do MSG: {e}", exc_info=True)

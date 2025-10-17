@@ -44,7 +44,7 @@ def get_dimensoes_arquivo(self, item, loc):
         nome_arquivo = os.path.basename(caminho).lower()
 
         try:
-            if ext == '.bak' in nome_arquivo or 'backup' in nome_arquivo or 'bkp' in nome_arquivo:
+            if ext == '.bak' or 'backup' in nome_arquivo or 'bkp' in nome_arquivo:
                 if eh_arquivo_texto(caminho):
                     num_linhas = contar_linhas(caminho)
                     with self.lock_cache:
@@ -97,7 +97,6 @@ def get_dimensoes_arquivo(self, item, loc):
                 if olefile.isOleFile(caminho):
                     tamanho = os.path.getsize(caminho)
                     paginas_estimadas = max(1, tamanho // 20000)
-
                     with self.lock_cache:
                         if caminho not in self.cache_metadados:
                             self.cache_metadados[caminho] = {}
@@ -111,7 +110,6 @@ def get_dimensoes_arquivo(self, item, loc):
                 if olefile.isOleFile(caminho):
                     tamanho = os.path.getsize(caminho)
                     slides_estimados = max(1, tamanho // 100000)
-
                     with self.lock_cache:
                         if caminho not in self.cache_metadados:
                             self.cache_metadados[caminho] = {}
@@ -149,37 +147,73 @@ def get_dimensoes_arquivo(self, item, loc):
                     logger.error(f"Erro ao extrair metadados do TXT {caminho}: {e}", exc_info=True)
 
             elif ext in ['.xlsx', '.xlsm']:
-                from openpyxl import load_workbook
-                wb = load_workbook(caminho, read_only=True, data_only=True)
+                import zipfile
+                if zipfile.is_zipfile(caminho):
+                    try:
+                        from openpyxl import load_workbook
+                        wb = load_workbook(caminho, read_only=True, data_only=True)
+                        planilhas = len(wb.sheetnames)
 
-                planilhas = len(wb.sheetnames)
+                        linhas_total = 0
+                        colunas_max = 0
+                        for sheet_name in wb.sheetnames[:3]:
+                            sheet = wb[sheet_name]
+                            max_row = getattr(sheet, 'max_row', 0) or 0
+                            max_col = getattr(sheet, 'max_column', 0) or 0
+                            try:
+                                linhas_total += int(max_row)
 
-                linhas_total = 0
-                colunas_max = 0
-                for sheet_name in wb.sheetnames[:3]:
-                    sheet = wb[sheet_name]
-                    if hasattr(sheet, 'max_row') and hasattr(sheet, 'max_column'):
-                        linhas_total += sheet.max_row
-                        if sheet.max_column > colunas_max:
-                            colunas_max = sheet.max_column
+                            except Exception:
+                                pass
 
-                wb.close()
+                            try:
+                                max_col_int = int(max_col)
+                                if max_col_int > colunas_max:
+                                    colunas_max = max_col_int
 
-                with self.lock_cache:
-                    if caminho not in self.cache_metadados:
-                        self.cache_metadados[caminho] = {}
+                            except Exception:
+                                pass
 
-                    self.cache_metadados[caminho]["planilhas"] = str(planilhas)
-                    self.cache_metadados[caminho]["total_linhas"] = str(linhas_total)
-                    self.cache_metadados[caminho]["colunas"] = str(colunas_max)
+                        wb.close()
 
-                return ""
+                        with self.lock_cache:
+                            if caminho not in self.cache_metadados:
+                                self.cache_metadados[caminho] = {}
+
+                            self.cache_metadados[caminho]["planilhas"] = str(planilhas)
+                            self.cache_metadados[caminho]["total_linhas"] = str(linhas_total)
+                            self.cache_metadados[caminho]["colunas"] = str(colunas_max)
+
+                        return ""
+
+                    except Exception as e_xlsx:
+                        try:
+                            with zipfile.ZipFile(caminho, 'r') as z:
+                                if 'xl/workbook.xml' in z.namelist():
+                                    import xml.etree.ElementTree as ET
+                                    xml_bytes = z.read('xl/workbook.xml')
+                                    root = ET.fromstring(xml_bytes)
+                                    ns = {'ns': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                                    sheets = root.findall('.//ns:sheets/ns:sheet', ns) or root.findall('.//sheets/sheet')
+                                    planilhas = len(sheets)
+                                    with self.lock_cache:
+                                        if caminho not in self.cache_metadados:
+                                            self.cache_metadados[caminho] = {}
+
+                                        self.cache_metadados[caminho]["planilhas"] = str(planilhas)
+
+                                    return ""
+
+                        except Exception as e_xml:
+                            logger.error(f"Erro no fallback XML para XLSX: {e_xml}", exc_info=True)
+
+                else:
+                    logger.error(f"Erro ao extrair dimensões diretamente: arquivo XLSX inválido (não é ZIP)")
 
         except Exception as e:
             logger.error(f"Erro ao extrair dimensões diretamente: {e}", exc_info=True)
 
         metadados = get_metadados(self, item)
-
         if metadados:
             dimensoes_original = metadados.get("dimensoes", "")
 

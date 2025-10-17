@@ -1,3 +1,35 @@
+NOTAS DE LANÇAMENTO: Versão 0.1.0.0:
+
+Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
+
+Melhorias principais
+- Mais confiável: o aplicativo passou por melhorias internas importantes que reduzem travamentos e tornam o monitoramento de pastas mais estável.
+- Melhor identificação de arquivos: agora o sistema detecta e mostra mais propriedades dos arquivos (ex.: autor, número de páginas, linhas, palavras, dimensões de imagens/vídeos, duração de vídeos, tamanho descompactado de arquivos compactados).
+- Suporte mais amplo: extração de informações aprimorada para muitos formatos comuns — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, arquivos compactados (zip/rar/7z), e-mails (.msg) e vídeos/imagens.
+- Mais rápido e responsivo: processamento em segundo plano otimizado para não travar a interface enquanto as informações dos arquivos são coletadas.
+- Melhor tratamento de arquivos bloqueados: o aplicativo tenta ler arquivos que estão em uso com maior segurança e, quando não for possível, continua funcionando normalmente sem interromper o restante.
+- Localização/idioma: textos da interface e metadados apresentam-se melhor traduzidos, com melhorias para quem usa o aplicativo em outros idiomas.
+
+Correções de problemas
+- Menos falhas ao abrir pastas ou arquivos corrompidos: o aplicativo agora ignora com segurança arquivos inválidos ou com metadados incompletos, evitando erros que podiam encerrar o programa.
+- Melhor exibição de conteúdo de arquivos compactados: mostra contagem de arquivos, tamanho estimado descompactado e uma prévia dos primeiros arquivos dentro do arquivo compactado.
+- Metadados de documentos mais precisos: estimativas de páginas, linhas e palavras foram aprimoradas para documentos (incluindo PDFs e DOCX).
+- Assinatura de executáveis: o aplicativo agora verifica se um arquivo executável é assinado, exibindo essa informação quando disponível.
+- Configurações de colunas preservadas: as preferências de visualização de colunas (quais colunas ver/ocultar) são carregadas e salvas de forma mais confiável.
+- Mais informações para arquivos multimídia: dimensões de vídeo/imagem e duração agora aparecem com melhor consistência.
+
+Observações para o usuário
+- Nenhuma ação adicional é necessária; a atualização melhora estabilidade e a qualidade das informações exibidas.
+- Caso o aplicativo não consiga ler algum arquivo (por exemplo por permissões do sistema), ele continuará funcionando e mostrará as informações que conseguir coletar.
+- Se houver dúvidas ou problemas após a atualização, ative os logs nas configurações e compartilhe-os com o suporte para investigação.
+
+Agradecimento
+- Obrigado por usar o aplicativo. Esta versão foca em estabilidade e qualidade das informações exibidas para que o gerenciamento de arquivos e pastas seja mais seguro e eficiente.
+
+
+_________________________________________________
+
+
 NOTAS DE LANÇAMENTO: Versão 0.0.9.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:

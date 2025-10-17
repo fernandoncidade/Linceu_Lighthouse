@@ -1,4 +1,5 @@
 import time
+import pywintypes
 import win32file
 import win32con
 from utils.LogManager import LogManager
@@ -22,6 +23,13 @@ def monitorar(self):
                 win32con.FILE_FLAG_OVERLAPPED,
                 None
             )
+
+            try:
+                if not hasattr(self, "_close_handle_dir_safely"):
+                    self._close_handle_dir_safely = lambda: _close_handle_dir_safely(self)
+
+            except Exception:
+                pass
 
         except Exception as e:
             logger.error(f"Erro ao criar handle de diretório: {e}", exc_info=True)
@@ -66,14 +74,7 @@ def monitorar(self):
                 logger.error(f"Erro desconhecido: {e}", exc_info=True)
 
         try:
-            if (hasattr(self, 'handle_dir') and 
-                self.handle_dir is not None and 
-                self.handle_dir != win32file.INVALID_HANDLE_VALUE and
-                self.handle_dir != 0):
-
-                win32file.CloseHandle(self.handle_dir)
-
-            self.handle_dir = None
+            _close_handle_dir_safely(self)
 
         except Exception as e:
             logger.error(f"Erro ao fechar handle de diretório: {e}", exc_info=True)
@@ -81,3 +82,21 @@ def monitorar(self):
 
     except Exception as e:
         logger.error(f"Erro desconhecido: {e}", exc_info=True)
+
+def _close_handle_dir_safely(self):
+    try:
+        h = getattr(self, 'handle_dir', None)
+        if h:
+            try:
+                win32file.CloseHandle(h)
+
+            except pywintypes.error as e:
+                winerr = getattr(e, 'winerror', None)
+                if winerr == 6 or (isinstance(e.args, tuple) and e.args and e.args[0] == 6):
+                    logger.debug("Handle de diretório já inválido/fechado. Ignorando.")
+
+                else:
+                    raise
+
+    finally:
+        self.handle_dir = None
