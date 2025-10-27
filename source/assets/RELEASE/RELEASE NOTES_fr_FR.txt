@@ -1,3 +1,18 @@
+NOTES DE VERSION : Version 0.1.1.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+Principales améliorations
+- Améliorations de la structure du code source : plusieurs optimisations internes ont été effectuées pour améliorer l'efficacité et la maintenabilité du code.
+- Mises à jour des dépendances : les bibliothèques et frameworks utilisés ont été mis à jour vers leurs dernières versions, garantissant une meilleure compatibilité et sécurité.
+
+Remerciements
+- Merci d'utiliser l'application. Cette version met l'accent sur la stabilité et la qualité des informations affichées afin que la gestion des fichiers et dossiers soit plus sûre et efficace.
+
+
+_________________________________________________
+
+
 NOTES DE VERSION : Version 0.1.0.0 :
 
 Dans cette version, les améliorations et fonctionnalités suivantes ont été implémentées :

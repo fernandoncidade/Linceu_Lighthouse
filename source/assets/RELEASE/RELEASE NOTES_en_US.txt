@@ -1,3 +1,18 @@
+RELEASE NOTES: Version 0.1.1.0:
+
+In this new version, the following improvements and features have been implemented:
+
+Main improvements
+- Improvements to the source code structure: several internal optimizations were made to improve the efficiency and maintainability of the code.
+- Dependency updates: libraries and frameworks used have been updated to their latest versions, ensuring better compatibility and security.
+
+Acknowledgment
+- Thank you for using the application. This version focuses on stability and the quality of the displayed information so that file and folder management is safer and more efficient.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.1.0.0:
 
 In this release we implemented the following improvements and features:

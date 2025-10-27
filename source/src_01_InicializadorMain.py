@@ -33,8 +33,8 @@ def iniciar_aplicacao():
 
         from PySide6.QtWidgets import QApplication
         from PySide6.QtGui import QIcon
-        from source.InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor
-        from source.InterfaceCore.ic_08_Internacionalizador import Internacionalizador
+        from source.gui.ic_01_InterfaceMonitor import InterfaceMonitor
+        from source.gui.ic_08_Internacionalizador import Internacionalizador
 
         app = QApplication(sys.argv)
         _definir_appusermodelid()

@@ -1,3 +1,18 @@
+NOTE DI RILASCIO: Versione 0.1.1.0:
+
+In questa nuova versione sono state implementate le seguenti migliorie e funzionalità:
+
+Migliorie principali
+- Miglioramenti nella struttura del codice sorgente: sono state effettuate diverse ottimizzazioni interne per migliorare l'efficienza e la manutenibilità del codice.
+- Aggiornamenti delle dipendenze: le librerie e i framework utilizzati sono stati aggiornati alle loro versioni più recenti, garantendo una migliore compatibilità e sicurezza.
+
+Ringraziamenti
+- Grazie per aver utilizzato l'applicazione. Questa versione si concentra sulla stabilità e sulla qualità delle informazioni visualizzate, affinché la gestione di file e cartelle sia più sicura ed efficiente.
+
+
+_________________________________________________
+
+
 NOTE DI RILASCIO: Versione 0.1.0.0:
 
 In questa versione sono state implementate le seguenti migliorie e funzionalità:

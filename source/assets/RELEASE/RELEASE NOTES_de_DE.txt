@@ -1,3 +1,18 @@
+RELEASE-HINWEISE: Version 0.1.1.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
+
+Wesentliche Verbesserungen
+- Verbesserungen an der Struktur des Quellcodes: Es wurden mehrere interne Optimierungen vorgenommen, um die Effizienz und Wartbarkeit des Codes zu verbessern.
+- Aktualisierungen von Abhängigkeiten: Die verwendeten Bibliotheken und Frameworks wurden auf ihre neuesten Versionen aktualisiert, um bessere Kompatibilität und Sicherheit zu gewährleisten.
+
+Dank
+- Danke, dass Sie die Anwendung verwenden. Diese Version konzentriert sich auf Stabilität und auf die Qualität der angezeigten Informationen, damit die Verwaltung von Dateien und Ordnern sicherer und effizienter ist.
+
+
+_________________________________________________
+
+
 VERSIONSHINWEISE: Version 0.1.0.0:
 
 In dieser Version wurden die folgenden Verbesserungen und Funktionen implementiert:

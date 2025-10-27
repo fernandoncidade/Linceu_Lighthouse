@@ -1,3 +1,18 @@
+NOTAS DE LANÇAMENTO: Versão 0.1.1.0:
+
+Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
+
+Melhorias principais
+- Melhorias na estrutura do código fonte: várias otimizações internas foram feitas para melhorar a eficiência e a manutenção do código.
+- Atualizações de dependências: bibliotecas e frameworks utilizados foram atualizados para suas versões mais recentes, garantindo melhor compatibilidade e segurança.
+
+Agradecimento
+- Obrigado por usar o aplicativo. Esta versão foca em estabilidade e qualidade das informações exibidas para que o gerenciamento de arquivos e pastas seja mais seguro e eficiente.
+
+
+_________________________________________________
+
+
 NOTAS DE LANÇAMENTO: Versão 0.1.0.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
