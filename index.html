@@ -172,8 +172,8 @@
         slogan: `<div class="slogan-text">Visibility & File Control <br>Simple, Visual & Multilingual</div><p>File Integrity Monitoring (FIM)</p>`
       },
       eses: {
-        download: assetName => `Descarga automática más reciente (${assetName})`,
-        slogan: `<div class="slogan-text">Visibilidad y Control de Archivos <br>Sencillo, Visual y Multilingüe</div><p>Monitoreo de Integridad de Archivos (FIM)</p>`
+        download: assetName => `Descarga automática más recente (${assetName})`,
+        slogan: `<div class="slogan-text">Visibilidad y Control de Archivos <br>Sencillo, Visual y Multilingüe</div><p>Monitoreo de Integridade de Archivos (FIM)</p>`
       },
       frfr: {
         download: assetName => `Téléchargement automatique le plus récent (${assetName})`,
@@ -228,7 +228,7 @@
       });
     });
   </script>
-  <!-- INTEGRAÇÃO COM WORKFLOW: Carrega versão do README dinamicamente -->
+  <!-- INTEGRAÇÃO COM WORKFLOW: Carrega versão do README.md e insere na página
   <script>
     // Busca a versão do README.md e insere na página
     async function fetchReadmeVersion() {
@@ -246,54 +246,55 @@
     }
     window.addEventListener('DOMContentLoaded', fetchReadmeVersion);
   </script>
-  <script>
-    // Busca automático do link do último release
-    async function setLatestReleaseDownload() {
-      const btn = document.getElementById('latest-download-btn');
-      const info = document.getElementById('latest-download-info');
-      try {
-        // GitHub API releases endpoint
-        const res = await fetch('https://api.github.com/repos/fernandoncidade/Linceu_Lighthouse/releases/latest');
-        if (!res.ok) throw new Error("API error");
-        const data = await res.json();
-        if (data && data.assets && data.assets.length > 0) {
-          // Busca o primeiro asset executável (.exe) ou o primeiro asset, se não houver .exe
-          let asset = data.assets.find(a => a.name.endsWith('.exe')) || data.assets[0];
-          btn.href = asset.browser_download_url;
-          btn.setAttribute('data-assetname', asset.name);
-          // Tradução do texto do botão conforme idioma
-          if (typeof TRANSLATIONS !== "undefined" && TRANSLATIONS[CURRENT_LANG]) {
-            btn.innerText = TRANSLATIONS[CURRENT_LANG].download(asset.name);
-          } else {
-            btn.innerText = "Download automático mais recente ("+asset.name+")";
-          }
-          btn.removeAttribute("disabled");
-          info.innerText = "Release: " + data.name + " (" + data.tag_name + ")";
-        } else {
-          // Nenhum asset encontrado
-          btn.innerText = "Sem arquivo para download no último release";
-          btn.setAttribute("disabled", "true");
-          info.innerText = "";
-        }
-      } catch (e) {
-        btn.innerText = "Erro ao buscar release";
-        btn.setAttribute("disabled", "true");
-        info.innerText = "";
-      }
-    }
-    window.addEventListener('DOMContentLoaded', setLatestReleaseDownload);
-    // Atualiza texto do botão de download ao trocar de idioma
-    window.addEventListener('DOMContentLoaded', () => {
-      document.addEventListener('click', function(e) {
-        if (e.target && e.target.closest('.languages button')) {
-          // Espera atualização do botão
-          setTimeout(() => {
-            updateDownloadButtonText();
-          },120);
-        }
-      });
-    });
-  </script>
+  -->
+   <script>
+     // Busca automático do link do último release
+     async function setLatestReleaseDownload() {
+       const btn = document.getElementById('latest-download-btn');
+       const info = document.getElementById('latest-download-info');
+       try {
+         // GitHub API releases endpoint
+         const res = await fetch('https://api.github.com/repos/fernandoncidade/Linceu_Lighthouse/releases/latest');
+         if (!res.ok) throw new Error("API error");
+         const data = await res.json();
+         if (data && data.assets && data.assets.length > 0) {
+           // Busca o primeiro asset executável (.exe) ou o primeiro asset, se não houver .exe
+           let asset = data.assets.find(a => a.name.endsWith('.exe')) || data.assets[0];
+           btn.href = asset.browser_download_url;
+           btn.setAttribute('data-assetname', asset.name);
+           // Tradução do texto do botão conforme idioma
+           if (typeof TRANSLATIONS !== "undefined" && TRANSLATIONS[CURRENT_LANG]) {
+             btn.innerText = TRANSLATIONS[CURRENT_LANG].download(asset.name);
+           } else {
+             btn.innerText = "Download automático mais recente ("+asset.name+")";
+           }
+           btn.removeAttribute("disabled");
+           info.innerText = "Release: " + data.name + " (" + data.tag_name + ")";
+         } else {
+           // Nenhum asset encontrado
+           btn.innerText = "Sem arquivo para download no último release";
+           btn.setAttribute("disabled", "true");
+           info.innerText = "";
+         }
+       } catch (e) {
+         btn.innerText = "Erro ao buscar release";
+         btn.setAttribute("disabled", "true");
+         info.innerText = "";
+       }
+     }
+     window.addEventListener('DOMContentLoaded', setLatestReleaseDownload);
+     // Atualiza texto do botão de download ao trocar de idioma
+     window.addEventListener('DOMContentLoaded', () => {
+       document.addEventListener('click', function(e) {
+         if (e.target && e.target.closest('.languages button')) {
+           // Espera atualização do botão
+           setTimeout(() => {
+             updateDownloadButtonText();
+           },120);
+         }
+       });
+     });
+   </script>
 </head>
 <body>
   <div class="header">
@@ -315,10 +316,9 @@
       <button id="btn-dede">🇩🇪 Deutsch (DE)</button>
     </div>
     <div class="badge-row">
-      <span id="version-badge"></span>
-      <img id="badge-downloads"
-        src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
-        alt="Total Downloads">
+       <img id="badge-downloads"
+         src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
+         alt="Total Downloads">
     </div>
 <script>
   // Traduções para o badge de downloads (label e alt)
@@ -513,14 +513,14 @@
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043749.png" alt="Pantalla 5">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20043830.png" alt="Pantalla 6">
       </div>
-      <h3>Principais Funcionalidades</h3>
+      <h3>Principales Funcionalidades</h3>
       <ul>
-        <li>Auditoría de atividades em carpetas com registros detalhados</li>
-        <li>Controle de versões e projetos (historial de cambios)</li>
-        <li>Organização e limpeza inteligente de arquivos (identificar duplicados, temporais, etc.)</li>
-        <li>Investigação de eventos específicos (qué sucedió y cuándo)</li>
-        <li>Filtros avançados, busca e visualização estatística</li>
-        <li>Exportação flexível de logs a Excel, CSV, JSON, XML, etc.</li>
+        <li>Auditoría de actividades en carpetas con registros detallados</li>
+        <li>Control de versiones y proyectos (historial de cambios)</li>
+        <li>Organización y limpieza inteligente de archivos (identificar duplicados, temporales, etc.)</li>
+        <li>Investigación de eventos específicos (qué sucedió y cuándo)</li>
+        <li>Filtros avanzados, búsqueda y visualización estadística</li>
+        <li>Exportación flexible de registros a Excel, CSV, JSON, XML, etc.</li>
         <li>Interfaz multilingüe: Portugués, Inglés, Español, Francés, Italiano, Alemán</li>
       </ul>
       <h3>¿Cómo funciona?</h3>
@@ -533,11 +533,11 @@
         <b>Requisitos del sistema:</b> Windows 10 o superior.<br>
         <b>Instalación:</b> Descargue e instale el ejecutable. Tras la prueba, adquiera en Microsoft Store.
       </div>
-      <h3>Manual rápido de uso</h3>
+      <h3>Manual de uso rápido</h3>
       <ol>
         <li>Ejecute la aplicación para abrir la interfaz gráfica.</li>
         <li>Seleccione una carpeta para monitorizar.</li>
-        <li>Utilice los botones y menús para iniciar/detener, filtrar, exportar datos y ver estadísticas.</li>
+        <li>Utilice los botones y menús para iniciar/detener, filtrar, exportar datos e ver estadísticas.</li>
       </ol>
       <h3>Funcionalidades Avanzadas</h3>
       <ul>
@@ -548,7 +548,7 @@
       </ul>
       <h3>Solución de Problemas</h3>
       <ul>
-        <li><b>El monitoreo no inicia:</b> Verifique permisos y si otro programa monitoriza la carpeta.</li>
+        <li><b>La monitorización no se inicia:</b> Verifique los permisos y si otro programa monitoriza la carpeta.</li>
         <li><b>No aparecen eventos:</b> Compruebe que el monitoreo está activo y los filtros no ocultan eventos.</li>
         <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
         <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
@@ -602,7 +602,7 @@
       </ol>
       <h3>Fonctionnalités avancées</h3>
       <ul>
-        <li><b>Filtres avancés :</b> Par opération, date, extension, utilisateur, etc.</li>
+        <li><b>Filtres avancés :</b> Par operação, data, extensão, usuário, etc.</li>
         <li><b>Visualisation Statistique :</b> Graphiques de distribution, timeline, Pareto, types de fichiers, etc.</li>
         <li><b>Configuration des Colonnes :</b> Personnalisez les colonnes affichées.</li>
         <li><b>Changement de langue :</b> Dans l’app, via “Options → Langue”.</li>
@@ -619,13 +619,13 @@
     <!-- IT-IT -->
     <div id="sec-itit" class="lang-section">
       <div class="note">
-        <b>Nota:</b> Questo repository si riferisce alla versione <span id="version-badge-it">...</span> (binaria) di Linceu Lighthouse, disponibile come prova gratuita per 7 giorni.<br>
+        <b>Nota:</b> Questo repository si refere alla versione <span id="version-badge-it">...</span> (binaria) di Linceu Lighthouse, disponibile come prova gratuita per 7 giorni.<br>
         Al termine della prova, acquista la versione completa:<br>
         <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank" rel="noopener noreferrer">Installa tramite Microsoft Store</a>
       </div>
       <h2>🇮🇹 Cos'è Linceu Lighthouse?</h2>
       <p>
-        <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integrità dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tutte le attività nelle tue directory più importanti. Ideale per auditing, controllo versioni, organizzazione e indagine eventi.
+        <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integridade dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tutte le attività nelle tue directory più importanti. Ideale per auditing, controllo versioni, organizzazione e indagine eventi.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Schermata 1">
@@ -780,7 +780,7 @@
           },
           eses: {
             main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
-            auto: 'Actualizado automáticamente tras nuevo release (integración con GitHub Actions).<br>Última versión sincronizada: <span id="version-badge3">...</span>'
+            auto: 'Actualizado automáticamente tras nuevo release (integración con GitHub Actions).<br>Última versão sincronizada: <span id="version-badge3">...</span>'
           },
           frfr: {
             main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
@@ -800,32 +800,18 @@
           var t = FOOTER_TRANSLATIONS[lang] || FOOTER_TRANSLATIONS.ptbr;
           document.getElementById('footer-main').innerHTML = t.main;
           document.getElementById('footer-auto').innerHTML = t.auto;
-          setTimeout(setVersionBadge3, 50); // Corrige badge após trocar idioma
-        }
-        // Atualiza rodapé ao trocar idioma
-        window.addEventListener('DOMContentLoaded', () => {
-          updateFooterTranslation();
-          document.addEventListener('click', function(e) {
-            if (e.target && e.target.closest('.languages button')) {
-              setTimeout(updateFooterTranslation, 80);
-            }
-          });
-        });
-      </script>
-      <script>
-        // Atualiza badge do rodapé com a versão detectada mesmo após troca do idioma
-        function setVersionBadge3() {
-          const v1 = document.getElementById('version-badge');
-          if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
-            // Pode haver múltiplos spans após trocar idioma, atualize todos
-            var vb3s = document.querySelectorAll('#version-badge3');
-            vb3s.forEach(function(span){ span.innerText = v1.innerText; });
-          } else {
-            setTimeout(setVersionBadge3, 500);
-          }
-        }
-        setTimeout(setVersionBadge3, 1000);
-      </script>
-    </div>
+          //          setTimeout(setVersionBadge3, 50); // Corrige badge após trocar idioma
+         }
+         // Atualiza rodapé ao trocar idioma
+         window.addEventListener('DOMContentLoaded', () => {
+           updateFooterTranslation();
+           document.addEventListener('click', function(e) {
+             if (e.target && e.target.closest('.languages button')) {
+               setTimeout(updateFooterTranslation, 80);
+             }
+           });
+         });
+       </script>
+     </div>
 </body>
 </html>
