@@ -142,7 +142,14 @@
     /* classes para substituir estilos inline */
     .mt-15 { margin-top:1.5em; }
     #footer-auto { font-size:0.93em; }
-    /* note: removed #version-badge style to eliminate the boxed widget */
+    #version-badge {
+     background:#eee;
+     padding:0.3em 1.1em;
+     border-radius:1em;
+     font-size:1.05em;
+     color:#222;
+     margin-right:0.4em;
+   }
   </style>
   <script>
     // Idiomas suportados
@@ -223,22 +230,7 @@
   </script>
   <!-- INTEGRAÇÃO COM WORKFLOW: Carrega versão do README dinamicamente -->
   <script>
-    // Variável global para guardar a versão descoberta
-    let LATEST_VERSION = "";
-
-    // Atualiza todas as spans de versão (por idioma e no rodapé)
-    function updateVersionSpans() {
-      const ids = ['version-badge2','version-badge-en','version-badge-es','version-badge-fr','version-badge-it','version-badge-de'];
-      ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = LATEST_VERSION ? LATEST_VERSION : '...';
-      });
-      // Atualiza todos os elementos version-badge3 (pode haver mais de um)
-      const vb3s = document.querySelectorAll('#version-badge3');
-      vb3s.forEach(function(span){ span.innerText = LATEST_VERSION ? LATEST_VERSION : '...'; });
-    }
-
-    // Busca a versão do README.md e insere na página (se encontrada)
+    // Busca a versão do README.md e insere na página
     async function fetchReadmeVersion() {
       try {
         const req = await fetch('https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/README.md');
@@ -246,13 +238,10 @@
         // Regex: captura a versão no formato vX.X.X.X (aparece na linha do README)
         const reVersion = /v(\d+\.\d+\.\d+\.\d+)/i;
         const match = txt.match(reVersion);
-        // Se não achar, mantemos LATEST_VERSION vazia
-        LATEST_VERSION = match ? match[0] : "";
-        updateVersionSpans();
+        const version = match ? match[0] : 'v0.0.0.0';
+        document.getElementById('version-badge').innerText = version;
       } catch {
-        // Em caso de erro, mantemos vazio (não mostramos "v0.0.0.0")
-        LATEST_VERSION = "";
-        updateVersionSpans();
+        document.getElementById('version-badge').innerText = "v0.0.0.0";
       }
     }
     window.addEventListener('DOMContentLoaded', fetchReadmeVersion);
@@ -326,7 +315,7 @@
       <button id="btn-dede">🇩🇪 Deutsch (DE)</button>
     </div>
     <div class="badge-row">
-      <!-- removed the boxed version widget (previously id="version-badge") to avoid colored empty area -->
+      <span id="version-badge"></span>
       <img id="badge-downloads"
         src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
         alt="Total Downloads">
@@ -391,7 +380,7 @@
       </div>
       <h2>🇧🇷 O que é o Linceu Lighthouse?</h2>
       <p>
-        O <b>Linceu Lighthouse</b> é uma ferramenta de monitoramento que aplica os princípios de <b>Integridade de Arquivos (File Integrity Monitoring - FIM)</b> para fornecer um registro detalhado [...]
+        O <b>Linceu Lighthouse</b> é uma ferramenta de monitoramento que aplica os princípios de <b>Integridade de Arquivos (File Integrity Monitoring - FIM)</b> para fornecer um registro detalhado e transparente de todas as atividades em seus diretórios mais importantes. Ideal para auditoria, controle de versões, organização e investigação de eventos em arquivos.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Portugues/Captura%20de%20tela%202025-08-04%20040204.png" alt="Tela 1">
@@ -442,7 +431,7 @@
         <li><b>Alto consumo de recursos:</b> Evite monitorar diretórios muito grandes ou de sistema.</li>
         <li><b>Erros nas estatísticas:</b> Confirme que há eventos suficientes e todas as bibliotecas estão corretas.</li>
       </ul>
-      <p class="mt-15">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</[...]
+      <p class="mt-15">Para instruções detalhadas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> no GitHub.</p>
     </div>
     <!-- EN-US -->
     <div id="sec-enus" class="lang-section">
@@ -453,7 +442,7 @@
       </div>
       <h2>🇺🇸 What is Linceu Lighthouse?</h2>
       <p>
-        <b>Linceu Lighthouse</b> is a monitoring tool that applies <b>File Integrity Monitoring (FIM)</b> principles to provide a detailed and transparent record of all activities in your most importa[...]
+        <b>Linceu Lighthouse</b> is a monitoring tool that applies <b>File Integrity Monitoring (FIM)</b> principles to provide a detailed and transparent record of all activities in your most important directories. Ideal for auditing, version control, organization, and event investigation.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Ingles/Captura%20de%20tela%202025-08-04%20004933.png" alt="Screen 1">
@@ -503,7 +492,7 @@
         <li><b>High resource usage:</b> Avoid monitoring very large/system directories.</li>
         <li><b>Statistics errors:</b> Ensure enough events and all libraries are correct.</li>
       </ul>
-      <p class="mt-15">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitH[...]
+      <p class="mt-15">For detailed instructions, see <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
     </div>
     <!-- ES-ES -->
     <div id="sec-eses" class="lang-section">
@@ -514,7 +503,7 @@
       </div>
       <h2>🇪🇸 ¿Qué es Linceu Lighthouse?</h2>
       <p>
-        <b>Linceu Lighthouse</b> es una herramienta de monitoreo que aplica los principios de <b>Monitoreo de Integridad de Archivos (FIM)</b> para proporcionar un registro detallado y transparente de[...]
+        <b>Linceu Lighthouse</b> es una herramienta de monitoreo que aplica los principios de <b>Monitoreo de Integridad de Archivos (FIM)</b> para proporcionar un registro detallado y transparente de todas las actividades en sus directorios más importantes. Ideal para auditoría, control de versiones, organización e investigación de eventos.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Espanhol/Captura%20de%20tela%202025-08-04%20040431.png" alt="Pantalla 1">
@@ -526,7 +515,7 @@
       </div>
       <h3>Principais Funcionalidades</h3>
       <ul>
-        <li>Auditoría de atividades em carpetas com registros detallados</li>
+        <li>Auditoría de atividades em carpetas com registros detalhados</li>
         <li>Controle de versões e projetos (historial de cambios)</li>
         <li>Organização e limpeza inteligente de arquivos (identificar duplicados, temporais, etc.)</li>
         <li>Investigação de eventos específicos (qué sucedió y cuándo)</li>
@@ -564,7 +553,7 @@
         <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
         <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
       </ul>
-      <p class="mt-15">Para instrucciones detalladas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a>[…]
+      <p class="mt-15">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> en GitHub.</p>
     </div>
     <!-- FR-FR -->
     <div id="sec-frfr" class="lang-section">
@@ -575,7 +564,7 @@
       </div>
       <h2>🇫🇷 Qu'est-ce que Linceu Lighthouse ?</h2>
       <p>
-        <b>Linceu Lighthouse</b> est un outil de surveillance qui applique les principes de <b>Surveillance de l’Intégrité des Fichiers (FIM)</b> pour fournir un journal détaillé et transparent [...]
+        <b>Linceu Lighthouse</b> est un outil de surveillance qui applique les principes de <b>Surveillance de l’Intégrité des Fichiers (FIM)</b> pour fournir un journal détaillé et transparent de toutes les activités dans vos dossiers importants. Idéal pour l’audit, le contrôle de version, l’organisation et l’investigation d’événements.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Frances/Captura%20de%20tela%202025-08-04%20040608.png" alt="Écran 1">
@@ -625,7 +614,7 @@
         <li><b>Consommation élevée :</b> Évitez les dossiers volumineux ou système.</li>
         <li><b>Erreurs statistiques :</b> Vérifiez le nombre d’événements et les bibliothèques.</li>
       </ul>
-      <p class="mt-15">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> su[...]
+      <p class="mt-15">Pour plus d’instructions, voir le <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> sur GitHub.</p>
     </div>
     <!-- IT-IT -->
     <div id="sec-itit" class="lang-section">
@@ -636,7 +625,7 @@
       </div>
       <h2>🇮🇹 Cos'è Linceu Lighthouse?</h2>
       <p>
-        <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integrità dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tut[...]
+        <b>Linceu Lighthouse</b> è uno strumento di monitoraggio che applica i principi del <b>Monitoraggio dell'Integrità dei File (FIM)</b> per fornire un registro dettagliato e trasparente di tutte le attività nelle tue directory più importanti. Ideale per auditing, controllo versioni, organizzazione e indagine eventi.
       </p>
       <div class="screenshots">
         <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Italiano/Captura%20de%20tela%202025-08-04%20040731.png" alt="Schermata 1">
@@ -677,18 +666,97 @@
         <li><b>Filtri Avanzati:</b> Per operazione, data, estensione, utente, ecc.</li>
         <li><b>Visualizzazione Statistica:</b> Grafici di distribuzione, timeline, Pareto, tipi file, altro.</li>
         <li><b>Configurazione Colonne:</b> Personalizza le colonne mostrate.</li>
-        <li><b>Cambio lingua:</b> In app, “Opções → Idioma”.</li>
+        <li><b>Cambio lingua:</b> In app, “Opzioni → Lingua”.</li>
       </ul>
-      <h3>Risoluzione dei Problemas</h3>
+      <h3>Risoluzione dei Problemi</h3>
       <ul>
         <li><b>Il monitoraggio non parte:</b> Controlla permessi e se altri programmi monitorano la cartella.</li>
         <li><b>Eventi non visibili:</b> Assicurati che il monitoraggio sia attivo e i filtri non nascondano eventi.</li>
         <li><b>Alto consumo risorse:</b> Evita cartelle molto grandi o di sistema.</li>
         <li><b>Errori statistiche:</b> Verifica che ci siano eventi a sufficienza e librerie corrette.</li>
       </ul>
-      <p class="mt-15">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a[...]
+      <p class="mt-15">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> su GitHub.</p>
     </div>
-  <div class="footer" id="footer">
+    <!-- DE-DE -->
+    <div id="sec-dede" class="lang-section">
+      <div class="note">
+        <b>Hinweis:</b> Dieses Repository bezieht sich auf Version <span id="version-badge-de">...</span> (Binary) von Linceu Lighthouse, als 7-tägige Testversion verfügbar.<br>
+        Nach der Testphase, kaufen Sie die Vollversion:<br>
+        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank" rel="noopener noreferrer">Im Microsoft Store installieren</a>
+      </div>
+      <h2>🇩🇪 Was ist Linceu Lighthouse?</h2>
+      <p>
+        <b>Linceu Lighthouse</b> ist ein Überwachungstool, das die Prinzipien der <b>Datei-Integritätsüberwachung (FIM)</b> anwendet und ein detailliertes, transparentes Protokoll aller Aktivitäten in wichtigen Verzeichnissen liefert. Ideal für Audit, Versionskontrolle, Organisation und Ereignisanalyse.
+      </p>
+      <div class="screenshots">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Bildschirm 1">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Bildschirm 2">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Bildschirm 3">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Bildschirm 4">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Bildschirm 5">
+        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Bildschirm 6">
+      </div>
+      <h3>Hauptfunktionen</h3>
+      <ul>
+        <li>Ordner-Aktivitätsüberwachung mit detaillierten Logs</li>
+        <li>Versions- und Projektkontrolle (Änderungshistorie)</li>
+        <li>Intelligente Datei-Organisation und -Bereinigung (Duplikate, temporäre Dateien)</li>
+        <li>Untersuchung spezifischer Ereignisse (was und wann)</li>
+        <li>Erweiterte Filter, Suche und statistische Visualisierung</li>
+        <li>Flexibler Export zu Excel, CSV, JSON, XML, usw.</li>
+        <li>Mehrsprachige Oberfläche: Portugiesisch, Englisch, Spanisch, Französisch, Italienisch, Deutsch</li>
+      </ul>
+      <h3>Wie funktioniert es?</h3>
+      <ol>
+        <li><b>Baseline:</b> Beim Start scannt das Tool Dateien und Ordner.</li>
+        <li><b>Kontinuierliche Überwachung:</b> Protokolliert in Echtzeit alle Ereignisse (Erstellung, Änderung, Löschung, Verschieben, Umbenennen).</li>
+        <li><b>Analyse & Bericht:</b> Jede Änderung erscheint in der Oberfläche, mit leistungsstarken Filtern für Suche, Analyse und Export.</li>
+      </ol>
+      <div class="sysreq">
+        <b>Systemanforderungen:</b> Windows 10 oder höher.<br>
+        <b>Installation:</b> Laden Sie die ausführbare Datei herunter und installieren Sie sie. Nach der Testphase kaufen Sie im Microsoft Store.
+      </div>
+      <h3>Schnellstart-Anleitung</h3>
+      <ol>
+        <li>Starten Sie die Anwendung für die grafische Oberfläche.</li>
+        <li>Wählen Sie ein Verzeichnis zum Überwachen.</li>
+        <li>Nutzen Sie Buttons und Menüs für Start/Stopp, Filter, Export, Statistiken.</li>
+      </ol>
+      <h3>Erweiterte Funktionen</h3>
+      <ul>
+        <li><b>Erweiterte Filter:</b> Nach Operation, Datum, Erweiterung, Benutzer usw.</li>
+        <li><b>Statistik-Visualisierung:</b> Verteilungsdiagramme, Timeline, Pareto, Dateitypen u.a.</li>
+        <li><b>Spaltenkonfiguration:</b> Tabellenspalten anpassen.</li>
+        <li><b>Sprachwechsel:</b> In der App unter „Optionen → Sprache“.</li>
+      </ul>
+      <h3>Fehlerbehebung</h3>
+      <ul>
+        <li><b>Überwachung startet nicht:</b> Prüfen Sie Berechtigungen und ob andere Programme das Verzeichnis überwachen.</li>
+        <li><b>Ereignisse erscheinen nicht:</b> Überwachen aktiv und Filter blenden Ereignisse nicht aus.</li>
+        <li><b>Hohe Ressourcenlast:</b> Vermeiden Sie sehr große/Systemverzeichnisse.</li>
+        <li><b>Statistikfehler:</b> Prüfen Sie auf genügend Ereignisse und korrekte Bibliotheken.</li>
+      </ul>
+      <p class="mt-15">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> auf GitHub.</p>
+    </div>
+    <script>
+      // Para badge duplicado (observação)
+      function setVersionBadges() {
+        const v1 = document.getElementById('version-badge');
+        if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
+          document.getElementById('version-badge2').innerText = v1.innerText;
+          document.getElementById('version-badge-en').innerText = v1.innerText;
+          document.getElementById('version-badge-es').innerText = v1.innerText;
+          document.getElementById('version-badge-fr').innerText = v1.innerText;
+          document.getElementById('version-badge-it').innerText = v1.innerText;
+          document.getElementById('version-badge-de').innerText = v1.innerText;
+        } else {
+          setTimeout(setVersionBadges, 500);
+        }
+      }
+      setTimeout(setVersionBadges, 1000);
+    </script>
+  </div>
+    <div class="footer" id="footer">
       <span id="footer-main">
         Feito por Fernando Nillsson Cidade • 
         <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • 
@@ -703,27 +771,27 @@
         // Traduções do rodapé
         const FOOTER_TRANSLATIONS = {
           ptbr: {
-            main: 'Feito por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • <a href="https://github.com/fern[...]
+            main: 'Feito por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Atualizado automaticamente após novo release (integração com workflow do GitHub Actions).<br>Última versão sincronizada: <span id="version-badge3">...</span>'
           },
           enus: {
-            main: 'Made by Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">See on GitHub</a> • <a href="https://github.com/fernand[...]
+            main: 'Made by Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">See on GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Automatically updated after new release (GitHub Actions workflow integration).<br>Latest synchronized version: <span id="version-badge3">...</span>'
           },
           eses: {
-            main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/ferna[...]
+            main: 'Hecho por Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Ver en GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Actualizado automáticamente tras nuevo release (integración con GitHub Actions).<br>Última versión sincronizada: <span id="version-badge3">...</span>'
           },
           frfr: {
-            main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com[...]
+            main: 'Réalisé par Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Voir sur GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Mis à jour automatiquement après une nouvelle release (intégration GitHub Actions).<br>Dernière version synchronisée : <span id="version-badge3">...</span>'
           },
           itit: {
-            main: 'Realizzato da Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Vedi su GitHub</a> • <a href="https://github.com/[...]
+            main: 'Realizzato da Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Vedi su GitHub</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Aggiornato automaticamente dopo ogni release (integrazione con GitHub Actions).<br>Ultima versione sincronizzata: <span id="version-badge3">...</span>'
           },
           dede: {
-            main: 'Erstellt von Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Auf GitHub ansehen</a> • <a href="https://github.c[...]
+            main: 'Erstellt von Fernando Nillsson Cidade • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Auf GitHub ansehen</a> • <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" id="footer-readme-link">README.md</a>',
             auto: 'Automatisch aktualisiert nach neuem Release (GitHub Actions-Integration).<br>Letzte synchronisierte Version: <span id="version-badge3">...</span>'
           }
         };
@@ -732,7 +800,7 @@
           var t = FOOTER_TRANSLATIONS[lang] || FOOTER_TRANSLATIONS.ptbr;
           document.getElementById('footer-main').innerHTML = t.main;
           document.getElementById('footer-auto').innerHTML = t.auto;
-          setTimeout(updateVersionSpans, 50); // Corrige badge após trocar idioma
+          setTimeout(setVersionBadge3, 50); // Corrige badge após trocar idioma
         }
         // Atualiza rodapé ao trocar idioma
         window.addEventListener('DOMContentLoaded', () => {
@@ -743,6 +811,20 @@
             }
           });
         });
+      </script>
+      <script>
+        // Atualiza badge do rodapé com a versão detectada mesmo após troca do idioma
+        function setVersionBadge3() {
+          const v1 = document.getElementById('version-badge');
+          if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
+            // Pode haver múltiplos spans após trocar idioma, atualize todos
+            var vb3s = document.querySelectorAll('#version-badge3');
+            vb3s.forEach(function(span){ span.innerText = v1.innerText; });
+          } else {
+            setTimeout(setVersionBadge3, 500);
+          }
+        }
+        setTimeout(setVersionBadge3, 1000);
       </script>
     </div>
 </body>
