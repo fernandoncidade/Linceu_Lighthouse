@@ -142,14 +142,7 @@
     /* classes para substituir estilos inline */
     .mt-15 { margin-top:1.5em; }
     #footer-auto { font-size:0.93em; }
-    #version-badge {
-     background:#eee;
-     padding:0.3em 1.1em;
-     border-radius:1em;
-     font-size:1.05em;
-     color:#222;
-     margin-right:0.4em;
-   }
+    /* note: removed #version-badge style to eliminate the boxed widget */
   </style>
   <script>
     // Idiomas suportados
@@ -230,7 +223,22 @@
   </script>
   <!-- INTEGRAÇÃO COM WORKFLOW: Carrega versão do README dinamicamente -->
   <script>
-    // Busca a versão do README.md e insere na página
+    // Variável global para guardar a versão descoberta
+    let LATEST_VERSION = "";
+
+    // Atualiza todas as spans de versão (por idioma e no rodapé)
+    function updateVersionSpans() {
+      const ids = ['version-badge2','version-badge-en','version-badge-es','version-badge-fr','version-badge-it','version-badge-de'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = LATEST_VERSION ? LATEST_VERSION : '...';
+      });
+      // Atualiza todos os elementos version-badge3 (pode haver mais de um)
+      const vb3s = document.querySelectorAll('#version-badge3');
+      vb3s.forEach(function(span){ span.innerText = LATEST_VERSION ? LATEST_VERSION : '...'; });
+    }
+
+    // Busca a versão do README.md e insere na página (se encontrada)
     async function fetchReadmeVersion() {
       try {
         const req = await fetch('https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/README.md');
@@ -238,12 +246,13 @@
         // Regex: captura a versão no formato vX.X.X.X (aparece na linha do README)
         const reVersion = /v(\d+\.\d+\.\d+\.\d+)/i;
         const match = txt.match(reVersion);
-        // Se não achar, não insere texto padrão (manter vazio)
-        const version = match ? match[0] : '';
-        document.getElementById('version-badge').innerText = version;
+        // Se não achar, mantemos LATEST_VERSION vazia
+        LATEST_VERSION = match ? match[0] : "";
+        updateVersionSpans();
       } catch {
-        // Em caso de erro, não exibimos "v0.0.0.0" — mantemos vazio
-        document.getElementById('version-badge').innerText = "";
+        // Em caso de erro, mantemos vazio (não mostramos "v0.0.0.0")
+        LATEST_VERSION = "";
+        updateVersionSpans();
       }
     }
     window.addEventListener('DOMContentLoaded', fetchReadmeVersion);
@@ -317,7 +326,7 @@
       <button id="btn-dede">🇩🇪 Deutsch (DE)</button>
     </div>
     <div class="badge-row">
-      <span id="version-badge"></span>
+      <!-- removed the boxed version widget (previously id="version-badge") to avoid colored empty area -->
       <img id="badge-downloads"
         src="https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse)"
         alt="Total Downloads">
@@ -555,7 +564,7 @@
         <li><b>Alto consumo de recursos:</b> Evite carpetas muy grandes o de sistema.</li>
         <li><b>Errores en estadísticas:</b> Confirme que hay suficientes eventos y bibliotecas correctas.</li>
       </ul>
-      <p class="mt-15">Para instrucciones detalladas, consulte el <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md[...]
+      <p class="mt-15">Para instrucciones detalladas, consulte o <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a>[…]
     </div>
     <!-- FR-FR -->
     <div id="sec-frfr" class="lang-section">
@@ -670,7 +679,7 @@
         <li><b>Configurazione Colonne:</b> Personalizza le colonne mostrate.</li>
         <li><b>Cambio lingua:</b> In app, “Opções → Idioma”.</li>
       </ul>
-      <h3>Risoluzione dei Problemi</h3>
+      <h3>Risoluzione dei Problemas</h3>
       <ul>
         <li><b>Il monitoraggio non parte:</b> Controlla permessi e se altri programmi monitorano la cartella.</li>
         <li><b>Eventi non visibili:</b> Assicurati che il monitoraggio sia attivo e i filtri non nascondano eventi.</li>
@@ -679,86 +688,7 @@
       </ul>
       <p class="mt-15">Per istruzioni dettagliate, consulta il <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a[...]
     </div>
-    <!-- DE-DE -->
-    <div id="sec-dede" class="lang-section">
-      <div class="note">
-        <b>Hinweis:</b> Dieses Repository bezieht sich auf Version <span id="version-badge-de">...</span> (Binary) von Linceu Lighthouse, als 7-tägige Testversion verfügbar.<br>
-        Nach der Testphase, kaufen Sie die Vollversion:<br>
-        <a class="download-btn" href="https://apps.microsoft.com/detail/9NN8Z5Z700TM" target="_blank" rel="noopener noreferrer">Im Microsoft Store installieren</a>
-      </div>
-      <h2>🇩🇪 Was ist Linceu Lighthouse?</h2>
-      <p>
-        <b>Linceu Lighthouse</b> ist ein Überwachungstool, das die Prinzipien der <b>Datei-Integritätsüberwachung (FIM)</b> anwendet und ein detailliertes, transparentes Protokoll aller Aktivitäte[...]
-      </p>
-      <div class="screenshots">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041024.png" alt="Bildschirm 1">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041044.png" alt="Bildschirm 2">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20041332.png" alt="Bildschirm 3">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050405.png" alt="Bildschirm 4">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050425.png" alt="Bildschirm 5">
-        <img src="https://raw.githubusercontent.com/fernandoncidade/Linceu_Lighthouse/main/source/assets/LISTAGEM/Alemao/Captura%20de%20tela%202025-08-04%20050450.png" alt="Bildschirm 6">
-      </div>
-      <h3>Hauptfunktionen</h3>
-      <ul>
-        <li>Ordner-Aktivitätsüberwachung mit detaillierten Logs</li>
-        <li>Versions- und Projektkontrolle (Änderungshistorie)</li>
-        <li>Intelligente Datei-Organisation und -Bereinigung (Duplikate, temporäre Dateien)</li>
-        <li>Untersuchung spezifischer Ereignisse (was und wann)</li>
-        <li>Erweiterte Filter, Suche und statistische Visualisierung</li>
-        <li>Flexibler Export zu Excel, CSV, JSON, XML, usw.</li>
-        <li>Mehrsprachige Oberfläche: Portugiesisch, Englisch, Spanisch, Französisch, Italienisch, Deutsch</li>
-      </ul>
-      <h3>Wie funktioniert es?</h3>
-      <ol>
-        <li><b>Baseline:</b> Beim Start scannt das Tool Dateien und Ordner.</li>
-        <li><b>Kontinuierliche Überwachung:</b> Protokolliert in Echtzeit alle Ereignisse (Erstellung, Änderung, Löschung, Verschieben, Umbenennen).</li>
-        <li><b>Analyse & Bericht:</b> Jede Änderung erscheint in der Oberfläche, mit leistungsstarken Filtern für Suche, Analyse und Export.</li>
-      </ol>
-      <div class="sysreq">
-        <b>Systemanforderungen:</b> Windows 10 oder höher.<br>
-        <b>Installation:</b> Laden Sie die ausführbare Datei herunter und installieren Sie sie. Nach der Testphase kaufen Sie im Microsoft Store.
-      </div>
-      <h3>Schnellstart-Anleitung</h3>
-      <ol>
-        <li>Starten Sie die Anwendung für die grafische Oberfläche.</li>
-        <li>Wählen Sie ein Verzeichnis zum Überwachen.</li>
-        <li>Nutzen Sie Buttons und Menüs für Start/Stopp, Filter, Export, Statistiken.</li>
-      </ol>
-      <h3>Erweiterte Funktionen</h3>
-      <ul>
-        <li><b>Erweiterte Filter:</b> Nach Operation, Datum, Erweiterung, Benutzer usw.</li>
-        <li><b>Statistik-Visualisierung:</b> Verteilungsdiagramme, Timeline, Pareto, Dateitypen u.a.</li>
-        <li><b>Spaltenkonfiguration:</b> Tabellenspalten anpassen.</li>
-        <li><b>Sprachwechsel:</b> In der App unter „Optionen → Sprache“.</li>
-      </ul>
-      <h3>Fehlerbehebung</h3>
-      <ul>
-        <li><b>Überwachung startet nicht:</b> Prüfen Sie Berechtigungen und ob andere Programme das Verzeichnis überwachen.</li>
-        <li><b>Ereignisse erscheinen nicht：</b> Überwachen aktiv und Filter blenden Ereignisse nicht aus。</li>
-        <li><b>Hohe Ressourcenlast：</b> Vermeiden Sie sehr große/Systemverzeichnisse。</li>
-        <li><b>Statistikfehler：</b> Prüfen Sie auf genügend Ereignisse und korrekte Bibliotheken。</li>
-      </ul>
-      <p class="mt-15">Für detaillierte Anleitungen siehe <a href="https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> au[...]
-    </div>
-    <script>
-      // Para badge duplicado (observação)
-      function setVersionBadges() {
-        const v1 = document.getElementById('version-badge');
-        if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
-          document.getElementById('version-badge2').innerText = v1.innerText;
-          document.getElementById('version-badge-en').innerText = v1.innerText;
-          document.getElementById('version-badge-es').innerText = v1.innerText;
-          document.getElementById('version-badge-fr').innerText = v1.innerText;
-          document.getElementById('version-badge-it').innerText = v1.innerText;
-          document.getElementById('version-badge-de').innerText = v1.innerText;
-        } else {
-          setTimeout(setVersionBadges, 500);
-        }
-      }
-      setTimeout(setVersionBadges, 1000);
-    </script>
-  </div>
-    <div class="footer" id="footer">
+  <div class="footer" id="footer">
       <span id="footer-main">
         Feito por Fernando Nillsson Cidade • 
         <a href="https://github.com/fernandoncidade/Linceu_Lighthouse" id="footer-github-link">Veja no GitHub</a> • 
@@ -802,7 +732,7 @@
           var t = FOOTER_TRANSLATIONS[lang] || FOOTER_TRANSLATIONS.ptbr;
           document.getElementById('footer-main').innerHTML = t.main;
           document.getElementById('footer-auto').innerHTML = t.auto;
-          setTimeout(setVersionBadge3, 50); // Corrige badge após trocar idioma
+          setTimeout(updateVersionSpans, 50); // Corrige badge após trocar idioma
         }
         // Atualiza rodapé ao trocar idioma
         window.addEventListener('DOMContentLoaded', () => {
@@ -813,20 +743,6 @@
             }
           });
         });
-      </script>
-      <script>
-        // Atualiza badge do rodapé com a versão detectada mesmo após troca do idioma
-        function setVersionBadge3() {
-          const v1 = document.getElementById('version-badge');
-          if (v1 && v1.innerText && v1.innerText.startsWith('v')) {
-            // Pode haver múltiplos spans após trocar idioma, atualize todos
-            var vb3s = document.querySelectorAll('#version-badge3');
-            vb3s.forEach(function(span){ span.innerText = v1.innerText; });
-          } else {
-            setTimeout(setVersionBadge3, 500);
-          }
-        }
-        setTimeout(setVersionBadge3, 1000);
       </script>
     </div>
 </body>
