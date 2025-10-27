@@ -1,7 +1,7 @@
 import os
 from PySide6.QtCore import QLocale
 from PySide6.QtWidgets import QApplication
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def carregar_tradutor(self, idioma: str):

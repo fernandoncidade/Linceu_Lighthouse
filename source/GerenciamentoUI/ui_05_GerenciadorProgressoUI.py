@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from datetime import datetime
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication

@@ -1,6 +1,6 @@
 import os
 import time
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from pymediainfo import MediaInfo
 logger = LogManager.get_logger()
 

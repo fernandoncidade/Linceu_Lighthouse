@@ -1383,8 +1383,16 @@ pip install plotly</translation>
         <translation>Justification du Nom</translation>
     </message>
     <message>
+        <source>hide_history</source>
+        <translation>Masquer la Justification du Nom</translation>
+    </message>
+    <message>
         <source>show_release_notes</source>
         <translation>Notes de Lancement</translation>
+    </message>
+    <message>
+        <source>hide_release_notes</source>
+        <translation>Masquer les Notes de Lancement</translation>
     </message>
     <message>
         <source>file</source>

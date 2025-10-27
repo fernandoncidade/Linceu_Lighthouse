@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def set_colunas_colorir_em_massa(self, novas_colunas):

@@ -1,5 +1,5 @@
 import os
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 
 def extrair_metadados_olefile(caminho, loc=None):
     logger = LogManager.get_logger()

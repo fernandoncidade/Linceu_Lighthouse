@@ -3,8 +3,8 @@ import sqlite3
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QDialog, QHBoxLayout, QMessageBox, QApplication, QSplitter)
-from utils.LogManager import LogManager
-from utils.IconUtils import get_icon_path
+from source.utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path
 logger = LogManager.get_logger()
 
 def mostrar_estatisticas(self):

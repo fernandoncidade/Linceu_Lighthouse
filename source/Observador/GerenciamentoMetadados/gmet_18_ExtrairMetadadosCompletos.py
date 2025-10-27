@@ -21,7 +21,7 @@ from .gmet_21_GetFormataTamanho import formata_tamanho
 from .gmet_22_GetAtributosArquivo import get_atributos_arquivo
 from .gmet_23_GetAutorArquivo import get_autor_arquivo
 from .gmet_27_GetProtecaoArquivo import get_protecao_arquivo
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_completos(item, loc=None, contexto=None):

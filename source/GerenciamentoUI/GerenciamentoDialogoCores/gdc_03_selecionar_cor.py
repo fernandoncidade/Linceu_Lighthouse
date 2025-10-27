@@ -1,5 +1,5 @@
 from PySide6.QtGui import QColor
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _selecionar_cor(self, cor_hex):

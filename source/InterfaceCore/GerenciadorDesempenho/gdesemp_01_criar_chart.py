@@ -2,7 +2,7 @@ from PySide6.QtCharts import QChart, QChartView, QLineSeries
 from PySide6.QtCore import QMargins
 from PySide6.QtGui import QPainter
 from PySide6.QtWidgets import QSizePolicy
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _criar_chart(self, titulo, series_names=None):

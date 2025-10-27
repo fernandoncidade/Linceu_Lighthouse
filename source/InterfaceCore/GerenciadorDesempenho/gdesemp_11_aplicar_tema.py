@@ -1,5 +1,5 @@
 from PySide6.QtGui import QColor, QBrush, QPen
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _aplicar_tema(self, novo_tema):

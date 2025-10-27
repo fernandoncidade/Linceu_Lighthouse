@@ -3,7 +3,7 @@ import time
 import queue
 from PySide6.QtCore import QMetaObject, Qt
 from source.Observador.GerenciamentoMetadados import identificar_tipo_arquivo
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def processar_fila_metadados(gc):

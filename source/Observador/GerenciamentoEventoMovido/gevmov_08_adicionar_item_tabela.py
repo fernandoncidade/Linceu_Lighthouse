@@ -1,7 +1,7 @@
 import os
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import QTableWidgetItem
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def normalizar_caminho(caminho):

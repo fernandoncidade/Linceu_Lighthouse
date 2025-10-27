@@ -1,7 +1,7 @@
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QApplication, QDialog
 from source.Filtros.fil_01_Filtros import Filtros
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def alternar_filtro(self):

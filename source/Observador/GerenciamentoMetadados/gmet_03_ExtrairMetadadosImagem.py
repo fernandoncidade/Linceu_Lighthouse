@@ -3,7 +3,7 @@ import rawpy
 import imageio
 from PIL import Image
 from psd_tools import PSDImage
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_imagem(caminho, loc=None):

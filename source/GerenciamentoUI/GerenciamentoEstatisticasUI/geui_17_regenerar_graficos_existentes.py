@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QVBoxLayout, QApplication, QProgressDialog, QMessageBox
 from PySide6.QtCore import QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 try:

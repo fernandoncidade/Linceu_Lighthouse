@@ -1,6 +1,6 @@
 from datetime import datetime
 from source.Observador.GerenciamentoMetadados import identificar_tipo_arquivo
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _criar_evento_exclusao(self, nome_base, dir_anterior):

@@ -15,8 +15,8 @@ from source.Filtros.GerenciamentoFiltros.gfil_07_verificar_filtro_operacao impor
 from source.Filtros.GerenciamentoFiltros.gfil_08_atualizar_contagem import atualizar_contagem
 from source.Filtros.GerenciamentoFiltros.gfil_09_atualizar_interface import atualizar_interface
 from source.Filtros.GerenciamentoFiltros.gfil_10_limpar_filtros import limpar_filtros
-from utils.IconUtils import get_icon_path
-from utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

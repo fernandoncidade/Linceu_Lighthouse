@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _atualizar_abas_graficos(self, graficos_atualizados, mapeamento_funcoes):

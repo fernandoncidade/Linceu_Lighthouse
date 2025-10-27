@@ -1,5 +1,5 @@
 from PySide6.QtCore import Qt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _verificar_estado_checkbox_todos(self):

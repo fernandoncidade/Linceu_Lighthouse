@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from source.Observador.GerenciamentoMetadados.gmet_19_GetTipoArquivo import identificar_tipo_arquivo
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _criar_evento_padrao(self, tipo_operacao, nome_base, dir_anterior, dir_atual):

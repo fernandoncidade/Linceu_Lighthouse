@@ -3,7 +3,7 @@ import time
 from PySide6.QtCore import QMutexLocker
 from concurrent.futures import ThreadPoolExecutor
 from source.Observador.GerenciamentoEventoMovido.gevmov_03_remover_exclusao import _remover_exclusao
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def normalizar_caminho(caminho):

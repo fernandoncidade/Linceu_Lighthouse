@@ -1,5 +1,5 @@
 from source.Observador.GerenciamentoEventoMovido.gevmov_05_atualizar_tabela_completa import _atualizar_tabela_completa
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _atualizar_linha_recente(interfaceMonitor):

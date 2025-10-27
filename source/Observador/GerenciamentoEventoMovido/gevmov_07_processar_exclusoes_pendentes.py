@@ -1,6 +1,6 @@
 import time
 from PySide6.QtCore import QMutexLocker, QTimer
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _processar_exclusoes_pendentes(interfaceMonitor):

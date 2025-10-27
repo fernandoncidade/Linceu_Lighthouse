@@ -1,7 +1,7 @@
 import os
 from pymediainfo import MediaInfo
 from PIL import Image
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados(caminho, loc):

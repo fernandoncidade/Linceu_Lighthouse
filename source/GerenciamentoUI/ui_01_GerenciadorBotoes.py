@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoBotoes.geb_01_selecionar_diretorio import selecionar_diretorio
 from source.GerenciamentoUI.GerenciamentoBotoes.geb_02_alternar_analise_diretorio import alternar_analise_diretorio
 from source.GerenciamentoUI.GerenciamentoBotoes.geb_03_exportar_dados import exportar_dados

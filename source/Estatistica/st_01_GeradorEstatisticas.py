@@ -2,7 +2,7 @@ import os
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from .GeradorEstatisticas import (GraficoPizza, GraficoBarras, GraficoTimeline, 
                                   GraficoTreemap, GraficoHistograma, GraficoPareto, GraficoLinha, 
                                   GraficoBoxplot, GraficoRadarEventos, GraficoHeatmap, GraficoScatter, 

@@ -1,7 +1,7 @@
 import os
 import locale
 from PySide6.QtCore import QObject, Signal, QTranslator
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoLocalizadorQt.glqt_01_inicializar_tradutor_metadados import _inicializar_tradutor_metadados
 from source.GerenciamentoUI.GerenciamentoLocalizadorQt.glqt_02_criar_mapa_compatibilidade import _criar_mapa_compatibilidade
 from source.GerenciamentoUI.GerenciamentoLocalizadorQt.glqt_03_carregar_tradutor import carregar_tradutor
@@ -39,7 +39,22 @@ class LocalizadorQt(QObject):
             self.idioma_atual = self.carregar_preferencia_idioma()
             self.translator = QTranslator()
             self.qt_translator = QTranslator()
-            self.translations_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "locale")
+
+            file_dir = os.path.abspath(os.path.dirname(__file__))
+            source_dir = os.path.abspath(os.path.join(file_dir, ".."))
+            project_root = os.path.abspath(os.path.join(source_dir, ".."))
+
+            candidate_source = os.path.join(source_dir, "locale")
+            candidate_root = os.path.join(project_root, "locale")
+
+            if os.path.exists(candidate_source):
+                self.translations_dir = candidate_source
+
+            else:
+                self.translations_dir = candidate_root
+
+            os.makedirs(self.translations_dir, exist_ok=True)
+
             self.traducoes = self._criar_mapa_compatibilidade()
             self._inicializar_tradutor_metadados()
             self.carregar_tradutor(self.idioma_atual)

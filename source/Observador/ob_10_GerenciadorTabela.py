@@ -2,7 +2,7 @@ import concurrent.futures
 import threading
 from PySide6.QtCore import QTimer, Signal, QObject
 from PySide6.QtWidgets import QAbstractItemView
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 
 from source.Observador.GerenciamentoTabela.gtab_01_detectar_tema_windows import detectar_tema_windows
 from source.Observador.GerenciamentoTabela.gtab_02_calcular_cor_texto_ideal import calcular_cor_texto_ideal, _eh_cor_fundo_padrao

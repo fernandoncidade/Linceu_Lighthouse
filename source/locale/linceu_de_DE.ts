@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<TS version="2.1" language="de_DE">
 <context>
     <name>LinceuLighthouse</name>
     <message>
         <source>access_date</source>
-        <translation>Data de Acesso</translation>
+        <translation>Zugriffsdatum</translation>
     </message>
     <message>
         <source>size</source>
-        <translation>Tamanho</translation>
+        <translation>Größe</translation>
     </message>
     <message>
         <source>attributes</source>
-        <translation>Atributos</translation>
+        <translation>Attribute</translation>
     </message>
     <message>
         <source>author</source>
@@ -21,123 +21,99 @@
     </message>
     <message>
         <source>dimensions</source>
-        <translation>Dimensões</translation>
+        <translation>Abmessungen</translation>
     </message>
     <message>
         <source>duration</source>
-        <translation>Duração</translation>
+        <translation>Dauer</translation>
     </message>
     <message>
         <source>bit_rate</source>
-        <translation>Taxa de Bits</translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <source>protected</source>
-        <translation>Protegido</translation>
-    </message>
-    <message>
-        <source>file_menu</source>
-        <translation>Arquivo</translation>
-    </message>
-    <message>
-        <source>settings</source>
-        <translation>Configurações</translation>
-    </message>
-    <message>
-        <source>options_menu</source>
-        <translation>Opções</translation>
+        <translation>Geschützt</translation>
     </message>
     <message>
         <source>configure_columns</source>
-        <translation>Configurar Colunas</translation>
-    </message>
-    <message>
-        <source>filters</source>
-        <translation>Filtros</translation>
-    </message>
-    <message>
-        <source>toggle_structure_view</source>
-        <translation>Visualizar Estrutura de Diretórios</translation>
-    </message>
-    <message>
-        <source>language</source>
-        <translation>Idioma</translation>
+        <translation>Spalten konfigurieren</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation>Sim</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>Sim</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <source>no</source>
-        <translation>Não</translation>
+        <translation>Nein</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>Não</translation>
+        <translation>Nein</translation>
     </message>
     <message>
         <source>close</source>
-        <translation>Fechar</translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <source>readonly</source>
-        <translation>Somente Leitura</translation>
+        <translation>Schreibgeschützt</translation>
     </message>
     <message>
         <source>hidden</source>
-        <translation>Oculto</translation>
+        <translation>Versteckt</translation>
     </message>
     <message>
         <source>system</source>
-        <translation>Sistema</translation>
+        <translation>System</translation>
     </message>
     <message>
         <source>archive</source>
-        <translation>Arquivo</translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <source>encrypted</source>
-        <translation>Criptografado</translation>
+        <translation>Verschlüsselt</translation>
     </message>
     <message>
         <source>compressed</source>
-        <translation>Comprimido</translation>
+        <translation>Komprimiert</translation>
     </message>
     <message>
         <source>access</source>
-        <translation>Autor Desconhecido - Access</translation>
+        <translation>Unbekannter Autor - Access</translation>
     </message>
     <message>
         <source>outlook</source>
-        <translation>Autor Desconhecido - Outlook</translation>
+        <translation>Unbekannter Autor - Outlook</translation>
     </message>
     <message>
         <source>publisher</source>
-        <translation>Autor Desconhecido - Publisher</translation>
+        <translation>Unbekannter Autor - Publisher</translation>
     </message>
     <message>
         <source>visio</source>
-        <translation>Autor Desconhecido - Visio</translation>
+        <translation>Unbekannter Autor - Visio</translation>
     </message>
     <message>
         <source>project</source>
-        <translation>Autor Desconhecido - Project</translation>
+        <translation>Unbekannter Autor - Project</translation>
     </message>
     <message>
         <source>unknown_author</source>
-        <translation>Autor Desconhecido</translation>
+        <translation>Unbekannter Autor</translation>
     </message>
     <message>
         <source>text_html</source>
-        <translation>Autor Desconhecido - HTML</translation>
+        <translation>Unbekannter Autor - HTML</translation>
     </message>
     <message>
         <source>compressed_file</source>
-        <translation>Autor Desconhecido - Arquivo Comprimido</translation>
+        <translation>Unbekannter Autor - Komprimierte Datei</translation>
     </message>
     <message>
         <source>window_title</source>
@@ -145,283 +121,307 @@
     </message>
     <message>
         <source>select_dir</source>
-        <translation>Selecionar Diretório:</translation>
+        <translation>Verzeichnis auswählen:</translation>
     </message>
     <message>
         <source>start_stop</source>
-        <translation>Iniciar/Parar Análise:</translation>
+        <translation>Analyse starten/stoppen:</translation>
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Pausar/Retomar Análise:</translation>
-    </message>
-    <message>
-        <source>save_as</source>
-        <translation>Salvar como:</translation>
-    </message>
-    <message>
-        <source>save</source>
-        <translation>Salvar:</translation>
-    </message>
-    <message>
-        <source>exit</source>
-        <translation>Sair</translation>
+        <translation>Analyse pausieren/Fortsetzen:</translation>
     </message>
     <message>
         <source>export_excel</source>
-        <translation>Exportar Excel:</translation>
+        <translation>Excel exportieren:</translation>
     </message>
     <message>
         <source>export_csv</source>
-        <translation>Exportar CSV:</translation>
+        <translation>CSV exportieren:</translation>
     </message>
     <message>
         <source>export_txt</source>
-        <translation>Exportar TXT:</translation>
+        <translation>TXT exportieren:</translation>
     </message>
     <message>
         <source>export_json</source>
-        <translation>Exportar JSON:</translation>
+        <translation>JSON exportieren:</translation>
     </message>
     <message>
         <source>export_xml</source>
-        <translation>Exportar XML:</translation>
+        <translation>XML exportieren:</translation>
     </message>
     <message>
         <source>export_db</source>
-        <translation>Exportar DB:</translation>
-    </message>
-    <message>
-        <source>statistics</source>
-        <translation>Estatísticas:</translation>
+        <translation>DB exportieren:</translation>
     </message>
     <message>
         <source>clear_data</source>
-        <translation>Limpar Dados:</translation>
-    </message>
-    <message>
-        <source>save_all</source>
-        <translation>Salvar Todos</translation>
-    </message>
-    <message>
-        <source>select_save_dir</source>
-        <translation>Selecionar Diretório para Salvar:</translation>
+        <translation>Daten löschen:</translation>
     </message>
     <message>
         <source>no_dir</source>
-        <translation>Nenhum diretório selecionado</translation>
+        <translation>Kein Verzeichnis ausgewählt</translation>
     </message>
     <message>
         <source>select_to_start</source>
-        <translation>Selecione um diretório para começar</translation>
+        <translation>Wählen Sie ein Verzeichnis zum Starten</translation>
     </message>
     <message>
         <source>dir_selected</source>
-        <translation>Diretório selecionado: {}</translation>
+        <translation>Ausgewähltes Verzeichnis: {}</translation>
     </message>
     <message>
         <source>warning</source>
-        <translation>Aviso</translation>
-    </message>
-    <message>
-        <source>no_data_to_plot</source>
-        <translation>Não há dados para plotar.</translation>
+        <translation>Warnung</translation>
     </message>
     <message>
         <source>select_first</source>
-        <translation>Selecione um diretório primeiro!</translation>
+        <translation>Bitte wählen Sie zuerst ein Verzeichnis aus!</translation>
     </message>
     <message>
         <source>monitoring_started</source>
-        <translation>Monitoramento iniciado...</translation>
+        <translation>Überwachung gestartet...</translation>
     </message>
     <message>
         <source>monitoring_stopped</source>
-        <translation>Monitoramento parado.</translation>
+        <translation>Überwachung gestoppt.</translation>
     </message>
     <message>
         <source>data_cleared</source>
-        <translation>Dados limpos.</translation>
+        <translation>Daten gelöscht.</translation>
     </message>
     <message>
         <source>operation_type</source>
-        <translation>Tipo de Operação</translation>
+        <translation>Operationstyp</translation>
     </message>
     <message>
         <source>name</source>
-        <translation>Nome</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <source>prev_dir</source>
-        <translation>Diretório Anterior</translation>
+        <translation>Vorheriges Verzeichnis</translation>
     </message>
     <message>
         <source>curr_dir</source>
-        <translation>Diretório Atual</translation>
+        <translation>Aktuelles Verzeichnis</translation>
     </message>
     <message>
         <source>creation_date</source>
-        <translation>Data de Criação</translation>
+        <translation>Erstellungsdatum</translation>
     </message>
     <message>
         <source>modification_date</source>
-        <translation>Data de Modificação</translation>
+        <translation>Änderungsdatum</translation>
     </message>
     <message>
         <source>type</source>
-        <translation>Tipo</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>op_moved</source>
-        <translation>Movido</translation>
+        <translation>Verschoben</translation>
     </message>
     <message>
         <source>op_renamed</source>
-        <translation>Renomeado</translation>
+        <translation>Umbenannt</translation>
     </message>
     <message>
         <source>op_added</source>
-        <translation>Adicionado</translation>
+        <translation>Hinzugefügt</translation>
     </message>
     <message>
         <source>op_deleted</source>
-        <translation>Excluído</translation>
+        <translation>Gelöscht</translation>
     </message>
     <message>
         <source>op_modified</source>
-        <translation>Modificado</translation>
+        <translation>Geändert</translation>
     </message>
     <message>
         <source>op_scanned</source>
-        <translation>Escaneado</translation>
+        <translation>Gescannt</translation>
     </message>
     <message>
         <source>folder</source>
-        <translation>Pasta</translation>
+        <translation>Ordner</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>Desconhecido</translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>no_data</source>
-        <translation>Não há dados para exportar!</translation>
-    </message>
-    <message>
-        <source>success</source>
-        <translation>Sucesso</translation>
-    </message>
-    <message>
-        <source>graphs_saved</source>
-        <translation>Gráficos salvos com sucesso!</translation>
+        <translation>Keine Daten zum Exportieren!</translation>
     </message>
     <message>
         <source>operation_filter</source>
-        <translation>Filtrar por Operação</translation>
+        <translation>Nach Operation filtern</translation>
     </message>
     <message>
         <source>search</source>
-        <translation>Buscar</translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <source>extension_filter</source>
-        <translation>Filtrar por Extensão</translation>
+        <translation>Nach Erweiterung filtern</translation>
     </message>
     <message>
         <source>date_filter</source>
-        <translation>Filtrar por Data</translation>
+        <translation>Nach Datum filtern</translation>
     </message>
     <message>
         <source>start_date</source>
-        <translation>Data Inicial</translation>
+        <translation>Startdatum</translation>
     </message>
     <message>
         <source>end_date</source>
-        <translation>Data Final</translation>
+        <translation>Enddatum</translation>
     </message>
     <message>
         <source>clear_filters</source>
-        <translation>Limpar Filtros:</translation>
+        <translation>Filter zurücksetzen:</translation>
+    </message>
+    <message>
+        <source>file_menu</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <source>settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>options_menu</source>
+        <translation>Optionen</translation>
+    </message>
+    <message>
+        <source>filters</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>toggle_structure_view</source>
+        <translation>Verzeichnisstruktur anzeigen</translation>
+    </message>
+    <message>
+        <source>language</source>
+        <translation>Sprache</translation>
+    </message>
+    <message>
+        <source>statistics</source>
+        <translation>Statistik:</translation>
+    </message>
+    <message>
+        <source>no_data_to_plot</source>
+        <translation>Keine Daten zum Plotten.</translation>
+    </message>
+    <message>
+        <source>save_as</source>
+        <translation>Speichern unter:</translation>
+    </message>
+    <message>
+        <source>save</source>
+        <translation>Speichern:</translation>
+    </message>
+    <message>
+        <source>exit</source>
+        <translation>Beenden</translation>
+    </message>
+    <message>
+        <source>save_all</source>
+        <translation>Alles speichern</translation>
+    </message>
+    <message>
+        <source>select_save_dir</source>
+        <translation>Speicherordner wählen</translation>
+    </message>
+    <message>
+        <source>success</source>
+        <translation>Erfolg</translation>
+    </message>
+    <message>
+        <source>graphs_saved</source>
+        <translation>Diagramme erfolgreich gespeichert</translation>
     </message>
     <message>
         <source>scanning</source>
-        <translation>Escaneando...</translation>
+        <translation>Scannen...</translation>
     </message>
     <message>
         <source>operation_timeout</source>
-        <translation>A operação demorou muito tempo e foi interrompida.</translation>
+        <translation>Der Vorgang dauerte zu lange und wurde unterbrochen.</translation>
     </message>
     <message>
         <source>memory_usage_high</source>
-        <translation>Uso elevado de memória detectado.</translation>
+        <translation>Hohe Speicherauslastung erkannt.</translation>
     </message>
     <message>
         <source>error</source>
-        <translation>Erro</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <source>dir_create_error</source>
-        <translation>Erro ao criar diretório</translation>
+        <translation>Fehler beim Erstellen des Verzeichnisses</translation>
     </message>
     <message>
         <source>file_saved</source>
-        <translation>Arquivo salvo com sucesso!</translation>
+        <translation>Datei erfolgreich gespeichert!</translation>
     </message>
     <message>
         <source>save_incomplete</source>
-        <translation>Exportação incompleta!</translation>
+        <translation>Unvollständiger Export!</translation>
     </message>
     <message>
         <source>save_error</source>
-        <translation>Erro ao exportar dados!</translation>
+        <translation>Fehler beim Exportieren der Daten!</translation>
     </message>
     <message>
         <source>operations_pie</source>
-        <translation>Gráfico de Pizza</translation>
+        <translation>Kuchendiagramm</translation>
     </message>
     <message>
         <source>bar_chart</source>
-        <translation>Gráfico de Barras</translation>
+        <translation>Balkendiagramm</translation>
     </message>
     <message>
         <source>timeline</source>
-        <translation>Linha do Tempo</translation>
+        <translation>Zeitleiste</translation>
     </message>
     <message>
         <source>tree_map</source>
-        <translation>Mapa de Árvore</translation>
+        <translation>Baumkarte</translation>
     </message>
     <message>
         <source>hour_histogram</source>
-        <translation>Histograma de Horas</translation>
+        <translation>Stündliches Histogramm</translation>
     </message>
     <message>
         <source>pareto_analysis</source>
-        <translation>Diagrama de Pareto</translation>
+        <translation>Pareto-Diagramm</translation>
     </message>
     <message>
         <source>operations_by_day</source>
-        <translation>Operações por Dia</translation>
+        <translation>Operationen pro Tag</translation>
     </message>
     <message>
         <source>all_graphs_failed</source>
-        <translation>Falha ao salvar todos os gráficos!</translation>
+        <translation>Fehler beim Speichern aller Diagramme!</translation>
     </message>
     <message>
         <source>refresh</source>
-        <translation>Atualizar</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <source>stats_error</source>
-        <translation>Erro ao gerar estatísticas!</translation>
+        <translation>Fehler bei der Statistikerstellung!</translation>
     </message>
     <message>
         <source>failure</source>
-        <translation>Falha</translation>
+        <translation>Fehlschlag</translation>
     </message>
     <message>
         <source>graphs_saved_detail</source>
-        <translation>Gráficos salvos com sucesso</translation>
+        <translation>Diagramme erfolgreich gespeichert</translation>
     </message>
     <message>
         <source>ok</source>
@@ -429,115 +429,115 @@
     </message>
     <message>
         <source>open_folder</source>
-        <translation>Abrir Pasta</translation>
+        <translation>Ordner öffnen</translation>
     </message>
     <message>
         <source>save_graphs_error</source>
-        <translation>Erro ao salvar gráficos!</translation>
+        <translation>Fehler beim Speichern der Diagramme!</translation>
     </message>
     <message>
         <source>confirm</source>
-        <translation>Confirmar</translation>
+        <translation>Bestätigen</translation>
     </message>
     <message>
         <source>clear_confirm</source>
-        <translation>Tem certeza de que deseja limpar os dados?</translation>
+        <translation>Sind Sie sicher, dass Sie die Daten löschen möchten?</translation>
     </message>
     <message>
         <source>clear_success</source>
-        <translation>Dados limpos com sucesso!</translation>
+        <translation>Daten erfolgreich gelöscht!</translation>
     </message>
     <message>
         <source>clear_error</source>
-        <translation>Erro ao limpar dados!</translation>
+        <translation>Fehler beim Löschen der Daten!</translation>
     </message>
     <message>
         <source>preparing_scan</source>
-        <translation>Preparando varredura...</translation>
+        <translation>Scan wird vorbereitet...</translation>
     </message>
     <message>
         <source>remaining</source>
-        <translation>Restante</translation>
+        <translation>Verbleibend</translation>
     </message>
     <message>
         <source>scan_complete</source>
-        <translation>Varredura concluída!</translation>
+        <translation>Scan abgeschlossen!</translation>
     </message>
     <message>
         <source>no_scan_or_monitor_to_pause</source>
-        <translation>Nenhum escaneamento ou monitoramento para PAUSAR!</translation>
+        <translation>Kein Scan oder Monitoring läuft, das pausiert werden kann.</translation>
     </message>
     <message>
         <source>paused</source>
-        <translation>Pausado</translation>
+        <translation>Pausiert</translation>
     </message>
     <message>
         <source>resumed</source>
-        <translation>Retomado</translation>
+        <translation>Fortgesetzt</translation>
     </message>
     <message>
         <source>monitoring_paused</source>
-        <translation>Monitoramento Pausado</translation>
+        <translation>Überwachung pausiert</translation>
     </message>
     <message>
         <source>items</source>
-        <translation>Itens</translation>
+        <translation>Elemente</translation>
     </message>
     <message>
         <source>file_directory</source>
-        <translation>Diretório</translation>
+        <translation>Verzeichnis</translation>
     </message>
     <message>
         <source>file_image</source>
-        <translation>Imagem</translation>
+        <translation>Bild</translation>
     </message>
     <message>
         <source>file_audio</source>
-        <translation>Áudio</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>file_video</source>
-        <translation>Vídeo</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>file_document</source>
-        <translation>Documento</translation>
+        <translation>Dokument</translation>
     </message>
     <message>
         <source>file_spreadsheet</source>
-        <translation>Planilha</translation>
+        <translation>Tabellenkalkulation</translation>
     </message>
     <message>
         <source>file_presentation</source>
-        <translation>Apresentação</translation>
+        <translation>Präsentation</translation>
     </message>
     <message>
         <source>file_database</source>
-        <translation>Banco de Dados</translation>
+        <translation>Datenbank</translation>
     </message>
     <message>
         <source>file_source_code</source>
-        <translation>Código Fonte</translation>
+        <translation>Quellcode</translation>
     </message>
     <message>
         <source>file_compressed</source>
-        <translation>Compactado</translation>
+        <translation>Komprimiert</translation>
     </message>
     <message>
         <source>file_executable</source>
-        <translation>Executável</translation>
+        <translation>Ausführbar</translation>
     </message>
     <message>
         <source>file_other</source>
-        <translation>Outro</translation>
+        <translation>Andere</translation>
     </message>
     <message>
         <source>file_temp</source>
-        <translation>Temporário</translation>
+        <translation>Temporär</translation>
     </message>
     <message>
         <source>file_unknown</source>
-        <translation>Arquivo Desconhecido</translation>
+        <translation>Unbekannte Datei</translation>
     </message>
     <message>
         <source>file_backup</source>
@@ -545,403 +545,403 @@
     </message>
     <message>
         <source>file_log</source>
-        <translation>Registro</translation>
+        <translation>Protokoll</translation>
     </message>
     <message>
         <source>file_config</source>
-        <translation>Configuração</translation>
+        <translation>Konfiguration</translation>
     </message>
     <message>
         <source>file_font</source>
-        <translation>Fonte</translation>
+        <translation>Schriftart</translation>
     </message>
     <message>
         <source>file_system</source>
-        <translation>Sistema</translation>
+        <translation>System</translation>
     </message>
     <message>
         <source>file_gis</source>
-        <translation>Sistema de Informação Geográfica</translation>
+        <translation>Geoinformationssystem</translation>
     </message>
     <message>
         <source>file_virtual_disk</source>
-        <translation>Disco Virtual</translation>
+        <translation>Virtueller Datenträger</translation>
     </message>
     <message>
         <source>temporary_file</source>
-        <translation>Arquivo Temporário</translation>
+        <translation>Temporäre Datei</translation>
     </message>
     <message>
         <source>events_monitored</source>
-        <translation>Eventos Monitorados</translation>
+        <translation>Überwachte Ereignisse</translation>
     </message>
     <message>
         <source>advanced_filters</source>
-        <translation>Filtros Avançados</translation>
+        <translation>Erweiterte Filter</translation>
     </message>
     <message>
         <source>reset_columns</source>
-        <translation>Redefinir Colunas</translation>
+        <translation>Spalten zurücksetzen</translation>
     </message>
     <message>
         <source>columns_reset_success</source>
-        <translation>Colunas redefinidas com sucesso!</translation>
+        <translation>Spalten erfolgreich zurückgesetzt</translation>
     </message>
     <message>
         <source>columns_select_success</source>
-        <translation>Colunas selecionadas com sucesso!</translation>
+        <translation>Spalten erfolgreich ausgewählt</translation>
     </message>
     <message>
         <source>quantity</source>
-        <translation>Quantidade</translation>
+        <translation>Menge</translation>
     </message>
     <message>
         <source>date_time</source>
-        <translation>Data/Hora</translation>
+        <translation>Datum/Uhrzeit</translation>
     </message>
     <message>
         <source>date</source>
-        <translation>Data</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <source>hour_of_day</source>
-        <translation>Hora do Dia</translation>
+        <translation>Tageszeit</translation>
     </message>
     <message>
         <source>cumulative_percentage</source>
-        <translation>Porcentagem Acumulada</translation>
+        <translation>Kumulative Prozentzahl</translation>
     </message>
     <message>
         <source>quantity_by_type</source>
-        <translation>Quantidade por Tipo</translation>
+        <translation>Menge nach Typ</translation>
     </message>
     <message>
         <source>total_operations</source>
-        <translation>Total de Operações</translation>
+        <translation>Gesamte Operationen</translation>
     </message>
     <message>
         <source>total</source>
-        <translation>Total</translation>
+        <translation>Gesamt</translation>
     </message>
     <message>
         <source>language_change_confirm</source>
-        <translation>Deseja realmente redefinir o idioma?</translation>
+        <translation>Möchten Sie die Sprache wirklich zurücksetzen?</translation>
     </message>
     <message>
         <source>language_change_error</source>
-        <translation>Erro ao alterar o idioma: {}</translation>
+        <translation>Fehler beim Ändern der Sprache: {}</translation>
     </message>
     <message>
         <source>language_changed_success</source>
-        <translation>Idioma alterado com sucesso!</translation>
+        <translation>Sprache erfolgreich geändert!</translation>
     </message>
     <message>
         <source>restart_error</source>
-        <translation>Falha ao reiniciar o aplicativo: {}</translation>
+        <translation>Fehler beim Neustart der Anwendung: {}</translation>
     </message>
     <message>
         <source>export_error</source>
-        <translation>Erro de Exportação</translation>
+        <translation>Exportfehler</translation>
     </message>
     <message>
         <source>export_error_details</source>
-        <translation>Erro ao exportar para {}: {}\n\nDetalhes: {}</translation>
+        <translation>Fehler beim Exportieren nach {}: {}\n\nDetails: {}</translation>
     </message>
     <message>
         <source>export_preparation_error</source>
-        <translation>Erro ao preparar exportação: {}\n\nDetalhes: {}</translation>
+        <translation>Fehler bei der Vorbereitung des Exports: {}\n\nDetails: {}</translation>
     </message>
     <message>
         <source>export_success</source>
-        <translation>Arquivo exportado com sucesso para {}</translation>
+        <translation>Datei erfolgreich nach {} exportiert</translation>
     </message>
     <message>
         <source>no_graphs_saved</source>
-        <translation>Nenhum gráfico foi salvo com sucesso</translation>
+        <translation>Keine Diagramme wurden erfolgreich gespeichert</translation>
     </message>
     <message>
         <source>show_details</source>
-        <translation>Mostrar Detalhes</translation>
+        <translation>Details anzeigen</translation>
     </message>
     <message>
         <source>hide_details</source>
-        <translation>Ocultar Detalhes</translation>
+        <translation>Details ausblenden</translation>
     </message>
     <message>
         <source>version</source>
-        <translation>Versão</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>authors</source>
-        <translation>Autores</translation>
+        <translation>Autoren</translation>
     </message>
     <message>
         <source>description</source>
-        <translation>Descrição</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>description_text</source>
-        <translation>Gerenciador de arquivos e pastas que monitora mudanças em um diretório específico</translation>
+        <translation>Datei- und Ordnermanager, der Änderungen in einem bestimmten Verzeichnis überwacht</translation>
     </message>
     <message>
         <source>about</source>
-        <translation>Sobre</translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>licenses</source>
-        <translation>Licenças</translation>
+        <translation>Lizenzen</translation>
     </message>
     <message>
         <source>show_licenses</source>
-        <translation>Mostrar Licenças</translation>
+        <translation>Lizenzen anzeigen</translation>
     </message>
     <message>
         <source>hide_licenses</source>
-        <translation>Ocultar Licenças</translation>
+        <translation>Lizenzen ausblenden</translation>
     </message>
     <message>
         <source>site_oficial</source>
-        <translation>Sites Oficiais das Licenças</translation>
+        <translation>Offizielle Lizenzseiten</translation>
     </message>
     <message>
         <source>notices</source>
-        <translation>Avisos</translation>
+        <translation>Hinweise</translation>
     </message>
     <message>
         <source>show_notices</source>
-        <translation>Mostrar Avisos</translation>
+        <translation>Hinweise anzeigen</translation>
     </message>
     <message>
         <source>hide_notices</source>
-        <translation>Ocultar Avisos</translation>
+        <translation>Hinweise ausblenden</translation>
     </message>
     <message>
         <source>show_privacy_policy</source>
-        <translation>Mostrar Política de Privacidade</translation>
+        <translation>Datenschutzrichtlinie anzeigen</translation>
     </message>
     <message>
         <source>hide_privacy_policy</source>
-        <translation>Ocultar Política de Privacidade</translation>
+        <translation>Datenschutzrichtlinie ausblenden</translation>
     </message>
     <message>
         <source>visible_filters</source>
-        <translation>Filtros Visíveis</translation>
+        <translation>Sichtbare Filter</translation>
     </message>
     <message>
         <source>total_monitored</source>
-        <translation>Total Monitorado</translation>
+        <translation>Gesamt überwacht</translation>
     </message>
     <message>
         <source>filtered_rate</source>
-        <translation>Taxa de Filtragem</translation>
+        <translation>Filterrate</translation>
     </message>
     <message>
         <source>lines</source>
-        <translation>Linhas</translation>
+        <translation>Zeilen</translation>
     </message>
     <message>
         <source>words</source>
-        <translation>Palavras</translation>
+        <translation>Wörter</translation>
     </message>
     <message>
         <source>pages</source>
-        <translation>Páginas</translation>
+        <translation>Seiten</translation>
     </message>
     <message>
         <source>pages_estimated</source>
-        <translation>Páginas Estimadas</translation>
+        <translation>Geschätzte Seiten</translation>
     </message>
     <message>
         <source>paragraphs</source>
-        <translation>Parágrafos</translation>
+        <translation>Absätze</translation>
     </message>
     <message>
         <source>slides</source>
-        <translation>Slides</translation>
+        <translation>Folien</translation>
     </message>
     <message>
         <source>slides_estimated</source>
-        <translation>Slides Estimados</translation>
+        <translation>Geschätzte Folien</translation>
     </message>
     <message>
         <source>files</source>
-        <translation>Arquivos</translation>
+        <translation>Dateien</translation>
     </message>
     <message>
         <source>unzipped</source>
-        <translation>Descompactados</translation>
+        <translation>Entpackt</translation>
     </message>
     <message>
         <source>spreadsheets</source>
-        <translation>Planilhas</translation>
+        <translation>Tabellenkalkulationen</translation>
     </message>
     <message>
         <source>columns</source>
-        <translation>Colunas</translation>
+        <translation>Spalten</translation>
     </message>
     <message>
         <source>tables</source>
-        <translation>Tabelas</translation>
+        <translation>Tabellen</translation>
     </message>
     <message>
         <source>timestamp</source>
-        <translation>Carimbo de Data/Hora</translation>
+        <translation>Zeitstempel</translation>
     </message>
     <message>
         <source>lines_code</source>
-        <translation>Linhas de Código</translation>
+        <translation>Codezeilen</translation>
     </message>
     <message>
         <source>total_lines</source>
-        <translation>Total de Linhas</translation>
+        <translation>Gesamtzeilen</translation>
     </message>
     <message>
         <source>and_others</source>
-        <translation>e outros</translation>
+        <translation>und andere</translation>
     </message>
     <message>
         <source>ignored</source>
-        <translation>Ignorados</translation>
+        <translation>Ignoriert</translation>
     </message>
     <message>
         <source>log_of</source>
-        <translation>Log de</translation>
+        <translation>Protokoll von</translation>
     </message>
     <message>
         <source>information_not_available</source>
-        <translation>Informação não disponível</translation>
+        <translation>Information nicht verfügbar</translation>
     </message>
     <message>
         <source>ignore_move_filter</source>
-        <translation>Ignorar filtro de data para arquivos movidos</translation>
+        <translation>Ändern Sie den Datumsfilter für verschobene Dateien</translation>
     </message>
     <message>
         <source>ignore_rename_filter</source>
-        <translation>Ignorar filtro de data para arquivos renomeados</translation>
+        <translation>Ändern Sie den Datumsfilter für umbenannte Dateien</translation>
     </message>
     <message>
         <source>ignore_add_filter</source>
-        <translation>Ignorar filtro de data para arquivos adicionados</translation>
+        <translation>Ändern Sie den Datumsfilter für hinzugefügte Dateien</translation>
     </message>
     <message>
         <source>ignore_delete_filter</source>
-        <translation>Ignorar filtro de data para arquivos excluídos</translation>
+        <translation>Ändern Sie den Datumsfilter für gelöschte Dateien</translation>
     </message>
     <message>
         <source>ignore_modified_filter</source>
-        <translation>Ignorar filtro de data para arquivos modificados</translation>
+        <translation>Ändern Sie den Datumsfilter für geänderte Dateien</translation>
     </message>
     <message>
         <source>ignore_scanned_filter</source>
-        <translation>Ignorar filtro de data para arquivos escaneados</translation>
+        <translation>Ändern Sie den Datumsfilter für gescannte Dateien</translation>
     </message>
     <message>
         <source>select_all_columns</source>
-        <translation>Selecionar Todas as Colunas</translation>
+        <translation>Alle Spalten Auswählen</translation>
     </message>
     <message>
         <source>configure_colors</source>
-        <translation>Configurar Cores</translation>
+        <translation>Farben Konfigurieren</translation>
     </message>
     <message>
         <source>operation_colors</source>
-        <translation>Cores de Operação</translation>
+        <translation>Betriebsfarben</translation>
     </message>
     <message>
         <source>reset_colors</source>
-        <translation>Restaurar Cores</translation>
+        <translation>Farben Zurücksetzen</translation>
     </message>
     <message>
         <source>reset_colors_confirm</source>
-        <translation>Deseja restaurar todas as cores para os valores padrão?</translation>
+        <translation>Möchten Sie alle Farben auf die Standardwerte zurücksetzen?</translation>
     </message>
     <message>
         <source>colors_reset_success</source>
-        <translation>Cores restauradas com sucesso!</translation>
+        <translation>Farben erfolgreich zurückgesetzt</translation>
     </message>
     <message>
         <source>current</source>
-        <translation>Atual</translation>
+        <translation>Aktuell</translation>
     </message>
     <message>
         <source>new</source>
-        <translation>Novo</translation>
+        <translation>Neu</translation>
     </message>
     <message>
         <source>basics</source>
-        <translation>Básicas</translation>
+        <translation>Grundlagen</translation>
     </message>
     <message>
         <source>pastels</source>
-        <translation>Pastéis</translation>
+        <translation>Pastellfarben</translation>
     </message>
     <message>
         <source>vibrant</source>
-        <translation>Cores Vibrantes</translation>
+        <translation>Lebendige Farben</translation>
     </message>
     <message>
         <source>advanced_color_picker</source>
-        <translation>Seletor de Cores Avançado</translation>
+        <translation>Erweiterter Farbwähler</translation>
     </message>
     <message>
         <source>cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>select_color</source>
-        <translation>Selecionar Cor</translation>
+        <translation>Farbe Wählen</translation>
     </message>
     <message>
         <source>select_color_for</source>
-        <translation>Selecionar cor para</translation>
+        <translation>Farbe für auswählen</translation>
     </message>
     <message>
         <source>color_changed_success</source>
-        <translation>Cor alterada com sucesso!</translation>
+        <translation>Farbe erfolgreich geändert!</translation>
     </message>
     <message>
         <source>basic_colors</source>
-        <translation>Cores Básicas</translation>
+        <translation>Basisfarben</translation>
     </message>
     <message>
         <source>custom_colors</source>
-        <translation>Cores Personalizadas</translation>
+        <translation>Benutzerdefinierte Farben</translation>
     </message>
     <message>
         <source>pick_screen_color</source>
-        <translation>Selecionar Cor da Tela</translation>
+        <translation>Bildschirmfarbe auswählen</translation>
     </message>
     <message>
         <source>add_to_custom_colors</source>
-        <translation>Adicionar às Cores Personalizadas</translation>
+        <translation>Zu benutzerdefinierten Farben hinzufügen</translation>
     </message>
     <message>
         <source>hue</source>
-        <translation>Matiz</translation>
+        <translation>Farbton</translation>
     </message>
     <message>
         <source>sat</source>
-        <translation>Saturação</translation>
+        <translation>Sättigung</translation>
     </message>
     <message>
         <source>val</source>
-        <translation>Valor</translation>
+        <translation>Wert</translation>
     </message>
     <message>
         <source>red</source>
-        <translation>Vermelho</translation>
+        <translation>Rot</translation>
     </message>
     <message>
         <source>green</source>
-        <translation>Verde</translation>
+        <translation>Grün</translation>
     </message>
     <message>
         <source>blue</source>
-        <translation>Azul</translation>
+        <translation>Blau</translation>
     </message>
     <message>
         <source>alpha</source>
-        <translation>Alfa</translation>
+        <translation>Alpha</translation>
     </message>
     <message>
         <source>html</source>
@@ -949,15 +949,15 @@
     </message>
     <message>
         <source>records</source>
-        <translation>Registros</translation>
+        <translation>Datensätze</translation>
     </message>
     <message>
         <source>records_estimated</source>
-        <translation>Registros Estimados</translation>
+        <translation>Geschätzte Datensätze</translation>
     </message>
     <message>
         <source>bytes_per_record</source>
-        <translation>Bytes por Registro</translation>
+        <translation>Bytes Pro Datensatz</translation>
     </message>
     <message>
         <source>bytes</source>
@@ -965,194 +965,194 @@
     </message>
     <message>
         <source>binary_file</source>
-        <translation>Binário</translation>
+        <translation>Binär</translation>
     </message>
     <message>
         <source>minutes</source>
-        <translation>Minutos</translation>
+        <translation>Minuten</translation>
     </message>
     <message>
         <source>hours</source>
-        <translation>Horas</translation>
+        <translation>Stunden</translation>
     </message>
     <message>
         <source>days</source>
-        <translation>Dias</translation>
+        <translation>Tage</translation>
     </message>
     <message>
         <source>export_options</source>
-        <translation>Opções de Exportação</translation>
+        <translation>Exportoptionen</translation>
     </message>
     <message>
         <source>export_active_columns</source>
-        <translation>Exportar apenas colunas ativas</translation>
+        <translation>Nur aktive Spalten exportieren</translation>
     </message>
     <message>
         <source>export_active_filters</source>
-        <translation>Exportar apenas filtros ativos</translation>
+        <translation>Nur aktive Filter exportieren</translation>
     </message>
     <message>
         <source>export_selected_data</source>
-        <translation>Exportar apenas dados selecionados</translation>
+        <translation>Nur ausgewählte Daten exportieren</translation>
     </message>
     <message>
         <source>reset_export_options</source>
-        <translation>Restaurar Padrões</translation>
+        <translation>Standardeinstellungen wiederherstellen</translation>
     </message>
     <message>
         <source>export_options_reset_success</source>
-        <translation>Opções de exportação restauradas para valores padrão!</translation>
+        <translation>Exportoptionen auf Standardwerte zurückgesetzt!</translation>
     </message>
     <message>
         <source>no_selection</source>
-        <translation>Nenhuma célula selecionada para exportação.</translation>
+        <translation>Keine Zellen für den Export ausgewählt.</translation>
     </message>
     <message>
         <source>size_distribution</source>
-        <translation>Distribuição de Tamanhos</translation>
+        <translation>Größenverteilung</translation>
     </message>
     <message>
         <source>file_size_analysis</source>
-        <translation>Análise de Tamanhos de Arquivo</translation>
+        <translation>Dateigrößenanalyse</translation>
     </message>
     <message>
         <source>temporal_distribution</source>
-        <translation>Distribuição Temporal</translation>
+        <translation>Zeitliche Verteilung</translation>
     </message>
     <message>
         <source>size_categories</source>
-        <translation>Categorias de Tamanho</translation>
+        <translation>Größenkategorien</translation>
     </message>
     <message>
         <source>very_small</source>
-        <translation>Muito Pequeno</translation>
+        <translation>Sehr Klein</translation>
     </message>
     <message>
         <source>small</source>
-        <translation>Pequeno</translation>
+        <translation>Klein</translation>
     </message>
     <message>
         <source>medium</source>
-        <translation>Médio</translation>
+        <translation>Mittel</translation>
     </message>
     <message>
         <source>large</source>
-        <translation>Grande</translation>
+        <translation>Groß</translation>
     </message>
     <message>
         <source>very_large</source>
-        <translation>Muito Grande</translation>
+        <translation>Sehr Groß</translation>
     </message>
     <message>
         <source>events_per_day</source>
-        <translation>Eventos por Dia</translation>
+        <translation>Ereignisse pro Tag</translation>
     </message>
     <message>
         <source>file_size_mb</source>
-        <translation>Tamanho do Arquivo (MB)</translation>
+        <translation>Dateigröße (MB)</translation>
     </message>
     <message>
         <source>no_size_data</source>
-        <translation>Não há dados de tamanho disponíveis</translation>
+        <translation>Keine Größendaten verfügbar</translation>
     </message>
     <message>
         <source>boxplot_analysis</source>
-        <translation>Análise de Distribuição</translation>
+        <translation>Verteilungsanalyse</translation>
     </message>
     <message>
         <source>quartile_analysis</source>
-        <translation>Análise de Quartis</translation>
+        <translation>Quartilanalyse</translation>
     </message>
     <message>
         <source>file_operations_flow</source>
-        <translation>Fluxo de Operações em Arquivos</translation>
+        <translation>Dateioperationsfluss</translation>
     </message>
     <message>
         <source>operations_by_file_type</source>
-        <translation>Operações por Tipo de Arquivo</translation>
+        <translation>Operationen nach Dateityp</translation>
     </message>
     <message>
         <source>file_size_distribution</source>
-        <translation>Distribuição de Tamanhos de Arquivo</translation>
+        <translation>Dateigrößenverteilung</translation>
     </message>
     <message>
         <source>days_of_week</source>
-        <translation>Dias da Semana</translation>
+        <translation>Wochentage</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation>Segunda</translation>
+        <translation>Montag</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation>Terça</translation>
+        <translation>Dienstag</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>Quarta</translation>
+        <translation>Mittwoch</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation>Quinta</translation>
+        <translation>Donnerstag</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation>Sexta</translation>
+        <translation>Freitag</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation>Sábado</translation>
+        <translation>Samstag</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation>Domingo</translation>
+        <translation>Sonntag</translation>
     </message>
     <message>
         <source>week_days</source>
-        <translation>Dias da Semana</translation>
+        <translation>Wochentage</translation>
     </message>
     <message>
         <source>insufficient_data_after_filtering</source>
-        <translation>Sem dados suficientes após filtragem</translation>
+        <translation>Unzureichende Daten nach der Filterung</translation>
     </message>
     <message>
         <source>plotly_required</source>
-        <translation>Biblioteca plotly necessária para
-gerar o Diagrama de Sankey
+        <translation>Plotly-Bibliothek erforderlich, um
+Sankey-Diagramm zu generieren
 
 pip install plotly</translation>
     </message>
     <message>
         <source>library_required</source>
-        <translation>Biblioteca necessária</translation>
+        <translation>Bibliothek erforderlich</translation>
     </message>
     <message>
         <source>install_instruction</source>
-        <translation>Para instalar, execute:</translation>
+        <translation>Zur Installation ausführen:</translation>
     </message>
     <message>
         <source>time_milliseconds</source>
-        <translation>Tempo (milissegundos)</translation>
+        <translation>Zeit (Millisekunden)</translation>
     </message>
     <message>
         <source>time_centiseconds</source>
-        <translation>Tempo (centésimos de segundo)</translation>
+        <translation>Zeit (Hundertstelsekunden)</translation>
     </message>
     <message>
         <source>time_seconds</source>
-        <translation>Tempo (segundos)</translation>
+        <translation>Zeit (Sekunden)</translation>
     </message>
     <message>
         <source>time_minutes</source>
-        <translation>Tempo (minutos)</translation>
+        <translation>Zeit (Minuten)</translation>
     </message>
     <message>
         <source>time_hours</source>
-        <translation>Tempo (horas)</translation>
+        <translation>Zeit (Stunden)</translation>
     </message>
     <message>
         <source>time_days</source>
-        <translation>Tempo (dias)</translation>
+        <translation>Zeit (Tage)</translation>
     </message>
     <message>
         <source>ms</source>
@@ -1172,7 +1172,7 @@ pip install plotly</translation>
     </message>
     <message>
         <source>d</source>
-        <translation>d</translation>
+        <translation>T</translation>
     </message>
     <message>
         <source>MS</source>
@@ -1192,231 +1192,239 @@ pip install plotly</translation>
     </message>
     <message>
         <source>D</source>
-        <translation>d</translation>
+        <translation>T</translation>
     </message>
     <message>
         <source>file_types</source>
-        <translation>Tipos de Arquivo</translation>
+        <translation>Dateitypen</translation>
     </message>
     <message>
         <source>select_graphs</source>
-        <translation>Selecionar Gráficos</translation>
+        <translation>Diagramme Auswählen</translation>
     </message>
     <message>
         <source>select_all</source>
-        <translation>Selecionar Todos</translation>
+        <translation>Alle Auswählen</translation>
     </message>
     <message>
         <source>save_selected</source>
-        <translation>Salvar Selecionados</translation>
+        <translation>Ausgewählte Speichern</translation>
     </message>
     <message>
         <source>selected</source>
-        <translation>Selecionados</translation>
+        <translation>Ausgewählt</translation>
     </message>
     <message>
         <source>no_graphs_selected</source>
-        <translation>Nenhum gráfico selecionado</translation>
+        <translation>Keine Diagramme ausgewählt</translation>
     </message>
     <message>
         <source>selected_graphs_saved_detail</source>
-        <translation>Gráficos selecionados salvos: {}/{} em {}</translation>
+        <translation>Ausgewählte Diagramme gespeichert: {}/{} in {}</translation>
     </message>
     <message>
         <source>hide_selection_panel</source>
-        <translation>Ocultar Painel de Seleção</translation>
+        <translation>Auswahlbereich Ausblenden</translation>
     </message>
     <message>
         <source>expand_selection_panel</source>
-        <translation>Expandir Painel de Seleção</translation>
+        <translation>Auswahlbereich Erweitern</translation>
     </message>
     <message>
         <source>please_wait</source>
-        <translation>Por favor, aguarde</translation>
+        <translation>Bitte warten</translation>
     </message>
     <message>
         <source>generating_chart</source>
-        <translation>Gerando Gráfico</translation>
+        <translation>Generiere Diagramm</translation>
     </message>
     <message>
         <source>generating_charts</source>
-        <translation>Gerando Gráficos</translation>
+        <translation>Generiere Diagramme</translation>
     </message>
     <message>
         <source>preparing_chart_data</source>
-        <translation>Preparando dados do gráfico</translation>
+        <translation>Vorbereite Diagrammdaten</translation>
     </message>
     <message>
         <source>preparing_charts_data</source>
-        <translation>Preparando dados para gráficos</translation>
+        <translation>Vorbereite Diagrammdaten</translation>
     </message>
     <message>
         <source>error_generating_chart</source>
-        <translation>Erro ao gerar gráfico</translation>
+        <translation>Fehler beim Generieren des Diagramms</translation>
     </message>
     <message>
         <source>error_preparing_chart</source>
-        <translation>Erro ao preparar dados do gráfico</translation>
+        <translation>Fehler beim Vorbereiten des Diagramms</translation>
     </message>
     <message>
         <source>updating_charts</source>
-        <translation>Atualizando gráficos</translation>
+        <translation>Aktualisiere Diagramme</translation>
     </message>
     <message>
         <source>updating_chart</source>
-        <translation>Atualizando gráfico</translation>
+        <translation>Aktualisiere Diagramm</translation>
     </message>
     <message>
         <source>error_updating_chart</source>
-        <translation>Erro ao atualizar gráfico</translation>
+        <translation>Fehler beim Aktualisieren des Diagramms</translation>
     </message>
     <message>
         <source>color_columns</source>
-        <translation>Colorir Colunas</translation>
+        <translation>Spalten Färben</translation>
     </message>
     <message>
         <source>colors_applied_success</source>
-        <translation>Cores aplicadas a todas as colunas com sucesso!</translation>
+        <translation>Farben erfolgreich auf alle Spalten angewendet!</translation>
     </message>
     <message>
         <source>reset_column_colors</source>
-        <translation>Redefinir Cores das Colunas</translation>
+        <translation>Spaltenfarben Zurücksetzen</translation>
     </message>
     <message>
         <source>reset_column_color_confirm</source>
-        <translation>Deseja restaurar as cores das colunas para os valores padrão?</translation>
+        <translation>Möchten Sie die Farben der Spalten auf die Standardwerte zurücksetzen?</translation>
     </message>
     <message>
         <source>column_colors_reset_success</source>
-        <translation>Cores das colunas restauradas com sucesso!</translation>
+        <translation>Farben der Spalten erfolgreich zurückgesetzt!</translation>
     </message>
     <message>
         <source>always_apply_left</source>
-        <translation>Sempre aplicar à esquerda</translation>
+        <translation>Immer links anwenden</translation>
     </message>
     <message>
         <source>sort_rows</source>
-        <translation>Ordenar Linhas</translation>
+        <translation>Zeilen sortieren</translation>
     </message>
     <message>
         <source>enabled</source>
-        <translation>Habilitada</translation>
+        <translation>Aktiviert</translation>
     </message>
     <message>
         <source>disabled</source>
-        <translation>Desabilitada</translation>
+        <translation>Deaktiviert</translation>
     </message>
     <message>
         <source>file_folder</source>
-        <translation>Pasta</translation>
+        <translation>Ordner</translation>
     </message>
-        <message>
+    <message>
         <source>translating_table</source>
-        <translation>Traduzindo a tabela de dados...</translation>
+        <translation>Übersetze die Datentabelle...</translation>
     </message>
     <message>
         <source>translation_complete</source>
-        <translation>Tradução Concluída!</translation>
+        <translation>Übersetzung abgeschlossen!</translation>
     </message>
     <message>
         <source>size_b</source>
-        <translation>Tamanho (Bytes)</translation>
+        <translation>Größe (Bytes)</translation>
     </message>
     <message>
         <source>size_kb</source>
-        <translation>Tamanho (Kilobytes)</translation>
+        <translation>Größe (Kilobytes)</translation>
     </message>
     <message>
         <source>size_mb</source>
-        <translation>Tamanho (Megabytes)</translation>
+        <translation>Größe (Megabytes)</translation>
     </message>
     <message>
         <source>size_gb</source>
-        <translation>Tamanho (Gigabytes)</translation>
+        <translation>Größe (Gigabytes)</translation>
     </message>
     <message>
         <source>size_tb</source>
-        <translation>Tamanho (Terabytes)</translation>
+        <translation>Größe (Terabytes)</translation>
     </message>
     <message>
         <source>unzipped_b</source>
-        <translation>Descompactado (Bytes)</translation>
+        <translation>Entpackt (Bytes)</translation>
     </message>
     <message>
         <source>unzipped_kb</source>
-        <translation>Descompactado (Kilobytes)</translation>
+        <translation>Entpackt (Kilobytes)</translation>
     </message>
     <message>
         <source>unzipped_mb</source>
-        <translation>Descompactado (Megabytes)</translation>
+        <translation>Entpackt (Megabytes)</translation>
     </message>
     <message>
         <source>unzipped_gb</source>
-        <translation>Descompactado (Gigabytes)</translation>
+        <translation>Entpackt (Gigabytes)</translation>
     </message>
     <message>
         <source>unzipped_tb</source>
-        <translation>Descompactado (Terabytes)</translation>
+        <translation>Entpackt (Terabytes)</translation>
     </message>
     <message>
         <source>binary_file_b</source>
-        <translation>Binário (Bytes)</translation>
+        <translation>Binär (Bytes)</translation>
     </message>
     <message>
         <source>binary_file_kb</source>
-        <translation>Binário (Kilobytes)</translation>
+        <translation>Binär (Kilobytes)</translation>
     </message>
     <message>
         <source>binary_file_mb</source>
-        <translation>Binário (Megabytes)</translation>
+        <translation>Binär (Megabytes)</translation>
     </message>
     <message>
         <source>binary_file_gb</source>
-        <translation>Binário (Gigabytes)</translation>
+        <translation>Binär (Gigabytes)</translation>
     </message>
     <message>
         <source>binary_file_tb</source>
-        <translation>Binário (Terabytes)</translation>
+        <translation>Binär (Terabytes)</translation>
     </message>
     <message>
         <source>show_history</source>
-        <translation>Justificativa do Nome</translation>
+        <translation>Namensbegründung</translation>
+    </message>
+    <message>
+        <source>hide_history</source>
+        <translation>Namensbegründung ausblenden</translation>
     </message>
     <message>
         <source>show_release_notes</source>
-        <translation>Notas de Lançamento</translation>
+        <translation>Versionshinweise</translation>
+    </message>
+    <message>
+        <source>hide_release_notes</source>
+        <translation>Versionshinweise ausblenden</translation>
     </message>
     <message>
         <source>file</source>
-        <translation>Arquivo</translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <source>trial_expired_title</source>
-        <translation>Período de teste expirado</translation>
+        <translation>Testzeitraum abgelaufen</translation>
     </message>
     <message>
         <source>trial_expired_message</source>
-        <translation>O período de teste gratuito expirou.</translation>
+        <translation>Die kostenlose Testphase ist abgelaufen.</translation>
     </message>
     <message>
         <source>trial_buy_message</source>
-        <translation>Adquira a versão paga para continuar usando o aplicativo.</translation>
+        <translation>Kaufen Sie die kostenpflichtige Version, um die Anwendung weiterhin zu nutzen.</translation>
     </message>
     <message>
         <source>trial_uninstall_message</source>
-        <translation>Antes de instalar a versão paga, desinstale a versão de teste.</translation>
+        <translation>Deinstallieren Sie die Testversion, bevor Sie die kostenpflichtige Version installieren.</translation>
     </message>
     <message>
         <source>trial_paid_link</source>
-        <translation>Clique aqui para acessar a versão paga</translation>
+        <translation>Klicken Sie hier, um zur kostenpflichtigen Version zu gelangen</translation>
     </message>
     <message>
         <source>language_change_performance_warning</source>
-        <translation>Aviso: Ao alterar o idioma, as traduções serão recarregadas em toda a interface e o desempenho pode ser temporariamente impactado até a conclusão. Se o monitoramento estiver em execução, essa operação pode causar perda de eventos ou travamentos temporários. Recomenda-se fortemente alterar o idioma antes de iniciar o monitoramento. Deseja prosseguir?</translation>
+        <translation>Warnung: Das Ändern der Sprache lädt die Übersetzungen in der gesamten Oberfläche neu und kann die Leistung bis zum Abschluss vorübergehend beeinträchtigen. Wenn die Überwachung läuft, kann dieser Vorgang zu verpassten Ereignissen oder vorübergehenden Einfrierungen führen. Es wird dringend empfohlen, die Sprache zu ändern, bevor die Überwachung gestartet wird. Möchten Sie fortfahren?</translation>
     </message>
     <message>
         <source>performance_charts</source>
-        <translation>Gráficos de Desempenho</translation>
+        <translation>Leistungsdiagramme</translation>
     </message>
     <message>
         <source>CPU</source>
@@ -1432,95 +1440,95 @@ pip install plotly</translation>
     </message>
     <message>
         <source>Memoria_RAM</source>
-        <translation>Memória RAM</translation>
+        <translation>Arbeitsspeicher</translation>
     </message>
     <message>
         <source>Memoria_RAM_Porcentagem</source>
-        <translation>Memória RAM (%)</translation>
+        <translation>Arbeitsspeicher (%)</translation>
     </message>
     <message>
         <source>Discos</source>
-        <translation>Discos</translation>
+        <translation>Festplatten</translation>
     </message>
     <message>
         <source>Discos_Porcentagem</source>
-        <translation>Discos (kB/s)</translation>
+        <translation>Festplatten (kB/s)</translation>
     </message>
     <message>
         <source>Destacado</source>
-        <translation>Destacado</translation>
+        <translation>Hervorgehoben</translation>
     </message>
     <message>
         <source>open</source>
-        <translation>Abrir</translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <source>copy</source>
-        <translation>Copiar</translation>
+        <translation>Kopieren</translation>
     </message>
     <message>
         <source>cut</source>
-        <translation>Recortar</translation>
+        <translation>Ausschneiden</translation>
     </message>
     <message>
         <source>paste</source>
-        <translation>Colar</translation>
+        <translation>Einfügen</translation>
     </message>
     <message>
         <source>rename</source>
-        <translation>Renomear</translation>
+        <translation>Umbenennen</translation>
     </message>
     <message>
         <source>delete</source>
-        <translation>Deletar</translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <source>property</source>
-        <translation>Propriedades</translation>
+        <translation>Eigenschaften</translation>
     </message>
     <message>
         <source>new_folder</source>
-        <translation>Nova Pasta</translation>
+        <translation>Neuer Ordner</translation>
     </message>
     <message>
         <source>new_file</source>
-        <translation>Novo Arquivo</translation>
+        <translation>Neue Datei</translation>
     </message>
     <message>
         <source>enter_new_name</source>
-        <translation>Novo Arquivo</translation>
+        <translation>Neuen Namen eingeben</translation>
     </message>
     <message>
         <source>file_exists</source>
-        <translation>Arquivo Existente</translation>
+        <translation>Datei existiert</translation>
     </message>
     <message>
         <source>file_exists_overwrite</source>
-        <translation>Arquivo Existente, Sobrescrevê-lo?</translation>
+        <translation>Datei existiert, überschreiben?</translation>
     </message>
     <message>
         <source>type_to_path_flow</source>
-        <translation>Fluxo de Tipo de Arquivo por Diretório</translation>
+        <translation>Fluss des Dateityps pro Verzeichnis</translation>
     </message>
     <message>
         <source>event_to_path_flow</source>
-        <translation>Fluxo de Evento por Diretório</translation>
+        <translation>Ereignisfluss pro Verzeichnis</translation>
     </message>
     <message>
         <source>plotly_required</source>
-        <translation>Biblioteca plotly/kaleido necessária para gerar o Diagrama de Sankey</translation>
+        <translation>plotly/kaleido-Bibliothek erforderlich, um das Sankey-Diagramm zu erzeugen</translation>
     </message>
     <message>
         <source>no_ext</source>
-        <translation>SemExt</translation>
+        <translation>OhneExt</translation>
     </message>
     <message>
         <source>directory_tree</source>
-        <translation>Árvore de Diretórios</translation>
+        <translation>Verzeichnisbaum</translation>
     </message>
     <message>
         <source>root</source>
-        <translation>Raiz</translation>
+        <translation>Wurzel</translation>
     </message>
     <message>
         <source>jpg</source>

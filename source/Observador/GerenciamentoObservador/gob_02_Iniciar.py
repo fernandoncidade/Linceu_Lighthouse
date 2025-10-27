@@ -1,6 +1,6 @@
 from PySide6.QtCore import QThread
 from source.Observador.ob_03_DiretorioScanner import ScanWorker
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 
 logger = LogManager.get_logger()
 

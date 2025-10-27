@@ -1,6 +1,6 @@
 from PySide6.QtGui import QAction
 from source.Filtros.fil_03_AdministradorFiltros import AdministradorFiltros
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def sincronizar_com_menu_principal(self):

@@ -2,9 +2,9 @@ import os
 import json
 from PySide6.QtGui import QColor, QIcon
 from PySide6.QtCore import QThread, Signal
-from utils.IconUtils import get_icon_path, get_app_base_path
-from utils.CaminhoPersistenteUtils import obter_caminho_persistente
-from utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path, get_app_base_path
+from source.utils.CaminhoPersistenteUtils import obter_caminho_persistente
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def get_palette_icon_path(tipo="paleta"):

@@ -11,8 +11,9 @@ from source.Observador.GerenciamentoDiretorioScanner.gscanner_06_atualizar_progr
 from source.Observador.GerenciamentoDiretorioScanner.gscanner_07_atualizar_interface import _atualizar_interface
 from source.Observador.GerenciamentoDiretorioScanner.gscanner_08_finalizar_scan import _finalizar_scan
 from source.Observador.GerenciamentoDiretorioScanner.gscanner_09_scan_worker_run import run as scan_worker_run
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
+
 
 class DiretorioScanner(QObject):
     progresso_atualizado = Signal(int, int, int)

@@ -1,6 +1,6 @@
 import queue
 from PySide6.QtCore import QMetaObject, Qt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def processar_coluna_thread(gc, coluna_key):

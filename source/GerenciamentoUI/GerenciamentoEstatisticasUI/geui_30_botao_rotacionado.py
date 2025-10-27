@@ -1,7 +1,7 @@
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QPainter, QFontMetrics
 from PySide6.QtWidgets import QPushButton
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

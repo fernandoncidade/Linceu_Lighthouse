@@ -14,7 +14,7 @@ from .GerenciadorEstruturaDiretoriosWidget.gedw_11_abrir_item import abrir_item
 from .GerenciadorEstruturaDiretoriosWidget.gedw_12_changeEvent import changeEvent
 from .GerenciadorEstruturaDiretoriosWidget.gedw_13_customize_icons import _customize_icons
 from .GerenciadorEstruturaDiretoriosWidget.gedw_14_atualizar_status import atualizar_status
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 # Ajustáveis: margens da árvore (left, top, right, bottom) e margens do viewport (left, top, right, bottom)

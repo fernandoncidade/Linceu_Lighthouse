@@ -1,6 +1,6 @@
 import os
 import time
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def obter_status_diretorios(root_path):

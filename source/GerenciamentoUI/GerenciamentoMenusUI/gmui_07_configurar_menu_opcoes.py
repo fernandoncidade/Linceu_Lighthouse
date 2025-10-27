@@ -1,5 +1,5 @@
 from PySide6.QtGui import QAction
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _configurar_menu_opcoes(self, menu_opcoes):

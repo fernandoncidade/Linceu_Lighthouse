@@ -1,5 +1,5 @@
 from PySide6.QtCore import QDateTime
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def limpar_filtros(self):

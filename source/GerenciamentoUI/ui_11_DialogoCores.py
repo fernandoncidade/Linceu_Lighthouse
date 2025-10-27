@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QDialog
 from PySide6.QtGui import QColor
 from PySide6.QtCore import Signal, Qt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_01_setup_ui import setup_ui
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_02_adicionar_grid_cores import _adicionar_grid_cores
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_03_selecionar_cor import _selecionar_cor

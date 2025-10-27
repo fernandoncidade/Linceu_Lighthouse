@@ -1,7 +1,7 @@
 from tinytag import TinyTag
 from pymediainfo import MediaInfo
 from decimal import Decimal, ROUND_HALF_UP
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_audio(caminho, loc=None):

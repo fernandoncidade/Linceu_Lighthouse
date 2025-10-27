@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.Observador.ob_08_EventoMovido import verificar_movimentacao, adicionar_evento
 logger = LogManager.get_logger()
 

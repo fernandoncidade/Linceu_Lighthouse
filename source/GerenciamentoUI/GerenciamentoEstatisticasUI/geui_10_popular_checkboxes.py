@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QCheckBox
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _popular_checkboxes(self, graficos):

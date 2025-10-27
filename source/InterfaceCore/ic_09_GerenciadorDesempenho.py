@@ -1,6 +1,6 @@
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QHBoxLayout, QToolButton, QSizePolicy, QSplitter
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 try:

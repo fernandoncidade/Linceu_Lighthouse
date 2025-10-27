@@ -1,6 +1,6 @@
 import os
 from PySide6.QtCore import QLocale
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 
@@ -10,10 +10,21 @@ class Internacionalizador:
         try:
             locale = QLocale(idioma_inicial)
             QLocale.setDefault(locale)
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-            locale_dir = os.path.join(base_dir, "locale")
-            if not os.path.exists(locale_dir):
-                os.makedirs(locale_dir, exist_ok=True)
+
+            file_dir = os.path.dirname(os.path.abspath(__file__))
+            source_dir = os.path.abspath(os.path.join(file_dir, ".."))
+            project_root = os.path.abspath(os.path.join(source_dir, ".."))
+
+            candidate_source = os.path.join(source_dir, "locale")
+            candidate_root = os.path.join(project_root, "locale")
+
+            if os.path.exists(candidate_source):
+                locale_dir = candidate_source
+
+            else:
+                locale_dir = candidate_root
+
+            os.makedirs(locale_dir, exist_ok=True)
 
             return True
 

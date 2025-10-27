@@ -1,5 +1,5 @@
 import os
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def is_arquivo_codigo_grande(self, caminho):

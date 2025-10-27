@@ -3,7 +3,7 @@ import win32file
 import win32con
 import ctypes
 from ctypes import wintypes
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _arquivo_assinado(caminho: str) -> bool:

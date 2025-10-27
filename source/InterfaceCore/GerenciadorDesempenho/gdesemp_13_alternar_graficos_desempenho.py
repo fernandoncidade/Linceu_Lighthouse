@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def alternar_graficos_desempenho(interface, checked=None, ajustar_tamanho=True):

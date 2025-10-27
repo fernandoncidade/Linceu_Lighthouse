@@ -1,5 +1,5 @@
 from source.Observador.GerenciamentoTabela.gtab_32_worker_thread import WorkerThread
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def iniciar_processamento_pesado(gt, dados, callback=None):

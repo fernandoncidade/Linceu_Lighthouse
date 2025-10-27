@@ -1,6 +1,6 @@
 import os
-from utils.LogManager import LogManager
-from utils.CaminhoPersistenteUtils import obter_caminho_persistente
+from source.utils.LogManager import LogManager
+from source.utils.CaminhoPersistenteUtils import obter_caminho_persistente
 
 from source.Observador.GerenciamentoBaseEvento.gbank_01_set_callback import set_callback
 from source.Observador.GerenciamentoBaseEvento.gbank_02_criar_banco_de_dados import criar_banco_de_dados

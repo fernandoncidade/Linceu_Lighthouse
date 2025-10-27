@@ -4,8 +4,8 @@ from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QProgre
 from PySide6.QtWidgets import QSizePolicy
 from PySide6.QtWidgets import QSplitter
 from PySide6.QtCore import Qt, QObject, QEvent
-from utils.IconUtils import get_icon_path
-from utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

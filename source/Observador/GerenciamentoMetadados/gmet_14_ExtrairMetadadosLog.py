@@ -1,6 +1,6 @@
 import os
 import re
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_log(caminho, loc):

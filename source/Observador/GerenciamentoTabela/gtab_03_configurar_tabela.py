@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QAbstractItemView, QPushButton
 from PySide6.QtCore import Qt, QTimer
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 import concurrent.futures
 logger = LogManager.get_logger()
 

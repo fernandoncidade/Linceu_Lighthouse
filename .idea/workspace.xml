@@ -1,4 +1,630 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{}</component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f1966bd5-016d-43bd-ac51-76c717695b02" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/ABOUT_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ABOUT/History_APP_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_de_DE - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_en_US - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_es_ES - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_fr_FR - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_it_IT - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/CLC/CLC_pt_BR - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/AVIS DE COPYRIGHT ET DE MARQUE DÉPOSÉE_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/AVISO DE COPYRIGHT E MARCA REGISTRA_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/AVISO DE DERECHOS DE AUTOR Y MARCA REGISTRADA_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/AVVISO SU COPYRIGHT E MARCHIO REGISTRATO_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/COPYRIGHT AND TRADEMARK NOTICE_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/COPYRIGHT/HINWEIS ZU URHEBERRECHT UND MARKENZEICHEN_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_de_DE - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_en_US - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_es_ES - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_fr_FR - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_it_IT - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/EULA/EULA_pt_BR - Linceu Lighthouse.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/Apache License Version 2.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/BSD License Clause-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/BSD License Clause-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/GNU LESSER GENERAL PUBLIC LICENSE Version 2.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/GNU LESSER GENERAL PUBLIC LICENSE Version 3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/ISC LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/LIBRARY_LICENSES_GLOBAL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/MIT License.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/MS-Store-ADA-v8.9-FINAL-EN.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/PYTHON SOFTWARE FOUNDATION LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LICENSES/SQLite Is Public Domain.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 041024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 041044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 041332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 050405.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 050425.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 050450.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 050502.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Alemao/Captura de tela 2025-08-04 050514.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 040431.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 040505.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 042253.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 043724.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 043749.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 043830.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 043851.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Espanhol/Captura de tela 2025-08-04 043907.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 040608.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 040631.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 042006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 044556.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 044618.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 044651.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 044706.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Frances/Captura de tela 2025-08-04 044724.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 004933.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 004945.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 004957.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005051.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005118.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005144.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005217.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005429.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005555.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005711.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005741.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 005929.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010046.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010135.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010157.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010218.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010301.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Ingles/Captura de tela 2025-08-04 010442.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 040731.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 040749.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 041627.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 045141.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 045201.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 045239.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 045252.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Italiano/Captura de tela 2025-08-04 045304.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 040204.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 040254.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 042554.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 042731.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 042821.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 042900.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 042957.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/LISTAGEM/Portugues/Captura de tela 2025-08-04 043015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/NOTICES/NOTICE_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/PRIVACY_POLICY/Privacy_Policy_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_de_DE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_en_US.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_es_ES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_fr_FR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_it_IT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/RELEASE/RELEASE NOTES_pt_BR.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/Square150x150Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/Square310x310Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/Square44x44Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/Square71x71Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/Wide310x150Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/analyze.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/analyze.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/atualizar.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/atualizar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/blocos-de-cores.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/blocos-de-cores.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/calendar.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/clear.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/clear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/clear_button3.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/clear_button3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager1.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager2.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager3.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager4.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager_1440_2160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager_150_150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager_2160-2160.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager_300_300.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/file_manager_71_71.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/filtro.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/filtro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/manager_files.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/manager_files.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/paleta-de-cores.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/paleta-de-cores.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause1.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause2.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause3.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause4.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/pause4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/salvar.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/salvar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/save_as.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/save_as.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/scan.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/scan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/selecione.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/selecione.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/start.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/statistics.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/statistics.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/stop.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icones/stop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/compile_translations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_de_DE.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_de_DE.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_en_US.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_en_US.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_es_ES.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_es_ES.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_fr_FR.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_fr_FR.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_it_IT.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_it_IT.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_pt_BR.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/linceu_pt_BR.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_01_base_gerador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_01_base_gerador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_02_grafico_pizza.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_02_grafico_pizza.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_03_grafico_barras.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_03_grafico_barras.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_04_grafico_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_04_grafico_timeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_05_grafico_treemap.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_05_grafico_treemap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_06_grafico_histograma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_06_grafico_histograma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_07_grafico_pareto.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_07_grafico_pareto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_08_grafico_linha.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_08_grafico_linha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_09_grafico_boxplot.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_09_grafico_boxplot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_10_grafico_radar_eventos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_10_grafico_radar_eventos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_11_grafico_heatmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_11_grafico_heatmap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_12_grafico_scatter.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_12_grafico_scatter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_13_grafico_sankey.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_13_grafico_sankey.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_14_grafico_radar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_14_grafico_radar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_15_grafico_dotplot.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_15_grafico_dotplot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_16_grafico_sankey_evento_caminho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_16_grafico_sankey_evento_caminho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_17_grafico_sankey_tipo_caminho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_17_grafico_sankey_tipo_caminho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_18_grafico_arvore_diretorios.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/GeradorEstatisticas/gst_18_grafico_arvore_diretorios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Estatistica/st_01_GeradorEstatisticas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Estatistica/st_01_GeradorEstatisticas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_01_desconectar_sinais.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_01_desconectar_sinais.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_02_aplicar_filtros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_02_aplicar_filtros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_03_limpar_filtros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_03_limpar_filtros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_04_sincronizar_menu_principal_com_filtros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_04_sincronizar_menu_principal_com_filtros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_05_atualizar_contagem.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_05_atualizar_contagem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_06_atualizar_contagem_eventos_monitorados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_06_atualizar_contagem_eventos_monitorados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_07_verificar_filtro_operacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_07_verificar_filtro_operacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_08_atualizar_contagem_apos_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_08_atualizar_contagem_apos_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_09_notificar_alteracao_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_09_notificar_alteracao_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_10_salvar_estado_checkboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoAdministradorFiltros/gadmfil_10_salvar_estado_checkboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_01_on_idioma_alterado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_01_on_idioma_alterado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_02_desconectar_sinais.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_02_desconectar_sinais.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_03_atualizar_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_03_atualizar_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_04_setup_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_04_setup_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_05_on_filtro_alterado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_05_on_filtro_alterado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_06_sincronizar_com_menu_principal.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_06_sincronizar_com_menu_principal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_07_verificar_filtro_operacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_07_verificar_filtro_operacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_08_atualizar_contagem.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_08_atualizar_contagem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_09_atualizar_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_09_atualizar_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_10_limpar_filtros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/GerenciamentoFiltros/gfil_10_limpar_filtros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/fil_01_Filtros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/fil_01_Filtros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/fil_02_AdministradorCalendario.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/fil_02_AdministradorCalendario.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Filtros/fil_03_AdministradorFiltros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Filtros/fil_03_AdministradorFiltros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_01_selecionar_diretorio.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_01_selecionar_diretorio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_02_alternar_analise_diretorio.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_02_alternar_analise_diretorio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_03_exportar_dados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_03_exportar_dados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_04_exportar_para_sqlite.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_04_exportar_para_sqlite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_05_limpar_dados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_05_limpar_dados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_06_pausar_monitoramento_ou_escaneamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoBotoes/geb_06_pausar_monitoramento_ou_escaneamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_01_setup_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_01_setup_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_02_adicionar_grid_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_02_adicionar_grid_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_03_selecionar_cor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_03_selecionar_cor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_04_abrir_seletor_avancado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_04_abrir_seletor_avancado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_05_accept.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_05_accept.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_06_traduzir_dialogo_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_06_traduzir_dialogo_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_07_obter_cor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_07_obter_cor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_08_atualizar_traducoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoDialogoCores/gdc_08_atualizar_traducoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_01_mostrar_estatisticas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_01_mostrar_estatisticas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_02_salvar_todos_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_02_salvar_todos_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_03_limpar_referencia_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_03_limpar_referencia_dialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_04_atualizar_graficos_apos_mudanca_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_04_atualizar_graficos_apos_mudanca_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_05_criar_painel_selecao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_05_criar_painel_selecao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_06_criar_painel_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_06_criar_painel_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_07_criar_botao_toggle_painel.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_07_criar_botao_toggle_painel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_08_criar_lista_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_08_criar_lista_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_09_criar_mapeamento_funcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_09_criar_mapeamento_funcoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_10_popular_checkboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_10_popular_checkboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_11_verificar_estado_checkbox_todos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_11_verificar_estado_checkbox_todos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_12_alternar_todos_checkboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_12_alternar_todos_checkboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_13_obter_estados_checkboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_13_obter_estados_checkboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_14_gerar_todos_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_14_gerar_todos_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_15_atualizar_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_15_atualizar_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_16_atualizar_graficos_sem_fechar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_16_atualizar_graficos_sem_fechar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_17_regenerar_graficos_existentes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_17_regenerar_graficos_existentes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_18_salvar_graficos_selecionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_18_salvar_graficos_selecionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_19_toggle_painel_selecao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_19_toggle_painel_selecao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_20_atualizar_textos_painel_selecao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_20_atualizar_textos_painel_selecao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_21_atualizar_textos_checkboxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_21_atualizar_textos_checkboxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_22_atualizar_layout_apos_mudanca_botao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_22_atualizar_layout_apos_mudanca_botao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_23_atualizar_checkboxes_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_23_atualizar_checkboxes_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_24_atualizar_abas_graficos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_24_atualizar_abas_graficos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_25_atualizar_dados_graficos_com_novos_titulos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_25_atualizar_dados_graficos_com_novos_titulos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_26_calcular_largura_ideal.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_26_calcular_largura_ideal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_27_ajustar_largura_painel_selecao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_27_ajustar_largura_painel_selecao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_28_traduzir_botoes_detalhes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_28_traduzir_botoes_detalhes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_29_abrir_diretorio.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_29_abrir_diretorio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_30_botao_rotacionado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_30_botao_rotacionado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_31_worker_grafico.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEstatisticasUI/geui_31_worker_grafico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_01_alternar_filtro.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_01_alternar_filtro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_02_alternar_visibilidade_coluna.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_02_alternar_visibilidade_coluna.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_03_resetar_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_03_resetar_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_04_resetar_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_04_resetar_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_05_redefinir_todas_colunas_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_05_redefinir_todas_colunas_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_06_alterar_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_06_alterar_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_07_confirmar_mudanca_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_07_confirmar_mudanca_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_08_limpar_dados_monitorados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_08_limpar_dados_monitorados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_09_limpar_dados_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_09_limpar_dados_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_10_reiniciar_aplicativo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_10_reiniciar_aplicativo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_11_atualizar_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoEventosUI/geve_11_atualizar_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_01_inicializar_tradutor_metadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_01_inicializar_tradutor_metadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_02_criar_mapa_compatibilidade.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_02_criar_mapa_compatibilidade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_03_carregar_tradutor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_03_carregar_tradutor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_04_set_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_04_set_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_05_get_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_05_get_text.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_06_get_fallback_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_06_get_fallback_text.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_07_tr.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_07_tr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_08_salvar_preferencia_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_08_salvar_preferencia_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_09_carregar_preferencia_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_09_carregar_preferencia_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_10_get_idiomas_disponiveis.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_10_get_idiomas_disponiveis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_11_traduzir_tipo_operacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_11_traduzir_tipo_operacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_12_traduzir_metadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_12_traduzir_metadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_13_traduzir_tipo_operacao_fallback.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_13_traduzir_tipo_operacao_fallback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_14_criar_arquivos_traducao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoLocalizadorQt/glqt_14_criar_arquivos_traducao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_01_MenuPersistente.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_01_MenuPersistente.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_02_GerenciadorCores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_02_GerenciadorCores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_03_SobreDialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_03_SobreDialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_04_criar_menu_principal.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_04_criar_menu_principal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_05_configurar_menu_arquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_05_configurar_menu_arquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_06_configurar_menu_configuracoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_06_configurar_menu_configuracoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_07_configurar_menu_opcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_07_configurar_menu_opcoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_08_criar_submenu_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_08_criar_submenu_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_09_criar_icone_cor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_09_criar_icone_cor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_10_abrir_dialogo_cor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_10_abrir_dialogo_cor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_11_criar_submenu_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_11_criar_submenu_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_12_alternar_ordenacao_linhas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_12_alternar_ordenacao_linhas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_13_criar_submenu_colunas_coloridas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_13_criar_submenu_colunas_coloridas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_14_selecionar_todas_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_14_selecionar_todas_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_15_selecionar_todas_cores_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_15_selecionar_todas_cores_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_16_criar_submenu_exportacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_16_criar_submenu_exportacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_17_resetar_opcoes_exportacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_17_resetar_opcoes_exportacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_18_criar_submenu_idiomas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_18_criar_submenu_idiomas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_19_get_texto_traduzido_para_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_19_get_texto_traduzido_para_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_20_confirmar_alteracao_idioma.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_20_confirmar_alteracao_idioma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_21_on_traducoes_carregadas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_21_on_traducoes_carregadas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_22_exibir_sobre.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_22_exibir_sobre.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_23_toggle_desempenho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoMenusUI/gmui_23_toggle_desempenho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_01_verificar_idioma_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_01_verificar_idioma_cache.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_02_traduzir_tipo_operacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_02_traduzir_tipo_operacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_03_obter_chave_traducao_reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_03_obter_chave_traducao_reversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_04_traduzir_metadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_04_traduzir_metadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_05_traduzir_tipo_arquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_05_traduzir_tipo_arquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_06_traduzir_atributos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_06_traduzir_atributos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_07_traduzir_autor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_07_traduzir_autor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_08_traduzir_protegido.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_08_traduzir_protegido.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_09_traduzir_dimensoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/GerenciamentoTradutorMetadadosQt/gtmqt_09_traduzir_dimensoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_01_GerenciadorBotoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_01_GerenciadorBotoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_02_GerenciadorBotoesUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_02_GerenciadorBotoesUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_03_GerenciadorMenusUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_03_GerenciadorMenusUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_04_GerenciadorEventosUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_04_GerenciadorEventosUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_05_GerenciadorProgressoUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_05_GerenciadorProgressoUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_06_GerenciadorEstatisticasUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_06_GerenciadorEstatisticasUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_07_GerenciadorDados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_07_GerenciadorDados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_08_GerenciadorEventosArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_08_GerenciadorEventosArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_09_GerenciadorMonitoramento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_09_GerenciadorMonitoramento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_10_GerenciadorLimpeza.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_10_GerenciadorLimpeza.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_11_DialogoCores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_11_DialogoCores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_12_LocalizadorQt.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_12_LocalizadorQt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_13_TradutorMetadadosQt.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_13_TradutorMetadadosQt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/GerenciamentoUI/ui_14_OpcoesSobre.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/GerenciamentoUI/ui_14_OpcoesSobre.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_01_criar_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_01_criar_chart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_02_obter_percentual_disco.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_02_obter_percentual_disco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_03_atualizar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_03_atualizar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_04_atualizar_series.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_04_atualizar_series.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_05_on_pin_toggled.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_05_on_pin_toggled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_06_update_shared_dialog_title.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_06_update_shared_dialog_title.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_07_rebuild_tab_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_07_rebuild_tab_mapping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_08_repin_all_from_shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_08_repin_all_from_shared.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_09_detach_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_09_detach_chart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_10_pin_chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_10_pin_chart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_11_aplicar_tema.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_11_aplicar_tema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_12_stop.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_12_stop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_13_alternar_graficos_desempenho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_13_alternar_graficos_desempenho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_14_atualizar_traducoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_14_atualizar_traducoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_15_update_disk_drive_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_15_update_disk_drive_mapping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_16_update_disk_chart_title.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorDesempenho/gdesemp_16_update_disk_chart_title.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_01_configurar_atalhos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_01_configurar_atalhos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_02_mostrar_menu_contexto.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_02_mostrar_menu_contexto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_03_obter_selecionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_03_obter_selecionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_04_copiar_selecionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_04_copiar_selecionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_05_cortar_selecionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_05_cortar_selecionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_06_colar_items.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_06_colar_items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_07_excluir_selecionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_07_excluir_selecionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_08_renomear_selecionado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_08_renomear_selecionado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_09_criar_nova_pasta.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_09_criar_nova_pasta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_10_criar_novo_arquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_10_criar_novo_arquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_11_abrir_item.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_11_abrir_item.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_12_changeEvent.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_12_changeEvent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_13_customize_icons.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_13_customize_icons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_14_atualizar_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_14_atualizar_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_15_alternar_estrutura_diretorios.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_15_alternar_estrutura_diretorios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_16_obter_status_diretorios.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/GerenciadorEstruturaDiretoriosWidget/gedw_16_obter_status_diretorios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_01_InterfaceMonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_01_InterfaceMonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_02_Inicializador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_02_Inicializador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_03_Configurador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_03_Configurador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_04_Atualizador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_04_Atualizador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_05_GerenciadorProgresso.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_05_GerenciadorProgresso.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_06_GerenciadorMensagens.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_06_GerenciadorMensagens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_07_ManipuladorTabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_07_ManipuladorTabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_08_Internacionalizador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_08_Internacionalizador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_09_GerenciadorDesempenho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_09_GerenciadorDesempenho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/InterfaceCore/ic_10_EstruturaDiretoriosWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/InterfaceCore/ic_10_EstruturaDiretoriosWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_01_set_callback.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_01_set_callback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_02_criar_banco_de_dados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_02_criar_banco_de_dados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_03_processar_exclusao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_03_processar_exclusao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_04_registrar_evento_especifico.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_04_registrar_evento_especifico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_05_obter_metadados_arquivo_excluido.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_05_obter_metadados_arquivo_excluido.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_06_registrar_evento_no_banco.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_06_registrar_evento_no_banco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_07_atualizar_interface_apos_evento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_07_atualizar_interface_apos_evento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_08_scan_directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_08_scan_directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_09_get_tipo_from_snapshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_09_get_tipo_from_snapshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_10_is_directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_10_is_directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_11_limpar_registros.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_11_limpar_registros.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_12_obter_tipo_anterior.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_12_obter_tipo_anterior.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_13_notificar_evento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_13_notificar_evento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_14_remover_exclusao_temporaria.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_14_remover_exclusao_temporaria.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_15_criar_evento_exclusao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_15_criar_evento_exclusao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_16_criar_evento_padrao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_16_criar_evento_padrao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_17_atualizar_interface_apos_exclusao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_17_atualizar_interface_apos_exclusao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_18_processar_eventos_movimentacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_18_processar_eventos_movimentacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_19_inserir_evento_movido.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoBaseEvento/gbank_19_inserir_evento_movido.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_01_process_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_01_process_batch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_02_scan_directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_02_scan_directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_03_processar_fila.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_03_processar_fila.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_04_get_file_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_04_get_file_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_05_processar_item.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_05_processar_item.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_06_atualizar_progresso.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_06_atualizar_progresso.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_07_atualizar_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_07_atualizar_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_08_finalizar_scan.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_08_finalizar_scan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_09_scan_worker_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoDiretorioScanner/gscanner_09_scan_worker_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_01_calcular_intervalo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_01_calcular_intervalo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_02_calcular_intervalo_original.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_02_calcular_intervalo_original.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_03_is_arquivo_codigo_grande.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_03_is_arquivo_codigo_grande.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_04_limpar_cache_metadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_04_limpar_cache_metadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_05_processar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_05_processar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_06_processar_massivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_06_processar_massivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_07_processar_normal.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoModificado/gevmod_07_processar_normal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_01_MovimentacaoWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_01_MovimentacaoWorker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_02_verificar_movimentacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_02_verificar_movimentacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_03_remover_exclusao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_03_remover_exclusao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_04_atualizar_linha_recente.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_04_atualizar_linha_recente.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_05_atualizar_tabela_completa.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_05_atualizar_tabela_completa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_06_inicializar_sistema_evento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_06_inicializar_sistema_evento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_07_processar_exclusoes_pendentes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_07_processar_exclusoes_pendentes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_08_adicionar_item_tabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_08_adicionar_item_tabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_09_adicionar_evento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoEventoMovido/gevmov_09_adicionar_evento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_01_ExtrairMetadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_01_ExtrairMetadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_02_ExtrairMetadadosCodigoFonte.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_02_ExtrairMetadadosCodigoFonte.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_03_ExtrairMetadadosImagem.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_03_ExtrairMetadadosImagem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_04_ExtrairMetadadosAudio.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_04_ExtrairMetadadosAudio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_05_ExtrairMetadadosVideo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_05_ExtrairMetadadosVideo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_06_ExtrairMetadadosDocumento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_06_ExtrairMetadadosDocumento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_07_ExtrairMetadadosPlanilha.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_07_ExtrairMetadadosPlanilha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_08_ExtrairMetadadosApresentacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_08_ExtrairMetadadosApresentacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_09_ExtrairMetadadosBancoDados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_09_ExtrairMetadadosBancoDados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_10_ExtrairMetadadosExecutavel.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_10_ExtrairMetadadosExecutavel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_11_ExtrairMetadadosTemporario.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_11_ExtrairMetadadosTemporario.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_12_ExtrairMetadadosCompactados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_12_ExtrairMetadadosCompactados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_13_ExtrairMetadadosBackup.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_13_ExtrairMetadadosBackup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_14_ExtrairMetadadosLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_14_ExtrairMetadadosLog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_15_ExtrairMetadadosConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_15_ExtrairMetadadosConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_16_ExtrairMetadadosOlefile.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_16_ExtrairMetadadosOlefile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_17_ExtrairMetadadosDadosEstruturados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_17_ExtrairMetadadosDadosEstruturados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_18_ExtrairMetadadosCompletos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_18_ExtrairMetadadosCompletos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_19_GetTipoArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_19_GetTipoArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_20_GetTamanhoDiretorioArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_20_GetTamanhoDiretorioArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_21_GetFormataTamanho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_21_GetFormataTamanho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_22_GetAtributosArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_22_GetAtributosArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_23_GetAutorArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_23_GetAutorArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_24_GetDimensoesArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_24_GetDimensoesArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_25_GetDuracaoArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_25_GetDuracaoArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_26_GetTaxaBitsArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_26_GetTaxaBitsArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_27_GetProtecaoArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_27_GetProtecaoArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_28_AtualizarInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_28_AtualizarInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_29_SalvarEstadoTabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_29_SalvarEstadoTabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_30_RestaurarEstadoTabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_30_RestaurarEstadoTabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_31_CarregarConfiguracoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_31_CarregarConfiguracoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_32_SalvarConfiguracoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_32_SalvarConfiguracoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_33_ProcessarFilaMetadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_33_ProcessarFilaMetadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_34_CallbackMetadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_34_CallbackMetadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_35_ConfigurarTabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_35_ConfigurarTabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_36_MostrarDialogoConfiguracao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_36_MostrarDialogoConfiguracao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_37_InvalidarCacheDiretoriosRelacionados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_37_InvalidarCacheDiretoriosRelacionados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_38_GetMetadados.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_38_GetMetadados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_39_IdentificarTipoArquivo.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_39_IdentificarTipoArquivo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_40_AdicionarMetadadosAoItem.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_40_AdicionarMetadadosAoItem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_41_ProcessarColunaThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_41_ProcessarColunaThread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_42_AdicionarItemParaColuna.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_42_AdicionarItemParaColuna.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_43_AtualizarColunaInterface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_43_AtualizarColunaInterface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_44_ExtrairMetadadosEmLote.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_44_ExtrairMetadadosEmLote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_45_MetadadosExtraidosCallback.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_45_MetadadosExtraidosCallback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_46_GetSizeUnit.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_46_GetSizeUnit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_47_GetTamanhoBytes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoMetadados/gmet_47_GetTamanhoBytes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_01_DetectarOperacaoMassiva.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_01_DetectarOperacaoMassiva.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_02_Iniciar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_02_Iniciar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_03_HandleScanError.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_03_HandleScanError.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_04_IniciarMonitoramento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_04_IniciarMonitoramento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_05_ProcessarBufferEventos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_05_ProcessarBufferEventos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_06_PararScan.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_06_PararScan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_07_Parar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_07_Parar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_08_LimparEstado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_08_LimparEstado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_09_Monitorar.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_09_Monitorar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_10_ProcessarEventoInterno.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_10_ProcessarEventoInterno.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_11_ProcessarEvento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_11_ProcessarEvento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_12_ReiniciarMonitoramento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_12_ReiniciarMonitoramento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_13_PausarMonitoramentoEscaneamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoObservador/gob_13_PausarMonitoramentoEscaneamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_01_detectar_tema_windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_01_detectar_tema_windows.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_02_calcular_cor_texto_ideal.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_02_calcular_cor_texto_ideal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_03_configurar_tabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_03_configurar_tabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_04_ajustar_larguras_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_04_ajustar_larguras_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_05_aplicar_quebra_linha_cabecalho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_05_aplicar_quebra_linha_cabecalho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_06_aplicar_quebra_linha_todos_cabecalhos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_06_aplicar_quebra_linha_todos_cabecalhos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_07_ajustar_altura_cabecalho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_07_ajustar_altura_cabecalho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_08_redimensionar_cabecalho.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_08_redimensionar_cabecalho.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_09_atualizar_cabecalhos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_09_atualizar_cabecalhos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_10_atualizar_dados_tabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_10_atualizar_dados_tabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_11_atualizar_linha_mais_recente.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_11_atualizar_linha_mais_recente.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_12_atualizar_visualizacao_tabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_12_atualizar_visualizacao_tabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_13_atualizar_visibilidade_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_13_atualizar_visibilidade_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_14_invalidar_cache_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_14_invalidar_cache_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_15_obter_cores_operacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_15_obter_cores_operacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_16_obter_indices_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_16_obter_indices_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_17_ativar_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_17_ativar_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_18_ocultar_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_18_ocultar_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_19_aplicar_cores_linha_especifica.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_19_aplicar_cores_linha_especifica.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_20_aplicar_cores_todas_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_20_aplicar_cores_todas_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_21_redefinir_cores_todas_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_21_redefinir_cores_todas_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_22_remover_cor_coluna.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_22_remover_cor_coluna.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_23_atualizar_cores_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_23_atualizar_cores_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_24_set_coluna_colorir.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_24_set_coluna_colorir.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_25_set_colunas_colorir_em_massa.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_25_set_colunas_colorir_em_massa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_26_remover_todas_cores_colunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_26_remover_todas_cores_colunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_27_salvar_configuracoes_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_27_salvar_configuracoes_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_28_carregar_configuracoes_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_28_carregar_configuracoes_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_29_eh_coluna_personalizada_colorida.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_29_eh_coluna_personalizada_colorida.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_30_mostrar_dialogo_configuracao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_30_mostrar_dialogo_configuracao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_31_ajustar_cor_selecao.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_31_ajustar_cor_selecao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_32_worker_thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_32_worker_thread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_33_atualizar_estilo_tema.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_33_atualizar_estilo_tema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_34_monitor_tema_windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_34_monitor_tema_windows.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_35_iniciar_processamento_pesado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_35_iniciar_processamento_pesado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_36_aplicar_cores_todas_colunas_processamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_36_aplicar_cores_todas_colunas_processamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_37_processar_cores_em_background.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_37_processar_cores_em_background.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_38_on_cores_processadas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_38_on_cores_processadas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_39_atualizar_cores_na_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_39_atualizar_cores_na_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_40_atualizar_interface_pos_processamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_40_atualizar_interface_pos_processamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_41_processar_selecao_background.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_41_processar_selecao_background.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_42_shutdown_executors.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_42_shutdown_executors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_43_atualizar_cabecalhos.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_43_atualizar_cabecalhos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_44_on_idioma_alterado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_44_on_idioma_alterado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_45_retraduzir_dados_existentes.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_45_retraduzir_dados_existentes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_46_executar_retraducao_agendada.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/GerenciamentoTabela/gtab_46_executar_retraducao_agendada.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_01_Observador.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_01_Observador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_02_BaseEvento.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_02_BaseEvento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_03_DiretorioScanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_03_DiretorioScanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_06_EventoModificado.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_06_EventoModificado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_08_EventoMovido.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_08_EventoMovido.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_09_GerenciadorColunas.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_09_GerenciadorColunas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/Observador/ob_10_GerenciadorTabela.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/Observador/ob_10_GerenciadorTabela.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/ApplicationPathUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/CaminhoPersistenteUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/IconUtils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/LogManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/TrialManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="34cpzLxMzEQzBpo4scvKzNseoxi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ferna/WORK/Projetos_Python/Linceu_Lighthouse&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1966bd5-016d-43bd-ac51-76c717695b02" name="Changes" comment="" />
+      <created>1761522975890</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761522975890</updated>
+      <workItem from="1761522977241" duration="3070000" />
+      <workItem from="1761543077815" duration="703000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Linceu_Lighthouse$main.coverage" NAME="main Coverage Results" MODIFIED="1761524462749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
 </project>

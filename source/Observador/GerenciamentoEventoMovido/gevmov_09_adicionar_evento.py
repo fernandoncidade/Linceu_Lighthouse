@@ -1,6 +1,6 @@
 from source.Observador.GerenciamentoEventoMovido.gevmov_02_verificar_movimentacao import verificar_movimentacao
 from source.Observador.GerenciamentoEventoMovido.gevmov_06_inicializar_sistema_evento import _inicializar_sistema_evento
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def adicionar_evento(interfaceMonitor, evento):

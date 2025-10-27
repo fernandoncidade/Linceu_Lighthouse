@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QHeaderView
 from PySide6.QtGui import QFontMetrics
 from PySide6.QtCore import Qt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def ajustar_larguras_colunas(self, tabela_dados, colunas_visiveis):

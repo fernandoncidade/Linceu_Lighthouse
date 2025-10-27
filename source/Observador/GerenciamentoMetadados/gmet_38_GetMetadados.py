@@ -22,7 +22,7 @@ from source.Observador.GerenciamentoMetadados import (
     get_dimensoes_arquivo,
     get_protecao_arquivo
 )
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def get_metadados(gc, item):

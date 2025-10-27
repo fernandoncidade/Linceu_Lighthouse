@@ -2,8 +2,8 @@ from PySide6.QtWidgets import QVBoxLayout, QHBoxLayout, QGroupBox, QCheckBox, QL
 from PySide6.QtCore import QDateTime
 from PySide6.QtGui import QIcon
 from source.Filtros.fil_03_AdministradorFiltros import AdministradorFiltros
-from utils.IconUtils import get_icon_path
-from utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def setup_ui(self):

@@ -6,7 +6,7 @@ from source.Observador.GerenciamentoEventoModificado.gevmod_04_limpar_cache_meta
 from source.Observador.GerenciamentoEventoModificado.gevmod_05_processar import processar
 from source.Observador.GerenciamentoEventoModificado.gevmod_06_processar_massivo import _processar_massivo
 from source.Observador.GerenciamentoEventoModificado.gevmod_07_processar_normal import _processar_normal
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 
 logger = LogManager.get_logger()
 

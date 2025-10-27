@@ -2,7 +2,7 @@ import json
 import xml.etree.ElementTree as ET
 import pandas as pd
 from PySide6.QtWidgets import QFileDialog, QMessageBox, QApplication
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def exportar_dados(self, tabela_dados, formato, nome_arquivo=None):

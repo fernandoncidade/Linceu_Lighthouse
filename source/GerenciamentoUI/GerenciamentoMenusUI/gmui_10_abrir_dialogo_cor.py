@@ -2,7 +2,7 @@ from PySide6.QtGui import QColor
 from PySide6.QtWidgets import QMessageBox
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_02_GerenciadorCores import GerenciadorCores
 from source.GerenciamentoUI.ui_11_DialogoCores import DialogoPaletaCores
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _abrir_dialogo_cor(self, tipo_operacao):

@@ -22,7 +22,7 @@ from source.Observador.GerenciamentoObservador.gob_11_ProcessarEvento import pro
 from source.Observador.GerenciamentoObservador.gob_12_ReiniciarMonitoramento import reiniciar_monitoramento
 from source.Observador.GerenciamentoObservador.gob_13_PausarMonitoramentoEscaneamento import pausar_monitoramento_ou_escaneamento
 from source.GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 
 logger = LogManager.get_logger()
 

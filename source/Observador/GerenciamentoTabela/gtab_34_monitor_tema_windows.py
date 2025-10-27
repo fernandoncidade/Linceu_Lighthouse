@@ -1,7 +1,8 @@
 import winreg
 from PySide6.QtCore import QObject, Signal, QTimer
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
+
 
 class MonitorTemaWindows(QObject):
     tema_alterado = Signal(str)

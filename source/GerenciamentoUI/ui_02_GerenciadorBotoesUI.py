@@ -1,7 +1,7 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtWidgets import QHBoxLayout, QLabel, QPushButton
-from utils.IconUtils import get_icon_path
+from source.utils.IconUtils import get_icon_path
 logger = LogManager.get_logger()
 
 

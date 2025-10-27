@@ -1,8 +1,8 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QScrollArea, QCheckBox, QFrame, QPushButton
-from utils.LogManager import LogManager
-from utils.IconUtils import get_icon_path
+from source.utils.LogManager import LogManager
+from source.utils.IconUtils import get_icon_path
 logger = LogManager.get_logger()
 
 def _criar_painel_selecao(self, graficos=None):

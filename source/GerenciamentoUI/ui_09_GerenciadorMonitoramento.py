@@ -3,7 +3,7 @@ import gc
 import sqlite3
 from PySide6.QtCore import QMutexLocker
 from PySide6.QtWidgets import QApplication
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

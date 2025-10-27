@@ -14,7 +14,7 @@ from source.GerenciamentoUI.ui_14_OpcoesSobre import (
     History_APP_de_DE, RELEASE_NOTES_pt_BR, RELEASE_NOTES_en_US, RELEASE_NOTES_es_ES,
     RELEASE_NOTES_fr_FR, RELEASE_NOTES_it_IT, RELEASE_NOTES_de_DE
 )
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _exibir_sobre(self):
@@ -73,13 +73,14 @@ def _exibir_sobre(self):
         texto_privacidade = textos_privacidade.get(self.loc.idioma_atual, textos_privacidade["en_US"])
         texto_history = history_texts.get(self.loc.idioma_atual, history_texts["en_US"])
         texto_release_notes = release_notes_texts.get(self.loc.idioma_atual, release_notes_texts["en_US"])
+
         cabecalho_fixo = (
             "<h3>LINCEU LIGHTHOUSE</h3>"
             f"<p><b>{self.loc.get_text('version')}:</b> 0.1.0.0</p>"
             f"<p><b>{self.loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
             f"<p><b>{self.loc.get_text('description')}:</b> {self.loc.get_text('description_text')}</p>"
         )
-        show_history_text = self.loc.get_text("show_history") or "Justificativa do Nome"
+
         dialog = SobreDialog(
             self.interface,
             titulo=f"{self.loc.get_text('about')} - LINCEU LIGHTHOUSE",
@@ -88,7 +89,8 @@ def _exibir_sobre(self):
             detalhes=texto_sobre,
             licencas=texto_licenca,
             sites_licencas=SITE_LICENSES,
-            show_history_text=show_history_text,
+            show_history_text=self.loc.get_text("show_history"),
+            hide_history_text=self.loc.get_text("hide_history"),
             show_details_text=self.loc.get_text("show_details"),
             hide_details_text=self.loc.get_text("hide_details"),
             show_licenses_text=self.loc.get_text("show_licenses"),
@@ -103,7 +105,8 @@ def _exibir_sobre(self):
             hide_privacy_policy_text=self.loc.get_text("hide_privacy_policy"),
             info_not_available_text=self.loc.get_text("information_not_available"),
             release_notes=texto_release_notes,
-            show_release_notes_text=self.loc.get_text("show_release_notes") or "Release Notes"
+            show_release_notes_text=self.loc.get_text("show_release_notes"),
+            hide_release_notes_text=self.loc.get_text("hide_release_notes")
         )
         tamanho_base_largura = 900
         tamanho_base_altura = 500

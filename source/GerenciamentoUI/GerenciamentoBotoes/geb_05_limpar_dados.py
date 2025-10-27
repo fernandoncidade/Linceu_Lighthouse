@@ -1,6 +1,6 @@
 from PySide6.QtGui import Qt
 from PySide6.QtCore import QMetaObject
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def limpar_dados(self):

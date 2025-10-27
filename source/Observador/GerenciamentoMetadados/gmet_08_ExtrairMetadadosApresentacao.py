@@ -1,6 +1,6 @@
 import os
 from .gmet_16_ExtrairMetadadosOlefile import extrair_metadados_olefile
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_apresentacao(caminho, loc):

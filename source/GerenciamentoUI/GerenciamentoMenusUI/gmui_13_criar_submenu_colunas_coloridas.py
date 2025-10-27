@@ -1,6 +1,6 @@
 from PySide6.QtGui import QAction
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_01_MenuPersistente import MenuPersistente
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _criar_submenu_colunas_coloridas(self, menu_configuracoes):

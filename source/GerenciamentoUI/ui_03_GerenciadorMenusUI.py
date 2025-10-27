@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_02_GerenciadorCores import GerenciadorCores
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_04_criar_menu_principal import criar_menu_principal
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_05_configurar_menu_arquivo import _configurar_menu_arquivo

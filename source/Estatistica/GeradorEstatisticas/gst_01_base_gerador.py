@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

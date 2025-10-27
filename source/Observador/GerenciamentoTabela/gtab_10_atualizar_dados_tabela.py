@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from PySide6.QtWidgets import QTableWidgetItem, QApplication
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):

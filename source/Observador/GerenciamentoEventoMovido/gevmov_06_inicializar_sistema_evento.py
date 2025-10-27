@@ -1,6 +1,6 @@
 from PySide6.QtCore import QTimer
 from source.Observador.GerenciamentoEventoMovido.gevmov_07_processar_exclusoes_pendentes import _processar_exclusoes_pendentes
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _inicializar_sistema_evento(interfaceMonitor):

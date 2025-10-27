@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from PySide6.QtCharts import QLineSeries
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor, QPen

@@ -2,7 +2,7 @@ import os
 import tempfile
 import shutil
 from urllib.parse import quote
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_banco_dados(caminho, loc):

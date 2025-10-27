@@ -2,7 +2,7 @@ import time
 import pywintypes
 import win32file
 import win32con
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def monitorar(self):

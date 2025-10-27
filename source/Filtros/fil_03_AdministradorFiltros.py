@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.Filtros.GerenciamentoAdministradorFiltros.gadmfil_01_desconectar_sinais import desconectar_sinais
 from source.Filtros.GerenciamentoAdministradorFiltros.gadmfil_02_aplicar_filtros import aplicar_filtros
 from source.Filtros.GerenciamentoAdministradorFiltros.gadmfil_03_limpar_filtros import limpar_filtros

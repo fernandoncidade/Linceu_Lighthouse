@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def extrair_metadados_codigo_fonte(caminho, loc):

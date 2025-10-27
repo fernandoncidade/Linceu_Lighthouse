@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QPalette
 from PySide6.QtCore import QTimer, Qt
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def redefinir_cores_todas_colunas(self):

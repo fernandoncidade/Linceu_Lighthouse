@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from PySide6.QtCore import QTimer
 logger = LogManager.get_logger()
 

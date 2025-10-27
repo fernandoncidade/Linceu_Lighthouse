@@ -1,7 +1,7 @@
 import os
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import QInputDialog, QMessageBox
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def criar_nova_pasta(self, pasta_pai=None):

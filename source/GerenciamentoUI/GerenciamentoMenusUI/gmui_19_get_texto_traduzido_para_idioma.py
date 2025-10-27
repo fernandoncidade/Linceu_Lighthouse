@@ -1,6 +1,6 @@
 import os
 from PySide6.QtCore import QTranslator
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _get_texto_traduzido_para_idioma(self, chave: str, idioma: str) -> str:

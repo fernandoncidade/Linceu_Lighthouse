@@ -31,8 +31,8 @@ from source.Observador.GerenciamentoMetadados import (
     _get_size_unit,
     _get_tamanho_bytes
 )
-from utils.CaminhoPersistenteUtils import obter_caminho_persistente
-from utils.LogManager import LogManager
+from source.utils.CaminhoPersistenteUtils import obter_caminho_persistente
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QMessageBox, QApplication, QDialog
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def atualizar_interface(self):

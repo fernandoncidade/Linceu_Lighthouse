@@ -8,7 +8,7 @@ from source.Observador.GerenciamentoEventoMovido.gevmov_06_inicializar_sistema_e
 from source.Observador.GerenciamentoEventoMovido.gevmov_07_processar_exclusoes_pendentes import _processar_exclusoes_pendentes
 from source.Observador.GerenciamentoEventoMovido.gevmov_08_adicionar_item_tabela import _adicionar_item_tabela
 from source.Observador.GerenciamentoEventoMovido.gevmov_09_adicionar_evento import adicionar_evento
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 

@@ -1,7 +1,7 @@
 import sqlite3
 from PySide6.QtCore import QTimer
 from source.Observador.GerenciamentoEventoMovido.gevmov_04_atualizar_linha_recente import _atualizar_linha_recente
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def _remover_exclusao(interfaceMonitor, nome, dir_anterior, exclusao_id=None):

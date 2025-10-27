@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QMessageBox
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def redefinir_todas_colunas_cores(self, gerenciador_cores, acao_exportar_colunas_ativas, acao_exportar_filtros_ativos, acao_exportar_selecao, criar_menu_principal, gerenciador_tabela):

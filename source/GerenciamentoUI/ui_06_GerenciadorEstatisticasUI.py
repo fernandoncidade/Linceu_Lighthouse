@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_01_mostrar_estatisticas import mostrar_estatisticas
 from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_02_salvar_todos_graficos import salvar_todos_graficos
 from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_03_limpar_referencia_dialog import limpar_referencia_dialog
@@ -31,6 +31,7 @@ from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_27_ajustar_largura_
 from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_28_traduzir_botoes_detalhes import _traduzir_botoes_detalhes
 from source.GerenciamentoUI.GerenciamentoEstatisticasUI.geui_29_abrir_diretorio import _abrir_diretorio
 logger = LogManager.get_logger()
+
 
 class GerenciadorEstatisticasUI:
     def __init__(self, interface_principal):

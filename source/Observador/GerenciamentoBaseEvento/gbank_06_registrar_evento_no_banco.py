@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def registrar_evento_no_banco(self, evento):

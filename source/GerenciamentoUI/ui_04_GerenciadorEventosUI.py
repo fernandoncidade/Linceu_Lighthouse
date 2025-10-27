@@ -1,4 +1,4 @@
-from utils.LogManager import LogManager
+from source.utils.LogManager import LogManager
 from source.GerenciamentoUI.GerenciamentoEventosUI.geve_01_alternar_filtro import alternar_filtro
 from source.GerenciamentoUI.GerenciamentoEventosUI.geve_02_alternar_visibilidade_coluna import alternar_visibilidade_coluna
 from source.GerenciamentoUI.GerenciamentoEventosUI.geve_03_resetar_colunas import resetar_colunas
