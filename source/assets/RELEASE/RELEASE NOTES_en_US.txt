@@ -1,3 +1,53 @@
+RELEASE NOTES: Version 0.1.2.0:
+
+This release introduces architecture optimizations and performance improvements focused on event streaming, asynchronous writing and UI scalability.
+
+Main improvements
+- Safe asynchronous writing:
+  - Introduced DatabaseWriter (singleton service) with internal queue, batching and dedicated thread.
+  - Enabled PRAGMA journal_mode=WAL and synchronous=NORMAL to reduce read/write contention.
+  - Batch writes to reduce per-item commits and improve I/O throughput.
+
+- Eager writer initialization:
+  - DatabaseWriter is started at application startup (iniciar_aplicacao), avoiding creation costs during event spikes.
+
+- Streaming and immediate GUI update:
+  - Events are now queued and the GUI is updated immediately using QMetaObject.invokeMethod for thread-safe calls to the main thread.
+  - "Deleted" events now follow the same streaming flow (no mandatory DB round-trips), eliminating unnecessary reads and reducing latency.
+
+- Migration to Model/View:
+  - Replaced QTableWidget with QTableView + QAbstractTableModel (EventTableModel) for scalability to millions of events.
+  - Model insertions (prepend/append) are efficient and the view is virtualized, allowing smooth scrolling and real-time observation without freezes.
+
+- Robustness and compatibility:
+  - Fallback mechanisms retained: direct DB write if writer fails; GUI update fallback compatible with the old API.
+  - Ordered shutdown of DatabaseWriter on application exit.
+
+Performance impact
+- Reduced SQLite contention under heavy load.
+- More responsive UI when presenting events (streaming effect with reduced latency).
+- Significant improvements for "Added", "Modified" and "Scanned" events.
+- Specific optimization for "Deleted" events: they now follow the streaming path, reducing prior penalties caused by extra reads/queries.
+
+Fixes and adjustments
+- Avoids heavy metadata extraction when file is absent (reduces processing cost for deletions).
+- Additional logs for diagnosing DatabaseWriter queueing and fallback.
+- Thread-safety and Qt call adjustments (invokeMethod with Qt.ConnectionType.QueuedConnection).
+
+Recommendations for operator/user
+- Tune DatabaseWriter.batch_size and batch_timeout to your load profile (e.g., batch_size=200, batch_timeout=0.2).
+- Prefer setting application language before starting high-load monitoring (see earlier notes).
+- Use SSD / fast I/O to best exploit batching.
+- For extreme visual latency needs, consider visual micro-batching (QTimer ~16 ms) — available as a future option.
+
+Final notes
+- Changes prioritize throughput and responsiveness without sacrificing data consistency.
+- If regressions or latency spikes are observed, submit DEBUG-level logs for analysis (Preferences → Logs).
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.1.1.0:
 
 In this new version, the following improvements and features have been implemented:
@@ -5,9 +55,6 @@ In this new version, the following improvements and features have been implement
 Main improvements
 - Improvements to the source code structure: several internal optimizations were made to improve the efficiency and maintainability of the code.
 - Dependency updates: libraries and frameworks used have been updated to their latest versions, ensuring better compatibility and security.
-
-Acknowledgment
-- Thank you for using the application. This version focuses on stability and the quality of the displayed information so that file and folder management is safer and more efficient.
 
 
 _________________________________________________
@@ -37,9 +84,6 @@ User notes
 - No additional action required; the update improves stability and the quality of displayed information.
 - If the app cannot read a file (for example due to system permissions), it will continue working and show the information it can collect.
 - If you have questions or problems after the update, enable logs in settings and share them with support for investigation.
-
-Thanks
-- Thank you for using the app. This version focuses on stability and the quality of displayed information so file and folder management is safer and more efficient.
 
 
 _________________________________________________

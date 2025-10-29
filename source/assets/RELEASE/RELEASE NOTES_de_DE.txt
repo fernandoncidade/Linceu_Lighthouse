@@ -1,3 +1,53 @@
+VERSIONSHINWEISE: Version 0.1.2.0:
+
+Dieses Release enthält Architekturoptimierungen und Leistungsverbesserungen mit Fokus auf Event-Streaming, asynchrones Schreiben und Skalierbarkeit der Benutzeroberfläche.
+
+Hauptverbesserungen
+- Sichere asynchrone Schreibvorgänge:
+  - Einführung von DatabaseWriter (Singleton-Service) mit interner Queue, Batching und dediziertem Thread.
+  - Aktivierung von PRAGMA journal_mode=WAL und synchronous=NORMAL zur Reduzierung von Lese-/Schreib-Konflikten.
+  - Batch-Schreibvorgänge, um Commits pro Element zu reduzieren und den I/O-Durchsatz zu verbessern.
+
+- Eager-Initialisierung des Writers:
+  - DatabaseWriter wird beim Start der Anwendung (iniciar_aplicacao) gestartet, wodurch Erstellungsaufwand bei Ereignisspitzen vermieden wird.
+
+- Streaming und sofortige GUI-Aktualisierung:
+  - Ereignisse werden nun in eine Queue gestellt und die GUI sofort über QMetaObject.invokeMethod aktualisiert (thread-sichere Aufrufe in den Hauptthread).
+  - "Gelöschte" Ereignisse folgen nun demselben Streaming-Pfad (ohne zwingende DB-Roundtrips), unnötige Lesezugriffe entfallen und die Latenz sinkt.
+
+- Migration zu Model/View:
+  - Ersetzung von QTableWidget durch QTableView + QAbstractTableModel (EventTableModel) für Skalierbarkeit auf Millionen von Ereignissen.
+  - Model-Einfügungen (prepend/append) sind effizient und die View ist virtualisiert, was flüssiges Scrollen und Echtzeitbeobachtung ohne Hänger ermöglicht.
+
+- Robustheit und Kompatibilität:
+  - Fallback-Mechanismen erhalten: Direktschreiben in die DB bei Ausfall des Writers; GUI-Update-Fallback kompatibel mit der alten API.
+  - Geordneter Shutdown des DatabaseWriter beim Beenden der Anwendung.
+
+Auswirkung auf die Leistung
+- Reduzierte SQLite-Kontention bei hoher Last.
+- Reaktionsschnellere Oberfläche beim Anzeigen von Ereignissen (Streaming-Effekt mit geringerer Latenz).
+- Deutliche Verbesserungen bei "Hinzugefügt", "Geändert" und "Gescanned".
+- Spezifische Optimierung für "Gelöscht": folgt jetzt dem Streaming-Pfad und reduziert frühere Strafzeiten durch zusätzliche Lese-/Abfrageoperationen.
+
+Korrekturen und Anpassungen
+- Vermeidet aufwändige Metadaten-Extraktion, wenn die Datei fehlt (reduziert Verarbeitungsaufwand bei Löschvorgängen).
+- Zusätzliche Logs zur Diagnose von Queueing und Fallback des DatabaseWriter.
+- Thread-Sicherheits- und Qt-Aufruf-Anpassungen (invokeMethod mit Qt.ConnectionType.QueuedConnection).
+
+Empfehlungen für Anwender/Betreiber
+- DatabaseWriter.batch_size und batch_timeout an das Lastprofil anpassen (z. B. batch_size=200, batch_timeout=0.2).
+- Sprache bevorzugt vor Beginn des Monitorings setzen bei sehr hohen Lasten.
+- Einsatz von SSDs / schneller I/O empfohlen, um das Batching optimal zu nutzen.
+- Für extrem geringe visuelle Latenz micro-batching (QTimer ~16 ms) in Betracht ziehen — zukünftige Option.
+
+Abschließende Hinweise
+- Diese Änderungen priorisieren Durchsatz und Reaktionsfähigkeit, ohne die Konsistenz der Daten zu opfern.
+- Bei Regressionsfällen oder Latenzspitzen Logs im DEBUG-Level zur Analyse bereitstellen (Einstellungen → Logs).
+
+
+_________________________________________________
+
+
 RELEASE-HINWEISE: Version 0.1.1.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
@@ -5,9 +55,6 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umges
 Wesentliche Verbesserungen
 - Verbesserungen an der Struktur des Quellcodes: Es wurden mehrere interne Optimierungen vorgenommen, um die Effizienz und Wartbarkeit des Codes zu verbessern.
 - Aktualisierungen von Abhängigkeiten: Die verwendeten Bibliotheken und Frameworks wurden auf ihre neuesten Versionen aktualisiert, um bessere Kompatibilität und Sicherheit zu gewährleisten.
-
-Dank
-- Danke, dass Sie die Anwendung verwenden. Diese Version konzentriert sich auf Stabilität und auf die Qualität der angezeigten Informationen, damit die Verwaltung von Dateien und Ordnern sicherer und effizienter ist.
 
 
 _________________________________________________
@@ -37,9 +84,6 @@ Hinweise für Benutzer
 - Keine zusätzlichen Maßnahmen erforderlich; das Update verbessert Stabilität und Qualität der angezeigten Informationen.
 - Falls die App eine Datei nicht lesen kann (z. B. wegen Systemberechtigungen), funktioniert sie weiter und zeigt die Informationen an, die sie sammeln kann.
 - Bei Fragen oder Problemen nach dem Update aktivieren Sie die Protokolle (Logs) in den Einstellungen und teilen diese mit dem Support zur Untersuchung.
-
-Danke
-- Vielen Dank für die Nutzung der App. Diese Version konzentriert sich auf Stabilität und die Qualität der angezeigten Informationen, damit die Verwaltung von Dateien und Ordnern sicherer und effizienter ist.
 
 
 _________________________________________________
