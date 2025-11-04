@@ -18,11 +18,25 @@ def scan_directory(self, directory):
 
         contador = 0
         for root, dirs, files in os.walk(directory):
+            while hasattr(self, "_pause_event") and not self._pause_event.is_set():
+                if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                    logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
+                    return
+
+                import time; time.sleep(0.1)
+
             if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
                 logger.info("Scan interrompido por requestInterruption ou desligando")
                 return
 
             for d in dirs:
+                while hasattr(self, "_pause_event") and not self._pause_event.is_set():
+                    if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                        logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
+                        return
+
+                    import time; time.sleep(0.1)
+
                 if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
                     logger.info("Scan interrompido por requestInterruption ou desligando")
                     return
@@ -83,6 +97,13 @@ def scan_directory(self, directory):
                 self.progresso_atualizado.emit(int(contador * 100 / self.total_arquivos), contador, self.total_arquivos)
 
             for f in files:
+                while hasattr(self, "_pause_event") and not self._pause_event.is_set():
+                    if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                        logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
+                        return
+
+                    import time; time.sleep(0.1)
+
                 if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
                     logger.info("Scan interrompido por requestInterruption ou desligando")
                     return

@@ -30,14 +30,11 @@ class GerenciadorMenusUI:
         self.interface = interface_principal
         self.loc = interface_principal.loc
         self.acoes_colunas = {}
-
         self.gerenciador_cores = GerenciadorCores(interface_principal)
         self.interface._ordenacao_linhas_habilitada = False
-
         self._acoes_idioma = {}
         self._trocando_idioma = False
         self._aguardando_conclusao_traducao = False
-
         try:
             if hasattr(self.interface, "loc") and hasattr(self.interface.loc, "traducoes_carregadas"):
                 self.interface.loc.traducoes_carregadas.connect(self._on_traducoes_carregadas)
@@ -48,15 +45,12 @@ class GerenciadorMenusUI:
     def criar_menu_principal(self):
         menu_bar = self.interface.menuBar()
         menu_bar.clear()
-
         menu_arquivo = MenuPersistente(self.loc.get_text("file_menu"), self.interface)
         menu_configuracoes = MenuPersistente(self.loc.get_text("settings"), self.interface)
         menu_opcoes = MenuPersistente(self.loc.get_text("options_menu"), self.interface)
-
         menu_bar.addMenu(menu_arquivo)
         menu_bar.addMenu(menu_configuracoes)
         menu_bar.addMenu(menu_opcoes)
-
         self._configurar_menu_arquivo(menu_arquivo)
         self._configurar_menu_configuracoes(menu_configuracoes)
         self._configurar_menu_opcoes(menu_opcoes)
@@ -65,13 +59,13 @@ class GerenciadorMenusUI:
         acoes = [
             {"texto": "select_dir", "slot": self.interface.selecionar_diretorio},
             {"texto": "start_stop", "slot": self.interface.alternar_analise_diretorio},
+            {"texto": "pause_analysis", "slot": self.interface.gerenciador_botoes.pausar_monitoramento_ou_escaneamento},
             {"texto": "save_as", "slot": self.interface.abrir_salvar_como},
             {"texto": "save", "slot": self.interface.salvar_dados},
             {"texto": "statistics", "slot": self.interface.mostrar_estatisticas},
             {"texto": "clear_data", "slot": self.interface.limpar_dados},
             {"texto": "exit", "slot": self.interface.sair_aplicacao}
         ]
-
         for acao in acoes:
             item_menu = QAction(self.loc.get_text(acao["texto"]), self.interface)
             item_menu.triggered.connect(acao["slot"])
@@ -82,7 +76,6 @@ class GerenciadorMenusUI:
         menu_configuracoes.addMenu(submenu_filtros)
         grupo_filtros = QActionGroup(self.interface)
         grupo_filtros.setExclusive(False)
-
         for op in ["op_moved", "op_renamed", "op_added", "op_deleted", "op_modified", "op_scanned"]:
             acao_filtro = QAction(self.loc.get_text(op), self.interface)
             acao_filtro.setCheckable(True)
@@ -96,7 +89,6 @@ class GerenciadorMenusUI:
         acao_filtros_avancados = QAction(self.loc.get_text("advanced_filters"), self.interface)
         acao_filtros_avancados.triggered.connect(self.interface.abrir_janela_filtros)
         submenu_filtros.addAction(acao_filtros_avancados)
-
         self._criar_submenu_colunas(menu_configuracoes)
         self._criar_submenu_colunas_coloridas(menu_configuracoes)
         self._criar_submenu_cores(menu_configuracoes)
@@ -104,7 +96,6 @@ class GerenciadorMenusUI:
 
     def _configurar_menu_opcoes(self, menu_opcoes):
         self._criar_submenu_idiomas(menu_opcoes)
-
         menu_opcoes.addSeparator()
         acao_sobre = QAction(self.loc.get_text("about"), self.interface)
         acao_sobre.triggered.connect(self._exibir_sobre)
@@ -113,10 +104,8 @@ class GerenciadorMenusUI:
     def _criar_submenu_cores(self, menu_configuracoes):
         submenu_cores = MenuPersistente(self.loc.get_text("configure_colors"), self.interface)
         menu_configuracoes.addMenu(submenu_cores)
-
         submenu_cores_operacoes = MenuPersistente(self.loc.get_text("operation_colors"), self.interface)
         submenu_cores.addMenu(submenu_cores_operacoes)
-
         tipos_operacoes = {
             "op_renamed": self.loc.get_text("op_renamed"),
             "op_added": self.loc.get_text("op_added"),
@@ -125,20 +114,16 @@ class GerenciadorMenusUI:
             "op_moved": self.loc.get_text("op_moved"),
             "op_scanned": self.loc.get_text("op_scanned")
         }
-
         for op_key, op_text in tipos_operacoes.items():
             acao_cor = QAction(op_text, self.interface)
             acao_cor.setData(op_key)
-
             cor_atual = self.gerenciador_cores.obter_cor_hex(op_key)
             icone = self._criar_icone_cor(cor_atual)
             acao_cor.setIcon(icone)
-
             acao_cor.triggered.connect(lambda checked, op=op_key: self._abrir_dialogo_cor(op))
             submenu_cores_operacoes.addAction(acao_cor)
 
         submenu_cores.addSeparator()
-
         acao_resetar_cores = QAction(self.loc.get_text("reset_colors"), self.interface)
         acao_resetar_cores.triggered.connect(
             lambda: self.interface.gerenciador_eventos_ui.resetar_cores(
@@ -155,49 +140,38 @@ class GerenciadorMenusUI:
         tamanho = 16
         pixmap = QPixmap(tamanho, tamanho)
         pixmap.fill(Qt.transparent)
-
         painter = QPainter(pixmap)
         painter.setPen(Qt.NoPen)
         painter.setBrush(QColor(cor_hex))
         painter.drawRect(0, 0, tamanho, tamanho)
         painter.end()
-
         return QIcon(pixmap)
 
     def _abrir_dialogo_cor(self, tipo_operacao):
         try:
             cor_atual = QColor(self.gerenciador_cores.obter_cor_hex(tipo_operacao))
-
             nome_operacao = self.loc.get_text(tipo_operacao)
             titulo = f"{self.loc.get_text('select_color_for')} {nome_operacao}"
-
             dialogo = DialogoPaletaCores(cor_atual, self.interface, titulo)
             GerenciadorCores.aplicar_icone_paleta(dialogo, tipo="paleta")
-
             dialogo.show()
-
             def on_cor_selecionada(nova_cor):
                 if nova_cor.isValid():
                     self.gerenciador_cores.definir_cor(tipo_operacao, nova_cor.name())
                     self.gerenciador_cores.salvar_cores()
                     self.gerenciador_cores.atualizar_cores_no_sistema()
-
                     if hasattr(self.interface, "gerenciador_tabela"):
                         self.interface.gerenciador_tabela.atualizar_cores_colunas(aplicar_em_massa=True)
 
                     exportar_colunas_ativas = self.acao_exportar_colunas_ativas.isChecked()
                     exportar_filtros_ativos = self.acao_exportar_filtros_ativos.isChecked()
                     exportar_selecao = self.acao_exportar_selecao.isChecked()
-
                     self.criar_menu_principal()
-
                     self.acao_exportar_colunas_ativas.setChecked(exportar_colunas_ativas)
                     self.acao_exportar_filtros_ativos.setChecked(exportar_filtros_ativos)
                     self.acao_exportar_selecao.setChecked(exportar_selecao)
-
                     mensagem = self.loc.get_text("color_changed_success")
                     QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem)
-
                     logger.info(f"Cor de {tipo_operacao} alterada para {nova_cor.name()}")
                     dialogo.close()
 
@@ -215,7 +189,6 @@ class GerenciadorMenusUI:
         grupo_colunas = QActionGroup(self.interface)
         grupo_colunas.setExclusive(False)
         self.acoes_colunas.clear()
-
         for key, coluna in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]):
             acao_coluna = QAction(coluna["nome"], self.interface)
             acao_coluna.setCheckable(True)
@@ -243,16 +216,12 @@ class GerenciadorMenusUI:
     def _alternar_ordenacao_linhas(self):
         try:
             self.interface._ordenacao_linhas_habilitada = self.acao_ordenar_linhas.isChecked()
-
             if hasattr(self.interface, 'tabela_dados') and self.interface.tabela_dados is not None:
                 self.interface.tabela_dados.setSortingEnabled(self.interface._ordenacao_linhas_habilitada)
-
                 estado = "habilitada" if self.interface._ordenacao_linhas_habilitada else "desabilitada"
                 logger.info(f"Ordenação de linhas {estado}")
-
                 estado_texto = self.loc.get_text("enabled") if self.interface._ordenacao_linhas_habilitada else self.loc.get_text("disabled")
                 mensagem = f"{self.loc.get_text('sort_rows')} {estado_texto}"
-
                 QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem)
 
         except Exception as e:
@@ -264,7 +233,6 @@ class GerenciadorMenusUI:
         menu_configuracoes.addMenu(submenu_colorir_colunas)
         submenu_colunas_interno = MenuPersistente(self.loc.get_text("columns"), self.interface)
         submenu_colorir_colunas.addMenu(submenu_colunas_interno)
-
         colunas_coloridas = set()
         if hasattr(self.interface, 'gerenciador_tabela') and hasattr(self.interface.gerenciador_tabela, 'colunas_para_colorir'):
             colunas_coloridas = self.interface.gerenciador_tabela.colunas_para_colorir
@@ -286,7 +254,6 @@ class GerenciadorMenusUI:
         acao_selecionar_todas = QAction(self.loc.get_text("select_all_columns"), self.interface)
         acao_selecionar_todas.triggered.connect(self.selecionar_todas_cores_colunas)
         submenu_colorir_colunas.addAction(acao_selecionar_todas)
-
         acao_resetar_cores_tipo_operacao = QAction(self.loc.get_text("reset_column_colors"), self.interface)
         acao_resetar_cores_tipo_operacao.triggered.connect(
             lambda: self.interface.gerenciador_eventos_ui.redefinir_todas_colunas_cores(
@@ -309,7 +276,6 @@ class GerenciadorMenusUI:
                 self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS[key]["visivel"] = True
 
             self.interface.gerenciador_colunas.salvar_configuracoes()
-
             if hasattr(self.interface.gerenciador_tabela, 'atualizar_visibilidade_colunas'):
                 self.interface.gerenciador_tabela.atualizar_visibilidade_colunas(atualizar_em_massa=True)
 
@@ -317,7 +283,6 @@ class GerenciadorMenusUI:
                 self.interface.atualizar_visibilidade_colunas()
 
             logger.info("Todas as colunas foram selecionadas")
-
             msg_box = QMessageBox(self.interface)
             msg_box.setIcon(QMessageBox.Information)
             msg_box.setWindowTitle(self.loc.get_text("success"))
@@ -334,19 +299,14 @@ class GerenciadorMenusUI:
             colunas_disponiveis = self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS
             novas_colunas = list(colunas_disponiveis.keys())
             self.interface.gerenciador_tabela.set_colunas_colorir_em_massa(novas_colunas)
-
             exportar_colunas_ativas = self.acao_exportar_colunas_ativas.isChecked()
             exportar_filtros_ativos = self.acao_exportar_filtros_ativos.isChecked()
             exportar_selecao = self.acao_exportar_selecao.isChecked()
-
             self.criar_menu_principal()
-
             self.acao_exportar_colunas_ativas.setChecked(exportar_colunas_ativas)
             self.acao_exportar_filtros_ativos.setChecked(exportar_filtros_ativos)
             self.acao_exportar_selecao.setChecked(exportar_selecao)
-
             logger.info("Processo de coloração de todas as colunas iniciado")
-
             msg_box = QMessageBox(self.interface)
             msg_box.setIcon(QMessageBox.Information)
             msg_box.setWindowTitle(self.loc.get_text("success"))
@@ -361,24 +321,19 @@ class GerenciadorMenusUI:
     def _criar_submenu_exportacao(self, menu_configuracoes):
         submenu_exportacao = MenuPersistente(self.loc.get_text("export_options"), self.interface)
         menu_configuracoes.addMenu(submenu_exportacao)
-
         self.acao_exportar_colunas_ativas = QAction(self.loc.get_text("export_active_columns"), self.interface)
         self.acao_exportar_colunas_ativas.setCheckable(True)
         self.acao_exportar_colunas_ativas.setChecked(False)
         submenu_exportacao.addAction(self.acao_exportar_colunas_ativas)
-
         self.acao_exportar_filtros_ativos = QAction(self.loc.get_text("export_active_filters"), self.interface)
         self.acao_exportar_filtros_ativos.setCheckable(True)
         self.acao_exportar_filtros_ativos.setChecked(False)
         submenu_exportacao.addAction(self.acao_exportar_filtros_ativos)
-
         self.acao_exportar_selecao = QAction(self.loc.get_text("export_selected_data"), self.interface)
         self.acao_exportar_selecao.setCheckable(True)
         self.acao_exportar_selecao.setChecked(False)
         submenu_exportacao.addAction(self.acao_exportar_selecao)
-
         submenu_exportacao.addSeparator()
-
         acao_resetar_exportacao = QAction(self.loc.get_text("reset_export_options"), self.interface)
         acao_resetar_exportacao.triggered.connect(self._resetar_opcoes_exportacao)
         submenu_exportacao.addAction(acao_resetar_exportacao)
@@ -388,10 +343,8 @@ class GerenciadorMenusUI:
             self.acao_exportar_colunas_ativas.setChecked(False)
             self.acao_exportar_filtros_ativos.setChecked(False)
             self.acao_exportar_selecao.setChecked(False)
-
             mensagem_sucesso = self.loc.get_text("export_options_reset_success")
             QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem_sucesso)
-
             logger.info("Opções de exportação restauradas para valores padrão")
 
         except Exception as e:
@@ -402,9 +355,7 @@ class GerenciadorMenusUI:
         submenu_idiomas = MenuPersistente(self.loc.get_text("language"), self.interface)
         menu_opcoes.addMenu(submenu_idiomas)
         grupo_idiomas = QActionGroup(self.interface)
-
         self._acoes_idioma = {}
-
         for codigo, nome in self.loc.get_idiomas_disponiveis().items():
             acao_idioma = QAction(nome, self.interface)
             acao_idioma.setCheckable(True)
@@ -413,7 +364,6 @@ class GerenciadorMenusUI:
             acao_idioma.triggered.connect(lambda checked, c=codigo: self._confirmar_alteracao_idioma(c))
             grupo_idiomas.addAction(acao_idioma)
             submenu_idiomas.addAction(acao_idioma)
-
             self._acoes_idioma[codigo] = acao_idioma
 
     def _get_texto_traduzido_para_idioma(self, chave: str, idioma: str) -> str:
@@ -442,10 +392,8 @@ class GerenciadorMenusUI:
             titulo_atual = self.loc.get_text("warning")
             titulo_alvo = self._get_texto_traduzido_para_idioma("warning", codigo_idioma)
             titulo = f"{titulo_atual} / {titulo_alvo}" if titulo_alvo and titulo_alvo != titulo_atual else titulo_atual
-
             mensagem_atual = self.loc.get_text("language_change_performance_warning")
             mensagem_alvo = self._get_texto_traduzido_para_idioma("language_change_performance_warning", codigo_idioma)
-
             caixa = QMessageBox(self.interface)
             caixa.setIcon(QMessageBox.Warning)
             caixa.setWindowTitle(titulo)
@@ -455,15 +403,12 @@ class GerenciadorMenusUI:
 
             caixa.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             caixa.setDefaultButton(QMessageBox.No)
-
             yes_atual = self.loc.get_text("yes") or "Yes"
             yes_alvo = self._get_texto_traduzido_para_idioma("yes", codigo_idioma) or yes_atual
             no_atual = self.loc.get_text("no") or "No"
             no_alvo = self._get_texto_traduzido_para_idioma("no", codigo_idioma) or no_atual
-
             label_yes = yes_atual if yes_atual.lower() == yes_alvo.lower() else f"{yes_atual}/{yes_alvo}"
             label_no = no_atual if no_atual.lower() == no_alvo.lower() else f"{no_atual}/{no_alvo}"
-
             btn_yes = caixa.button(QMessageBox.Yes)
             btn_no = caixa.button(QMessageBox.No)
             if btn_yes:
@@ -473,9 +418,7 @@ class GerenciadorMenusUI:
                 btn_no.setText(label_no)
 
             resposta = caixa.exec()
-
             acao = self._acoes_idioma.get(codigo_idioma)
-
             if resposta == QMessageBox.Yes:
                 if acao is not None:
                     acao.setChecked(True)
@@ -525,7 +468,6 @@ class GerenciadorMenusUI:
                 "it_IT": ABOUT_TEXT_IT_IT,
                 "de_DE": ABOUT_TEXT_DE_DE
             }
-
             textos_licenca = {
                 "pt_BR": LICENSE_TEXT_PT_BR,
                 "en_US": LICENSE_TEXT_EN_US,
@@ -534,7 +476,6 @@ class GerenciadorMenusUI:
                 "it_IT": LICENSE_TEXT_IT_IT,
                 "de_DE": LICENSE_TEXT_DE_DE
             }
-
             textos_aviso = {
                 "pt_BR": NOTICE_TEXT_PT_BR,
                 "en_US": NOTICE_TEXT_EN_US,
@@ -543,7 +484,6 @@ class GerenciadorMenusUI:
                 "it_IT": NOTICE_TEXT_IT_IT,
                 "de_DE": NOTICE_TEXT_DE_DE
             }
-
             textos_privacidade = {
                 "pt_BR": Privacy_Policy_pt_BR,
                 "en_US": Privacy_Policy_en_US,
@@ -552,7 +492,6 @@ class GerenciadorMenusUI:
                 "it_IT": Privacy_Policy_it_IT,
                 "de_DE": Privacy_Policy_de_DE
             }
-
             history_texts = {
                 "pt_BR": History_APP_pt_BR,
                 "en_US": History_APP_en_US,
@@ -561,7 +500,6 @@ class GerenciadorMenusUI:
                 "it_IT": History_APP_it_IT,
                 "de_DE": History_APP_de_DE
             }
-
             release_notes_texts = {
                 "pt_BR": RELEASE_NOTES_pt_BR,
                 "en_US": RELEASE_NOTES_en_US,
@@ -570,23 +508,19 @@ class GerenciadorMenusUI:
                 "it_IT": RELEASE_NOTES_it_IT,
                 "de_DE": RELEASE_NOTES_de_DE
             }
-
             texto_sobre = textos_sobre.get(self.loc.idioma_atual, textos_sobre["en_US"])
             texto_licenca = textos_licenca.get(self.loc.idioma_atual, textos_licenca["en_US"])
             texto_aviso = textos_aviso.get(self.loc.idioma_atual, textos_aviso["en_US"])
             texto_privacidade = textos_privacidade.get(self.loc.idioma_atual, textos_privacidade["en_US"])
             texto_history = history_texts.get(self.loc.idioma_atual, history_texts["en_US"])
             texto_release_notes = release_notes_texts.get(self.loc.idioma_atual, release_notes_texts["en_US"])
-
             cabecalho_fixo = (
                 "<h3>LINCEU LIGHTHOUSE</h3>"
-                f"<p><b>{self.loc.get_text('version')}:</b> 0.0.4.0</p>"
+                f"<p><b>{self.loc.get_text('version')}:</b> 0.0.5.0</p>"
                 f"<p><b>{self.loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
                 f"<p><b>{self.loc.get_text('description')}:</b> {self.loc.get_text('description_text')}</p>"
             )
-
             show_history_text = self.loc.get_text("show_history") or "Justificativa do Nome"
-
             dialog = SobreDialog(
                 self.interface,
                 titulo=f"{self.loc.get_text('about')} - LINCEU LIGHTHOUSE",
@@ -612,15 +546,11 @@ class GerenciadorMenusUI:
                 release_notes=texto_release_notes,
                 show_release_notes_text=self.loc.get_text("show_release_notes") or "Release Notes"
             )
-
             tamanho_base_largura = 900
             tamanho_base_altura = 500
-
             largura_dialog = int(tamanho_base_largura * 1)
             altura_dialog = int(tamanho_base_altura * 1.8)
-
             dialog.resize(largura_dialog, altura_dialog)
-
             dialog.show()
             logger.info("Diálogo 'Sobre' exibido com sucesso")
 

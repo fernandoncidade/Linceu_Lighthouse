@@ -149,7 +149,7 @@
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Pausar Análise:</translation>
+        <translation>Pausar/Retomar Análise:</translation>
     </message>
     <message>
         <source>save_as</source>
@@ -458,6 +458,22 @@
     <message>
         <source>scan_complete</source>
         <translation>Varredura concluída!</translation>
+    </message>
+    <message>
+        <source>no_scan_or_monitor_to_pause</source>
+        <translation>Nenhum escaneamento ou monitoramento para PAUSAR!</translation>
+    </message>
+    <message>
+        <source>paused</source>
+        <translation>Pausado</translation>
+    </message>
+    <message>
+        <source>resumed</source>
+        <translation>Retomado</translation>
+    </message>
+    <message>
+        <source>monitoring_paused</source>
+        <translation>Monitoramento Pausado</translation>
     </message>
     <message>
         <source>items</source>

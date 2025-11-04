@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>archive</source>
-        <translation>Archiv</translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <source>encrypted</source>
@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Analyse Pausieren:</translation>
+        <translation>Analyse pausieren/Fortsetzen:</translation>
     </message>
     <message>
         <source>export_excel</source>
@@ -458,6 +458,22 @@
     <message>
         <source>scan_complete</source>
         <translation>Scan abgeschlossen!</translation>
+    </message>
+    <message>
+        <source>no_scan_or_monitor_to_pause</source>
+        <translation>Kein Scan oder Monitoring läuft, das pausiert werden kann.</translation>
+    </message>
+    <message>
+        <source>paused</source>
+        <translation>Pausiert</translation>
+    </message>
+    <message>
+        <source>resumed</source>
+        <translation>Fortgesetzt</translation>
+    </message>
+    <message>
+        <source>monitoring_paused</source>
+        <translation>Überwachung pausiert</translation>
     </message>
     <message>
         <source>items</source>
@@ -1268,7 +1284,7 @@ pip install plotly</translation>
     </message>
     <message>
         <source>file_folder</source>
-        <translation>Dateiordner</translation>
+        <translation>Ordner</translation>
     </message>
     <message>
         <source>translating_table</source>

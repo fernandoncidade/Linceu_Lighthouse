@@ -24,31 +24,28 @@ class InterfaceMonitor(QMainWindow):
         try:
             logger.info("Iniciando a aplicação Linceu_Lighthouse")
             super().__init__()
-
             logger.debug("Inicializando sistema de tradução nativo do Qt")
             app = QApplication.instance()
             Internacionalizador.inicializar_sistema_traducao(app)
-
             logger.debug("Inicializando o LocalizadorQt")
+
             self.loc = LocalizadorQt()
             self.loc.idioma_alterado.connect(self.atualizar_interface)
             self.loc.traducoes_carregadas.connect(self.atualizar_tradutor_qt)
 
             Inicializador.inicializar_atributos(self)
             Inicializador.inicializar_componentes(self)
-
             logger.debug("Inicializando GerenciadorTabela")
+
             self.gerenciador_tabela = GerenciadorTabela(self)
             self.gerenciador_tabela._carregar_configuracoes_cores()
             self.gerenciador_tabela.cores_processadas.connect(self._atualizar_cores_tabela)
-
             Inicializador.inicializar_gerenciadores(self)
-
             logger.debug("Configurando interface principal")
+
             self.configurar_tabela()
             self.setup_ui()
             self.setup_menu_bar()
-
             if hasattr(self, 'painel_filtros'):
                 self.painel_filtros.sincronizar_com_menu_principal()
 
@@ -56,7 +53,6 @@ class InterfaceMonitor(QMainWindow):
             self.gerenciador_dados = GerenciadorDados(self)
             self.gerenciador_monitoramento = GerenciadorMonitoramento(self)
             self.gerenciador_limpeza = GerenciadorLimpeza(self)
-
             logger.info("Inicialização da aplicação concluída com sucesso")
 
         except Exception as e:
