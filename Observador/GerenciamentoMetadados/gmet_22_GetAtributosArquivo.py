@@ -12,6 +12,9 @@ def get_atributos_arquivo(item, loc):
         attrs = win32file.GetFileAttributes(caminho)
         atributos = []
 
+        if attrs & win32con.FILE_ATTRIBUTE_DIRECTORY:
+            atributos.append(loc.get_text("folder"))
+
         if attrs & win32con.FILE_ATTRIBUTE_READONLY:
             atributos.append(loc.get_text("readonly"))
 

@@ -11,11 +11,11 @@ def _calcular_largura_ideal(self, graficos):
         max_text_width = max(max_text_width, text_width)
 
     textos_interface = [
-        self.loc.get_text("save_selected") if "save_selected" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Salvar Selecionados",
+        self.loc.get_text("save_selected"),
         self.loc.get_text("save_all"),
         self.loc.get_text("refresh"),
-        self.loc.get_text("select_all") if "select_all" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionar Todos",
-        self.loc.get_text("select_graphs") if "select_graphs" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionar Gráficos"
+        self.loc.get_text("select_all"),
+        self.loc.get_text("select_graphs")
     ]
 
     for texto in textos_interface:

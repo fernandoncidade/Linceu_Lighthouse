@@ -16,14 +16,22 @@ def aplicar_quebra_linha_cabecalho(self, tabela, coluna_index):
         font_metrics = QFontMetrics(tabela.horizontalHeader().font())
 
         padding = 10
-        espaco_disponivel = largura_coluna - padding
+        espaco_disponivel = max(1, largura_coluna - padding)
 
-        char_width = font_metrics.averageCharWidth()
+        largura_texto = font_metrics.horizontalAdvance(texto_original)
+        item = tabela.horizontalHeaderItem(coluna_index)
+        if largura_texto <= espaco_disponivel:
+            if item:
+                item.setText(texto_original.replace('\n', ' '))
+                item.setTextAlignment(Qt.AlignCenter)
+
+            return
+
+        char_width = max(1, font_metrics.averageCharWidth())
         max_chars = max(1, int(espaco_disponivel / char_width))
 
         texto_quebrado = textwrap.fill(texto_original, width=max_chars, break_long_words=False, break_on_hyphens=True)
 
-        item = tabela.horizontalHeaderItem(coluna_index)
         if item:
             item.setText(texto_quebrado)
             item.setTextAlignment(Qt.AlignCenter)

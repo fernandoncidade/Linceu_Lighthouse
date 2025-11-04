@@ -99,7 +99,7 @@ def extrair_metadados_documento(caminho, loc):
                         metadados['linhas'] = str(linhas_totais)
                         metadados['paginas'] = str(paginas_estimadas)
                         metadados['paginas_estimadas'] = str(paginas_estimadas)
-                        metadados['parágrafos'] = str(paragrafos)
+                        metadados['paragrafos'] = str(paragrafos)
 
                         try:
                             props = doc.core_properties
@@ -117,7 +117,7 @@ def extrair_metadados_documento(caminho, loc):
                                     metadados['data_mod_doc'] = str(props.modified)
 
                                 if props.revision:
-                                    metadados['revisão'] = str(props.revision)
+                                    metadados['revisao'] = str(props.revision)
 
                         except Exception as prop_err:
                             if "document is encrypted" in str(prop_err).lower():
@@ -197,10 +197,10 @@ def extrair_metadados_documento(caminho, loc):
                                         metadados['titulo'] = info[2]
 
                                     if 8 in info:
-                                        metadados['última_mod'] = info[8]
+                                        metadados['ultima_mod'] = info[8]
 
                                     if 12 in info:
-                                        metadados['criação'] = info[12]
+                                        metadados['criacao'] = info[12]
 
                                     if 19 in info:
                                         metadados['protegido'] = loc.get_text("yes") + f" ({info[19]})"

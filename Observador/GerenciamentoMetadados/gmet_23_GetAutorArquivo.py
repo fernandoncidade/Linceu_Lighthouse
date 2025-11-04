@@ -13,145 +13,152 @@ def get_autor_arquivo(item, loc):
     ext = ext.lower()
 
     try:
-        if ext in [".docx", ".dotx", ".docm", ".dotm"]:
-            from docx import Document
-            doc = Document(caminho)
-            props = doc.core_properties
-            autor = props.author or ""
-
-        elif ext == ".doc":
-            import olefile
+        if os.path.isdir(caminho):
             try:
-                with olefile.OleFileIO(caminho) as ole:
-                    if ole.exists('\x05SummaryInformation'):
-                        props = ole.getproperties('\x05SummaryInformation')
-                        autor = props.get(4, loc.get_text("unknown_author"))
-
-                        if isinstance(autor, bytes):
-                            autor = autor.decode("latin-1", errors="ignore")
+                import win32security
+                sd = win32security.GetFileSecurity(caminho, win32security.OWNER_SECURITY_INFORMATION)
+                owner_sid = sd.GetSecurityDescriptorOwner()
+                nome, dominio, tipo = win32security.LookupAccountSid(None, owner_sid)
+                autor = f"{dominio}\\{nome}"
 
             except Exception as e:
-                print(f"Erro ao obter autor de {ext} usando olefile: {e}")
-                autor = loc.get_text("unknown_author")
+                print(f"Erro ao obter proprietário da pasta: {e}")
+                autor = ""
 
-        elif ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
-            try:
-                from openpyxl import load_workbook
-                wb = load_workbook(caminho, read_only=True, data_only=True)
+        else:
+            if ext in [".docx", ".dotx", ".docm", ".dotm"]:
+                from docx import Document
+                doc = Document(caminho)
+                props = doc.core_properties
+                autor = (props.author or "").strip()
 
-                if wb.properties.creator:
-                    autor = wb.properties.creator
-
-                wb.close()
-
-            except Exception as xlsx_err:
-                print(f"Erro ao ler XLSX com openpyxl: {xlsx_err}")
+            elif ext == ".doc":
+                import olefile
                 try:
-                    import olefile
                     with olefile.OleFileIO(caminho) as ole:
                         if ole.exists('\x05SummaryInformation'):
                             props = ole.getproperties('\x05SummaryInformation')
-                            autor = props.get(4, loc.get_text("unknown_author"))
-
+                            autor = props.get(4, "") or ""
                             if isinstance(autor, bytes):
                                 autor = autor.decode("latin-1", errors="ignore")
 
-                except Exception as ole_err:
-                    print(f"Erro ao ler XLSX com olefile: {ole_err}")
-                    autor = loc.get_text("unknown_author")
+                            autor = autor.strip()
 
-        elif ext == ".xls":
-            import olefile
-            try:
-                with olefile.OleFileIO(caminho) as ole:
-                    if ole.exists('\x05SummaryInformation'):
-                        props = ole.getproperties('\x05SummaryInformation')
-                        autor = props.get(4, loc.get_text("unknown_author"))
+                except Exception as e:
+                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    autor = ""
 
-                        if isinstance(autor, bytes):
-                            autor = autor.decode("latin-1", errors="ignore")
+            elif ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
+                try:
+                    from openpyxl import load_workbook
+                    wb = load_workbook(caminho, read_only=True, data_only=True)
+                    if wb.properties.creator:
+                        autor = str(wb.properties.creator).strip()
 
-            except Exception as e:
-                print(f"Erro ao obter autor de {ext} usando olefile: {e}")
-                autor = loc.get_text("unknown_author")
+                    wb.close()
 
-        elif ext in [".pptx", ".potx", ".ppsx"]:
-            from pptx import Presentation
-            pres = Presentation(caminho)
-            autor = pres.core_properties.author or ""
+                except Exception as xlsx_err:
+                    print(f"Erro ao ler XLSX com openpyxl: {xlsx_err}")
+                    autor = ""
 
-        elif ext == ".ppt":
-            import olefile
-            try:
-                with olefile.OleFileIO(caminho) as ole:
-                    if ole.exists('\x05SummaryInformation'):
-                        props = ole.getproperties('\x05SummaryInformation')
-                        autor = props.get(4, loc.get_text("unknown_author"))
+            elif ext == ".xls":
+                import olefile
+                try:
+                    with olefile.OleFileIO(caminho) as ole:
+                        if ole.exists('\x05SummaryInformation'):
+                            props = ole.getproperties('\x05SummaryInformation')
+                            autor = props.get(4, "") or ""
+                            if isinstance(autor, bytes):
+                                autor = autor.decode("latin-1", errors="ignore")
 
-                        if isinstance(autor, bytes):
-                            autor = autor.decode("latin-1", errors="ignore")
+                            autor = autor.strip()
 
-            except Exception as e:
-                print(f"Erro ao obter autor de {ext} usando olefile: {e}")
-                autor = loc.get_text("unknown_author")
+                except Exception as e:
+                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    autor = ""
 
-        elif ext in [".mdb", ".accdb"]:
-            autor = loc.get_text("access")
+            elif ext in [".pptx", ".potx", ".ppsx"]:
+                from pptx import Presentation
+                pres = Presentation(caminho)
+                autor = (pres.core_properties.author or "").strip()
 
-        elif ext == ".msg":
-            import olefile
-            try:
-                with olefile.OleFileIO(caminho) as ole:
-                    if ole.exists('\x05SummaryInformation'):
-                        props = ole.getproperties('\x05SummaryInformation')
-                        autor = props.get(4, loc.get_text("unknown_author"))
+            elif ext == ".ppt":
+                import olefile
+                try:
+                    with olefile.OleFileIO(caminho) as ole:
+                        if ole.exists('\x05SummaryInformation'):
+                            props = ole.getproperties('\x05SummaryInformation')
+                            autor = props.get(4, "") or ""
+                            if isinstance(autor, bytes):
+                                autor = autor.decode("latin-1", errors="ignore")
 
-                        if isinstance(autor, bytes):
-                            autor = autor.decode("latin-1", errors="ignore")
+                            autor = autor.strip()
 
-                    elif ole.exists('__properties_version1.0'):
-                        props = ole.getproperties('__properties_version1.0')
-                        for prop_id in [0x0C1A, 0x0E04, 0x0042]:
-                            if prop_id in props:
-                                autor = props[prop_id]
-                                if isinstance(autor, bytes):
-                                    autor = autor.decode("latin-1", errors="ignore")
+                except Exception as e:
+                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    autor = ""
 
-                                break
+            elif ext in [".mdb", ".accdb"]:
+                autor = ""
 
-                    else:
-                        autor = loc.get_text("outlook_message")
+            elif ext == ".msg":
+                import olefile
+                try:
+                    with olefile.OleFileIO(caminho) as ole:
+                        if ole.exists('\x05SummaryInformation'):
+                            props = ole.getproperties('\x05SummaryInformation')
+                            autor = props.get(4, "") or ""
+                            if isinstance(autor, bytes):
+                                autor = autor.decode("latin-1", errors="ignore")
 
-            except Exception as e:
-                print(f"Erro ao extrair informações do MSG: {e}")
-                autor = loc.get_text("outlook_message")
+                            autor = autor.strip()
 
-        elif ext in [".pst", ".ost"]:
-            autor = loc.get_text("outlook")
+                        elif ole.exists('__properties_version1.0'):
+                            props = ole.getproperties('__properties_version1.0')
+                            autor_val = None
+                            for prop_id in [0x0C1A, 0x0E04, 0x0042]:
+                                if prop_id in props:
+                                    autor_val = props[prop_id]
+                                    break
 
-        elif ext == ".pub":
-            autor = loc.get_text("publisher")
+                            if isinstance(autor_val, bytes):
+                                autor_val = autor_val.decode("latin-1", errors="ignore")
 
-        elif ext in [".vsd", ".vsdx"]:
-            autor = loc.get_text("visio")
+                            autor = (autor_val or "").strip()
 
-        elif ext in [".mpp", ".mpt"]:
-            autor = loc.get_text("project")
+                        else:
+                            autor = ""
 
-        elif ext == ".pdf":
-            from PyPDF2 import PdfReader
-            reader = PdfReader(caminho)
-            info = reader.metadata
-            autor = (info.author or "") if info else ""
+                except Exception as e:
+                    print(f"Erro ao extrair informações do MSG: {e}")
+                    autor = ""
 
-        elif ext in [".txt", ".htm", ".html", ".mht", ".mhtml"]:
-            autor = loc.get_text("text_html")
+            elif ext in [".pst", ".ost"]:
+                autor = ""
 
-        elif ext in [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".cab"]:
-            autor = loc.get_text("compressed_file")
+            elif ext == ".pub":
+                autor = ""
 
-        else:
-            autor = loc.get_text("unknown_author")
+            elif ext in [".vsd", ".vsdx"]:
+                autor = ""
+
+            elif ext in [".mpp", ".mpt"]:
+                autor = ""
+
+            elif ext == ".pdf":
+                from PyPDF2 import PdfReader
+                reader = PdfReader(caminho)
+                info = reader.metadata
+                autor = ((info.author or "") if info else "").strip()
+
+            elif ext in [".txt", ".htm", ".html", ".mht", ".mhtml"]:
+                autor = ""
+
+            elif ext in [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".cab"]:
+                autor = ""
+
+            else:
+                autor = ""
 
     except Exception as e:
         print(f"Erro ao obter autor do arquivo {caminho}: {e}")

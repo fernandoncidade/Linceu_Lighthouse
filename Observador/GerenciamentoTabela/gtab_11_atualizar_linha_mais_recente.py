@@ -11,30 +11,23 @@ def atualizar_linha_mais_recente(self, tabela_dados):
         with self.lock_db:
             with sqlite3.connect(db_path) as conn:
                 cursor = conn.cursor()
-
                 cursor.execute("SELECT * FROM monitoramento ORDER BY id DESC LIMIT 1")
                 registro = cursor.fetchone()
-
                 if not registro:
                     return
 
                 colunas_db = [desc[0] for desc in cursor.description]
                 evento = dict(zip(colunas_db, registro))
-
                 tabela_dados.insertRow(0)
-
                 colunas_visiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
-
                 getters = {key: getattr(self.interface.gerenciador_colunas, f"get_{key}", None)
                             for key, _ in colunas_visiveis}
 
                 tipo_operacao_valor = None
-
                 for col, (key, _) in enumerate(colunas_visiveis):
                     try:
                         getter = getters[key]
                         valor = getter(evento) if getter else evento.get(key, "")
-
                         if key == "tipo_operacao" and valor:
                             valor = self.loc.traduzir_tipo_operacao(valor)
                             tipo_operacao_valor = valor
@@ -48,11 +41,15 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                             "data_modificacao",
                             "data_acesso",
                             "tipo",
-                            "tamanho",
+                            "size_b",
+                            "size_kb",
+                            "size_mb",
+                            "size_gb",
+                            "size_tb",
                             "atributos",
                             "autor",
                             "dimensoes",
-                            "duracao",
+                            "duracao", 
                             "taxa_bits",
                             "protegido",
                             "paginas",
@@ -61,11 +58,19 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                             "paginas_estimadas",
                             "linhas_codigo",
                             "total_linhas",
-                            "slides_estimadas",
+                            "slides_estimados",
                             "arquivos",
-                            "descompactados",
+                            "unzipped_b",
+                            "unzipped_kb",
+                            "unzipped_mb",
+                            "unzipped_gb",
+                            "unzipped_tb",
                             "slides",
-                            "binario",
+                            "binary_file_b",
+                            "binary_file_kb",
+                            "binary_file_mb",
+                            "binary_file_gb",
+                            "binary_file_tb",
                             "planilhas",
                             "colunas",
                             "registros",
@@ -78,7 +83,6 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                                 valor = ""
 
                         novo_texto = str(valor)
-
                         item = QTableWidgetItem(novo_texto)
                         tabela_dados.setItem(0, col, item)
 

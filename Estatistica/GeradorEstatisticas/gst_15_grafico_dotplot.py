@@ -23,7 +23,7 @@ class GraficoDotplot(BaseGerador):
         match = re.match(pattern, tamanho_str)
 
         if not match:
-            logger.debug(f"Dotplot - Não foi possível parsear o tamanho: '{tamanho_str}'")
+            logger.debug(f"Dotplot - Não foi possível parsear o size_mb: '{tamanho_str}'")
             return None
 
         numero_str = match.group(1).replace(',', '.')
@@ -47,6 +47,27 @@ class GraficoDotplot(BaseGerador):
         multiplicador = multiplicadores.get(unidade, 1)
         return int(numero * multiplicador)
 
+    def _extrair_tamanho_bytes(self, row):
+        """
+        Extrai o tamanho em bytes a partir dos campos disponíveis na linha.
+        Prioriza o campo mais significativo disponível.
+        """
+        campos = [
+            ('size_tb', 1024**4),
+            ('size_gb', 1024**3),
+            ('size_mb', 1024**2),
+            ('size_kb', 1024),
+            ('size_b', 1)
+        ]
+        for campo, fator in campos:
+            valor = row.get(campo)
+            if pd.notna(valor) and str(valor).strip() != '':
+                try:
+                    return float(str(valor).replace(',', '.')) * fator
+                except Exception:
+                    continue
+        return None
+
     def gerar(self):
         logger = LogManager.get_logger()
         logger.debug("Iniciando geração do gráfico dotplot")
@@ -62,7 +83,8 @@ class GraficoDotplot(BaseGerador):
 
         try:
             logger.debug("Dotplot - Convertendo tamanhos de arquivo")
-            df['tamanho_bytes'] = df['tamanho'].apply(self._parse_tamanho)
+            # Extrai o tamanho em bytes usando todos os campos disponíveis
+            df['tamanho_bytes'] = df.apply(self._extrair_tamanho_bytes, axis=1)
             df_filtrado = df.dropna(subset=['tamanho_bytes'])
 
             tamanhos_invalidos = len(df) - len(df_filtrado)

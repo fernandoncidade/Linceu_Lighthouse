@@ -1,5 +1,4 @@
 import os
-import subprocess
 from datetime import datetime
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox

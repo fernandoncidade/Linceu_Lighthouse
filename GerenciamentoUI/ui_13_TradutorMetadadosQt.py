@@ -1,44 +1,174 @@
-def traduzir_tipo_operacao(localizador, valor, idioma_origem=None):
-    operacoes_normalizadas = {
-        "op_renamed": ["op_renamed", "renamed", "renomeado", "renombrado", "renommé", "rinominato", "umbenannt"],
-        "op_added": ["op_added", "added", "adicionado", "añadido", "ajouté", "aggiunto", "hinzugefügt"],
-        "op_deleted": ["op_deleted", "deleted", "excluído", "eliminado", "supprimé", "eliminato", "gelöscht"],
-        "op_modified": ["op_modified", "modified", "modificado", "modificado", "modifié", "modificato", "geändert"],
-        "op_moved": ["op_moved", "moved", "movido", "movido", "déplacé", "spostato", "verschoben"],
-        "op_scanned": ["op_scanned", "scanned", "escaneado", "escanneado", "numérisé", "scansionato", "gescannt"]
-    }
+import re
+from utils.LogManager import LogManager
 
-    operacao_normalizada = None
-    for chave, variantes in operacoes_normalizadas.items():
-        if valor in variantes or valor.lower() in variantes:
-            operacao_normalizada = chave
-            break
 
-    if operacao_normalizada is None:
-        for chave, variantes in operacoes_normalizadas.items():
-            for variante in variantes:
-                if valor and variante and variante.lower() in valor.lower():
-                    operacao_normalizada = chave
-                    break
+class TradutorMetadadosQt:
+    def __init__(self, localizador):
+        self.loc = localizador
+        self.logger = LogManager.get_logger()
+        self._cache_traducoes_tipo_operacao = {}
+        self._cache_traducoes_tipo = {}
+        self._cache_traducoes_atributos = {}
+        self._cache_traducoes_protegido = {}
+        self._idioma_cache = self.loc.idioma_atual
 
-            if operacao_normalizada:
-                break
+    def _verificar_idioma_cache(self):
+        if self._idioma_cache != self.loc.idioma_atual:
+            self._cache_traducoes_tipo_operacao.clear()
+            self._cache_traducoes_tipo.clear()
+            self._cache_traducoes_atributos.clear()
+            self._cache_traducoes_protegido.clear()
+            self._idioma_cache = self.loc.idioma_atual
 
-    if operacao_normalizada is None:
-        return valor
+    def traduzir_tipo_operacao(self, valor, idioma_origem=None):
+        self._verificar_idioma_cache()
+        valor_normalizado = str(valor).lower().strip()
+        cache_key = f"{valor_normalizado}_{idioma_origem or self.loc.idioma_atual}"
+        if cache_key in self._cache_traducoes_tipo_operacao:
+            return self._cache_traducoes_tipo_operacao[cache_key]
 
-    return localizador.get_text(operacao_normalizada)
+        try:
+            valor_traduzido_reverso = self._obter_chave_traducao_reversa(valor_normalizado)
+            if valor_traduzido_reverso:
+                traducao = self.loc.get_text(valor_traduzido_reverso)
+                self._cache_traducoes_tipo_operacao[cache_key] = traducao
+                return traducao
 
-def traduzir_metadados(localizador, valor, campo):
-    if not valor or not isinstance(valor, str):
-        return valor
+            mapeamento_operacoes = {
+                "moved": "op_moved",
+                "renamed": "op_renamed", 
+                "added": "op_added",
+                "deleted": "op_deleted",
+                "modified": "op_modified",
+                "scanned": "op_scanned",
 
-    if campo == "tipo":
+                "movido": "op_moved",
+                "renomeado": "op_renamed",
+                "adicionado": "op_added", 
+                "excluído": "op_deleted",
+                "modificado": "op_modified",
+                "escaneado": "op_scanned",
+
+                "movido": "op_moved",
+                "renombrado": "op_renamed",
+                "añadido": "op_added",
+                "eliminado": "op_deleted",
+                "modificado": "op_modified",
+                "escanneado": "op_scanned",
+
+                "déplacé": "op_moved",
+                "renommé": "op_renamed", 
+                "ajouté": "op_added",
+                "supprimé": "op_deleted",
+                "modifié": "op_modified",
+                "numérisé": "op_scanned",
+
+                "spostato": "op_moved",
+                "rinominato": "op_renamed",
+                "aggiunto": "op_added",
+                "eliminato": "op_deleted",
+                "modificato": "op_modified",
+                "scansionato": "op_scanned",
+
+                "verschoben": "op_moved",
+                "umbenannt": "op_renamed",
+                "hinzugefügt": "op_added",
+                "gelöscht": "op_deleted",
+                "geändert": "op_modified",
+                "gescannt": "op_scanned"
+            }
+
+            chave_traducao = mapeamento_operacoes.get(valor_normalizado)
+            if chave_traducao:
+                traducao = self.loc.get_text(chave_traducao)
+                self._cache_traducoes_tipo_operacao[cache_key] = traducao
+                return traducao
+
+            if valor_normalizado.startswith("op_"):
+                traducao = self.loc.get_text(valor_normalizado)
+                self._cache_traducoes_tipo_operacao[cache_key] = traducao
+                return traducao
+
+            for texto, chave in mapeamento_operacoes.items():
+                if texto in valor_normalizado or valor_normalizado in texto:
+                    traducao = self.loc.get_text(chave)
+                    self._cache_traducoes_tipo_operacao[cache_key] = traducao
+                    return traducao
+
+            self._cache_traducoes_tipo_operacao[cache_key] = valor
+            return valor
+
+        except Exception as e:
+            self.logger.error(f"Erro ao traduzir tipo de operação '{valor}': {e}", exc_info=True)
+            self._cache_traducoes_tipo_operacao[cache_key] = valor
+            return valor
+
+    def _obter_chave_traducao_reversa(self, valor):
+        try:
+            for chave in ["op_moved", "op_renamed", "op_added", "op_deleted", "op_modified", "op_scanned"]:
+                traducao_atual = self.loc.get_text(chave).lower().strip()
+                if traducao_atual == valor:
+                    return chave
+
+            return None
+
+        except:
+            return None
+
+    def traduzir_metadados(self, valor, campo):
+        self._verificar_idioma_cache()
+        if not valor or not isinstance(valor, str):
+            return valor
+
+        campo_lower = campo.lower()
+        cache_key = f"{valor}_{campo_lower}_{self.loc.idioma_atual}"
+
+        if campo_lower in ["tipo", "type"]:
+            if cache_key in self._cache_traducoes_tipo:
+                return self._cache_traducoes_tipo[cache_key]
+
+            resultado = self._traduzir_tipo_arquivo(valor)
+            self._cache_traducoes_tipo[cache_key] = resultado
+            return resultado
+
+        elif campo_lower in ["atributos", "attributes"]:
+            if cache_key in self._cache_traducoes_atributos:
+                return self._cache_traducoes_atributos[cache_key]
+
+            resultado = self._traduzir_atributos(valor)
+            self._cache_traducoes_atributos[cache_key] = resultado
+            return resultado
+
+        elif campo_lower in ["protegido", "protected"]:
+            if cache_key in self._cache_traducoes_protegido:
+                return self._cache_traducoes_protegido[cache_key]
+
+            resultado = self._traduzir_protegido(valor)
+            self._cache_traducoes_protegido[cache_key] = resultado
+            return resultado
+
+        try:
+            campo_lower = campo.lower()
+
+            if campo_lower in ["autor", "author"]:
+                return self._traduzir_autor(valor)
+
+            elif campo_lower in ["dimensoes", "dimensions", "tamanho", "size"]:
+                return self._traduzir_dimensoes(valor)
+
+            else:
+                return valor
+
+        except Exception as e:
+            self.logger.error(f"Erro ao traduzir metadados '{valor}' do campo '{campo}': {e}", exc_info=True)
+            return valor
+
+    def _traduzir_tipo_arquivo(self, valor):
         tipo_mapeamento = {
-            # Português
-            "pasta": "folder",
+            "pasta": "file_folder",
             "vídeo": "file_video",
             "imagem": "file_image",
+            "áudio": "file_audio",
             "audio": "file_audio",
             "código fonte": "file_source_code",
             "documento": "file_document",
@@ -47,14 +177,13 @@ def traduzir_metadados(localizador, valor, campo):
             "banco de dados": "file_database",
             "executável": "file_executable",
             "temporário": "file_temp",
-            "compactado": "file_archive",
+            "compactado": "file_compressed",
             "backup": "file_backup",
             "registro": "file_log",
             "configuração": "file_config",
             "desconhecido": "unknown",
 
-            # English
-            "folder": "folder",
+            "folder": "file_folder",
             "video": "file_video",
             "image": "file_image",
             "audio": "file_audio",
@@ -65,14 +194,13 @@ def traduzir_metadados(localizador, valor, campo):
             "database": "file_database",
             "executable": "file_executable",
             "temporary": "file_temp",
-            "archive": "file_archive",
+            "compressed": "file_compressed",
             "backup": "file_backup",
             "registry": "file_log",
             "config": "file_config",
             "unknown": "unknown",
 
-            # Español
-            "carpeta": "folder",
+            "carpeta": "file_folder",
             "video": "file_video",
             "imagen": "file_image",
             "audio": "file_audio",
@@ -83,14 +211,13 @@ def traduzir_metadados(localizador, valor, campo):
             "base de datos": "file_database",
             "ejecutable": "file_executable",
             "temporal": "file_temp",
-            "comprimido": "file_archive",
+            "comprimido": "file_compressed",
             "respaldo": "file_backup",
             "registro": "file_log",
             "configuración": "file_config",
             "desconocido": "unknown",
 
-            # Français
-            "dossier": "folder",
+            "dossier": "file_folder",
             "vidéo": "file_video",
             "image": "file_image",
             "audio": "file_audio",
@@ -101,14 +228,13 @@ def traduzir_metadados(localizador, valor, campo):
             "base de données": "file_database",
             "exécutable": "file_executable",
             "temporaire": "file_temp",
-            "compressé": "file_archive",
+            "compressé": "file_compressed",
             "sauvegarde": "file_backup",
             "registre": "file_log",
             "configuration": "file_config",
             "inconnu": "unknown",
 
-            # Italiano
-            "cartella": "folder",
+            "cartella": "file_folder",
             "video": "file_video",
             "immagine": "file_image",
             "audio": "file_audio",
@@ -119,14 +245,13 @@ def traduzir_metadados(localizador, valor, campo):
             "database": "file_database",
             "eseguibile": "file_executable",
             "temporaneo": "file_temp",
-            "compresso": "file_archive",
+            "compresso": "file_compressed",
             "backup": "file_backup",
             "registro": "file_log",
             "configurazione": "file_config",
             "sconosciuto": "unknown",
 
-            # Alemão
-            "ordner": "folder",
+            "ordner": "file_folder",
             "video": "file_video",
             "bild": "file_image",
             "audio": "file_audio",
@@ -137,7 +262,7 @@ def traduzir_metadados(localizador, valor, campo):
             "datenbank": "file_database",
             "ausführbar": "file_executable",
             "vorübergehend": "file_temp",
-            "komprimiert": "file_archive",
+            "komprimiert": "file_compressed",
             "sicherung": "file_backup",
             "protokoll": "file_log",
             "konfiguration": "file_config",
@@ -147,9 +272,11 @@ def traduzir_metadados(localizador, valor, campo):
         valor_lower = valor.lower()
         for texto, chave in tipo_mapeamento.items():
             if texto in valor_lower:
-                return localizador.get_text(chave)
+                return self.loc.get_text(chave)
 
-    elif campo == "atributos":
+        return valor
+
+    def _traduzir_atributos(self, valor):
         atributos_mapeamento = {
             # Português
             "somente leitura": "readonly",
@@ -161,6 +288,7 @@ def traduzir_metadados(localizador, valor, campo):
 
             # English
             "read only": "readonly",
+            "readonly": "readonly",
             "hidden": "hidden",
             "system": "system",
             "archive": "archive",
@@ -191,7 +319,7 @@ def traduzir_metadados(localizador, valor, campo):
             "cifrato": "encrypted",
             "compresso": "compressed",
 
-            # Alemão
+            # Deutsch
             "schreibgeschützt": "readonly",
             "versteckt": "hidden",
             "system": "system",
@@ -200,25 +328,33 @@ def traduzir_metadados(localizador, valor, campo):
             "komprimiert": "compressed"
         }
 
+        partes = [parte.strip() for parte in valor.split(",")]
         partes_traduzidas = []
-        partes = valor.split(", ")
 
         for parte in partes:
+            if not parte:
+                continue
+
             parte_traduzida = parte
-            parte_lower = parte.lower()
+            parte_lower = parte.lower().strip()
 
             for texto, chave in atributos_mapeamento.items():
                 if texto == parte_lower:
-                    parte_traduzida = localizador.get_text(chave)
+                    parte_traduzida = self.loc.get_text(chave)
                     break
+
+            else:
+                for texto, chave in atributos_mapeamento.items():
+                    if texto in parte_lower or parte_lower in texto:
+                        parte_traduzida = self.loc.get_text(chave)
+                        break
 
             partes_traduzidas.append(parte_traduzida)
 
         return ", ".join(partes_traduzidas)
 
-    elif campo == "autor":
+    def _traduzir_autor(self, valor):
         autor_mapeamento = {
-            # Português
             "autor desconhecido": "unknown_author",
             "autor desconhecido - excel": "xls",
             "autor desconhecido - access": "access",
@@ -228,7 +364,6 @@ def traduzir_metadados(localizador, valor, campo):
             "autor desconhecido - project": "project",
             "autor desconhecido - arquivo comprimido": "compressed_file",
 
-            # English
             "unknown author": "unknown_author",
             "unknown author - excel": "xls",
             "unknown author - access": "access",
@@ -238,7 +373,6 @@ def traduzir_metadados(localizador, valor, campo):
             "unknown author - project": "project",
             "unknown author - compressed file": "compressed_file",
 
-            # Español
             "autor desconocido": "unknown_author",
             "autor desconocido - excel": "xls",
             "autor desconocido - access": "access",
@@ -248,7 +382,6 @@ def traduzir_metadados(localizador, valor, campo):
             "autor desconocido - project": "project",
             "autor desconocido - archivo comprimido": "compressed_file",
 
-            # Français
             "auteur inconnu": "unknown_author",
             "auteur inconnu - excel": "xls",
             "auteur inconnu - access": "access",
@@ -258,7 +391,6 @@ def traduzir_metadados(localizador, valor, campo):
             "auteur inconnu - project": "project",
             "auteur inconnu - fichier compressé": "compressed_file",
 
-            # Italiano
             "autore sconosciuto": "unknown_author",
             "autore sconosciuto - excel": "xls",
             "autore sconosciuto - access": "access",
@@ -268,7 +400,6 @@ def traduzir_metadados(localizador, valor, campo):
             "autore sconosciuto - project": "project",
             "autore sconosciuto - file compresso": "compressed_file",
 
-            # Alemão
             "unbekannter autor": "unknown_author",
             "unbekannter autor - excel": "xls",
             "unbekannter autor - access": "access",
@@ -282,35 +413,47 @@ def traduzir_metadados(localizador, valor, campo):
         valor_lower = valor.lower()
         for texto, chave in autor_mapeamento.items():
             if texto == valor_lower:
-                return localizador.get_text(chave)
+                return self.loc.get_text(chave)
 
-    elif campo == "protegido":
-        if valor.lower() in ["sim", "yes", "sí", "oui", "ja"]:
-            return localizador.get_text("yes")
+        return valor
 
-        elif valor.lower() in ["não", "no", "non", "nein"]:
-            return localizador.get_text("no")
+    def _traduzir_protegido(self, valor):
+        valores_sim = ["sim", "yes", "sí", "oui", "sì", "ja"]
+        valores_nao = ["não", "no", "non", "nein"]
 
-        for prefix in ["sim", "yes", "sí", "oui", "ja"]:
-            if valor.lower().startswith(prefix + " ("):
-                complemento = valor[len(prefix)+1:]
-                return f"{localizador.get_text('yes')} {complemento}"
+        valor_lower = valor.lower()
 
-        for prefix in ["sim", "yes", "sí", "oui", "ja"]:
-            if valor.lower().startswith(prefix + ", "):
-                resto = valor[len(prefix)+2:]
+        if any(v in valor_lower for v in valores_sim):
+            valor_sim_usado = next((v for v in valores_sim if valor_lower.startswith(v)), None)
 
-                resto_traduzido = traduzir_metadados(localizador, resto, "atributos")
+            if valor_sim_usado:
+                resto = valor[len(valor_sim_usado):].strip()
 
-                return f"{localizador.get_text('yes')}, {resto_traduzido}"
+                if resto:
+                    if resto.startswith(","):
+                        resto = resto[1:].strip()
 
-    elif campo in ["dimensoes", "tamanho"]:
+                    elif resto.startswith("("):
+                        return f"{self.loc.get_text('yes')}{resto}"
+
+                    if resto:
+                        resto_traduzido = self._traduzir_atributos(resto)
+                        return f"{self.loc.get_text('yes')}, {resto_traduzido}"
+
+                return self.loc.get_text('yes')
+
+        if any(v in valor_lower for v in valores_nao):
+            return self.loc.get_text('no')
+
+        return valor
+
+    def _traduzir_dimensoes(self, valor):
         binary_patterns = ["binário:", "binary:", "binario:", "fichier binaire:", "binario:", "binär:"]
         for pattern in binary_patterns:
             if pattern in valor.lower():
                 parts = valor.split(":", 1)
                 if len(parts) == 2:
-                    return f"{localizador.get_text('binary_file')}: {parts[1].strip()}"
+                    return f"{self.loc.get_text('binary_file')}: {parts[1].strip()}"
 
         unidades_mapeamento = {
             # Português
@@ -327,11 +470,11 @@ def traduzir_metadados(localizador, valor, campo):
             "slides": "slides",
             "slides estimados": "slides_estimated",
             "descompactado": "unzipped",
+            "descompactados": "unzipped",
             "e outros": "and_others",
             "arquivos": "files",
             "tabelas": "tables",
             "parágrafos": "paragraphs",
-            "configurações": "settings",
             "registros": "records",
             "registros estimados": "records_estimated",
             "bytes por registro": "bytes_per_record",
@@ -359,7 +502,6 @@ def traduzir_metadados(localizador, valor, campo):
             "files": "files",
             "tables": "tables",
             "paragraphs": "paragraphs",
-            "settings": "settings",
             "records": "records",
             "estimated records": "records_estimated",
             "bytes per record": "bytes_per_record",
@@ -382,11 +524,11 @@ def traduzir_metadados(localizador, valor, campo):
             "diapositivas": "slides",
             "diapositivas estimadas": "slides_estimated",
             "descomprimido": "unzipped",
+            "descomprimidos": "unzipped",
             "y otros": "and_others",
             "archivos": "files",
             "tablas": "tables",
             "párrafos": "paragraphs",
-            "configuraciones": "settings",
             "registros": "records",
             "registros estimados": "records_estimated",
             "bytes por registro": "bytes_per_record",
@@ -409,11 +551,11 @@ def traduzir_metadados(localizador, valor, campo):
             "diapositives": "slides",
             "diapositives estimées": "slides_estimated",
             "décompressé": "unzipped",
+            "décompressés": "unzipped",
             "et autres": "and_others",
             "fichiers": "files",
             "tables": "tables",
             "paragraphes": "paragraphs",
-            "paramètres": "settings",
             "enregistrements": "records",
             "enregistrements estimés": "records_estimated",
             "octets par enregistrement": "bytes_per_record",
@@ -436,11 +578,11 @@ def traduzir_metadados(localizador, valor, campo):
             "diapositive": "slides",
             "diapositive stimate": "slides_estimated",
             "decompresso": "unzipped",
+            "decompressi": "unzipped",
             "e altri": "and_others",
             "file": "files",
             "tabelle": "tables",
             "paragrafi": "paragraphs",
-            "impostazioni": "settings",
             "record": "records",
             "record stimati": "records_estimated",
             "byte per record": "bytes_per_record",
@@ -467,7 +609,6 @@ def traduzir_metadados(localizador, valor, campo):
             "dateien": "files",
             "tabellen": "tables",
             "absätze": "paragraphs",
-            "einstellungen": "settings",
             "datensätze": "records",
             "geschätzte datensätze": "records_estimated",
             "bytes pro datensatz": "bytes_per_record",
@@ -479,35 +620,33 @@ def traduzir_metadados(localizador, valor, campo):
             "größe": "size"
         }
 
-        import re
         arquivo_compactado_pattern = r'(\d+)\s+(files|arquivos|archivos|fichiers|file|dateien),\s+(.*?)\s+(unzipped|descompactados|descomprimidos|décompressés|decompressi|entpackt)'
         match = re.search(arquivo_compactado_pattern, valor, re.IGNORECASE)
 
         if match:
             num_arquivos = match.group(1)
             tamanho = match.group(3)
-            return f"{num_arquivos} {localizador.get_text('files')}, {tamanho} {localizador.get_text('unzipped')}"
+            return f"{num_arquivos} {self.loc.get_text('files')}, {tamanho} {self.loc.get_text('unzipped')}"
 
         pattern = r'(\d+|~\d+)\s+([a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s.]+?)(?=,|\s+\d|\s*$)'
         matches = re.findall(pattern, valor)
 
         if matches:
-            partes_traduzidas = []
-            texto_restante = valor
+            texto_traduzido = valor
 
-            for numero, unidade in matches:
+            for numero, unidade in reversed(matches):
                 unidade_trim = unidade.strip()
                 unidade_traduzida = unidade_trim
 
                 for texto, chave in unidades_mapeamento.items():
                     if texto.lower() == unidade_trim.lower():
-                        unidade_traduzida = localizador.get_text(chave)
+                        unidade_traduzida = self.loc.get_text(chave)
                         break
 
-                padrao_substituicao = f"{numero} {unidade_trim}"
+                padrao_original = f"{numero} {unidade_trim}"
                 substituicao = f"{numero} {unidade_traduzida}"
-                texto_restante = texto_restante.replace(padrao_substituicao, substituicao)
+                texto_traduzido = texto_traduzido.replace(padrao_original, substituicao)
 
-            return texto_restante
+            return texto_traduzido
 
-    return valor
+        return valor

@@ -1,11 +1,16 @@
 import os
 import time
+from .gmet_21_GetFormataTamanho import formata_tamanho
 
 def extrair_metadados_temporario(caminho, loc):
     metadados = {}
 
     try:
         nome_arquivo = os.path.basename(caminho)
+        if os.path.exists(caminho):
+            tamanho_bytes = os.path.getsize(caminho)
+            metadados['tamanho'] = formata_tamanho(tamanho_bytes)
+
         aplicativos_conhecidos = {
             "~$": "Microsoft Office",
             ".crdownload": "Google Chrome",

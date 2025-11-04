@@ -1,177 +1,118 @@
-from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QTextBrowser, QSizePolicy, QHBoxLayout
+from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QTextBrowser, QSizePolicy, QHBoxLayout, QWidget, QTabWidget
 from PySide6.QtCore import Qt
 
 
 class SobreDialog(QDialog):
-    def __init__(self, parent, titulo, texto_fixo, texto_history, detalhes, licencas, sites_licencas, show_details_text, hide_details_text, 
+    def __init__(self, parent, titulo, texto_fixo, texto_history, detalhes, licencas, sites_licencas, show_history_text, show_details_text, hide_details_text, 
                  show_licenses_text, hide_licenses_text, ok_text, site_oficial_text, avisos=None, show_notices_text=None, 
                  hide_notices_text=None, Privacy_Policy=None, show_privacy_policy_text=None, hide_privacy_policy_text=None, 
-                 info_not_available_text="Information not available"):
+                 info_not_available_text="Information not available", release_notes=None, show_release_notes_text=None):
         super().__init__(parent)
         self.setWindowTitle(titulo)
-        self.setWindowFlags(self.windowFlags() | Qt.WindowMaximizeButtonHint | Qt.WindowMinimizeButtonHint)
+        self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
+        self.setModal(False)
 
         layout = QVBoxLayout(self)
+
+        header_widget = QWidget()
+        header_layout = QVBoxLayout(header_widget)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(5)
 
         self.fixed_label = QLabel(texto_fixo)
         self.fixed_label.setTextFormat(Qt.TextFormat.RichText)
         self.fixed_label.setWordWrap(True)
         self.fixed_label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        layout.addWidget(self.fixed_label)
+        self.fixed_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        header_layout.addWidget(self.fixed_label)
 
-        self.history_label = QLabel()
-        self.history_label.setTextFormat(Qt.TextFormat.PlainText)
-        self.history_label.setWordWrap(True)
-        self.history_label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-        self.history_label.setText(texto_history)
-        layout.addWidget(self.history_label)
+        header_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        layout.addWidget(header_widget)
 
-        self.details_edit = QTextBrowser()
-        self.details_edit.setReadOnly(True)
-        self.details_edit.setVisible(False)
-        self.details_edit.setOpenExternalLinks(True)
-        layout.addWidget(self.details_edit)
+        self.tabs = QTabWidget()
+        self.tabs.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        history_browser = QTextBrowser()
+        history_browser.setReadOnly(True)
+        history_browser.setOpenExternalLinks(True)
+        if texto_history:
+            history_browser.setPlainText(texto_history)
+
+        else:
+            history_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(history_browser, show_history_text)
+
+        detalhes_browser = QTextBrowser()
+        detalhes_browser.setReadOnly(True)
+        detalhes_browser.setOpenExternalLinks(True)
+        if detalhes:
+            detalhes_browser.setPlainText(detalhes)
+
+        else:
+            detalhes_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(detalhes_browser, show_details_text)
+
+        licencas_browser = QTextBrowser()
+        licencas_browser.setReadOnly(True)
+        licencas_browser.setOpenExternalLinks(True)
+        if licencas:
+            texto_html = licencas.replace('\n', '<br>')
+            texto_html += f"<br><br><h3>{site_oficial_text}</h3><ul>"
+            for site in sites_licencas.strip().split('\n'):
+                if site.strip():
+                    texto_html += f'<li><a href="{site.strip()}">{site.strip()}</a></li>'
+
+            texto_html += "</ul>"
+            licencas_browser.setHtml(texto_html)
+
+        else:
+            licencas_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(licencas_browser, show_licenses_text)
+
+        avisos_browser = QTextBrowser()
+        avisos_browser.setReadOnly(True)
+        avisos_browser.setOpenExternalLinks(True)
+        if avisos:
+            avisos_browser.setPlainText(avisos)
+
+        else:
+            avisos_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(avisos_browser, show_notices_text)
+
+        privacidade_browser = QTextBrowser()
+        privacidade_browser.setReadOnly(True)
+        privacidade_browser.setOpenExternalLinks(True)
+        if Privacy_Policy:
+            privacidade_browser.setPlainText(Privacy_Policy)
+
+        else:
+            privacidade_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(privacidade_browser, show_privacy_policy_text)
+
+        release_notes_browser = QTextBrowser()
+        release_notes_browser.setReadOnly(True)
+        release_notes_browser.setOpenExternalLinks(True)
+        if release_notes:
+            release_notes_browser.setPlainText(release_notes)
+
+        else:
+            release_notes_browser.setHtml(f"<p>{info_not_available_text}.</p>")
+
+        self.tabs.addTab(release_notes_browser, show_release_notes_text or "Release Notes")
+
+        layout.addWidget(self.tabs)
 
         button_layout = QHBoxLayout()
-        self.details_button = QPushButton(show_details_text)
-        self.details_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        self.details_button.clicked.connect(self.toggle_details)
-        button_layout.addWidget(self.details_button)
-
-        self.licenses_button = QPushButton(show_licenses_text)
-        self.licenses_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        self.licenses_button.clicked.connect(self.toggle_licenses)
-        button_layout.addWidget(self.licenses_button)
-
-        self.notices_button = QPushButton(show_notices_text)
-        self.notices_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        self.notices_button.clicked.connect(self.toggle_notices)
-        button_layout.addWidget(self.notices_button)
-
-        self.privacy_policy_button = QPushButton(show_privacy_policy_text)
-        self.privacy_policy_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        self.privacy_policy_button.clicked.connect(self.toggle_privacy_policy)
-        button_layout.addWidget(self.privacy_policy_button)
-
         self.ok_button = QPushButton(ok_text)
         self.ok_button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         self.ok_button.clicked.connect(self.accept)
-        button_layout.addWidget(self.ok_button)
-
         button_layout.addStretch(1)
+        button_layout.addWidget(self.ok_button)
         layout.addLayout(button_layout)
 
-        self.show_details_text = show_details_text
-        self.hide_details_text = hide_details_text
-        self.show_licenses_text = show_licenses_text
-        self.hide_licenses_text = hide_licenses_text
-        self.show_notices_text = show_notices_text
-        self.hide_notices_text = hide_notices_text
-        self.show_privacy_policy_text = show_privacy_policy_text
-        self.hide_privacy_policy_text = hide_privacy_policy_text
-        self.site_oficial_text = site_oficial_text
-        self.info_not_available_text = info_not_available_text
-
-        self.detalhes = detalhes
-        self.licencas = licencas
-        self.sites_licencas = sites_licencas
-        self.avisos = avisos
-        self.Privacy_Policy = Privacy_Policy
-
-        self.showing_details = False
-        self.showing_licenses = False
-        self.showing_notices = False
-        self.showing_privacy_policy = False
-
         self.setMinimumSize(400, 200)
-
-    def _toggle_all_off(self):
-        self.showing_details = False
-        self.showing_licenses = False
-        self.showing_notices = False
-        self.showing_privacy_policy = False
-        self.details_button.setText(self.show_details_text)
-        self.licenses_button.setText(self.show_licenses_text)
-        self.notices_button.setText(self.show_notices_text)
-        self.privacy_policy_button.setText(self.show_privacy_policy_text)
-        self.details_edit.setVisible(False)
-        self.history_label.setVisible(True)
-
-    def toggle_details(self):
-        if not self.showing_details:
-            self._toggle_all_off()
-            self.showing_details = True
-            self.details_edit.setVisible(True)
-            self.details_button.setText(self.hide_details_text)
-            if self.detalhes:
-                self.details_edit.setPlainText(self.detalhes)
-
-            else:
-                self.details_edit.setHtml(f"<p>{self.info_not_available_text}.</p>")
-
-            self.history_label.setVisible(False)
-            self._adjust_dialog_size()
-
-        else:
-            self._toggle_all_off()
-
-    def toggle_licenses(self):
-        if not self.showing_licenses:
-            self._toggle_all_off()
-            self.showing_licenses = True
-            self.details_edit.setVisible(True)
-            self.licenses_button.setText(self.hide_licenses_text)
-            texto_html = self.licencas.replace('\n', '<br>')
-            texto_html += f"<br><br><h3>{self.site_oficial_text}</h3><ul>"
-            for site in self.sites_licencas.strip().split('\n'):
-                if site.strip():
-                    texto_html += f'<li><a href="{site.strip()}">{site.strip()}</a></li>'
-            texto_html += "</ul>"
-            self.details_edit.setHtml(texto_html)
-            self.history_label.setVisible(False)
-            self._adjust_dialog_size()
-
-        else:
-            self._toggle_all_off()
-
-    def toggle_notices(self):
-        if not self.showing_notices:
-            self._toggle_all_off()
-            self.showing_notices = True
-            self.details_edit.setVisible(True)
-            self.notices_button.setText(self.hide_notices_text)
-            if self.avisos:
-                self.details_edit.setPlainText(self.avisos)
-
-            else:
-                self.details_edit.setHtml(f"<p>{self.info_not_available_text}.</p>")
-
-            self.history_label.setVisible(False)
-            self._adjust_dialog_size()
-
-        else:
-            self._toggle_all_off()
-
-    def toggle_privacy_policy(self):
-        if not self.showing_privacy_policy:
-            self._toggle_all_off()
-            self.showing_privacy_policy = True
-            self.details_edit.setVisible(True)
-            self.privacy_policy_button.setText(self.hide_privacy_policy_text)
-            if self.Privacy_Policy:
-                self.details_edit.setPlainText(self.Privacy_Policy)
-
-            else:
-                self.details_edit.setHtml(f"<p>{self.info_not_available_text}.</p>")
-
-            self.history_label.setVisible(False)
-            self._adjust_dialog_size()
-
-        else:
-            self._toggle_all_off()
-
-    def _adjust_dialog_size(self):
-        if self.showing_details or self.showing_licenses or self.showing_notices or self.showing_privacy_policy:
-            current_size = self.size()
-            if current_size.height() < 450:
-                self.resize(current_size.width(), 450)

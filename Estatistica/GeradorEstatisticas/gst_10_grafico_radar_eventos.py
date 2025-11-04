@@ -208,7 +208,7 @@ class GraficoRadarEventos(BaseGerador):
             distribuicao_completa = dict(eventos_por_hora)
             logger.debug(f"Radar Eventos - Distribuição completa por hora: {distribuicao_completa}")
 
-            horas_mostradas = list(range(0, 24, 2))
+            horas_mostradas = list(range(24))
             eventos_hora_filtrado = eventos_por_hora[horas_mostradas]
             categorias = [f"{h}h" for h in horas_mostradas]
             valores = eventos_hora_filtrado.values.tolist()

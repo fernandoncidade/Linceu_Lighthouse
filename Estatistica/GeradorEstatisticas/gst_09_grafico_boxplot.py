@@ -20,11 +20,11 @@ class GraficoBoxplot(BaseGerador):
 
             logger.debug(f"BoxPlot - Dados obtidos: {len(df)} registros")
 
-            if 'tamanho' in df.columns:
-                logger.debug(f"BoxPlot - Coluna tamanho encontrada, exemplo de valores: {df['tamanho'].head(5).tolist()}")
+            if 'size_mb' in df.columns:
+                logger.debug(f"BoxPlot - Coluna size_mb encontrada, exemplo de valores: {df['size_mb'].head(5).tolist()}")
 
             else:
-                logger.debug("BoxPlot - Coluna tamanho não encontrada no DataFrame")
+                logger.debug("BoxPlot - Coluna size_mb não encontrada no DataFrame")
 
             if df.empty:
                 logger.warning("Dataset vazio para geração do boxplot")
@@ -57,19 +57,19 @@ class GraficoBoxplot(BaseGerador):
     def _converter_tamanho_para_numerico(self, df):
         logger = LogManager.get_logger()
 
-        if 'tamanho' not in df.columns:
-            logger.debug("BoxPlot - Coluna 'tamanho' não encontrada durante conversão")
+        if 'size_mb' not in df.columns:
+            logger.debug("BoxPlot - Coluna 'size_mb' não encontrada durante conversão")
             return df
 
         df_copy = df.copy()
         logger.debug(f"BoxPlot - Antes da conversão: {len(df_copy)} registros")
 
         try:
-            df_copy['tamanho'] = df_copy['tamanho'].astype(str)
-            df_copy['tamanho'] = df_copy['tamanho'].str.replace(r'[^0-9\.]', '', regex=True)
-            df_copy['tamanho'] = pd.to_numeric(df_copy['tamanho'], errors='coerce')
+            df_copy['size_mb'] = df_copy['size_mb'].astype(str)
+            df_copy['size_mb'] = df_copy['size_mb'].str.replace(r'[^0-9\.]', '', regex=True)
+            df_copy['size_mb'] = pd.to_numeric(df_copy['size_mb'], errors='coerce')
 
-            logger.debug(f"BoxPlot - Após conversão: {len(df_copy)} registros, {df_copy['tamanho'].notna().sum()} valores válidos")
+            logger.debug(f"BoxPlot - Após conversão: {len(df_copy)} registros, {df_copy['size_mb'].notna().sum()} valores válidos")
 
             return df_copy
 
@@ -79,48 +79,48 @@ class GraficoBoxplot(BaseGerador):
 
     def _filtrar_dados_com_tamanho_valido(self, df):
         logger = LogManager.get_logger()
-        logger.debug(f"BoxPlot - Filtrando dados com tamanho válido de {len(df)} registros")
+        logger.debug(f"BoxPlot - Filtrando dados com size_mb válido de {len(df)} registros")
 
         try:
-            if 'tamanho' not in df.columns and len(df) > 0:
-                logger.debug("BoxPlot - Coluna 'tamanho' ausente, tentando alternativas")
+            if 'size_mb' not in df.columns and len(df) > 0:
+                logger.debug("BoxPlot - Coluna 'size_mb' ausente, tentando alternativas")
 
                 colunas_numericas = df.select_dtypes(include=[np.number]).columns.tolist()
                 if colunas_numericas:
                     logger.debug(f"BoxPlot - Usando coluna alternativa: {colunas_numericas[0]}")
                     df_copy = df.copy()
-                    df_copy['tamanho'] = df_copy[colunas_numericas[0]]
+                    df_copy['size_mb'] = df_copy[colunas_numericas[0]]
                     return df_copy
 
                 else:
-                    logger.debug("BoxPlot - Nenhuma coluna numérica encontrada para substituir 'tamanho'")
+                    logger.debug("BoxPlot - Nenhuma coluna numérica encontrada para substituir 'size_mb'")
                     df_copy = df.copy()
-                    df_copy['tamanho'] = 1
+                    df_copy['size_mb'] = 1
                     return df_copy
 
             df_convertido = self._converter_tamanho_para_numerico(df)
 
-            df_com_tamanho = df_convertido.dropna(subset=['tamanho'])
+            df_com_tamanho = df_convertido.dropna(subset=['size_mb'])
             logger.debug(f"BoxPlot - Após remover NaNs: {len(df_com_tamanho)} registros")
 
             if df_com_tamanho.empty and not df.empty:
                 logger.debug("BoxPlot - Todos os valores são inválidos, usando valores simulados")
                 df_dummy = df.copy()
-                df_dummy['tamanho'] = 1
+                df_dummy['size_mb'] = 1
                 return df_dummy
 
-            df_positivo = df_com_tamanho[df_com_tamanho['tamanho'] > 0]
+            df_positivo = df_com_tamanho[df_com_tamanho['size_mb'] > 0]
             logger.debug(f"BoxPlot - Após filtrar positivos: {len(df_positivo)} registros")
 
             if df_positivo.empty and not df_com_tamanho.empty:
                 logger.debug("BoxPlot - Sem valores positivos, usando valores absolutos")
-                df_com_tamanho['tamanho'] = df_com_tamanho['tamanho'].abs()
-                df_positivo = df_com_tamanho[df_com_tamanho['tamanho'] > 0]
+                df_com_tamanho['size_mb'] = df_com_tamanho['size_mb'].abs()
+                df_positivo = df_com_tamanho[df_com_tamanho['size_mb'] > 0]
 
             return df_positivo
 
         except Exception as e:
-            logger.error(f"Erro ao filtrar dados com tamanho válido: {e}", exc_info=True)
+            logger.error(f"Erro ao filtrar dados com size_mb válido: {e}", exc_info=True)
             return df
 
     def _criar_boxplot_operacoes(self, df):
@@ -139,13 +139,13 @@ class GraficoBoxplot(BaseGerador):
 
             if df_com_tamanho.empty:
                 logger.warning("BoxPlot - Operações: Sem dados válidos para plotar")
-                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de tamanho', 
+                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de size_mb', 
                         horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
                 plt.title(self.loc.get_text("operation_type") if self.loc else 'Por Tipo de Operação')
                 return
 
             df_com_tamanho = df_com_tamanho.copy()
-            df_com_tamanho['tamanho_mb'] = df_com_tamanho['tamanho'] / (1024 * 1024)
+            df_com_tamanho['tamanho_mb'] = df_com_tamanho['size_mb'] / (1024 * 1024)
 
             operacoes = df_com_tamanho['tipo_operacao'].unique()
             dados_boxplot = []
@@ -168,7 +168,7 @@ class GraficoBoxplot(BaseGerador):
                     patch.set_alpha(0.7)
 
                 plt.yscale('log')
-                plt.ylabel(self.loc.get_text("size") + ' (MB)' if self.loc else 'Tamanho (MB)')
+                plt.ylabel(self.loc.get_text("size_mb") + ' (MB)' if self.loc else 'Tamanho (MB)')
                 plt.title(self.loc.get_text("operation_type") if self.loc else 'Por Tipo de Operação')
                 plt.xticks(rotation=45, ha='right')
                 plt.grid(True, alpha=0.3)
@@ -195,13 +195,13 @@ class GraficoBoxplot(BaseGerador):
 
             if df_com_tamanho.empty:
                 logger.warning("BoxPlot - Tipos: Sem dados válidos para plotar")
-                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de tamanho', 
+                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de size_mb', 
                         horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
                 plt.title(self.loc.get_text("type") if self.loc else 'Por Tipo de Arquivo')
                 return
 
             df_com_tamanho = df_com_tamanho.copy()
-            df_com_tamanho['tamanho_mb'] = df_com_tamanho['tamanho'] / (1024 * 1024)
+            df_com_tamanho['tamanho_mb'] = df_com_tamanho['size_mb'] / (1024 * 1024)
 
             tipos_principais = df_com_tamanho['tipo'].value_counts().head(8).index.tolist()
             logger.debug(f"BoxPlot - Tipos: Usando os {len(tipos_principais)} tipos mais comuns: {tipos_principais}")
@@ -228,7 +228,7 @@ class GraficoBoxplot(BaseGerador):
                     patch.set_alpha(0.7)
 
                 plt.yscale('log')
-                plt.ylabel(self.loc.get_text("size") + ' (MB)' if self.loc else 'Tamanho (MB)')
+                plt.ylabel(self.loc.get_text("size_mb") + ' (MB)' if self.loc else 'Tamanho (MB)')
                 plt.title(self.loc.get_text("type") if self.loc else 'Por Tipo de Arquivo')
                 plt.xticks(rotation=45, ha='right')
                 plt.grid(True, alpha=0.3)
@@ -317,21 +317,21 @@ class GraficoBoxplot(BaseGerador):
 
     def _criar_boxplot_tamanhos_categoria(self, df):
         logger = LogManager.get_logger()
-        logger.debug("BoxPlot - Iniciando criação do boxplot de categorias de tamanho")
+        logger.debug("BoxPlot - Iniciando criação do boxplot de categorias de size_mb")
 
         try:
             df_com_tamanho = self._filtrar_dados_com_tamanho_valido(df)
 
             if df_com_tamanho.empty:
                 logger.warning("BoxPlot - Categorias: Sem dados válidos para plotar")
-                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de tamanho', 
+                plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados de size_mb', 
                         horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
                 plt.title(self.loc.get_text("size_categories") if self.loc else 'Categorias de Tamanho')
                 return
 
             df_categorizado = df_com_tamanho.copy()
-            df_categorizado['categoria_tamanho'] = df_categorizado['tamanho'].apply(self._categorizar_tamanho)
-            df_categorizado['tamanho_mb'] = df_categorizado['tamanho'] / (1024 * 1024)
+            df_categorizado['categoria_tamanho'] = df_categorizado['size_mb'].apply(self._categorizar_tamanho)
+            df_categorizado['tamanho_mb'] = df_categorizado['size_mb'] / (1024 * 1024)
 
             distribuicao = df_categorizado['categoria_tamanho'].value_counts().to_dict()
             logger.debug(f"BoxPlot - Categorias: Distribuição: {distribuicao}")
@@ -372,7 +372,7 @@ class GraficoBoxplot(BaseGerador):
                     patch.set_alpha(0.7)
 
                 plt.yscale('log')
-                plt.ylabel(self.loc.get_text("size") + ' (MB)' if self.loc else 'Tamanho (MB)')
+                plt.ylabel(self.loc.get_text("size_mb") + ' (MB)' if self.loc else 'Tamanho (MB)')
                 plt.title(self.loc.get_text("size_categories") if self.loc else 'Categorias de Tamanho')
                 plt.xticks(rotation=45, ha='right')
                 plt.grid(True, alpha=0.3)
@@ -392,23 +392,23 @@ class GraficoBoxplot(BaseGerador):
 
     def _categorizar_tamanho(self, tamanho_bytes):
         try:
-            tamanho = float(tamanho_bytes)
+            size_mb = float(tamanho_bytes)
 
-            if tamanho < 1024:
+            if size_mb < 1024:
                 return 'Muito Pequeno'
 
-            elif tamanho < 1024 * 1024:
+            elif size_mb < 1024 * 1024:
                 return 'Pequeno'
 
-            elif tamanho < 100 * 1024 * 1024:
+            elif size_mb < 100 * 1024 * 1024:
                 return 'Médio'
 
-            elif tamanho < 1024 * 1024 * 1024:
+            elif size_mb < 1024 * 1024 * 1024:
                 return 'Grande'
 
             else:
                 return 'Muito Grande'
 
         except (ValueError, TypeError) as e:
-            LogManager.get_logger().debug(f"Erro ao categorizar tamanho '{tamanho_bytes}': {e}")
+            LogManager.get_logger().debug(f"Erro ao categorizar size_mb '{tamanho_bytes}': {e}")
             return 'Desconhecido'

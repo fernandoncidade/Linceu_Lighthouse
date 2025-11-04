@@ -1,5 +1,4 @@
 import os
-import sys
 import json
 import queue
 import time
@@ -21,13 +20,12 @@ from Observador.GerenciamentoMetadados import (
     extrair_metadados_banco_dados,
     extrair_metadados_executavel,
     extrair_metadados_temporario,
-    extrair_metadados_arquivo,
+    extrair_metadados_compactados,
     extrair_metadados_backup,
     extrair_metadados_log,
     extrair_metadados_config,
     extrair_metadados_olefile,
     identificar_tipo_arquivo,
-    get_tamanho_diretorio_arquivo,
     get_atributos_arquivo,
     get_autor_arquivo,
     get_dimensoes_arquivo,
@@ -125,159 +123,250 @@ class GerenciadorColunas:
                 "ordem": 8,
                 "getter": lambda item: item.get("tipo", "")
             },
-            "tamanho": {
-                "translation_key": "size",
-                "nome": self.loc.get_text("size"),
+            "size_b": {
+                "translation_key": "size_b",
+                "nome": self.loc.get_text("size_b"),
                 "visivel": False,
                 "ordem": 9,
-                "getter": lambda item: get_tamanho_diretorio_arquivo(self, item, self.loc)
+                "getter": lambda item: self._get_size_unit(item, "B")
+            },
+            "size_kb": {
+                "translation_key": "size_kb",
+                "nome": self.loc.get_text("size_kb"),
+                "visivel": True,
+                "ordem": 10,
+                "getter": lambda item: self._get_size_unit(item, "KB")
+            },
+            "size_mb": {
+                "translation_key": "size_mb",
+                "nome": self.loc.get_text("size_mb"),
+                "visivel": False,
+                "ordem": 11,
+                "getter": lambda item: self._get_size_unit(item, "MB")
+            },
+            "size_gb": {
+                "translation_key": "size_gb",
+                "nome": self.loc.get_text("size_gb"),
+                "visivel": False,
+                "ordem": 12,
+                "getter": lambda item: self._get_size_unit(item, "GB")
+            },
+            "size_tb": {
+                "translation_key": "size_tb",
+                "nome": self.loc.get_text("size_tb"),
+                "visivel": False,
+                "ordem": 13,
+                "getter": lambda item: self._get_size_unit(item, "TB")
             },
             "atributos": {
                 "translation_key": "attributes",
                 "nome": self.loc.get_text("attributes"),
                 "visivel": False,
-                "ordem": 10,
+                "ordem": 14,
                 "getter": lambda item: get_atributos_arquivo(item, self.loc)
             },
             "autor": {
                 "translation_key": "author",
                 "nome": self.loc.get_text("author"),
                 "visivel": False,
-                "ordem": 11,
+                "ordem": 15,
                 "getter": lambda item: get_autor_arquivo(item, self.loc)
             },
             "dimensoes": {
                 "translation_key": "dimensions",
                 "nome": self.loc.get_text("dimensions"),
                 "visivel": False,
-                "ordem": 12,
+                "ordem": 16,
                 "getter": lambda item: get_dimensoes_arquivo(self, item, self.loc)
             },
             "duracao": {
                 "translation_key": "duration",
                 "nome": self.loc.get_text("duration"),
                 "visivel": False,
-                "ordem": 13,
+                "ordem": 17,
                 "getter": lambda item: get_duracao_arquivo(self, item)
             },
             "taxa_bits": {
                 "translation_key": "bit_rate",
                 "nome": self.loc.get_text("bit_rate"),
                 "visivel": False,
-                "ordem": 14,
+                "ordem": 18,
                 "getter": lambda item: get_taxa_bits_arquivo(self, item)
             },
             "protegido": {
                 "translation_key": "protected",
                 "nome": self.loc.get_text("protected"),
                 "visivel": False,
-                "ordem": 15,
+                "ordem": 19,
                 "getter": lambda item: get_protecao_arquivo(self, item, self.loc)
             },
             "paginas": {
                 "translation_key": "pages",
                 "nome": self.loc.get_text("pages"),
                 "visivel": False,
-                "ordem": 16,
+                "ordem": 20,
                 "getter": lambda item: item.get("paginas", "")
             },
             "linhas": {
                 "translation_key": "lines",
                 "nome": self.loc.get_text("lines"),
                 "visivel": False,
-                "ordem": 17,
+                "ordem": 21,
                 "getter": lambda item: item.get("linhas", "")
             },
             "palavras": {
                 "translation_key": "words",
                 "nome": self.loc.get_text("words"),
                 "visivel": False,
-                "ordem": 18,
+                "ordem": 22,
                 "getter": lambda item: item.get("palavras", "")
             },
             "paginas_estimadas": {
                 "translation_key": "pages_estimated",
                 "nome": self.loc.get_text("pages_estimated"),
                 "visivel": False,
-                "ordem": 19,
+                "ordem": 23,
                 "getter": lambda item: item.get("paginas_estimadas", "")
             },
             "linhas_codigo": {
                 "translation_key": "lines_code",
                 "nome": self.loc.get_text("lines_code"),
                 "visivel": False,
-                "ordem": 20,
+                "ordem": 24,
                 "getter": lambda item: item.get("linhas_codigo", "")
             },
             "total_linhas": {
                 "translation_key": "total_lines",
                 "nome": self.loc.get_text("total_lines"),
                 "visivel": False,
-                "ordem": 21,
+                "ordem": 25,
                 "getter": lambda item: item.get("total_linhas", "")
             },
-            "slides_estimadas": {
+            "slides_estimados": {
                 "translation_key": "slides_estimated",
                 "nome": self.loc.get_text("slides_estimated"),
                 "visivel": False,
-                "ordem": 22,
-                "getter": lambda item: item.get("slides_estimadas", "")
+                "ordem": 26,
+                "getter": lambda item: item.get("slides_estimados", "")
             },
             "arquivos": {
                 "translation_key": "files",
                 "nome": self.loc.get_text("files"),
                 "visivel": False,
-                "ordem": 23,
+                "ordem": 27,
                 "getter": lambda item: item.get("arquivos", "")
             },
-            "descompactados": {
-                "translation_key": "unzipped",
-                "nome": self.loc.get_text("unzipped"),
+            "unzipped_b": {
+                "translation_key": "unzipped_b",
+                "nome": self.loc.get_text("unzipped_b"),
                 "visivel": False,
-                "ordem": 24,
-                "getter": lambda item: item.get("descompactados", "")
+                "ordem": 28,
+                "getter": lambda item: self._get_unzipped_unit(item, "B")
+            },
+            "unzipped_kb": {
+                "translation_key": "unzipped_kb",
+                "nome": self.loc.get_text("unzipped_kb"),
+                "visivel": False,
+                "ordem": 29,
+                "getter": lambda item: self._get_unzipped_unit(item, "KB")
+            },
+            "unzipped_mb": {
+                "translation_key": "unzipped_mb",
+                "nome": self.loc.get_text("unzipped_mb"),
+                "visivel": False,
+                "ordem": 30,
+                "getter": lambda item: self._get_unzipped_unit(item, "MB")
+            },
+            "unzipped_gb": {
+                "translation_key": "unzipped_gb",
+                "nome": self.loc.get_text("unzipped_gb"),
+                "visivel": False,
+                "ordem": 31,
+                "getter": lambda item: self._get_unzipped_unit(item, "GB")
+            },
+            "unzipped_tb": {
+                "translation_key": "unzipped_tb",
+                "nome": self.loc.get_text("unzipped_tb"),
+                "visivel": False,
+                "ordem": 32,
+                "getter": lambda item: self._get_unzipped_unit(item, "TB")
             },
             "slides": {
                 "translation_key": "slides",
                 "nome": self.loc.get_text("slides"),
                 "visivel": False,
-                "ordem": 25,
+                "ordem": 33,
                 "getter": lambda item: item.get("slides", "")
             },
-            "binario": {
-                "translation_key": "binary_file",
-                "nome": self.loc.get_text("binary_file"),
+            "binary_file_b": {
+                "translation_key": "binary_file_b",
+                "nome": self.loc.get_text("binary_file_b"),
                 "visivel": False,
-                "ordem": 26,
-                "getter": lambda item: item.get("binario", "")
+                "ordem": 34,
+                "getter": lambda item: self._get_binary_unit(item, "B")
+            },
+            "binary_file_kb": {
+                "translation_key": "binary_file_kb",
+                "nome": self.loc.get_text("binary_file_kb"),
+                "visivel": False,
+                "ordem": 35,
+                "getter": lambda item: self._get_binary_unit(item, "KB")
+            },
+            "binary_file_mb": {
+                "translation_key": "binary_file_mb",
+                "nome": self.loc.get_text("binary_file_mb"),
+                "visivel": False,
+                "ordem": 36,
+                "getter": lambda item: self._get_binary_unit(item, "MB")
+            },
+            "binary_file_gb": {
+                "translation_key": "binary_file_gb",
+                "nome": self.loc.get_text("binary_file_gb"),
+                "visivel": False,
+                "ordem": 37,
+                "getter": lambda item: self._get_binary_unit(item, "GB")
+            },
+            "binary_file_tb": {
+                "translation_key": "binary_file_tb",
+                "nome": self.loc.get_text("binary_file_tb"),
+                "visivel": False,
+                "ordem": 38,
+                "getter": lambda item: self._get_binary_unit(item, "TB")
             },
             "planilhas": {
                 "translation_key": "spreadsheets",
                 "nome": self.loc.get_text("spreadsheets"),
                 "visivel": False,
-                "ordem": 27,
+                "ordem": 39,
                 "getter": lambda item: item.get("planilhas", "")
             },
             "colunas": {
                 "translation_key": "columns",
                 "nome": self.loc.get_text("columns"),
                 "visivel": False,
-                "ordem": 28,
+                "ordem": 40,
                 "getter": lambda item: item.get("colunas", "")
             },
             "registros": {
                 "translation_key": "records",
                 "nome": self.loc.get_text("records"),
                 "visivel": False,
-                "ordem": 29,
+                "ordem": 41,
                 "getter": lambda item: item.get("registros", "")
             },
             "tabelas": {
                 "translation_key": "tables",
                 "nome": self.loc.get_text("tables"),
                 "visivel": False,
-                "ordem": 30,
+                "ordem": 42,
                 "getter": lambda item: item.get("tabelas", "")
+            },
+            "timestamp": {
+                "translation_key": "timestamp",
+                "nome": self.loc.get_text("timestamp"),
+                "visivel": True,
+                "ordem": 43,
+                "getter": lambda item: item.get("timestamp", "")
             }
         }
 
@@ -382,7 +471,9 @@ class GerenciadorColunas:
                 caminho = item.get("dir_atual") or item.get("dir_anterior")
 
                 if not caminho or not os.path.exists(caminho):
-                    continue
+                    tipo = identificar_tipo_arquivo(caminho, self.loc, item.get("nome"))
+                    metadados = {"tipo": tipo}
+                    return metadados
 
                 time.sleep(0.1)
 
@@ -418,35 +509,133 @@ class GerenciadorColunas:
     def mostrar_dialogo_configuracao(self, pos=None):
         self.gerenciador_tabela.mostrar_dialogo_configuracao(pos)
 
+    def _invalidar_cache_diretorios_relacionados(self, caminho: str):
+        try:
+            chaves_tamanho = {
+                "tamanho_dir", "tamanho", "tamanho_dir_bytes",
+                "tamanho_dir_mtime", "tamanho_dir_cached_at"
+            }
+            with self.lock_cache:
+                if os.path.isfile(caminho):
+                    dir_pai = os.path.dirname(caminho)
+                    if dir_pai in self.cache_metadados:
+                        for k in list(chaves_tamanho):
+                            if k in self.cache_metadados[dir_pai]:
+                                self.cache_metadados[dir_pai].pop(k, None)
+                                print(f"Cache invalidado para diretório pai: {dir_pai}")
+
+                        if not self.cache_metadados[dir_pai]:
+                            self.cache_metadados.pop(dir_pai, None)
+
+                dir_atual = os.path.dirname(caminho) if os.path.isfile(caminho) else caminho
+                while True:
+                    if dir_atual in self.cache_metadados:
+                        for k in list(chaves_tamanho):
+                            if k in self.cache_metadados[dir_atual]:
+                                self.cache_metadados[dir_atual].pop(k, None)
+
+                        if not self.cache_metadados[dir_atual]:
+                            self.cache_metadados.pop(dir_atual, None)
+
+                    pai = os.path.dirname(dir_atual)
+                    if not pai or pai == dir_atual:
+                        break
+
+                    dir_atual = pai
+
+                if os.path.isdir(caminho):
+                    for root, dirs, files in os.walk(caminho):
+                        if root in self.cache_metadados:
+                            for k in list(chaves_tamanho):
+                                if k in self.cache_metadados[root]:
+                                    self.cache_metadados[root].pop(k, None)
+
+                            if not self.cache_metadados[root]:
+                                self.cache_metadados.pop(root, None)
+
+        except Exception as e:
+            print(f"Erro ao invalidar cache de diretórios: {e}")
+
     def get_metadados(self, item):
         try:
             from Observador.GerenciamentoMetadados.gmet_21_GetFormataTamanho import get_formata_tamanho
 
             caminho = item.get("dir_atual") or item.get("dir_anterior")
             if not caminho or not os.path.exists(caminho):
-                return {}
+                tipo = identificar_tipo_arquivo(caminho, self.loc, item.get("nome"))
+                metadados = {"tipo": tipo}
+                return metadados
+
+            tipo_operacao = item.get("tipo_operacao", "")
+            ops_invalida = {
+                self.loc.get_text("op_added"),
+                self.loc.get_text("op_deleted"),
+                self.loc.get_text("op_modified"),
+                self.loc.get_text("op_moved"),
+                self.loc.get_text("op_renamed"),
+            }
+            if tipo_operacao in ops_invalida:
+                self._invalidar_cache_diretorios_relacionados(caminho)
+
+            if tipo_operacao == self.loc.get_text("op_added") and os.path.isfile(caminho):
+                with self.lock_cache:
+                    if caminho in self.cache_metadados:
+                        self.cache_metadados.pop(caminho, None)
 
             with self.lock_cache:
                 if caminho in self.cache_metadados:
-                    for campo in [
-                        "paginas", "linhas", "palavras", "paginas_estimadas",
-                        "linhas_codigo", "total_linhas", "slides_estimadas",
-                        "arquivos", "descompactados", "slides", "binario",
-                        "planilhas", "colunas", "registros", "tabelas"
-                    ]:
-                        if campo in self.cache_metadados[caminho]:
-                            item[campo] = self.cache_metadados[caminho][campo]
+                    if (tipo_operacao == self.loc.get_text("op_added") and 
+                        os.path.isdir(caminho) and 
+                        self.cache_metadados[caminho].get("tamanho_dir_bytes", 0) == 0):
+                        print(f"Removendo cache zerado para diretório adicionado: {caminho}")
+                        self.cache_metadados.pop(caminho, None)
 
-                    return self.cache_metadados[caminho]
+                    else:
+                        for campo in [
+                            "paginas", 
+                            "linhas", 
+                            "palavras", 
+                            "paginas_estimadas", 
+                            "linhas_codigo", 
+                            "total_linhas", 
+                            "slides_estimadas", 
+                            "arquivos", 
+                            "unzipped_b", 
+                            "unzipped_kb", 
+                            "unzipped_mb", 
+                            "unzipped_gb", 
+                            "unzipped_tb", 
+                            "slides", 
+                            "binary_file_b", 
+                            "binary_file_kb", 
+                            "binary_file_mb", 
+                            "binary_file_gb", 
+                            "binary_file_tb", 
+                            "planilhas", 
+                            "colunas", 
+                            "registros", 
+                            "tabelas"
+                            ]:
+                            if campo in self.cache_metadados[caminho]:
+                                item[campo] = self.cache_metadados[caminho][campo]
+
+                        return self.cache_metadados[caminho]
 
             if os.path.exists(caminho):
                 stats = os.stat(caminho)
-
+                tamanho_bytes = stats.st_size if os.path.isfile(caminho) else self._get_tamanho_bytes(item)
                 metadados = {
-                    "tamanho": get_formata_tamanho(stats.st_size),
+                    "size_b": int(tamanho_bytes),
+                    "size_kb": round(tamanho_bytes / 1024, 2),
+                    "size_mb": round(tamanho_bytes / 1024**2, 2),
+                    "size_gb": round(tamanho_bytes / 1024**3, 2),
+                    "size_tb": round(tamanho_bytes / 1024**4, 2),
                     "data_acesso": datetime.fromtimestamp(stats.st_atime).strftime("%Y-%m-%d %H:%M:%S"),
                     "data_modificacao": datetime.fromtimestamp(stats.st_mtime).strftime("%Y-%m-%d %H:%M:%S"),
                     "data_criacao": datetime.fromtimestamp(stats.st_ctime).strftime("%Y-%m-%d %H:%M:%S"),
+                    "atributos": get_atributos_arquivo(item, self.loc),
+                    "autor": get_autor_arquivo(item, self.loc),
+                    "protegido": get_protecao_arquivo(self, item, self.loc)
                 }
 
                 try:
@@ -482,7 +671,17 @@ class GerenciadorColunas:
                             metadados.update(extrair_metadados_banco_dados(caminho, self.loc))
 
                         elif tipo == self.loc.get_text("file_executable"):
-                            metadados.update(extrair_metadados_executavel(caminho))
+                            metadados.update(extrair_metadados_executavel(caminho, self.loc))
+                            try:
+                                tamanho_bytes = os.path.getsize(caminho)
+                                metadados["binary_file_b"] = int(tamanho_bytes)
+                                metadados["binary_file_kb"] = round(tamanho_bytes / 1024, 2)
+                                metadados["binary_file_mb"] = round(tamanho_bytes / 1024**2, 2)
+                                metadados["binary_file_gb"] = round(tamanho_bytes / 1024**3, 2)
+                                metadados["binary_file_tb"] = round(tamanho_bytes / 1024**4, 2)
+
+                            except Exception as e:
+                                print(f"Erro ao calcular tamanho do executável: {e}")
 
                         elif tipo == self.loc.get_text("file_source_code"):
                             metadados.update(extrair_metadados_codigo_fonte(caminho, self.loc))
@@ -490,8 +689,16 @@ class GerenciadorColunas:
                         elif tipo == self.loc.get_text("file_temp"):
                             metadados.update(extrair_metadados_temporario(caminho, self.loc))
 
-                        elif tipo == self.loc.get_text("file_archive"):
-                            metadados.update(extrair_metadados_arquivo(caminho, self.loc))
+                        elif tipo == self.loc.get_text("file_compressed"):
+                            metadados_compactados = extrair_metadados_compactados(caminho, self.loc)
+                            metadados.update(metadados_compactados)
+                            t_unzipped = metadados_compactados.get("tamanho_descompactado_bytes")
+                            if t_unzipped is not None:
+                                metadados["unzipped_b"] = int(t_unzipped)
+                                metadados["unzipped_kb"] = round(t_unzipped / 1024, 2)
+                                metadados["unzipped_mb"] = round(t_unzipped / 1024**2, 2)
+                                metadados["unzipped_gb"] = round(t_unzipped / 1024**3, 2)
+                                metadados["unzipped_tb"] = round(t_unzipped / 1024**4, 2)
 
                         elif tipo == self.loc.get_text("file_backup"):
                             metadados.update(extrair_metadados_backup(caminho, self.loc))
@@ -515,11 +722,30 @@ class GerenciadorColunas:
                     with self.lock_cache:
                         if caminho in self.cache_metadados:
                             for campo in [
-                                "paginas", "linhas", "palavras", "paginas_estimadas",
-                                "linhas_codigo", "total_linhas", "slides_estimadas",
-                                "arquivos", "descompactados", "slides", "binario",
-                                "planilhas", "colunas", "registros", "tabelas"
-                            ]:
+                                "paginas", 
+                                "linhas", 
+                                "palavras", 
+                                "paginas_estimadas", 
+                                "linhas_codigo", 
+                                "total_linhas", 
+                                "slides_estimadas", 
+                                "arquivos", 
+                                "unzipped_b", 
+                                "unzipped_kb", 
+                                "unzipped_mb", 
+                                "unzipped_gb", 
+                                "unzipped_tb", 
+                                "slides", 
+                                "binary_file_b", 
+                                "binary_file_kb", 
+                                "binary_file_mb", 
+                                "binary_file_gb", 
+                                "binary_file_tb", 
+                                "planilhas", 
+                                "colunas", 
+                                "registros", 
+                                "tabelas"
+                                ]:
                                 if campo in self.cache_metadados[caminho]:
                                     metadados[campo] = self.cache_metadados[caminho][campo]
                                     item[campo] = self.cache_metadados[caminho][campo]
@@ -597,10 +823,49 @@ class GerenciadorColunas:
         futuros = []
         for item in lista_itens:
             futuros.append(self.executor_metadados.submit(self.get_metadados, item))
+
         for futuro in futuros:
             futuro.add_done_callback(self._metadados_extraidos_callback)
 
     def _metadados_extraidos_callback(self, futuro):
         metadados = futuro.result()
-        # Atualize a interface via sinal ou QMetaObject.invokeMethod
         QMetaObject.invokeMethod(self.interface, "atualizar_colunas_tabela", Qt.QueuedConnection)
+
+    def _get_size_unit(self, item, unidade):
+        tamanho_bytes = self._get_tamanho_bytes(item)
+        if unidade == "B":
+            return int(tamanho_bytes)
+
+        elif unidade == "KB":
+            return round(tamanho_bytes / 1024, 2)
+
+        elif unidade == "MB":
+            return round(tamanho_bytes / 1024**2, 2)
+
+        elif unidade == "GB":
+            return round(tamanho_bytes / 1024**3, 2)
+
+        elif unidade == "TB":
+            return round(tamanho_bytes / 1024**4, 2)
+
+        return 0
+
+    def _get_tamanho_bytes(self, item):
+        caminho = item.get("dir_atual") or item.get("dir_anterior")
+        if caminho and os.path.exists(caminho):
+            if os.path.isfile(caminho):
+                return os.path.getsize(caminho)
+
+            elif os.path.isdir(caminho):
+                total = 0
+                for root, dirs, files in os.walk(caminho):
+                    for f in files:
+                        try:
+                            total += os.path.getsize(os.path.join(root, f))
+
+                        except Exception:
+                            pass
+
+                return total
+
+        return 0

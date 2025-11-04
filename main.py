@@ -8,8 +8,9 @@ else:
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from PySide6.QtWidgets import QApplication
-from InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor, Internacionalizador
-from GerenciamentoUI.ui_12_Localizador import Localizador
+from InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor
+from InterfaceCore.ic_08_Internacionalizador import Internacionalizador
+from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from utils.LogManager import LogManager
 
 logger = LogManager.get_logger()
@@ -18,13 +19,10 @@ if __name__ == '__main__':
     try:
         logger.info("=== Iniciando aplicação Linceu_Lighthouse ===")
         app = QApplication(sys.argv)
-
-        loc_temp = Localizador()
+        Internacionalizador.inicializar_sistema_traducao(app)
+        loc_temp = LocalizadorQt()
         idioma = loc_temp.idioma_atual
-
-        Internacionalizador.inicializar_tradutor_qt(app, idioma)
-        logger.info(f"Traduções do Qt carregadas para o idioma: {idioma}")
-
+        logger.info(f"Idioma detectado: {idioma}")
         window = InterfaceMonitor()
         window.show()
         logger.info("Janela principal exibida, iniciando loop de eventos")

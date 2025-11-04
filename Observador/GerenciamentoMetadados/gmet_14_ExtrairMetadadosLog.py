@@ -68,16 +68,16 @@ def extrair_metadados_log(caminho, loc):
             for _ in f:
                 linhas += 1
 
-        metadados['linhas'] = f"{linhas:,}".replace(',', '.')
+        metadados['linhas'] = str(linhas)
 
         tipos_log = {
             "apache": ["apache", "httpd", "access.log", "error.log"],
             "nginx": ["nginx", "access.log", "error.log"],
             "sistema": ["syslog", "system.log", "messages", "kern.log", "dmesg"],
-            "aplicação": ["app.log", "application.log", "debug.log"],
+            "aplicacao": ["app.log", "application.log", "debug.log"],
             "banco de dados": ["mysql", "postgresql", "oracle", "sql", "query"],
             "erro": ["error", "exception", "crash", "fail", "fault"],
-            "segurança": ["security", "auth", "firewall", "iptables"],
+            "seguranca": ["security", "auth", "firewall", "iptables"],
             "debug": ["debug", "trace", "verbose"],
             "eventos": ["event", "activity"]
         }

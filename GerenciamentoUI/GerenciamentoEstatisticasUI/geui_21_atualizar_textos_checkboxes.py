@@ -7,7 +7,7 @@ def _atualizar_textos_checkboxes(self, graficos):
         return
 
     if hasattr(self, 'checkbox_todos'):
-        self.checkbox_todos.setText(self.loc.get_text("select_all") if "select_all" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionar Todos")
+        self.checkbox_todos.setText(self.loc.get_text("select_all"))
 
     titulo_mapeamento = {}
     for grafico in graficos:

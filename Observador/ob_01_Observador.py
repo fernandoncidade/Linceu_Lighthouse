@@ -12,7 +12,7 @@ from .ob_05_EventoExcluido import EventoExcluido
 from .ob_06_EventoModificado import EventoModificado
 from .ob_07_EventoRenomeado import EventoRenomeado
 from .ob_10_GerenciadorColunas import GerenciadorColunas
-from GerenciamentoUI.ui_12_Localizador import Localizador
+from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 
 if not hasattr(win32con, 'FILE_NOTIFY_CHANGE_CREATION'):
     win32con.FILE_NOTIFY_CHANGE_CREATION = 0x00000040
@@ -32,9 +32,10 @@ class Observador:
         self.arquivos_recem_adicionados = {}
         self.arquivos_recem_excluidos = {}
         self.arquivos_recem_renomeados = {}
+        self.arquivos_recem_modificados = {}
         self.ultima_modificacao = {}
         self._lock = threading.Lock()
-        self.loc = Localizador()
+        self.loc = LocalizadorQt()
         self.falhas_consecutivas = 0
         self.max_falhas = 3
         self.ultimo_erro = None
@@ -123,7 +124,6 @@ class Observador:
 
             if hasattr(self, 'interface') and hasattr(self.interface, 'gerenciador_tabela'):
                 self.interface.gerenciador_tabela.atualizar_dados_tabela(self.interface.tabela_dados)
-
                 self.interface.atualizar_status()
 
             if hasattr(self, 'interface'):
@@ -323,9 +323,9 @@ class Observador:
             arquivos_especiais = {'.heic', '.xlsx', '.xls', '.docx', '.pdf', '.mp4', '.mov', '.avi', '.mkv', '.xml'}
 
             if acao == 2:
-                if nome_arquivo in self.arquivos_recem_adicionados:
+                if nome_arquivo in self.arquivos_recem_excluidos:
                     tempo_limite = 1.0 if ext in arquivos_especiais else 0.1
-                    if (tempo_atual - self.arquivos_recem_adicionados[nome_arquivo]) < tempo_limite:
+                    if (tempo_atual - self.arquivos_recem_excluidos[nome_arquivo]) < tempo_limite:
                         return
 
                 self.evento_excluido.processar(nome_arquivo, caminho_completo, tempo_atual)
@@ -347,9 +347,9 @@ class Observador:
                 return
 
             elif acao == 3:
-                if nome_arquivo in self.arquivos_recem_renomeados:
+                if nome_arquivo in self.arquivos_recem_modificados:
                     tempo_limite = 1.0 if ext in arquivos_especiais else 0.1
-                    if (tempo_atual - self.arquivos_recem_renomeados[nome_arquivo]) < tempo_limite:
+                    if (tempo_atual - self.arquivos_recem_modificados[nome_arquivo]) < tempo_limite:
                         return
 
                 if os.path.exists(caminho_completo):

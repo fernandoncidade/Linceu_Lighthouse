@@ -1,12 +1,11 @@
 import os
 import sys
-from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QGroupBox, QCheckBox,
-                               QLineEdit, QDateTimeEdit, QFormLayout, QPushButton,
-                               QWidget)
-from PySide6.QtCore import Signal, QDateTime
+from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QGroupBox, QCheckBox, 
+                               QLineEdit, QDateTimeEdit, QFormLayout, QPushButton, QWidget)
+from PySide6.QtCore import Signal, QDateTime, Qt, Slot
 from PySide6.QtGui import QIcon, QAction
 from GerenciamentoUI.ui_02_GerenciadorBotoesUI import GerenciadorBotoesUI
-from GerenciamentoUI.ui_12_Localizador import Localizador
+from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from .fil_02_AdministradorCalendario import AdministradorCalendario
 from .fil_03_AdministradorFiltros import AdministradorFiltros
 from utils.LogManager import LogManager
@@ -20,28 +19,47 @@ class Filtros(QWidget):
         super().__init__()
         logger = LogManager.get_logger()
         logger.debug("Inicializando módulo de Filtros")
-
+        self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
+        self.setAttribute(Qt.WA_DeleteOnClose, False)
+        self.setWindowModality(Qt.NonModal)
+        self.loc = loc if loc is not None else LocalizadorQt()
+        self.setWindowTitle(self.loc.get_text("advanced_filters"))
+        self.setWindowIcon(QIcon(get_icon_path("filtro.ico")))
         self.tabela_dados = tabela_dados
         self.gerenciador_botoes = GerenciadorBotoesUI(self)
-
-        try:
-            self.loc = loc if loc is not None else Localizador()
-            logger.debug(f"Localizador configurado com idioma: {self.loc.idioma_atual}")
-
-        except Exception as e:
-            logger.error(f"Erro ao configurar localizador: {e}", exc_info=True)
-            self.loc = Localizador()
-
         self.administrador_calendario = AdministradorCalendario(self)
         self.administrador_filtros = AdministradorFiltros(self)
-
-        self.loc.idioma_alterado.connect(lambda _: self.filtroAplicado.emit())
-        self.loc.idioma_alterado.connect(self.atualizar_interface)
-        self.loc.idioma_alterado.connect(self.atualizar_status)
-
+        self.loc.idioma_alterado.connect(self.on_idioma_alterado)
+        self.destroyed.connect(self._desconectar_sinais)
         logger.debug("Configurando interface de filtros")
         self.setup_ui()
         logger.info("Módulo de Filtros inicializado com sucesso")
+
+    @Slot(str)
+    def on_idioma_alterado(self, idioma: str):
+        try:
+            self.atualizar_interface(idioma)
+            self.atualizar_status(idioma)
+
+            from PySide6.QtCore import QLocale
+            fmt = QLocale().dateTimeFormat(QLocale.ShortFormat)
+            if hasattr(self, 'data_inicial'):
+                self.data_inicial.setDisplayFormat(fmt)
+
+            if hasattr(self, 'data_final'):
+                self.data_final.setDisplayFormat(fmt)
+
+            self.filtroAplicado.emit()
+
+        except Exception as e:
+            LogManager.get_logger().error(f"Erro no slot de idioma_alterado: {e}", exc_info=True)
+
+    def _desconectar_sinais(self):
+        try:
+            self.loc.idioma_alterado.disconnect(self.on_idioma_alterado)
+
+        except Exception:
+            pass
 
     def atualizar_status(self, *args):
         try:

@@ -69,3 +69,24 @@ class GerenciadorProgressoUI:
 
         except Exception as e:
             logger.error(f"Erro ao atualizar progresso: {e}", exc_info=True)
+
+    def atualizar_progresso_traducao(self, progresso, contador, total):
+        try:
+            if hasattr(self.interface, 'rotulo_resultado'):
+                self.interface.rotulo_resultado.setText(self.loc.get_text("translating_table"))
+
+            if hasattr(self.interface, 'barra_progresso'):
+                if not self.interface.barra_progresso.isVisible():
+                    self.interface.barra_progresso.show()
+
+                self.interface.barra_progresso.setValue(progresso)
+
+                if progresso >= 100:
+                    QTimer.singleShot(1000, lambda: self.interface.barra_progresso.hide())
+                    if hasattr(self.interface, '_scan_start_time'):
+                        delattr(self.interface, '_scan_start_time')
+
+            QApplication.processEvents()
+
+        except Exception as e:
+            logger.error(f"Erro ao atualizar progresso de tradução: {e}", exc_info=True)

@@ -1,5 +1,5 @@
 KOMMERZIELLER LIZENZVERTRAG - Linceu Lighthouse
-Version 0.0.1.0, 2. August 2025
+Version 0.0.2.0, 17. August 2025
 
 Dieser Lizenzvertrag ("Vertrag") wird geschlossen zwischen:
 

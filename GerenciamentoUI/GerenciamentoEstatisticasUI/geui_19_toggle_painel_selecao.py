@@ -15,7 +15,7 @@ def _toggle_painel_selecao(self):
         largura_total = largura_botao + self.tamanho_painel_original
         self.painel_selecao.setFixedWidth(largura_total)
 
-        texto_ocultar = self.loc.get_text("hide_selection_panel") if "hide_selection_panel" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Ocultar Painel de Seleção"
+        texto_ocultar = self.loc.get_text("hide_selection_panel")
         self.btn_toggle_painel.setText(texto_ocultar)
 
     else:
@@ -24,7 +24,7 @@ def _toggle_painel_selecao(self):
 
         self.painel_selecao.setFixedWidth(largura_botao)
 
-        texto_expandir = self.loc.get_text("expand_selection_panel") if "expand_selection_panel" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Expandir Painel de Seleção"
+        texto_expandir = self.loc.get_text("expand_selection_panel")
         self.btn_toggle_painel.setText(texto_expandir)
 
     self.painel_recolhido = not self.painel_recolhido

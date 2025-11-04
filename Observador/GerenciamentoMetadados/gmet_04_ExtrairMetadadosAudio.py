@@ -1,8 +1,16 @@
 from tinytag import TinyTag
 from pymediainfo import MediaInfo
+from decimal import Decimal, ROUND_HALF_UP
 
 def extrair_metadados_audio(caminho, loc=None):
     metadados = {}
+
+    def _round_to_int(value):
+        try:
+            return int(Decimal(str(value)).quantize(0, rounding=ROUND_HALF_UP))
+
+        except Exception:
+            return int(float(value) + 0.5) if float(value) >= 0 else int(float(value) - 0.5)
 
     try:
         tag = TinyTag.get(caminho)
@@ -12,7 +20,12 @@ def extrair_metadados_audio(caminho, loc=None):
             metadados['duracao'] = f"{duracao//3600:02d}:{(duracao%3600)//60:02d}:{duracao%60:02d}"
 
         if tag.bitrate:
-            metadados['taxa_bits'] = f"{tag.bitrate} kbps"
+            try:
+                kbps = _round_to_int(tag.bitrate)
+                metadados['taxa_bits'] = f"{kbps} kbps"
+
+            except Exception:
+                pass
 
         if tag.artist:
             metadados['artist'] = tag.artist
@@ -38,9 +51,14 @@ def extrair_metadados_audio(caminho, loc=None):
                         segundos = int(duracao_s % 60)
                         metadados['duracao'] = f"{horas:02d}:{minutos:02d}:{segundos:02d}"
 
-                    if hasattr(track, 'bit_rate'):
-                        bit_rate = int(track.bit_rate)
-                        metadados['taxa_bits'] = f"{bit_rate//1000} kbps"
+                    if hasattr(track, 'bit_rate') and track.bit_rate:
+                        try:
+                            bit_rate_bps = float(track.bit_rate)
+                            kbps = _round_to_int(bit_rate_bps / 1000.0)
+                            metadados['taxa_bits'] = f"{kbps} kbps"
+
+                        except Exception:
+                            pass
 
                     break
 

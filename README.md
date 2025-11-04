@@ -10,10 +10,7 @@
 
 <h2 id="ptbr">🇧🇷 Português (BR)</h2>
 
-> **Observação:** Este repositório refere-se à versão **v0.0.1.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
-
-**Total de downloads acumulados:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse))
+> **Observação:** Este repositório refere-se à versão **v0.0.1.0** do instalador (binário) do Linceu Lighthouse. Apoie o projeto e adquira a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Clique para expandir o README em português</summary>
@@ -187,10 +184,7 @@ Autores:
 
 <h2 id="enus">🇺🇸 English (US)</h2>
 
-> **Note:** This repository refers to the **v0.0.1.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
-
-**Total cumulative downloads:**  
-![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20Downloads%20(Linceu%20Lighthouse))
+> **Note:** This repository refers to the **v0.0.1.0** installer (binary) of Linceu Lighthouse. Support the project and purchase the paid version through this link: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Click to expand the README in English</summary>

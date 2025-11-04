@@ -15,7 +15,7 @@ class GraficoBarras(BaseGerador):
 
         try:
             df = self._obter_dados()
-            titulo = self.loc.get_text("file_types") if self.loc else 'Top 30 Tipos de Arquivo'
+            titulo = self.loc.get_text("bar_chart") if self.loc else 'Top 30 Tipos de Arquivo'
 
             if df.empty:
                 logger.warning("Dataset vazio para geração do gráfico de barras")

@@ -1,11 +1,10 @@
+import os
 from datetime import datetime
 from Observador.GerenciamentoMetadados import identificar_tipo_arquivo
 
 def _criar_evento_exclusao(self, nome_base, dir_anterior):
     metadados = self.obter_metadados_arquivo_excluido(nome_base)
-
     tipo_arquivo = None
-
     if metadados:
         return {
             "tipo_operacao": self.observador.loc.get_text("op_deleted"),
@@ -16,7 +15,11 @@ def _criar_evento_exclusao(self, nome_base, dir_anterior):
             "data_modificacao": metadados.get("data_modificacao", ""),
             "data_acesso": metadados.get("data_acesso", ""),
             "tipo": metadados.get("tipo", ""),
-            "tamanho": metadados.get("tamanho", ""),
+            "size_b": metadados.get("size_b", ""),
+            "size_kb": metadados.get("size_kb", ""),
+            "size_mb": metadados.get("size_mb", ""),
+            "size_gb": metadados.get("size_gb", ""),
+            "size_tb": metadados.get("size_tb", ""),
             "atributos": metadados.get("atributos", ""),
             "autor": metadados.get("autor", ""),
             "dimensoes": metadados.get("dimensoes", ""),
@@ -31,9 +34,17 @@ def _criar_evento_exclusao(self, nome_base, dir_anterior):
             "total_linhas": metadados.get("total_linhas", ""),
             "slides_estimados": metadados.get("slides_estimados", ""),
             "arquivos": metadados.get("arquivos", ""),
-            "descompactados": metadados.get("descompactados", ""),
+            "unzipped_b": metadados.get("unzipped_b", ""),
+            "unzipped_kb": metadados.get("unzipped_kb", ""),
+            "unzipped_mb": metadados.get("unzipped_mb", ""),
+            "unzipped_gb": metadados.get("unzipped_gb", ""),
+            "unzipped_tb": metadados.get("unzipped_tb", ""),
             "slides": metadados.get("slides", ""),
-            "binario": metadados.get("binario", ""),
+            "binary_file_b": metadados.get("binary_file_b", ""),
+            "binary_file_kb": metadados.get("binary_file_kb", ""),
+            "binary_file_mb": metadados.get("binary_file_mb", ""),
+            "binary_file_gb": metadados.get("binary_file_gb", ""),
+            "binary_file_tb": metadados.get("binary_file_tb", ""),
             "planilhas": metadados.get("planilhas", ""),
             "colunas": metadados.get("colunas", ""),
             "registros": metadados.get("registros", ""),
@@ -52,7 +63,11 @@ def _criar_evento_exclusao(self, nome_base, dir_anterior):
         "data_modificacao": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "data_acesso": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "tipo": tipo_arquivo,
-        "tamanho": "",
+        "size_b": "",
+        "size_kb": "",
+        "size_mb": "",
+        "size_gb": "",
+        "size_tb": "",
         "atributos": "",
         "autor": "",
         "dimensoes": "",
@@ -67,9 +82,17 @@ def _criar_evento_exclusao(self, nome_base, dir_anterior):
         "total_linhas": "",
         "slides_estimados": "",
         "arquivos": "",
-        "descompactados": "",
+        "unzipped_b": "",
+        "unzipped_kb": "",
+        "unzipped_mb": "",
+        "unzipped_gb": "",
+        "unzipped_tb": "",
         "slides": "",
-        "binario": "",
+        "binary_file_b": "",
+        "binary_file_kb": "",
+        "binary_file_mb": "",
+        "binary_file_gb": "",
+        "binary_file_tb": "",
         "planilhas": "",
         "colunas": "",
         "registros": "",
