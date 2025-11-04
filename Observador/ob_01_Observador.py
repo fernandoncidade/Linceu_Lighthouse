@@ -13,6 +13,9 @@ from .ob_06_EventoModificado import EventoModificado
 from .ob_07_EventoRenomeado import EventoRenomeado
 from .ob_10_GerenciadorColunas import GerenciadorColunas
 from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+from utils.LogManager import LogManager
+
+logger = LogManager.get_logger()
 
 if not hasattr(win32con, 'FILE_NOTIFY_CHANGE_CREATION'):
     win32con.FILE_NOTIFY_CHANGE_CREATION = 0x00000040
@@ -70,6 +73,8 @@ class Observador:
         }
 
         self.registros_lock = threading.Lock()
+        self.thread_scan = None
+        self.scan_worker = None
 
     def detectar_operacao_massiva(self):
         tempo_atual = time.time()
@@ -77,7 +82,7 @@ class Observador:
         if tempo_atual - self.ultimo_reset_contador >= 1.0:
             if self.contador_eventos_segundo > 100:
                 self.operacao_massiva_detectada = True
-                print(f"Operação massiva detectada: {self.contador_eventos_segundo} eventos/segundo")
+                logger.info(f"Operação massiva detectada: {self.contador_eventos_segundo} eventos/segundo")
 
             elif self.contador_eventos_segundo < 10:
                 self.operacao_massiva_detectada = False
@@ -107,7 +112,7 @@ class Observador:
                 self.thread_scan.start()
 
     def handle_scan_error(self, error_msg):
-        print(f"Erro durante escaneamento: {error_msg}")
+        logger.error(f"Erro durante escaneamento: {error_msg}")
         self.ativo = False
         if hasattr(self, 'interface'):
             self.interface.rotulo_resultado.setText(f"Erro: {error_msg}")
@@ -131,7 +136,7 @@ class Observador:
                 self.interface.atualizar_status()
 
         except Exception as e:
-            print(f"Erro ao iniciar monitoramento: {e}")
+            logger.error(f"Erro ao iniciar monitoramento: {e}", exc_info=True)
 
     def processar_buffer_eventos(self):
         INTERVALO_MAXIMO = 0.1
@@ -164,7 +169,7 @@ class Observador:
                     self._processar_evento_interno(acao, nome_arquivo, tempo_evento)
 
                 if eventos_para_processar:
-                    print(f"Processados {len(eventos_para_processar)} eventos do buffer")
+                    logger.info(f"Processados {len(eventos_para_processar)} eventos do buffer")
 
                 if not eventos_para_processar:
                     time.sleep(0.01)
@@ -173,11 +178,28 @@ class Observador:
                     time.sleep(0.001)
 
             except Exception as e:
-                print(f"Erro ao processar buffer de eventos: {e}")
+                logger.error(f"Erro ao processar buffer de eventos: {e}", exc_info=True)
                 time.sleep(0.1)
+
+    def parar_scan(self):
+        if self.thread_scan:
+            try:
+                if self.thread_scan.isRunning():
+                    self.desligando = True
+                    self.ativo = False
+                    self.thread_scan.requestInterruption()
+                    self.thread_scan.quit()
+                    self.thread_scan.wait(5000)
+
+            except Exception as e:
+                logger.error(f"Erro ao parar thread de escaneamento: {e}", exc_info=True)
+
+            self.thread_scan = None
+            self.scan_worker = None
 
     def parar(self):
         with self._lock:
+            self.parar_scan()
             if not self.ativo:
                 return
 
@@ -194,15 +216,15 @@ class Observador:
                         del self.handle_dir
 
                 except Exception as e:
-                    print(f"Erro ao parar a thread: {e}")
+                    logger.error(f"Erro ao parar a thread: {e}", exc_info=True)
 
             self.limpar_estado()
             self.desligando = False
 
-            print(f"Estatísticas finais:")
-            print(f"  Eventos recebidos: {self.total_eventos_recebidos}")
-            print(f"  Eventos processados: {self.total_eventos_processados}")
-            print(f"  Eventos no buffer: {len(self.buffer_eventos)}")
+            logger.info(f"Estatísticas finais:")
+            logger.info(f"  Eventos recebidos: {self.total_eventos_recebidos}")
+            logger.info(f"  Eventos processados: {self.total_eventos_processados}")
+            logger.info(f"  Eventos no buffer: {len(self.buffer_eventos)}")
 
     def limpar_estado(self):
         self.eventos_pendentes.clear()
@@ -232,7 +254,7 @@ class Observador:
             )
 
         except Exception as e:
-            print(f"Erro ao criar handle de diretório: {e}")
+            logger.error(f"Erro ao criar handle de diretório: {e}", exc_info=True)
             self.handle_dir = None
             return
 
@@ -257,7 +279,7 @@ class Observador:
                 self.total_eventos_recebidos += len(results)
                 
                 if len(results) > 500:
-                    print(f"Batch grande detectado: {len(results)} eventos")
+                    logger.warning(f"Batch grande detectado: {len(results)} eventos")
                     self.operacao_massiva_detectada = True
 
                     if hasattr(self, 'scan_worker'):
@@ -281,10 +303,10 @@ class Observador:
                 if self.desligando:
                     break
 
-                print(f"Erro no monitoramento: {e}")
+                logger.error(f"Erro no monitoramento: {e}", exc_info=True)
 
             except Exception as e:
-                print(f"Erro desconhecido: {e}")
+                logger.error(f"Erro desconhecido: {e}", exc_info=True)
 
         try:
             if hasattr(self, 'handle_dir') and self.handle_dir is not None:
@@ -292,7 +314,7 @@ class Observador:
                 self.handle_dir = None
 
         except Exception as e:
-            print(f"Erro ao fechar handle de diretório: {e}")
+            logger.error(f"Erro ao fechar handle de diretório: {e}", exc_info=True)
 
     def _processar_evento_interno(self, acao, nome_arquivo, tempo_evento):
         try:
@@ -300,7 +322,7 @@ class Observador:
             self.processar_evento(acao, nome_arquivo, tempo_evento)
 
         except Exception as e:
-            print(f"Erro ao processar evento interno: {e}")
+            logger.error(f"Erro ao processar evento interno: {e}", exc_info=True)
 
     def processar_evento(self, acao, nome_arquivo, tempo_evento=None):
         try:
@@ -360,7 +382,7 @@ class Observador:
         except Exception as e:
             self.falhas_consecutivas += 1
             self.ultimo_erro = str(e)
-            print(f"Erro ao processar evento (tentativa {self.falhas_consecutivas}): {e}")
+            logger.error(f"Erro ao processar evento (tentativa {self.falhas_consecutivas}): {e}", exc_info=True)
 
     def reiniciar_monitoramento(self):
         try:
@@ -370,4 +392,4 @@ class Observador:
             self.iniciar()
 
         except Exception as e:
-            print(f"Erro ao reiniciar monitoramento: {e}")
+             logger.error(f"Erro ao reiniciar monitoramento: {e}", exc_info=True)

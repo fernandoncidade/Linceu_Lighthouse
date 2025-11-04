@@ -128,6 +128,10 @@
         <translation>Iniciar/Detener Análisis:</translation>
     </message>
     <message>
+        <source>pause_analysis</source>
+        <translation>Análisis De Pausa:</translation>
+    </message>
+    <message>
         <source>export_excel</source>
         <translation>Exportar Excel:</translation>
     </message>

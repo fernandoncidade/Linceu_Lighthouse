@@ -30,6 +30,7 @@ class Configurador:
 
         interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("select_dir"), 'selecione.ico', interface.selecionar_diretorio, icon_file, "select_dir")
         interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("start_stop"), 'analyze.ico', interface.alternar_analise_diretorio, icon_file, "start_stop")
+        # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("pause_analysis"), 'pause2.ico', interface.gerenciador_botoes.pausar_monitoramento_ou_escaneamento, icon_file, "pause_analysis")
         interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("save_as"), 'save_as.ico', interface.abrir_salvar_como, icon_file, "save_as")
         interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("statistics"), 'statistics.ico', interface.mostrar_estatisticas, icon_file, "statistics")
         interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("clear_data"), 'clear.ico', interface.limpar_dados, icon_file, "clear_data")
@@ -38,7 +39,7 @@ class Configurador:
         # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("start"), 'start.ico', interface.gerenciador_botoes.iniciar_monitoramento, icon_file, "start")
         # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("scan"), 'scan.ico', interface.gerenciador_botoes.iniciar_escaneamento, icon_file, "scan")
         # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("scan_star"), 'scan_star.ico', interface.gerenciador_botoes.iniciar_scan_e_monitoramento, icon_file, "scan_star")
-        # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("pause"), 'pause.ico', interface.gerenciador_botoes.pausar_monitoramento_ou_escaneamento, icon_file, "pause")
+        # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("pause_analysis"), 'pause2.ico', interface.gerenciador_botoes.pausar_monitoramento_ou_escaneamento, icon_file, "pause_analysis")
         # interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("stop"), 'stop.ico', interface.gerenciador_botoes.parar_monitoramento_ou_escaneamento, icon_file, "stop")
 
         layout_lateral.addLayout(layout_lateral_inferior)

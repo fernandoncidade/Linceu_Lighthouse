@@ -128,6 +128,10 @@
         <translation>Démarrer/Arrêter l'Analyse:</translation>
     </message>
     <message>
+        <source>pause_analysis</source>
+        <translation>Analyse Des Pauses:</translation>
+    </message>
+    <message>
         <source>export_excel</source>
         <translation>Exporter Excel:</translation>
     </message>

@@ -248,33 +248,55 @@ class DialogoPaletaCores(QDialog):
                             break
 
             dialogo = QColorDialog(self.cor_atual, self)
-            dialogo.setWindowTitle(self.loc.get_text("advanced_color_picker"))
+            dialogo.setOption(QColorDialog.DontUseNativeDialog, True)
             dialogo.setOption(QColorDialog.ShowAlphaChannel, False)
-
+            dialogo.setWindowTitle(self.loc.get_text("advanced_color_picker"))
             dialogo.setModal(False)
             dialogo.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint)
+
+            self._dialogo_avancado = dialogo
 
             app.processEvents()
 
             if self.loc.idioma_atual != "en_US":
                 logger.debug(f"Aplicando tradução manual para idioma: {self.loc.idioma_atual}")
-
                 from PySide6.QtCore import QTimer
-                timer = QTimer()
-                timer.singleShot(50, lambda: self._traduzir_dialogo_cores(dialogo))
-
+                self._traducao_timer = QTimer()
+                QTimer.singleShot(50, lambda: self._traduzir_dialogo_cores(dialogo))
                 self._traduzir_dialogo_cores(dialogo)
-
-            dialogo.show()
 
             def on_color_selected(color):
                 if color.isValid():
                     self.preview_nova.setStyleSheet(f"background-color: {color.name()};")
                     self.cor_selecionada = color
                     logger.debug(f"Cor selecionada no seletor avançado: {color.name()}")
-                    dialogo.close()
+                    try:
+                        dialogo.close()
+
+                    except Exception:
+                        pass
 
             dialogo.colorSelected.connect(on_color_selected)
+
+            dialogo.show()
+            try:
+                dialogo.raise_()
+                dialogo.activateWindow()
+
+            except Exception:
+                pass
+
+            from PySide6.QtCore import QTimer
+            def _checar_visibilidade():
+                try:
+                    if not dialogo.isVisible():
+                        logger.debug("Seletor avançado não ficou visível - abrindo em modo modal (fallback)")
+                        dialogo.exec()
+
+                except Exception as e:
+                    logger.error(f"Erro no fallback de exibição do seletor: {e}", exc_info=True)
+
+            QTimer.singleShot(150, _checar_visibilidade)
 
         except Exception as e:
             logger.error(f"Erro ao abrir seletor avançado de cores: {e}", exc_info=True)
