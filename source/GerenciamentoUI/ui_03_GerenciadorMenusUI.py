@@ -19,6 +19,7 @@ from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_19_get_texto_traduzido_par
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_20_confirmar_alteracao_idioma import _confirmar_alteracao_idioma
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_21_on_traducoes_carregadas import _on_traducoes_carregadas
 from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_22_exibir_sobre import _exibir_sobre
+from source.GerenciamentoUI.GerenciamentoMenusUI.gmui_23_toggle_desempenho import _criar_acao_toggle_desempenho
 logger = LogManager.get_logger()
 
 
@@ -58,3 +59,4 @@ class GerenciadorMenusUI:
     _confirmar_alteracao_idioma = _confirmar_alteracao_idioma
     _on_traducoes_carregadas = _on_traducoes_carregadas
     _exibir_sobre = _exibir_sobre
+    _criar_acao_toggle_desempenho = _criar_acao_toggle_desempenho

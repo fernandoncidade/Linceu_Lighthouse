@@ -1,3 +1,16 @@
+RELEASE NOTES: Versión 0.0.8.0:
+
+En esta nueva versión se implementaron las siguientes mejoras y funcionalidades:
+
+- Se añadió en el menú de configuración la funcionalidad para supervisar el rendimiento del sistema en tiempo real.
+    - Mediante gráficos interactivos, el usuario puede monitorear el uso de CPU, memoria RAM y disco, permitiendo un análisis detallado del impacto del monitoreo en el rendimiento general del sistema.
+    - El panel de rendimiento se actualiza en tiempo real, ofreciendo información valiosa para la optimización y ajustes según sea necesario.
+    - Es posible destacar el panel de rendimiento en una ventana separada, permitiendo al usuario personalizar su área de trabajo y centrarse en las métricas más relevantes durante la supervisión.
+
+
+_________________________________________________
+
+
 NOTAS DE LANZAMIENTO: Versión 0.0.7.0:
 
 En esta nueva versión, se han implementado las siguientes mejoras y funcionalidades:

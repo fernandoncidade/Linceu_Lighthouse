@@ -1411,6 +1411,42 @@ pip install plotly</translation>
         <translation>Avviso: La modifica della lingua ricaricherà le traduzioni in tutta l'interfaccia e potrebbe influire temporaneamente sulle prestazioni fino al completamento. Se il monitoraggio è in esecuzione, questa operazione può causare perdita di eventi o blocchi temporanei. Si consiglia vivamente di modificare la lingua prima di avviare il monitoraggio. Vuoi continuare?</translation>
     </message>
     <message>
+        <source>performance_charts</source>
+        <translation>Grafici delle Prestazioni</translation>
+    </message>
+    <message>
+        <source>CPU</source>
+        <translation>CPU</translation>
+    </message>
+    <message>
+        <source>CPU_Porcentagem</source>
+        <translation>CPU (%)</translation>
+    </message>
+    <message>
+        <source>RAM</source>
+        <translation>RAM</translation>
+    </message>
+    <message>
+        <source>Memoria_RAM</source>
+        <translation>Memoria RAM</translation>
+    </message>
+    <message>
+        <source>Memoria_RAM_Porcentagem</source>
+        <translation>Memoria RAM (%)</translation>
+    </message>
+    <message>
+        <source>Discos</source>
+        <translation>Dischi</translation>
+    </message>
+    <message>
+        <source>Discos_Porcentagem</source>
+        <translation>Dischi (kB/s)</translation>
+    </message>
+    <message>
+        <source>Destacado</source>
+        <translation>In evidenza</translation>
+    </message>
+    <message>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>

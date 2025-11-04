@@ -1,3 +1,16 @@
+RELEASE NOTES: Versione 0.0.8.0:
+
+In questa nuova versione sono stati implementati i seguenti miglioramenti e funzionalità:
+
+- Nel menu delle impostazioni è stata aggiunta la funzionalità per monitorare le prestazioni del sistema in tempo reale.
+    - Attraverso grafici interattivi, l'utente può monitorare l'utilizzo della CPU, della memoria RAM e del disco, consentendo un'analisi dettagliata dell'impatto del monitoraggio sulle prestazioni complessive del sistema.
+    - Il pannello delle prestazioni si aggiorna in tempo reale, offrendo informazioni preziose per l'ottimizzazione e le regolazioni necessarie.
+    - È possibile staccare il pannello delle prestazioni in una finestra separata, permettendo all'utente di personalizzare il proprio spazio di lavoro e concentrarsi sulle metriche più rilevanti durante il monitoraggio.
+
+
+_________________________________________________
+
+
 NOTE DI RILASCIO: Versione 0.0.7.0:
 
 In questa nuova versione sono stati implementati i seguenti miglioramenti e funzionalità:

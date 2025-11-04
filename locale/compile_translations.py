@@ -66,23 +66,23 @@ def parse_ts_file(ts_file_path):
         tree = ET.parse(ts_file_path)
         root = tree.getroot()
 
-        translations = {}
+        locale = {}
 
         for context in root.findall('context'):
             context_name = context.find('name').text if context.find('name') is not None else "default"
 
             for message in context.findall('message'):
                 source_elem = message.find('source')
-                translation_elem = message.find('translation')
+                translation_elem = message.find('locale')
 
                 if source_elem is not None and translation_elem is not None:
                     source_text = source_elem.text or ""
                     translation_text = translation_elem.text or ""
 
                     if translation_text.strip():
-                        translations[source_text] = translation_text
+                        locale[source_text] = translation_text
 
-        return translations
+        return locale
 
     except Exception as e:
         print(f"Erro ao fazer parse do arquivo {ts_file_path}: {e}")
@@ -93,19 +93,19 @@ def compile_ts_to_qm_fallback(ts_file_path, qm_file_path):
     try:
         print(f"Compilando (método alternativo): {ts_file_path.name}")
 
-        translations = parse_ts_file(ts_file_path)
+        locale = parse_ts_file(ts_file_path)
 
-        if translations is None:
+        if locale is None:
             return False
 
-        if not translations:
+        if not locale:
             print(f"  ⚠ Nenhuma tradução encontrada em {ts_file_path.name}")
             return False
 
         import shutil
         shutil.copy2(ts_file_path, qm_file_path)
 
-        print(f"  ✓ {len(translations)} traduções processadas (método alternativo)")
+        print(f"  ✓ {len(locale)} traduções processadas (método alternativo)")
         return True
 
     except Exception as e:
@@ -133,8 +133,8 @@ def validate_ts_file(ts_file_path):
             total_messages += len(messages)
 
             for message in messages:
-                translation = message.find('translation')
-                if translation is not None and translation.text and translation.text.strip():
+                locale = message.find('locale')
+                if locale is not None and locale.text and locale.text.strip():
                     translated_messages += 1
 
         completion = (translated_messages / total_messages * 100) if total_messages > 0 else 0
@@ -299,8 +299,8 @@ def show_stats():
             for context in root.findall('context'):
                 for message in context.findall('message'):
                     file_messages += 1
-                    translation = message.find('translation')
-                    if translation is not None and translation.text and translation.text.strip():
+                    locale = message.find('locale')
+                    if locale is not None and locale.text and locale.text.strip():
                         file_translated += 1
 
             total_messages += file_messages
@@ -459,19 +459,19 @@ if __name__ == '__main__':
 #     try:
 #         tree = ET.parse(ts_file_path)
 #         root = tree.getroot()
-#         translations = {}
+#         locale = {}
 #         for context in root.findall('context'):
 #             context_name = context.find('name').text if context.find('name') is not None else "default"
 #             for message in context.findall('message'):
 #                 source_elem = message.find('source')
-#                 translation_elem = message.find('translation')
+#                 translation_elem = message.find('locale')
 #                 if source_elem is not None and translation_elem is not None:
 #                     source_text = source_elem.text or ""
 #                     translation_text = translation_elem.text or ""
 #                     if translation_text.strip():
-#                         translations[source_text] = translation_text
+#                         locale[source_text] = translation_text
 
-#         return translations
+#         return locale
 
 #     except Exception as e:
 #         logger.error(f"Erro ao fazer parse do arquivo {ts_file_path}: {e}")
@@ -480,17 +480,17 @@ if __name__ == '__main__':
 # def compile_ts_to_qm_fallback(ts_file_path, qm_file_path):
 #     try:
 #         logger.error(f"Compilando (método alternativo): {ts_file_path.name}")
-#         translations = parse_ts_file(ts_file_path)
-#         if translations is None:
+#         locale = parse_ts_file(ts_file_path)
+#         if locale is None:
 #             return False
 
-#         if not translations:
+#         if not locale:
 #             logger.error(f"Nenhuma tradução encontrada em {ts_file_path.name}")
 #             return False
 
 #         import shutil
 #         shutil.copy2(ts_file_path, qm_file_path)
-#         logger.error(f"{len(translations)} traduções processadas (método alternativo)")
+#         logger.error(f"{len(locale)} traduções processadas (método alternativo)")
 #         return True
 
 #     except Exception as e:
@@ -514,8 +514,8 @@ if __name__ == '__main__':
 #             messages = context.findall('message')
 #             total_messages += len(messages)
 #             for message in messages:
-#                 translation = message.find('translation')
-#                 if translation is not None and translation.text and translation.text.strip():
+#                 locale = message.find('locale')
+#                 if locale is not None and locale.text and locale.text.strip():
 #                     translated_messages += 1
 
 #         completion = (translated_messages / total_messages * 100) if total_messages > 0 else 0
@@ -661,8 +661,8 @@ if __name__ == '__main__':
 #             for context in root.findall('context'):
 #                 for message in context.findall('message'):
 #                     file_messages += 1
-#                     translation = message.find('translation')
-#                     if translation is not None and translation.text and translation.text.strip():
+#                     locale = message.find('locale')
+#                     if locale is not None and locale.text and locale.text.strip():
 #                         file_translated += 1
 
 #             total_messages += file_messages

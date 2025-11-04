@@ -1,3 +1,16 @@
+RELEASE NOTES: Version 0.0.8.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
+
+- Im Einstellungsmenü wurde die Funktion hinzugefügt, die Systemleistung in Echtzeit zu überwachen.
+    - Über interaktive Diagramme kann der Benutzer die Nutzung von CPU, Arbeitsspeicher (RAM) und Festplatte überwachen, was eine detaillierte Analyse der Auswirkungen der Überwachung auf die Gesamtleistung des Systems ermöglicht.
+    - Das Leistungs-Panel wird in Echtzeit aktualisiert und liefert wertvolle Einblicke für Optimierungen und erforderliche Anpassungen.
+    - Das Leistungs-Panel kann in einem separaten Fenster abgetrennt werden, sodass der Benutzer seinen Arbeitsbereich anpassen und sich während der Überwachung auf die relevantesten Metriken konzentrieren kann.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.7.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:

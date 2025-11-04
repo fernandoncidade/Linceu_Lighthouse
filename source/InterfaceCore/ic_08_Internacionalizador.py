@@ -10,9 +10,10 @@ class Internacionalizador:
         try:
             locale = QLocale(idioma_inicial)
             QLocale.setDefault(locale)
-            translations_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations")
-            if not os.path.exists(translations_dir):
-                os.makedirs(translations_dir, exist_ok=True)
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+            locale_dir = os.path.join(base_dir, "locale")
+            if not os.path.exists(locale_dir):
+                os.makedirs(locale_dir, exist_ok=True)
 
             return True
 
@@ -42,12 +43,13 @@ class Internacionalizador:
     def extrair_strings_para_traducao():
         try:
             import subprocess
-            translations_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations")
-            pro_file = os.path.join(translations_dir, "linceu.pro")
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+            locale_dir = os.path.join(base_dir, "locale")
+            pro_file = os.path.join(locale_dir, "linceu.pro")
             if os.path.exists(pro_file):
                 result = subprocess.run(
                     ["lupdate", pro_file], 
-                    cwd=translations_dir,
+                    cwd=locale_dir,
                     capture_output=True,
                     text=True
                 )
@@ -68,12 +70,13 @@ class Internacionalizador:
     def compilar_traducoes():
         try:
             import subprocess
-            translations_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations")
-            ts_files = [f for f in os.listdir(translations_dir) if f.endswith('.ts')]
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+            locale_dir = os.path.join(base_dir, "locale")
+            ts_files = [f for f in os.listdir(locale_dir) if f.endswith('.ts')]
             for ts_file in ts_files:
-                ts_path = os.path.join(translations_dir, ts_file)
+                ts_path = os.path.join(locale_dir, ts_file)
                 qm_file = ts_file.replace('.ts', '.qm')
-                qm_path = os.path.join(translations_dir, qm_file)
+                qm_path = os.path.join(locale_dir, qm_file)
                 result = subprocess.run(
                     ["lrelease", ts_path, "-qm", qm_path],
                     capture_output=True,

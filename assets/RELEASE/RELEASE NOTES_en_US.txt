@@ -1,3 +1,16 @@
+RELEASE NOTES: Version 0.0.8.0:
+
+In this new release, the following improvements and features have been implemented:
+
+- A feature was added to the settings menu to monitor system performance in real time.
+    - Via interactive charts, the user can monitor CPU, RAM and disk usage, enabling a detailed analysis of the monitoring's impact on overall system performance.
+    - The performance panel is updated in real time, providing valuable insights for optimization and adjustments as needed.
+    - The performance panel can be detached into a separate window, allowing the user to customize their workspace and focus on the most relevant metrics during monitoring.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.7.0:
 
 In this new version, the following improvements and features have been implemented:
