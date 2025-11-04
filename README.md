@@ -10,7 +10,7 @@
 
 <h2 id="ptbr">🇧🇷 Português (BR)</h2>
 
-> **Observação:** Este repositório refere-se à versão **v0.0.0.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Observação:** Este repositório refere-se à versão **v0.0.1.0** do instalador (binário) do Linceu Lighthouse, disponível em formato de teste/degustação com duração de uma semana (7 dias). Ao final do período de teste, é necessário adquirir a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total de downloads acumulados:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Downloads%20totais%20(Linceu%20Lighthouse))
@@ -28,7 +28,7 @@
 </p>
 
 Projeto: LINCEU LIGHTHOUSE  
-Versão: v0.0.0.0  
+Versão: v0.0.1.0  
 Autores: Fernando Nillsson Cidade  
 
 Descrição: Visibilidade e Controle sobre Seus Arquivos
@@ -187,7 +187,7 @@ Autores:
 
 <h2 id="enus">🇺🇸 English (US)</h2>
 
-> **Note:** This repository refers to the **v0.0.0.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Note:** This repository refers to the **v0.0.1.0** installer (binary) of Linceu Lighthouse, available as a trial version for one week (7 days). At the end of the trial period, you must purchase the full version via: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 **Total cumulative downloads:**  
 ![GitHub all releases](https://img.shields.io/github/downloads/fernandoncidade/Linceu_Lighthouse/total?label=Total%20Downloads%20(Linceu%20Lighthouse))
@@ -205,7 +205,7 @@ Autores:
 </p>
 
 Project: LINCEU LIGHTHOUSE  
-Version: v0.0.0.0  
+Version: v0.0.1.0  
 Authors: Fernando Nillsson Cidade  
 
 Description: Visibility and Control Over Your Files
