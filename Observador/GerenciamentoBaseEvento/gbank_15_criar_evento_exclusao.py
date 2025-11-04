@@ -1,4 +1,3 @@
-import os
 from datetime import datetime
 from Observador.GerenciamentoMetadados import identificar_tipo_arquivo
 

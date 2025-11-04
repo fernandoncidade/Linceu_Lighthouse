@@ -24,8 +24,6 @@ class DiretorioScanner(QObject):
         self.db_path = observador.evento_base.db_path
         self.gerenciador_colunas = observador.gerenciador_colunas
         self.fila_processamento = queue.Queue()
-        self.lote_atual = []
-        self.tamanho_lote = 1000000
         self.contador_processados = 0
         self.total_arquivos = 0
         self.executor = ThreadPoolExecutor(max_workers=4)

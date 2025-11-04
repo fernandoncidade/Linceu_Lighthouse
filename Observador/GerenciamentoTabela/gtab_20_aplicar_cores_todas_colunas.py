@@ -57,7 +57,8 @@ def aplicar_cores_todas_colunas(self):
                     continue
 
                 cor = cores.get(tipo_operacao_valor, cor_padrao)
-                cor_texto = self.calcular_cor_texto_ideal(cor, eh_coluna_personalizada=(key != "tipo_operacao"))
+                eh_personalizada = self.eh_coluna_personalizada_colorida(key) if hasattr(self, 'eh_coluna_personalizada_colorida') else (key != "tipo_operacao")
+                cor_texto = self.calcular_cor_texto_ideal(cor, eh_coluna_personalizada=eh_personalizada)
                 item.setBackground(cor)
                 item.setForeground(cor_texto)
 

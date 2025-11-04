@@ -117,16 +117,19 @@ def configurar_tabela(self, tabela_dados):
             pass
 
         header_horizontal.sectionClicked.connect(selecionar_coluna_completa)
-        colunas_visiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
-        tabela_dados.setColumnCount(len(colunas_visiveis))
+        colunas_disponiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"])]
+        tabela_dados.setColumnCount(len(colunas_disponiveis))
         self.texto_original_cabecalhos = {}
         headers = []
-        for i, (key, coluna) in enumerate(colunas_visiveis):
+        for i, (key, coluna) in enumerate(colunas_disponiveis):
             texto = coluna["nome"]
             self.texto_original_cabecalhos[i] = texto
             headers.append(texto)
 
         tabela_dados.setHorizontalHeaderLabels(headers)
+        for i, (key, coluna) in enumerate(colunas_disponiveis):
+            tabela_dados.setColumnHidden(i, not coluna["visivel"])
+
         header_horizontal.sectionResized.connect(self.redimensionar_cabecalho)
         try:
             tabela_dados.itemSelectionChanged.disconnect()
@@ -153,7 +156,7 @@ def configurar_tabela(self, tabela_dados):
         if not hasattr(self, '_cores_originais_cache'):
             self._cores_originais_cache = {}
 
-        self.ajustar_larguras_colunas(tabela_dados, colunas_visiveis)
+        self.ajustar_larguras_colunas(tabela_dados, colunas_disponiveis)
         self.aplicar_quebra_linha_todos_cabecalhos(tabela_dados)
         self._invalidar_cache_cores()
         self.atualizar_dados_tabela(tabela_dados)

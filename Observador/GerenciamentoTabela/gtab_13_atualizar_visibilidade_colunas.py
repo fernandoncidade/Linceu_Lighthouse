@@ -9,9 +9,7 @@ def atualizar_visibilidade_colunas(self, atualizar_em_massa=False):
             return
 
         tabela = self.interface.tabela_dados
-
         colunas_ordenadas = sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"])
-
         if atualizar_em_massa:
             if tabela.columnCount() != len(colunas_ordenadas):
                 self.configurar_tabela(tabela)
@@ -39,7 +37,6 @@ def atualizar_visibilidade_colunas(self, atualizar_em_massa=False):
             return
 
         tabela.blockSignals(True)
-
         try:
             for i, (key, coluna) in enumerate(colunas_ordenadas):
                 if i < tabela.columnCount():

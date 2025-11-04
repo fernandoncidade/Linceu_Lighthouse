@@ -1,5 +1,4 @@
 import os
-import time
 from .gmet_21_GetFormataTamanho import formata_tamanho
 
 def extrair_metadados_backup(caminho, loc):
