@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QWidget
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
-def alternar_graficos_desempenho(interface, checked=None):
+def alternar_graficos_desempenho(interface, checked=None, ajustar_tamanho=True):
     try:
         from ..ic_09_GerenciadorDesempenho import GerenciadorDesempenho
 
@@ -12,6 +12,22 @@ def alternar_graficos_desempenho(interface, checked=None):
     try:
         if checked is None:
             checked = not getattr(interface, "desempenho_ativo", False)
+
+        if checked and getattr(interface, "estrutura_ativa", False):
+            try:
+                if hasattr(interface, "alternar_estrutura_diretorios"):
+                    interface.alternar_estrutura_diretorios(False, ajustar_tamanho=False)
+
+            except Exception as e:
+                logger.warning(f"Falha ao desativar estrutura ao ativar gráficos: {e}", exc_info=True)
+
+            try:
+                if (hasattr(interface, "gerenciador_menus_ui") and
+                    hasattr(interface.gerenciador_menus_ui, "acao_toggle_estrutura")):
+                    interface.gerenciador_menus_ui.acao_toggle_estrutura.setChecked(False)
+
+            except Exception:
+                pass
 
         if checked and not getattr(interface, "desempenho_ativo", False):
             try:
@@ -58,6 +74,17 @@ def alternar_graficos_desempenho(interface, checked=None):
         if (hasattr(interface, "gerenciador_menus_ui") and
             hasattr(interface.gerenciador_menus_ui, "acao_toggle_desempenho")):
             interface.gerenciador_menus_ui.acao_toggle_desempenho.setChecked(interface.desempenho_ativo)
+
+        try:
+            if ajustar_tamanho and not interface.isMaximized() and not interface.isFullScreen():
+                if interface.desempenho_ativo:
+                    interface.setGeometry(100, 100, 1300, 800)
+
+                else:
+                    interface.setGeometry(100, 100, 900, 500)
+
+        except Exception:
+            pass
 
     except Exception as e:
         logger.error(f"Erro ao alternar gráficos de desempenho: {e}", exc_info=True)

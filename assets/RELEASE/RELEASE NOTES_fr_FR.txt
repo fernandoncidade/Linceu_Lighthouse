@@ -1,4 +1,38 @@
-RELEASE NOTES : Version 0.0.8.0 :
+NOTES DE VERSION : Version 0.0.9.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Nouveaux Graphiques Statistiques :
+- Deux nouveaux types de graphiques Sankey ont été ajoutés :
+    - Sankey Événement → Chemin : Permet de visualiser le flux des événements surveillés vers les chemins des fichiers et dossiers.
+    - Sankey Type → Chemin : Permet d’analyser le flux des types de fichiers (extensions) vers les chemins surveillés.
+    - Il est désormais possible de visualiser la structure des répertoires via un nouveau graphique interactif, facilitant l’analyse des chemins des fichiers et dossiers surveillés.
+    - Des graphiques statistiques plus complets ont été inclus, avec des options pour différents types de visualisation des données.
+- Les graphiques utilisent la bibliothèque Plotly pour une visualisation interactive et une exportation en haute résolution.
+
+Amélioration de l’Internationalisation :
+- Les titres et textes des graphiques sont désormais traduits automatiquement selon la langue sélectionnée dans l’interface.
+- La liste des graphiques disponibles a été mise à jour, permettant de sélectionner et de visualiser rapidement les principaux types d’analyse.
+- Le panneau de statistiques a été ajusté pour calculer automatiquement la largeur idéale, garantissant une meilleure adaptation des textes et boutons dans l’interface.
+- Ajustements dans la traduction des en-têtes et des types de fichiers/dossiers dans l’arbre des répertoires.
+
+Améliorations de l’Interface des Répertoires :
+- Le widget de structure des répertoires a été amélioré pour permettre des opérations telles que copier, couper, coller, renommer, créer et supprimer des fichiers/dossiers directement via le menu contextuel.
+- Traduction dynamique des boutons et menus du panneau des répertoires mise en œuvre.
+
+Corrections Générales :
+- Ajustements dans la logique de basculement entre les modes de visualisation des performances et de la structure des répertoires, garantissant qu’un seul panneau soit actif à la fois.
+- Corrections de petits bugs liés à la mise à jour des textes traduits et au rendu des graphiques.
+- Petits problèmes dans la génération des graphiques corrigés, rendant le processus plus stable et fiable.
+- Améliorations dans la traduction des textes et titres des graphiques, suivant la langue choisie par l’utilisateur.
+
+Ces améliorations offrent une expérience plus complète et intuitive à l’utilisateur, élargissant les possibilités d’analyse statistique et de gestion des fichiers et dossiers.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.8.0 :
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
 
@@ -36,7 +70,7 @@ Dans cette nouvelle version, les améliorations et fonctionnalités suivantes on
 _________________________________________________
 
 
-RELEASE NOTES : Version 0.0.5.0:
+NOTES DE VERSION : Version 0.0.5.0:
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
 
@@ -49,7 +83,7 @@ Amélioration de l'expérience utilisateur :
 _________________________________________________
 
 
-RELEASE NOTES : Version 0.0.4.0
+NOTES DE VERSION : Version 0.0.4.0
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
 
@@ -63,7 +97,7 @@ Corrections de bugs :
 _________________________________________________
 
 
-RELEASE NOTES : Version 0.0.3.0:
+NOTES DE VERSION : Version 0.0.3.0:
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
 
@@ -101,7 +135,7 @@ Nouveautés de la Version 0.0.3.0:
 _________________________________________________
 
 
-RELEASE NOTES : Version 0.0.2.0:
+NOTES DE VERSION : Version 0.0.2.0:
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
 

@@ -9,19 +9,21 @@ from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_04_abrir_seletor_avanc
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_05_accept import accept
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_06_traduzir_dialogo_cores import _traduzir_dialogo_cores
 from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_07_obter_cor import obter_cor
+from source.GerenciamentoUI.GerenciamentoDialogoCores.gdc_08_atualizar_traducoes import atualizar_traducoes
 logger = LogManager.get_logger()
 
 
 class DialogoPaletaCores(QDialog):
     corSelecionada = Signal(QColor)
 
-    def __init__(self, cor_atual, interface_principal, titulo=None, parent=None):
+    def __init__(self, cor_atual, interface_principal, titulo=None, parent=None, tipo_operacao=None):
         super().__init__(parent)
         try:
             self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint)
             self.setModal(False)
 
             self.interface = interface_principal
+            self.tipo_operacao = tipo_operacao
 
             try:
                 if hasattr(interface_principal, 'loc'):
@@ -45,6 +47,13 @@ class DialogoPaletaCores(QDialog):
             self.cor_selecionada = None
             self.setup_ui()
 
+            try:
+                if hasattr(self.loc, "traducoes_carregadas"):
+                    self.loc.traducoes_carregadas.connect(self.atualizar_traducoes)
+
+            except Exception as e:
+                logger.error(f"Não foi possível conectar sinal de traduções no DialogoPaletaCores: {e}", exc_info=True)
+
         except Exception as e:
             logger.error(f"Erro ao configurar diálogo de cores: {e}", exc_info=True)
 
@@ -55,3 +64,4 @@ class DialogoPaletaCores(QDialog):
     accept = accept
     _traduzir_dialogo_cores = _traduzir_dialogo_cores
     obter_cor = obter_cor
+    atualizar_traducoes = atualizar_traducoes

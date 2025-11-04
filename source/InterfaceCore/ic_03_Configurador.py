@@ -3,7 +3,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QProgressBar
 from PySide6.QtWidgets import QSizePolicy
 from PySide6.QtWidgets import QSplitter
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QObject, QEvent
 from utils.IconUtils import get_icon_path
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
@@ -21,7 +21,7 @@ class Configurador:
             interface.setWindowTitle(interface.loc.get_text("window_title"))
             interface.setWindowIcon(QIcon(icon_file))
             interface.setCentralWidget(widget_central)
-            interface.setGeometry(100, 100, 1300, 800)
+            interface.setGeometry(100, 100, 900, 500)
 
             splitter_principal = QSplitter(Qt.Horizontal, widget_central)
             splitter_lateral = QSplitter(Qt.Vertical)
@@ -104,6 +104,36 @@ class Configurador:
             layout_wrapper.addWidget(splitter_principal)
 
             interface.atualizar_status()
+
+            try:
+                if not hasattr(interface, "desempenho_ativo"):
+                    interface.desempenho_ativo = False
+
+                class _WindowStateFilter(QObject):
+                    def __init__(self, iface):
+                        super().__init__(iface)
+                        self.iface = iface
+
+                    def eventFilter(self, obj, event):
+                        try:
+                            if obj is self.iface and event.type() == QEvent.WindowStateChange:
+                                if not self.iface.isMaximized() and not self.iface.isFullScreen():
+                                    if getattr(self.iface, "desempenho_ativo", False):
+                                        self.iface.setGeometry(100, 100, 1300, 800)
+
+                                    else:
+                                        self.iface.setGeometry(100, 100, 900, 500)
+
+                        except Exception as e:
+                            logger.error(f"Erro no filtro de estado da janela: {e}", exc_info=True)
+
+                        return False
+
+                interface._window_state_filter = _WindowStateFilter(interface)
+                interface.installEventFilter(interface._window_state_filter)
+
+            except Exception as e:
+                logger.error(f"Erro ao instalar filtro de estado da janela: {e}", exc_info=True)
 
         except Exception as e:
             logger.error(f"Erro ao configurar interface principal: {e}", exc_info=True)

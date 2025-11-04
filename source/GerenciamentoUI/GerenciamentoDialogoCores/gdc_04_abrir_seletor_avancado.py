@@ -20,22 +20,47 @@ def _abrir_seletor_avancado(self):
                 "de_DE": "de_DE"
             }
 
-            locale_code = locale_map.get(self.loc.idioma_atual, "en_US")
-            qt_locale = QLocale(locale_code)
-            QLocale.setDefault(qt_locale)
-
-            qt_translator = QTranslator()
             translations_paths = [
                 os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations", "qt"),
                 "/usr/share/qt6/translations",
                 "C:/Qt/Tools/QtCreator/share/qtcreator/translations",
             ]
 
-            for path in translations_paths:
-                if os.path.exists(path):
-                    if qt_translator.load(qt_locale, "qtbase", "_", path):
-                        app.installTranslator(qt_translator)
-                        break
+            def aplicar_qt_translator(locale_code):
+                try:
+                    qt_locale = QLocale(locale_code)
+                    QLocale.setDefault(qt_locale)
+                    try:
+                        if hasattr(self, "_qt_translator") and self._qt_translator is not None:
+                            app.removeTranslator(self._qt_translator)
+
+                    except Exception:
+                        pass
+
+                    novo_trans = QTranslator()
+                    carregado = False
+                    for path in translations_paths:
+                        try:
+                            if os.path.exists(path):
+                                if novo_trans.load(qt_locale, "qtbase", "_", path):
+                                    carregado = True
+                                    break
+
+                        except Exception:
+                            continue
+
+                    if carregado:
+                        app.installTranslator(novo_trans)
+                        self._qt_translator = novo_trans
+
+                    else:
+                        self._qt_translator = None
+
+                except Exception as e:
+                    logger.error(f"Erro ao aplicar tradutor Qt para locale {locale_code}: {e}", exc_info=True)
+
+            locale_code = locale_map.get(self.loc.idioma_atual, "en_US")
+            aplicar_qt_translator(locale_code)
 
         dialogo = QColorDialog(self.cor_atual, self)
         dialogo.setOption(QColorDialog.DontUseNativeDialog, True)
@@ -47,6 +72,62 @@ def _abrir_seletor_avancado(self):
         self._dialogo_avancado = dialogo
 
         app.processEvents()
+
+        try:
+            self._traduzir_dialogo_cores(dialogo)
+
+        except Exception:
+            pass
+
+        try:
+            if hasattr(self.loc, "traducoes_carregadas"):
+                def _on_traducoes_carregadas():
+                    try:
+                        locale_code = locale_map.get(self.loc.idioma_atual, "en_US")
+                        aplicar_qt_translator(locale_code)
+                        self._traduzir_dialogo_cores(dialogo)
+                        try:
+                            dialogo.setWindowTitle(self.loc.get_text("advanced_color_picker"))
+
+                        except Exception:
+                            pass
+
+                    except Exception as e:
+                        logger.error(f"Erro no handler de traduções do seletor avançado: {e}", exc_info=True)
+
+                self._on_traducoes_carregadas_qcolor = _on_traducoes_carregadas
+                self.loc.traducoes_carregadas.connect(self._on_traducoes_carregadas_qcolor)
+
+        except Exception as e:
+            logger.error(f"Não foi possível conectar sinal de traduções ao seletor avançado: {e}", exc_info=True)
+
+        def cleanup_dialog_translator():
+            try:
+                try:
+                    if hasattr(self, "_on_traducoes_carregadas_qcolor") and hasattr(self.loc, "traducoes_carregadas"):
+                        self.loc.traducoes_carregadas.disconnect(self._on_traducoes_carregadas_qcolor)
+
+                except Exception:
+                    pass
+
+                try:
+                    if hasattr(self, "_qt_translator") and self._qt_translator is not None:
+                        app.removeTranslator(self._qt_translator)
+                        self._qt_translator = None
+
+                except Exception:
+                    pass
+
+            except Exception as e:
+                logger.error(f"Erro ao limpar tradutor do seletor avançado: {e}", exc_info=True)
+
+        if app:
+            try:
+                dialogo.finished.connect(lambda code: cleanup_dialog_translator())
+                dialogo.destroyed.connect(lambda obj=None: cleanup_dialog_translator())
+
+            except Exception:
+                pass
 
         if self.loc.idioma_atual != "en_US":
             from PySide6.QtCore import QTimer

@@ -1,4 +1,38 @@
-RELEASE NOTES: Versão 0.0.8.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.9.0:
+
+Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
+
+Novos Gráficos Estatísticos:
+- Foram adicionados dois novos tipos de gráficos Sankey:
+    - Sankey Evento → Caminho: Permite visualizar o fluxo dos eventos monitorados para os caminhos dos arquivos e pastas.
+    - Sankey Tipo → Caminho: Permite analisar o fluxo dos tipos de arquivos (extensões) para os caminhos monitorados.
+	- Agora é possível visualizar a estrutura de diretórios por meio de um novo gráfico interativo, facilitando a análise dos caminhos dos arquivos e pastas monitorados.
+	- Foram incluídos gráficos estatísticos mais completos, com opções para diferentes tipos de visualização dos dados.
+- Os gráficos utilizam a biblioteca Plotly para visualização interativa e exportação em alta resolução.
+
+Aprimoramento da Internacionalização:
+- Os títulos e textos dos gráficos agora são traduzidos automaticamente conforme o idioma selecionado na interface.
+- A lista de gráficos disponíveis foi atualizada, permitindo selecionar e visualizar rapidamente os principais tipos de análise.
+- O painel de estatísticas foi ajustado para calcular automaticamente a largura ideal, garantindo melhor adaptação dos textos e botões na interface.
+- Ajustes na tradução dos cabeçalhos e tipos de arquivos/pastas na árvore de diretórios.
+
+Melhorias na Interface de Diretórios:
+- O widget de estrutura de diretórios foi aprimorado para permitir operações como copiar, cortar, colar, renomear, criar e excluir arquivos/pastas diretamente pelo menu de contexto.
+- Implementada tradução dinâmica dos botões e menus do painel de diretórios.
+
+Correções Gerais:
+- Ajustes na lógica de alternância entre os modos de visualização de desempenho e estrutura de diretórios, garantindo que apenas um painel esteja ativo por vez.
+- Correções de pequenos bugs relacionados à atualização de textos traduzidos e à renderização dos gráficos.
+- Foram corrigidos pequenos problemas na geração dos gráficos, tornando o processo mais estável e confiável.
+- Melhorias na tradução dos textos e títulos dos gráficos, acompanhando o idioma escolhido pelo usuário.
+
+Essas melhorias proporcionam uma experiência mais completa e intuitiva para o usuário, ampliando as possibilidades de análise estatística e gerenciamento de arquivos e pastas.
+
+
+_________________________________________________
+
+
+NOTAS DE LANÇAMENTO: Versão 0.0.8.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -11,7 +45,7 @@ Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.7.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.7.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -24,7 +58,7 @@ Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.6.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.6.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -36,7 +70,7 @@ Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.5.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.5.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -49,7 +83,7 @@ Aprimoramento da Experiência do Usuário:
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.4.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.4.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -63,7 +97,7 @@ Correções de Bugs:
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.3.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.3.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 
@@ -101,7 +135,7 @@ Novidades da Versão 0.0.3.0:
 _________________________________________________
 
 
-RELEASE NOTES: Versão 0.0.2.0:
+NOTAS DE LANÇAMENTO: Versão 0.0.2.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
 

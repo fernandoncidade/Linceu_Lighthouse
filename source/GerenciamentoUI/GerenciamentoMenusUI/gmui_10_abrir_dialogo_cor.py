@@ -10,7 +10,7 @@ def _abrir_dialogo_cor(self, tipo_operacao):
         cor_atual = QColor(self.gerenciador_cores.obter_cor_hex(tipo_operacao))
         nome_operacao = self.loc.get_text(tipo_operacao)
         titulo = f"{self.loc.get_text('select_color_for')} {nome_operacao}"
-        dialogo = DialogoPaletaCores(cor_atual, self.interface, titulo)
+        dialogo = DialogoPaletaCores(cor_atual, self.interface, titulo, None, tipo_operacao=tipo_operacao)
         GerenciadorCores.aplicar_icone_paleta(dialogo, tipo="paleta")
         dialogo.show()
         def on_cor_selecionada(nova_cor):

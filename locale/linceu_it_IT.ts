@@ -300,6 +300,10 @@
         <translation>Filtri</translation>
     </message>
     <message>
+        <source>toggle_structure_view</source>
+        <translation>Visualizza Struttura Cartelle</translation>
+    </message>
+    <message>
         <source>language</source>
         <translation>Lingua</translation>
     </message>
@@ -1445,6 +1449,78 @@ pip install plotly</translation>
     <message>
         <source>Destacado</source>
         <translation>In evidenza</translation>
+    </message>
+    <message>
+        <source>open</source>
+        <translation>Apri</translation>
+    </message>
+    <message>
+        <source>copy</source>
+        <translation>Copia</translation>
+    </message>
+    <message>
+        <source>cut</source>
+        <translation>Taglia</translation>
+    </message>
+    <message>
+        <source>paste</source>
+        <translation>Incolla</translation>
+    </message>
+    <message>
+        <source>rename</source>
+        <translation>Rinomina</translation>
+    </message>
+    <message>
+        <source>delete</source>
+        <translation>Elimina</translation>
+    </message>
+    <message>
+        <source>property</source>
+        <translation>Proprietà</translation>
+    </message>
+    <message>
+        <source>new_folder</source>
+        <translation>Nuova Cartella</translation>
+    </message>
+    <message>
+        <source>new_file</source>
+        <translation>Nuovo File</translation>
+    </message>
+    <message>
+        <source>enter_new_name</source>
+        <translation>Inserisci nuovo nome</translation>
+    </message>
+    <message>
+        <source>file_exists</source>
+        <translation>File esistente</translation>
+    </message>
+    <message>
+        <source>file_exists_overwrite</source>
+        <translation>Il file esiste, sovrascrivere?</translation>
+    </message>
+    <message>
+        <source>type_to_path_flow</source>
+        <translation>Flusso del tipo di file per directory</translation>
+    </message>
+    <message>
+        <source>event_to_path_flow</source>
+        <translation>Flusso di evento per directory</translation>
+    </message>
+    <message>
+        <source>plotly_required</source>
+        <translation>Libreria plotly/kaleido necessaria per generare il Diagramma di Sankey</translation>
+    </message>
+    <message>
+        <source>no_ext</source>
+        <translation>SenzaExt</translation>
+    </message>
+    <message>
+        <source>directory_tree</source>
+        <translation>Albero delle Directory</translation>
+    </message>
+    <message>
+        <source>root</source>
+        <translation>Radice</translation>
     </message>
     <message>
         <source>jpg</source>

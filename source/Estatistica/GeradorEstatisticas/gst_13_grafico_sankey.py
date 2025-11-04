@@ -57,7 +57,7 @@ class GraficoSankey(BaseGerador):
 
             except Exception as e:
                 logger.error(f"Falha ao importar Plotly/Kaleido: {e}", exc_info=True)
-                plt.figure(figsize=(12, 8))
+                plt.figure(figsize=(16, 9))
                 mensagem = self.loc.get_text("plotly_required") if self.loc else 'Biblioteca plotly/kaleido necessária para gerar o Diagrama de Sankey'
                 plt.text(0.5, 0.5, mensagem, ha='center', va='center', fontsize=14)
                 plt.axis('off')
@@ -68,7 +68,7 @@ class GraficoSankey(BaseGerador):
                 return self._criar_grafico_sem_dados(titulo)
 
             operacoes_top = df_sankey['tipo_operacao'].value_counts().nlargest(6).index.tolist()
-            tipos_top = df_sankey['tipo'].value_counts().nlargest(10).index.tolist()
+            tipos_top = df_sankey['tipo'].value_counts().nlargest(50).index.tolist()
 
             df_sankey = df_sankey[
                 df_sankey['tipo_operacao'].isin(operacoes_top) &
@@ -105,8 +105,8 @@ class GraficoSankey(BaseGerador):
 
             fig = go.Figure(data=[go.Sankey(
                 node=dict(
-                    pad=15,
-                    thickness=20,
+                    pad=20,
+                    thickness=30,
                     line=dict(color="black", width=0.5),
                     label=todas_labels,
                     color=cores_ops + cores_tipos
@@ -123,15 +123,18 @@ class GraficoSankey(BaseGerador):
                 title_text=titulo,
                 font_size=14,
                 paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)'
+                plot_bgcolor='rgba(0,0,0,0)',
+                width=1600,               # largura em pixels para renderização
+                height=900,               # altura em pixels para renderização
+                margin=dict(l=100, r=100, t=100, b=100)  # margens reduzidas
             )
 
             try:
-                img_bytes = pio.to_image(fig, format='png', scale=2)
+                img_bytes = pio.to_image(fig, format='png', width=1600, height=900, scale=2)
 
             except Exception as e:
                 logger.error(f"Falha ao renderizar imagem com Kaleido: {e}", exc_info=True)
-                plt.figure(figsize=(12, 8))
+                plt.figure(figsize=(16, 9))
                 mensagem = self.loc.get_text("plotly_required") if self.loc else 'Kaleido falhou ao renderizar o Diagrama de Sankey'
                 plt.text(0.5, 0.5, mensagem, ha='center', va='center', fontsize=14)
                 plt.axis('off')
@@ -141,14 +144,15 @@ class GraficoSankey(BaseGerador):
                 from io import BytesIO
                 from PIL import Image
                 img = Image.open(BytesIO(img_bytes)).convert("RGBA")
-                plt.figure(figsize=(12, 8))
+                plt.figure(figsize=(16, 9))
                 plt.imshow(np.array(img))
                 plt.axis('off')
+                plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
                 return plt.gcf()
 
             except Exception as e:
                 logger.error(f"Falha ao exibir imagem PNG do Sankey: {e}", exc_info=True)
-                plt.figure(figsize=(12, 8))
+                plt.figure(figsize=(16, 9))
                 plt.text(0.5, 0.5, f"Erro exibindo PNG: {e}", ha='center', va='center', fontsize=14)
                 plt.axis('off')
                 return plt.gcf()

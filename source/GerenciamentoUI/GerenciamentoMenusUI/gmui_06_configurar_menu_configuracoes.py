@@ -28,5 +28,12 @@ def _configurar_menu_configuracoes(self, menu_configuracoes):
         self._criar_submenu_exportacao(menu_configuracoes)
         self._criar_acao_toggle_desempenho(menu_configuracoes)
 
+        acao_toggle_estrutura = QAction(self.loc.get_text("toggle_structure_view"), self.interface)
+        acao_toggle_estrutura.setCheckable(True)
+        acao_toggle_estrutura.setChecked(getattr(self.interface, "estrutura_ativa", False))
+        acao_toggle_estrutura.triggered.connect(lambda checked: self.interface.alternar_estrutura_diretorios(checked))
+        menu_configuracoes.addAction(acao_toggle_estrutura)
+        self.acao_toggle_estrutura = acao_toggle_estrutura
+
     except Exception as e:
         logger.error(f"Erro ao configurar menu configurações: {e}", exc_info=True)

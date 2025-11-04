@@ -1,4 +1,38 @@
-RELEASE NOTES: Versión 0.0.8.0:
+NOTAS DE LANZAMIENTO: Versión 0.0.9.0:
+
+En esta nueva versión se han implementado las siguientes mejoras y funcionalidades:
+
+Nuevos Gráficos Estadísticos:
+- Se han añadido dos nuevos tipos de gráficos Sankey:
+    - Sankey Evento → Ruta: Permite visualizar el flujo de los eventos monitoreados hacia las rutas de archivos y carpetas.
+    - Sankey Tipo → Ruta: Permite analizar el flujo de los tipos de archivos (extensiones) hacia las rutas monitoreadas.
+    - Ahora es posible visualizar la estructura de directorios mediante un nuevo gráfico interactivo, facilitando el análisis de las rutas de archivos y carpetas monitoreados.
+    - Se han incluido gráficos estadísticos más completos, con opciones para diferentes tipos de visualización de datos.
+- Los gráficos utilizan la biblioteca Plotly para visualización interactiva y exportación en alta resolución.
+
+Mejoras en la Internacionalización:
+- Los títulos y textos de los gráficos ahora se traducen automáticamente según el idioma seleccionado en la interfaz.
+- La lista de gráficos disponibles ha sido actualizada, permitiendo seleccionar y visualizar rápidamente los principales tipos de análisis.
+- El panel de estadísticas ha sido ajustado para calcular automáticamente el ancho ideal, garantizando mejor adaptación de textos y botones en la interfaz.
+- Ajustes en la traducción de encabezados y tipos de archivos/carpetas en el árbol de directorios.
+
+Mejoras en la Interfaz de Directorios:
+- El widget de estructura de directorios ha sido mejorado para permitir operaciones como copiar, cortar, pegar, renombrar, crear y eliminar archivos/carpetas directamente desde el menú contextual.
+- Se ha implementado la traducción dinámica de los botones y menús del panel de directorios.
+
+Correcciones Generales:
+- Ajustes en la lógica de alternancia entre los modos de visualización de rendimiento y estructura de directorios, asegurando que solo un panel esté activo a la vez.
+- Correcciones de pequeños errores relacionados con la actualización de textos traducidos y la renderización de los gráficos.
+- Se han corregido pequeños problemas en la generación de gráficos, haciendo el proceso más estable y confiable.
+- Mejoras en la traducción de textos y títulos de los gráficos, siguiendo el idioma elegido por el usuario.
+
+Estas mejoras proporcionan una experiencia más completa e intuitiva para el usuario, ampliando las posibilidades de análisis estadístico y gestión de archivos y carpetas.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.8.0:
 
 En esta nueva versión se implementaron las siguientes mejoras y funcionalidades:
 
@@ -36,7 +70,7 @@ En esta nueva versión se han implementado las siguientes mejoras y funcionalida
 _________________________________________________
 
 
-RELEASE NOTES: Versión 0.0.5.0:
+NOTAS DE LANZAMIENTO: Versión 0.0.5.0:
 
 En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
 
@@ -49,7 +83,7 @@ Mejora de la Experiencia del Usuario:
 _________________________________________________
 
 
-RELEASE NOTES: Versión 0.0.4.0
+NOTAS DE LANZAMIENTO: Versión 0.0.4.0
 
 En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
 
@@ -63,7 +97,7 @@ Corrección de errores:
 _________________________________________________
 
 
-RELEASE NOTES: Versión 0.0.3.0:
+NOTAS DE LANZAMIENTO: Versión 0.0.3.0:
 
 En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
 
@@ -101,7 +135,7 @@ Novedades de la Versión 0.0.3.0:
 _________________________________________________
 
 
-RELEASE NOTES: Versión 0.0.2.0:
+NOTAS DE LANZAMIENTO: Versión 0.0.2.0:
 
 En esta nueva versión, se han implementado las siguientes mejoras y funcionalidades:
 

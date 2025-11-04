@@ -17,6 +17,7 @@ from .ic_05_GerenciadorProgresso import GerenciadorProgresso
 from .ic_07_ManipuladorTabela import ManipuladorTabela
 from .ic_08_Internacionalizador import Internacionalizador
 from .GerenciadorDesempenho.gdesemp_13_alternar_graficos_desempenho import alternar_graficos_desempenho as _alternar_graficos_desempenho
+from .GerenciadorEstruturaDiretoriosWidget.gedw_15_alternar_estrutura_diretorios import alternar_estrutura_diretorios as _alternar_estrutura_diretorios
 
 
 class InterfaceMonitor(QMainWindow):
@@ -183,5 +184,8 @@ class InterfaceMonitor(QMainWindow):
 
             super().closeEvent(event)
 
-    def alternar_graficos_desempenho(self, checked=None):
-        return _alternar_graficos_desempenho(self, checked)
+    def alternar_graficos_desempenho(self, checked=None, ajustar_tamanho=True):
+        return _alternar_graficos_desempenho(self, checked, ajustar_tamanho)
+
+    def alternar_estrutura_diretorios(self, checked=None, ajustar_tamanho=True):
+        return _alternar_estrutura_diretorios(self, checked, ajustar_tamanho)
