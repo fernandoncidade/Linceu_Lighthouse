@@ -1,0 +1,109 @@
+import os
+import time
+from source.utils.LogManager import LogManager
+from pymediainfo import MediaInfo
+logger = LogManager.get_logger()
+
+def extrair_metadados_video(caminho, loc=None):
+    metadados = {}
+
+    caminho = os.path.normpath(caminho).replace('/', '\\')
+    if not os.path.exists(caminho):
+        return metadados
+
+    try:
+        import win32security
+        import ntsecuritycon as con, win32api
+        import pywintypes
+        try:
+            with open(caminho, 'rb') as f:
+                f.read(1)
+
+            sd = win32security.GetFileSecurity(caminho, win32security.DACL_SECURITY_INFORMATION)
+            dacl = sd.GetSecurityDescriptorDacl()
+            token = win32security.OpenProcessToken(win32api.GetCurrentProcess(), win32security.TOKEN_QUERY)
+            sid = win32security.GetTokenInformation(token, win32security.TokenUser)[0]
+            dacl.AddAccessAllowedAce(win32security.ACL_REVISION, con.FILE_ALL_ACCESS, sid)
+            sd.SetSecurityDescriptorDacl(1, dacl, 0)
+
+            try:
+                win32security.SetFileSecurity(caminho, win32security.DACL_SECURITY_INFORMATION, sd)
+
+            except pywintypes.error as set_err:
+                err_code = None
+                if hasattr(set_err, 'winerror'):
+                    err_code = set_err.winerror
+
+                elif isinstance(set_err.args, tuple) and len(set_err.args) > 0:
+                    err_code = set_err.args[0]
+
+                if err_code == 5:
+                    logger.warning(f"Acesso negado ao aplicar segurança em '{caminho}', continuando sem alterar ACL.")
+
+                else:
+                    logger.warning(f"Não foi possível aplicar segurança em '{caminho}': {set_err}")
+
+        except (PermissionError, OSError, pywintypes.error) as inner_err:
+            logger.warning(f"Sem permissão para modificar segurança do arquivo '{caminho}', continuando sem alterações: {inner_err}")
+            pass
+
+    except Exception as e:
+        logger.error(f"Não foi possível ajustar permissões em '{caminho}': {e}", exc_info=True)
+
+    max_tentativas = 5
+    delays = [0.5, 1.0, 2.0, 3.0, 5.0]
+
+    for tentativa in range(max_tentativas):
+        try:
+            media_info = MediaInfo.parse(caminho)
+            for track in media_info.tracks:
+                if track.track_type == "Video":
+                    if hasattr(track, 'width') and hasattr(track, 'height'):
+                        metadados['dimensoes'] = f"{track.width}x{track.height}"
+
+                    if hasattr(track, 'duration'):
+                        duracao_ms = float(track.duration)
+                        duracao_s = duracao_ms / 1000.0
+                        horas = int(duracao_s // 3600)
+                        minutos = int((duracao_s % 3600) // 60)
+                        segundos = int(duracao_s % 60)
+                        metadados['duracao'] = f"{horas:02d}:{minutos:02d}:{segundos:02d}"
+
+                    if hasattr(track, 'bit_rate'):
+                        bit_rate = int(track.bit_rate)
+                        metadados['taxa_bits'] = f"{bit_rate//1000} kbps"
+
+                    break
+
+            if metadados:
+                return metadados
+
+        except Exception as e:
+            logger.error(f"Tentativa {tentativa + 1} falhou: {e}", exc_info=True)
+            time.sleep(delays[tentativa])
+            if tentativa == max_tentativas - 1:
+                try:
+                    media_info = MediaInfo.parse(caminho, full=True)
+                    for track in media_info.tracks:
+                        if track.track_type == "Video":
+                            if hasattr(track, 'width') and hasattr(track, 'height'):
+                                metadados['dimensoes'] = f"{track.width}x{track.height}"
+
+                            if hasattr(track, 'duration'):
+                                duracao_ms = float(track.duration)
+                                duracao_s = duracao_ms / 1000.0
+                                horas = int(duracao_s // 3600)
+                                minutos = int((duracao_s % 3600) // 60)
+                                segundos = int(duracao_s % 60)
+                                metadados['duracao'] = f"{horas:02d}:{minutos:02d}:{segundos:02d}"
+
+                            if hasattr(track, 'bit_rate'):
+                                bit_rate = int(track.bit_rate)
+                                metadados['taxa_bits'] = f"{bit_rate//1000} kbps"
+
+                            break
+
+                except Exception as me:
+                    logger.error(f"Fallback também falhou: {me}", exc_info=True)
+
+    return metadados
