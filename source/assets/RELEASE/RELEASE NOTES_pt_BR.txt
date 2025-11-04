@@ -1,3 +1,53 @@
+NOTAS DE LANÇAMENTO: Versão 0.1.2.0:
+
+Neste lançamento foram realizadas otimizações de arquitetura e melhorias de desempenho focadas no processamento em streaming de eventos, gravação assíncrona e escalabilidade da interface.
+
+Melhorias principais
+- Gravação assíncrona e segura:
+  - Introduzido DatabaseWriter (serviço singleton) com fila interna, batching e thread dedicada.
+  - Ativação de PRAGMA journal_mode=WAL e synchronous=NORMAL para reduzir contenção de leitura/escrita.
+  - Escritas em lote (batch) para reduzir commits por item e melhorar throughput de I/O.
+
+- Inicialização eager do writer:
+  - DatabaseWriter é inicializado logo no startup da aplicação (iniciar_aplicacao), evitando custos de criação durante picos de eventos.
+
+- Streaming e atualização imediata da GUI:
+  - Eventos agora são enfileirados e a GUI é atualizada imediatamente usando QMetaObject.invokeMethod para chamadas seguras ao thread principal.
+  - Eventos “Excluído” passaram a usar o mesmo fluxo de streaming (sem round-trips obrigatórios ao DB), eliminando leituras desnecessárias e reduzindo latência.
+
+- Migração para Model/View:
+  - Substituição do QTableWidget por QTableView + QAbstractTableModel (EventTableModel) para escalabilidade de milhões de eventos.
+  - Inserção no modelo (prepend/append) é eficiente e a view é virtualizada, permitindo scroll e acompanhamento em tempo real sem travamentos.
+
+- Robustez e compatibilidade:
+  - Mecanismos de fallback mantidos: gravação direta no DB em caso de falha do writer; fallback de atualização de GUI compatível com API antiga.
+  - Parada ordenada do DatabaseWriter no encerramento da aplicação.
+
+Impacto no desempenho
+- Redução de contenção no SQLite durante cargas altas.
+- Maior responsividade da interface ao apresentar eventos (efeito "streaming" com latência reduzida).
+- Melhoria significativa para eventos "Adicionado", "Modificado" e "Escaneado".
+- Otimização específica para evento "Excluído": agora segue fluxo de streaming, reduzindo penalização anterior causada por leituras/consultas adicionais.
+
+Correções e ajustes
+- Evita extrações pesadas de metadados quando arquivo ausente (reduz custo de processamento em exclusões).
+- Logs adicionais para diagnosticar enfileiramento e fallback do DatabaseWriter.
+- Ajustes de segurança de threads e chamadas Qt (uso de invokeMethod com Qt.ConnectionType.QueuedConnection).
+
+Recomendações para o usuário/operador
+- Ajustar DatabaseWriter.batch_size e batch_timeout conforme perfil de carga (ex.: batch_size=200, batch_timeout=0.2).
+- Preferir definir idioma antes de iniciar monitoramento em cargas muito altas (conforme notas anteriores).
+- Recomenda-se uso de SSD e I/O rápido para melhor aproveitamento do batching.
+- Para latência visual extrema, considerar micro-lotes visuais (QTimer ~16ms) — disponível como opção futura.
+
+Observações finais
+- Estas mudanças priorizam throughput e responsividade sem sacrificar a consistência dos dados.
+- Se forem observadas regressões ou picos de latência, envie logs com nível DEBUG para análise (configuração em Preferências → Logs).
+
+
+_________________________________________________
+
+
 NOTAS DE LANÇAMENTO: Versão 0.1.1.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
@@ -5,9 +55,6 @@ Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades
 Melhorias principais
 - Melhorias na estrutura do código fonte: várias otimizações internas foram feitas para melhorar a eficiência e a manutenção do código.
 - Atualizações de dependências: bibliotecas e frameworks utilizados foram atualizados para suas versões mais recentes, garantindo melhor compatibilidade e segurança.
-
-Agradecimento
-- Obrigado por usar o aplicativo. Esta versão foca em estabilidade e qualidade das informações exibidas para que o gerenciamento de arquivos e pastas seja mais seguro e eficiente.
 
 
 _________________________________________________
@@ -37,9 +84,6 @@ Observações para o usuário
 - Nenhuma ação adicional é necessária; a atualização melhora estabilidade e a qualidade das informações exibidas.
 - Caso o aplicativo não consiga ler algum arquivo (por exemplo por permissões do sistema), ele continuará funcionando e mostrará as informações que conseguir coletar.
 - Se houver dúvidas ou problemas após a atualização, ative os logs nas configurações e compartilhe-os com o suporte para investigação.
-
-Agradecimento
-- Obrigado por usar o aplicativo. Esta versão foca em estabilidade e qualidade das informações exibidas para que o gerenciamento de arquivos e pastas seja mais seguro e eficiente.
 
 
 _________________________________________________

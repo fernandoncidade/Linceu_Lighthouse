@@ -35,6 +35,7 @@ def iniciar_aplicacao():
         from PySide6.QtGui import QIcon
         from source.gui.ic_01_InterfaceMonitor import InterfaceMonitor
         from source.gui.ic_08_Internacionalizador import Internacionalizador
+        from source.services.GerenciamentoBaseEvento.gbank_20_db_writer import DatabaseWriter
 
         app = QApplication(sys.argv)
         _definir_appusermodelid()
@@ -55,6 +56,13 @@ def iniciar_aplicacao():
         # TrialManager.reset_trial_for_tests()  # Use esta linha para testes, removendo o timestamp de primeiro uso
         Internacionalizador.inicializar_sistema_traducao(app)
         window = InterfaceMonitor()
+
+        try:
+            if hasattr(window, 'evento_base') and hasattr(window.evento_base, 'db_path'):
+                DatabaseWriter.get_instance(window.evento_base.db_path)
+
+        except Exception as e:
+            logger.warning(f"Falha ao iniciar DatabaseWriter de forma eager: {e}", exc_info=True)
 
         try:
             if app_icon_path and os.path.exists(app_icon_path):

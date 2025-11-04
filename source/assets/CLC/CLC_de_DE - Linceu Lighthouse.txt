@@ -1,5 +1,5 @@
 KOMMERZIELLER LIZENZVERTRAG - Linceu Lighthouse
-Version 0.1.1.0, 30. Dezember 2025
+Version 0.1.2.0, 31. Januar 2026
 
 Dieser Lizenzvertrag ("Vertrag") wird geschlossen zwischen:
 
@@ -60,7 +60,7 @@ Dieser Vertrag ergänzt die Bestimmungen des Endbenutzer-Lizenzvertrags (EULA) v
 
 Und in gegenseitigem Einvernehmen führen die Parteien diesen Vertrag aus.
 
-Brasilien, Paraná, São José dos Pinhais, 30. Dezember 2025
+Brasilien, Paraná, São José dos Pinhais, 31. Januar 2026
 
 Fernando Nillsson Cidade
 ______________________________
