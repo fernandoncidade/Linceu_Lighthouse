@@ -1,3 +1,16 @@
+RELEASE NOTES: Versão 0.0.7.0:
+
+Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:
+
+- Correção do sistema de tradução:
+	- Ao aplicar um novo idioma, agora o sistema aplica automaticamente a tradução em todos os widgets do painel de gráficos e diagramas, para análise estatística dos dados monitorados.
+		- Melhorias na detecção de mudanças de idioma, garantindo uma transição mais suave e sem interrupções.
+		- Durante a aplicação do novo idioma, o sistema redesenha a plotagem, ao mesmo tempo atualiza os dados exibidos, garantindo que todas as informações estejam corretas e atualizadas.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Versão 0.0.6.0:
 
 Nesta nova versão, foram implementadas as seguintes melhorias e funcionalidades:

@@ -7,7 +7,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QMessageBox
 from utils.CaminhoPersistenteUtils import obter_caminho_persistente
 from utils.IconUtils import get_icon_path
-from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+from source.GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 

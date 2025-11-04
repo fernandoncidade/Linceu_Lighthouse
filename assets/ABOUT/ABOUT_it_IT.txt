@@ -1,5 +1,5 @@
 Progetto: LINCEU LIGHTHOUSE
-Versione: 0.0.6.0
+Versione: 0.0.7.0
 Autori: Fernando Nillsson Cidade
 
 Descrizione: Visibilità e Controllo sui Tuoi File
