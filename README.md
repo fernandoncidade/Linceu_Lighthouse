@@ -10,7 +10,7 @@
 
 <h2 id="ptbr">🇧🇷 Português (BR)</h2>
 
-> **Observação:** Este repositório refere-se à versão **v0.0.1.0** do instalador (binário) do Linceu Lighthouse. Apoie o projeto e adquira a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Observação:** Este repositório refere-se à versão **v0.0.2.0** do instalador (binário) do Linceu Lighthouse. Apoie o projeto e adquira a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Clique para expandir o README em português</summary>
@@ -25,7 +25,7 @@
 </p>
 
 Projeto: LINCEU LIGHTHOUSE  
-Versão: v0.0.1.0  
+Versão: v0.0.2.0  
 Autores: Fernando Nillsson Cidade  
 
 Descrição: Visibilidade e Controle sobre Seus Arquivos
@@ -184,7 +184,7 @@ Autores:
 
 <h2 id="enus">🇺🇸 English (US)</h2>
 
-> **Note:** This repository refers to the **v0.0.1.0** installer (binary) of Linceu Lighthouse. Support the project and purchase the paid version through this link: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Note:** This repository refers to the **v0.0.2.0** installer (binary) of Linceu Lighthouse. Support the project and purchase the paid version through this link: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Click to expand the README in English</summary>
@@ -199,7 +199,7 @@ Autores:
 </p>
 
 Project: LINCEU LIGHTHOUSE  
-Version: v0.0.1.0  
+Version: v0.0.2.0  
 Authors: Fernando Nillsson Cidade  
 
 Description: Visibility and Control Over Your Files
