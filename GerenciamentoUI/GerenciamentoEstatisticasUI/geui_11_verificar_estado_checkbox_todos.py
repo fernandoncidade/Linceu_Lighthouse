@@ -1,26 +1,25 @@
 from PySide6.QtCore import Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _verificar_estado_checkbox_todos(self):
-    if not self.checkboxes_graficos:
-        return
+    try:
+        if not self.checkboxes_graficos:
+            return
 
-    self.checkbox_todos.blockSignals(True)
+        self.checkbox_todos.blockSignals(True)
+        total_checkboxes = len(self.checkboxes_graficos)
+        checkboxes_marcados = sum(1 for data in self.checkboxes_graficos.values() if data['checkbox'].isChecked())
+        if checkboxes_marcados == 0:
+            self.checkbox_todos.setCheckState(Qt.Unchecked)
 
-    total_checkboxes = len(self.checkboxes_graficos)
-    checkboxes_marcados = sum(1 for data in self.checkboxes_graficos.values() if data['checkbox'].isChecked())
+        elif checkboxes_marcados == total_checkboxes:
+            self.checkbox_todos.setCheckState(Qt.Checked)
 
-    logger.debug(f"Verificando estado: {checkboxes_marcados}/{total_checkboxes} checkboxes marcados")
+        else:
+            self.checkbox_todos.setCheckState(Qt.PartiallyChecked)
 
-    if checkboxes_marcados == 0:
-        self.checkbox_todos.setCheckState(Qt.Unchecked)
+        self.checkbox_todos.blockSignals(False)
 
-    elif checkboxes_marcados == total_checkboxes:
-        self.checkbox_todos.setCheckState(Qt.Checked)
-
-    else:
-        self.checkbox_todos.setCheckState(Qt.PartiallyChecked)
-
-    self.checkbox_todos.blockSignals(False)
+    except Exception as e:
+        logger.error(f"Erro ao verificar estado dos checkboxes: {e}", exc_info=True)

@@ -1,6 +1,8 @@
 from tinytag import TinyTag
 from pymediainfo import MediaInfo
 from decimal import Decimal, ROUND_HALF_UP
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_audio(caminho, loc=None):
     metadados = {}
@@ -37,7 +39,7 @@ def extrair_metadados_audio(caminho, loc=None):
             metadados['title'] = tag.title
 
     except Exception as e:
-        print(f"Erro ao extrair metadados do áudio {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados do áudio {caminho}: {e}", exc_info=True)
 
         try:
             media_info = MediaInfo.parse(caminho)
@@ -63,6 +65,6 @@ def extrair_metadados_audio(caminho, loc=None):
                     break
 
         except Exception as me:
-            print(f"Fallback para MediaInfo também falhou: {me}")
+            logger.error(f"Fallback para MediaInfo também falhou: {me}", exc_info=True)
 
     return metadados

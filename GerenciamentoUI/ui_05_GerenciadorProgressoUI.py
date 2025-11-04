@@ -2,7 +2,6 @@ from utils.LogManager import LogManager
 from datetime import datetime
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication
-
 logger = LogManager.get_logger()
 
 
@@ -13,14 +12,12 @@ class GerenciadorProgressoUI:
 
     def criar_barra_progresso(self):
         try:
-            logger.debug("Criando/configurando barra de progresso")
             if hasattr(self.interface, 'barra_progresso'):
                 self.interface.barra_progresso.setValue(0)
                 self.interface.barra_progresso.setFormat("%p%")
                 self.interface.barra_progresso.setTextVisible(True)
                 self.interface.barra_progresso.show()
                 self.interface.rotulo_resultado.setText(self.loc.get_text("preparing_scan"))
-                logger.debug("Barra de progresso configurada e exibida")
                 QApplication.processEvents()
 
         except Exception as e:

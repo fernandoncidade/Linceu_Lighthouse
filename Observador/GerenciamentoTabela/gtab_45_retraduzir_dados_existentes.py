@@ -4,7 +4,6 @@ logger = LogManager.get_logger()
 def retraduzir_dados_existentes(gt):
     try:
         if gt._retraducao_realizada_para_idioma and gt.loc.idioma_atual == gt._idioma_ultima_retraducao:
-            logger.debug("Retradução já realizada para este idioma; ignorando chamada.")
             return
 
         if gt._retraducao_em_andamento:

@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def registrar_evento_especifico(self, tabela, evento):
     try:
@@ -98,4 +100,4 @@ def registrar_evento_especifico(self, tabela, evento):
             conn.commit()
 
     except Exception as e:
-        print(f"Erro ao registrar evento na tabela {tabela}: {e}")
+        logger.error(f"Erro ao registrar evento na tabela {tabela}: {e}", exc_info=True)

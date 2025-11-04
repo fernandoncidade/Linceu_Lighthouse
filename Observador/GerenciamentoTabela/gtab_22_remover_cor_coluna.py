@@ -2,7 +2,6 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QPalette
 from PySide6.QtCore import Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def remover_cor_coluna(self, coluna_key):

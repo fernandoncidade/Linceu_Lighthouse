@@ -43,7 +43,7 @@ def extrair_metadados_olefile(caminho, loc=None):
                 metadados['slides'] = slides_estimados
 
     except Exception as e:
-        logger.warning(f"Erro ao extrair metadados OLE ({caminho}): {e}")
+        logger.error(f"Erro ao extrair metadados OLE ({caminho}): {e}", exc_info=True)
         tamanho = os.path.getsize(caminho)
         if ext == '.doc':
             paginas_estimadas = max(1, tamanho // 20000)

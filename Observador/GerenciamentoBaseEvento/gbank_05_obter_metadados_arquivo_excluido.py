@@ -1,4 +1,6 @@
 import sqlite3
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def obter_metadados_arquivo_excluido(self, nome):
     try:
@@ -204,5 +206,5 @@ def obter_metadados_arquivo_excluido(self, nome):
             return None
 
     except Exception as e:
-        print(f"Erro ao buscar metadados de arquivo excluído: {e}")
+        logger.error(f"Erro ao buscar metadados de arquivo excluído: {e}", exc_info=True)
         return None

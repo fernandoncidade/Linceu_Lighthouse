@@ -3,18 +3,14 @@ from datetime import datetime
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def salvar_todos_graficos(self, gerador):
     try:
         gerador.atualizar_textos_traduzidos()
-
-        logger.info("Iniciando salvamento de todos os gráficos")
         diretorio = QFileDialog.getExistingDirectory(self.interface, self.loc.get_text("select_save_dir"), "", QFileDialog.ShowDirsOnly)
 
         if not diretorio:
-            logger.debug("Operação de salvamento cancelada pelo usuário")
             return
 
         QApplication.setOverrideCursor(Qt.WaitCursor)
@@ -33,12 +29,10 @@ def salvar_todos_graficos(self, gerador):
                 try:
                     titulo = grafico["titulo"]
                     arquivo_destino = os.path.join(diretorio_graficos, f"{titulo}.png")
-                    logger.debug(f"Salvando {titulo} em {arquivo_destino}")
 
                     fig = grafico["func"]()
                     fig.savefig(arquivo_destino, bbox_inches='tight', dpi=600)
 
-                    logger.info(f"Gráfico {titulo} salvo com sucesso")
                     resultados[titulo] = True
                     graficos_salvos += 1
 
@@ -72,8 +66,6 @@ def salvar_todos_graficos(self, gerador):
 
             if msg.clickedButton() == btn_open:
                 self._abrir_diretorio(diretorio_graficos)
-
-            logger.info(f"Gráficos salvos com sucesso: {graficos_salvos}/{len(resultados)}")
 
         finally:
             QApplication.restoreOverrideCursor()

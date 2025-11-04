@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import QCheckBox
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _atualizar_checkboxes_graficos(self, graficos_atualizados, estados_checkboxes, mapeamento_funcoes):
@@ -11,7 +10,6 @@ def _atualizar_checkboxes_graficos(self, graficos_atualizados, estados_checkboxe
                 child.widget().deleteLater()
 
         self.checkboxes_graficos.clear()
-
         for grafico in graficos_atualizados:
             checkbox = QCheckBox(grafico["titulo"])
             checkbox_checked = estados_checkboxes.get(grafico['func'], True)

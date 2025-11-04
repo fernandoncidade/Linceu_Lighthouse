@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import QApplication
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def atualizar_cores_colunas(self, aplicar_em_massa=False):

@@ -10,6 +10,7 @@ from .gst_09_grafico_boxplot import GraficoBoxplot
 from .gst_10_grafico_radar_eventos import GraficoRadarEventos
 from .gst_11_grafico_heatmap import GraficoHeatmap
 from .gst_12_grafico_scatter import GraficoScatter
+from .gst_13_grafico_sankey import GraficoSankey
 from .gst_14_grafico_radar import GraficoRadar
 from .gst_15_grafico_dotplot import GraficoDotplot
 
@@ -26,6 +27,7 @@ __all__ = [
     'GraficoRadarEventos',
     'GraficoHeatmap',
     'GraficoScatter',
+    'GraficoSankey',
     'GraficoRadar',
     'GraficoDotplot'
 ]

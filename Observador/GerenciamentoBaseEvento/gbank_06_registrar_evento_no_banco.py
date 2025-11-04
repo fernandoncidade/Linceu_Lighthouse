@@ -1,11 +1,13 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def registrar_evento_no_banco(self, evento):
     try:
         for campo_obrigatorio in ["tipo_operacao", "nome"]:
             if campo_obrigatorio not in evento:
-                print(f"Erro: Campo obrigatório '{campo_obrigatorio}' ausente no evento")
+                logger.error(f"Erro: Campo obrigatório '{campo_obrigatorio}' ausente no evento")
                 return
 
         if "dir_anterior" in evento and (not evento["dir_anterior"] or evento["dir_anterior"] == "."):
@@ -27,7 +29,7 @@ def registrar_evento_no_banco(self, evento):
         tabela_especifica = mapeamento_tabelas.get(tipo_operacao_original)
 
         if not tabela_especifica:
-            print(f"Erro: Tipo de operação desconhecido: {tipo_operacao_original}")
+            logger.error(f"Erro: Tipo de operação desconhecido: {tipo_operacao_original}")
             return
 
         campos_opcionais = [
@@ -82,9 +84,7 @@ def registrar_evento_no_banco(self, evento):
 
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
-
             cursor.execute("BEGIN TRANSACTION")
-
             try:
                 colunas = [
                     'tipo_operacao', 
@@ -134,25 +134,19 @@ def registrar_evento_no_banco(self, evento):
 
                 valores = [evento.get(coluna.replace("tipo_operacao", "tipo_operacao"), "") for coluna in colunas]
                 valores[0] = tipo_operacao_original
-
                 placeholders = ", ".join(["?" for _ in colunas])
                 colunas_str = ", ".join(colunas)
-
                 query_tabela = f"INSERT INTO {tabela_especifica} ({colunas_str}) VALUES ({placeholders})"
                 cursor.execute(query_tabela, valores)
-
                 query_monitoramento = f"INSERT INTO monitoramento ({colunas_str}) VALUES ({placeholders})"
                 cursor.execute(query_monitoramento, valores)
-
                 cursor.execute("COMMIT")
-                print(f"Evento registrado com sucesso: {tipo_operacao_original} - {evento.get('nome')}")
-
                 self._atualizar_interface_apos_evento(evento)
 
             except Exception as e:
                 cursor.execute("ROLLBACK")
-                print(f"Erro durante registro de evento, transação cancelada: {e}")
+                logger.error(f"Erro durante registro de evento, transação cancelada: {e}", exc_info=True)
                 raise
 
     except Exception as e:
-        print(f"Erro ao registrar evento no banco: {e}")
+        logger.error(f"Erro ao registrar evento no banco: {e}", exc_info=True)

@@ -1,4 +1,6 @@
 import os
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def invalidar_cache_diretorios_relacionados(gc, caminho: str):
     try:
@@ -48,4 +50,4 @@ def invalidar_cache_diretorios_relacionados(gc, caminho: str):
                             gc.cache_metadados.pop(root, None)
 
     except Exception as e:
-        print(f"Erro ao invalidar cache de diretórios: {e}")
+        logger.error(f"Erro ao invalidar cache de diretórios: {e}", exc_info=True)

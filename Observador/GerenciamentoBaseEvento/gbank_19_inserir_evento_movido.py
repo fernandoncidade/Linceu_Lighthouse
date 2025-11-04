@@ -1,4 +1,6 @@
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _inserir_evento_movido(self, cursor, evento):
     if not evento or evento.get("tipo_operacao") != self.observador.loc.get_text("op_moved"):
@@ -64,12 +66,10 @@ def _inserir_evento_movido(self, cursor, evento):
 
         placeholders = ", ".join(["?" for _ in colunas])
         colunas_str = ", ".join(colunas)
-
         cursor.execute(f"INSERT INTO movido ({colunas_str}) VALUES ({placeholders})", valores)
         cursor.execute(f"INSERT INTO monitoramento ({colunas_str}) VALUES ({placeholders})", valores)
-
         return True
 
     except Exception as e:
-        print(f"Erro ao inserir evento movido: {e}")
+        logger.error(f"Erro ao inserir evento movido: {e}", exc_info=True)
         return False

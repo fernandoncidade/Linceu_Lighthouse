@@ -1,4 +1,6 @@
 from PySide6.QtCore import QMetaObject, Qt, Q_ARG
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _atualizar_interface(self, progresso, contador, total):
     try:
@@ -13,4 +15,4 @@ def _atualizar_interface(self, progresso, contador, total):
                                  Q_ARG(int, total))
 
     except Exception as e:
-        print(f"Erro ao atualizar interface: {e}")
+        logger.error(f"Erro ao atualizar interface: {e}", exc_info=True)

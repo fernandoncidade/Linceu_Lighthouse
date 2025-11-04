@@ -1,3 +1,15 @@
+RELEASE NOTES: Version 0.0.6.0:
+
+In this new release, the following improvements and features have been implemented:
+
+- Implementation of a new diagram; it is now possible to analyze the monitored data using a flow chart - "Sankey".
+    - The bar chart allows a clear and intuitive visualization of the data distribution, facilitating the identification of patterns and trends.
+    - The chart interface is interactive, allowing the user to explore the data in a dynamic and personalized way.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.5.0:
 
 In this new version, the following improvements and features have been implemented:

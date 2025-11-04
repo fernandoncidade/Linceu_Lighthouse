@@ -1,6 +1,5 @@
 from PySide6.QtGui import QFontMetrics
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def ajustar_altura_cabecalho(self, tabela):

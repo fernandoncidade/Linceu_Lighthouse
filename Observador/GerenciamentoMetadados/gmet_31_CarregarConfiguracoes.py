@@ -1,5 +1,7 @@
 import os
 import json
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def carregar_configuracoes(gc):
     try:
@@ -13,4 +15,4 @@ def carregar_configuracoes(gc):
                     gc.COLUNAS_DISPONIVEIS[k]["ordem"] = v["ordem"]
 
     except Exception as e:
-        print(f"Erro ao carregar configurações: {e}")
+        logger.error(f"Erro ao carregar configurações: {e}", exc_info=True)

@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def aplicar_quebra_linha_todos_cabecalhos(self, tabela):

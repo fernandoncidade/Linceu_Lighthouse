@@ -1,23 +1,18 @@
 import matplotlib
 matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
-from utils.LogManager import LogManager
 from .gst_01_base_gerador import BaseGerador
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GraficoRadar(BaseGerador):
     __slots__ = []
 
     def gerar(self):
-        logger = LogManager.get_logger()
-        logger.debug("Iniciando geração do gráfico radar")
-
         df = self._obter_dados()
         titulo = self.loc.get_text("operations_by_file_type") if self.loc else 'Operações por Tipo de Arquivo'
-
-        logger.debug(f"Radar - Dados obtidos: {len(df)} registros")
 
         if df.empty:
             logger.warning("Dataset vazio para geração do gráfico radar")
@@ -29,7 +24,7 @@ class GraficoRadar(BaseGerador):
 
             registros_removidos = len(df) - len(df_radar)
             if registros_removidos > 0:
-                logger.debug(f"Radar - {registros_removidos} registros removidos por terem valores nulos")
+                pass
 
             if df_radar.empty:
                 logger.warning("Radar - Sem dados válidos após filtrar valores nulos")
@@ -42,9 +37,6 @@ class GraficoRadar(BaseGerador):
                          self.loc.get_text('op_modified'), 
                          self.loc.get_text('op_moved'), 
                          self.loc.get_text('op_scanned')]
-
-            logger.debug(f"Radar - Usando {len(tipos_top)} tipos de arquivo mais comuns")
-            logger.debug(f"Radar - {len(operacoes)} tipos de operações encontradas")
 
             n_operacoes = len(operacoes)
             n_cols = 3
@@ -85,7 +77,6 @@ class GraficoRadar(BaseGerador):
                 fig.delaxes(axs[i])
 
             plt.tight_layout()
-            logger.debug("Radar - Gráficos gerados por operação com sucesso")
             return plt.gcf()
 
         except Exception as e:

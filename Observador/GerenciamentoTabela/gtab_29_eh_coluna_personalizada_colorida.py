@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def eh_coluna_personalizada_colorida(self, key_coluna):

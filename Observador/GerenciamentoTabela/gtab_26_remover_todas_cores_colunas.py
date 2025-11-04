@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def remover_todas_cores_colunas(self):
@@ -10,4 +9,4 @@ def remover_todas_cores_colunas(self):
         self.atualizar_cores_colunas(aplicar_em_massa=True)
 
     except Exception as e:
-        logger.error(f"Erro ao remover todas as cores das colunas: {e}")
+        logger.error(f"Erro ao remover todas as cores das colunas: {e}", exc_info=True)

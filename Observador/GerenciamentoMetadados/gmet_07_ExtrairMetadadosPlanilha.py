@@ -1,4 +1,6 @@
 import os
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_planilha(caminho, loc):
     metadados = {}
@@ -75,7 +77,7 @@ def extrair_metadados_planilha(caminho, loc):
                     wb.release_resources()
 
             except Exception as e:
-                print(f"Erro ao extrair metadados da planilha {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados da planilha {caminho}: {e}", exc_info=True)
 
         elif ext == '.csv':
             try:
@@ -102,9 +104,9 @@ def extrair_metadados_planilha(caminho, loc):
                 metadados['colunas'] = colunas
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do CSV {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do CSV {caminho}: {e}", exc_info=True)
 
     except Exception as e:
-        print(f"Erro geral ao extrair metadados da planilha {caminho}: {e}")
+        logger.error(f"Erro geral ao extrair metadados da planilha {caminho}: {e}", exc_info=True)
 
     return metadados

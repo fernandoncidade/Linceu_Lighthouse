@@ -11,7 +11,8 @@ from Observador.GerenciamentoDiretorioScanner.gscanner_06_atualizar_progresso im
 from Observador.GerenciamentoDiretorioScanner.gscanner_07_atualizar_interface import _atualizar_interface
 from Observador.GerenciamentoDiretorioScanner.gscanner_08_finalizar_scan import _finalizar_scan
 from Observador.GerenciamentoDiretorioScanner.gscanner_09_scan_worker_run import run as scan_worker_run
-
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 class DiretorioScanner(QObject):
     progresso_atualizado = Signal(int, int, int)
@@ -19,38 +20,46 @@ class DiretorioScanner(QObject):
 
     def __init__(self, observador):
         super().__init__()
-        self.observador = observador
-        self.db_path = observador.evento_base.db_path
-        self.gerenciador_colunas = observador.gerenciador_colunas
-        self.fila_processamento = queue.Queue()
-        self.contador_processados = 0
-        self.total_arquivos = 0
-        self.executor = ThreadPoolExecutor(max_workers=4)
-        self.lock_db = threading.Lock()
-        self.ultimo_progresso = 0
-        self.intervalo_atualizacao = 1
-        self.pausado = False
-        self._pause_event = threading.Event()
-        self._pause_event.set()
-        if hasattr(self.observador, 'interface'):
-            QMetaObject.invokeMethod(self.observador.interface, "criar_barra_progresso",
-                                     Qt.ConnectionType.QueuedConnection)
+        try:
+            self.observador = observador
+            self.db_path = observador.evento_base.db_path
+            self.gerenciador_colunas = observador.gerenciador_colunas
+            self.fila_processamento = queue.Queue()
+            self.contador_processados = 0
+            self.total_arquivos = 0
+            self.executor = ThreadPoolExecutor(max_workers=4)
+            self.lock_db = threading.Lock()
+            self.ultimo_progresso = 0
+            self.intervalo_atualizacao = 1
+            self.pausado = False
+            self._pause_event = threading.Event()
+            self._pause_event.set()
+            if hasattr(self.observador, 'interface'):
+                QMetaObject.invokeMethod(self.observador.interface, "criar_barra_progresso",
+                                        Qt.ConnectionType.QueuedConnection)
 
-            self.progresso_atualizado.connect(self._atualizar_interface)
-            self.scan_finalizado.connect(self._finalizar_scan)
+                self.progresso_atualizado.connect(self._atualizar_interface)
+                self.scan_finalizado.connect(self._finalizar_scan)
+
+        except Exception as e:
+            logger.error(f"Erro ao inicializar DiretorioScanner: {e}", exc_info=True)
 
     def pausar(self):
-        if not self.pausado:
-            self.pausado = True
-            self._pause_event.clear()
+        try:
+            if not self.pausado:
+                self.pausado = True
+                self._pause_event.clear()
 
-        else:
-            self.pausado = False
-            self._pause_event.set()
+            else:
+                self.pausado = False
+                self._pause_event.set()
 
-        if hasattr(self.observador, "interface") and hasattr(self.observador.interface, "rotulo_resultado"):
-            status = self.observador.loc.get_text("paused") if self.pausado else self.observador.loc.get_text("resumed")
-            self.observador.interface.rotulo_resultado.setText(status)
+            if hasattr(self.observador, "interface") and hasattr(self.observador.interface, "rotulo_resultado"):
+                status = self.observador.loc.get_text("paused") if self.pausado else self.observador.loc.get_text("resumed")
+                self.observador.interface.rotulo_resultado.setText(status)
+
+        except Exception as e:
+            logger.error(f"Erro ao pausar/resumir o scan: {e}", exc_info=True)
 
     _process_batch = _process_batch
     scan_directory = scan_directory
@@ -68,7 +77,11 @@ class ScanWorker(QObject):
 
     def __init__(self, scanner, directory):
         super().__init__()
-        self.scanner = scanner
-        self.directory = directory
+        try:
+            self.scanner = scanner
+            self.directory = directory
+
+        except Exception as e:
+            logger.error(f"Erro ao inicializar ScanWorker: {e}", exc_info=True)
 
     run = scan_worker_run

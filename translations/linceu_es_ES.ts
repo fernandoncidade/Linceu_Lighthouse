@@ -1171,6 +1171,26 @@ pip install plotly</translation>
         <translation>d</translation>
     </message>
     <message>
+        <source>MS</source>
+        <translation>ms</translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation>s</translation>
+    </message>
+    <message>
+        <source>MIN</source>
+        <translation>min</translation>
+    </message>
+    <message>
+        <source>H</source>
+        <translation>h</translation>
+    </message>
+    <message>
+        <source>D</source>
+        <translation>d</translation>
+    </message>
+    <message>
         <source>file_types</source>
         <translation>Tipos de Archivo</translation>
     </message>

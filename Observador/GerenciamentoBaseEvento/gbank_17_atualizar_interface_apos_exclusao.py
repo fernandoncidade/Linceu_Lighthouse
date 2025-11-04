@@ -1,9 +1,10 @@
 import sqlite3
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _atualizar_interface_apos_exclusao(self):
     try:
         self.eventos_excluidos += 1
-
         interface = None
         if self.callback and hasattr(self.callback, '__self__'):
             interface = self.callback.__self__
@@ -34,4 +35,4 @@ def _atualizar_interface_apos_exclusao(self):
             interface.atualizar_status()
 
     except Exception as e:
-        print(f"Erro ao atualizar interface após exclusão: {e}")
+        logger.error(f"Erro ao atualizar interface após exclusão: {e}", exc_info=True)

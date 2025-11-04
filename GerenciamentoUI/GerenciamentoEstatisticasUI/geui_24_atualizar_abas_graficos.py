@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _atualizar_abas_graficos(self, graficos_atualizados, mapeamento_funcoes):
@@ -8,10 +7,8 @@ def _atualizar_abas_graficos(self, graficos_atualizados, mapeamento_funcoes):
             return
 
         funcoes_para_indices = {}
-
         for i in range(self.tab_widget.count()):
             titulo_atual = self.tab_widget.tabText(i)
-
             for titulo_antigo, data in self.checkboxes_graficos.items():
                 if titulo_antigo == titulo_atual:
                     funcoes_para_indices[data['grafico_data']['func']] = i

@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QColor, QPalette
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def atualizar_estilo_tema(self, novo_tema):
@@ -10,11 +9,8 @@ def atualizar_estilo_tema(self, novo_tema):
             return
 
         tabela = self.interface.tabela_dados
-        logger.info(f"Atualizando estilo da tabela para tema: {novo_tema}")
-
         tema_anterior = getattr(self, '_ultimo_tema_aplicado', None)
         self._ultimo_tema_aplicado = novo_tema
-
         tabela.blockSignals(True)
 
         try:
@@ -57,8 +53,6 @@ def atualizar_estilo_tema(self, novo_tema):
             tabela.viewport().update()
             QApplication.processEvents()
 
-            logger.debug(f"Estilo da tabela atualizado com sucesso para tema: {novo_tema}")
-
         finally:
             tabela.blockSignals(False)
 
@@ -70,14 +64,11 @@ def atualizar_estilo_tema(self, novo_tema):
 def _forcar_reconstrucao_todas_celulas(self, novo_tema):
     try:
         tabela = self.interface.tabela_dados
-
         palette = QApplication.palette()
         cor_fundo_padrao = palette.color(QPalette.ColorRole.Base)
         cor_alternativa = palette.color(QPalette.ColorRole.AlternateBase)
-
         cor_texto_claro = QColor(0, 0, 0)
         cor_texto_escuro = QColor(255, 255, 255)
-
         cor_texto_tema_atual = cor_texto_escuro if novo_tema == "escuro" else cor_texto_claro
 
         for row in range(tabela.rowCount()):
@@ -87,7 +78,6 @@ def _forcar_reconstrucao_todas_celulas(self, novo_tema):
                     continue
 
                 cor_atual = item.background().color()
-
                 if cor_atual.isValid() and cor_atual != QColor() and cor_atual.alpha() > 0:
                     nome_coluna = tabela.horizontalHeaderItem(col).text().replace('\n', ' ').strip()
                     key_coluna = None
@@ -127,19 +117,15 @@ def _forcar_reconstrucao_todas_celulas(self, novo_tema):
                     else:
                         item.setBackground(cor_alternativa)
 
-        logger.debug(f"Reconstrução forçada de todas as células para tema {novo_tema}")
-
     except Exception as e:
         logger.error(f"Erro ao forçar reconstrução de células: {e}", exc_info=True)
 
 def _atualizar_cores_celulas_incolores(self, novo_tema):
     try:
         tabela = self.interface.tabela_dados
-
         palette = QApplication.palette()
         cor_fundo_padrao = palette.color(QPalette.ColorRole.Base)
         cor_alternativa = palette.color(QPalette.ColorRole.AlternateBase)
-
         if novo_tema == "escuro":
             cor_texto_padrao = QColor(255, 255, 255)
 
@@ -147,7 +133,6 @@ def _atualizar_cores_celulas_incolores(self, novo_tema):
             cor_texto_padrao = QColor(0, 0, 0)
 
         cor_texto_tema_oposto = QColor(0, 0, 0) if novo_tema == "escuro" else QColor(255, 255, 255)
-
         for row in range(tabela.rowCount()):
             for col in range(tabela.columnCount()):
                 item = tabela.item(row, col)
@@ -165,7 +150,6 @@ def _atualizar_cores_celulas_incolores(self, novo_tema):
                         cor_atual.alpha() == 0 or
                         self._eh_cor_padrao_qualquer_tema(cor_atual) or
                         texto_do_tema_oposto):
-
                         item.setForeground(cor_texto_padrao)
 
                         if not cor_atual.isValid() or cor_atual == QColor() or cor_atual.alpha() == 0:
@@ -181,8 +165,6 @@ def _atualizar_cores_celulas_incolores(self, novo_tema):
 
                             else:
                                 item.setBackground(cor_alternativa)
-
-        logger.debug(f"Células incolores atualizadas para tema {novo_tema}")
 
     except Exception as e:
         logger.error(f"Erro ao atualizar células incolores: {e}", exc_info=True)

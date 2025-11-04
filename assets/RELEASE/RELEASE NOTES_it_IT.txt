@@ -1,3 +1,15 @@
+NOTE DI RILASCIO: Versione 0.0.6.0:
+
+In questa nuova versione sono stati implementati i seguenti miglioramenti e funzionalità:
+
+- Implementazione di un nuovo diagramma; ora è possibile analizzare i dati monitorati tramite un grafico di flusso - "Sankey".
+    - Il grafico a barre consente una visualizzazione chiara e intuitiva della distribuzione dei dati, facilitando l'identificazione di schemi e tendenze.
+    - L'interfaccia del grafico è interattiva, consentendo all'utente di esplorare i dati in modo dinamico e personalizzato.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Versione 0.0.5.0:
 
 In questa nuova versione sono state implementate le seguenti migliorie e funzionalità:

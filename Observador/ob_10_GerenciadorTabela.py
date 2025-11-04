@@ -57,50 +57,52 @@ class GerenciadorTabela(QObject):
 
     def __init__(self, interface_monitor):
         super().__init__()
-        self.interface = interface_monitor
-        self.lock_db = threading.Lock()
-        self.loc = interface_monitor.loc
+        try:
+            self.interface = interface_monitor
+            self.lock_db = threading.Lock()
+            self.loc = interface_monitor.loc
 
-        if hasattr(self.loc, 'idioma_alterado'):
-            self.loc.idioma_alterado.connect(self.atualizar_cabecalhos)
-            self.loc.idioma_alterado.connect(self._on_idioma_alterado)
+            if hasattr(self.loc, 'idioma_alterado'):
+                self.loc.idioma_alterado.connect(self.atualizar_cabecalhos)
+                self.loc.idioma_alterado.connect(self._on_idioma_alterado)
 
-        self._idioma_ultima_retraducao = getattr(self.loc, 'idioma_atual', None)
-        self._retraducao_realizada_para_idioma = False
-        self._idioma_alvo_retraducao = getattr(self.loc, 'idioma_atual', None)
-        self._monitor_tema = MonitorTemaWindows()
-        self._monitor_tema.tema_alterado.connect(self.atualizar_estilo_tema)
-        self._monitor_tema.iniciar_monitoramento()
-        self.timer_atualizacao = QTimer()
-        self.timer_atualizacao.timeout.connect(self.atualizar_visualizacao_tabela)
-        self.timer_atualizacao.start(100)
-        self.atualizacao_pendente = False
-        self.texto_original_cabecalhos = {}
-        self.colunas_para_colorir = set()
+            self._idioma_ultima_retraducao = getattr(self.loc, 'idioma_atual', None)
+            self._retraducao_realizada_para_idioma = False
+            self._idioma_alvo_retraducao = getattr(self.loc, 'idioma_atual', None)
+            self._monitor_tema = MonitorTemaWindows()
+            self._monitor_tema.tema_alterado.connect(self.atualizar_estilo_tema)
+            self._monitor_tema.iniciar_monitoramento()
+            self.timer_atualizacao = QTimer()
+            self.timer_atualizacao.timeout.connect(self.atualizar_visualizacao_tabela)
+            self.timer_atualizacao.start(100)
+            self.atualizacao_pendente = False
+            self.texto_original_cabecalhos = {}
+            self.colunas_para_colorir = set()
 
-        if hasattr(self.interface, 'tabela_dados'):
-            self.interface.tabela_dados.setSelectionBehavior(QAbstractItemView.SelectItems)
-            self.interface.tabela_dados.setSelectionMode(QAbstractItemView.ExtendedSelection)
-            self.interface.tabela_dados.itemSelectionChanged.connect(self.ajustar_cor_selecao)
+            if hasattr(self.interface, 'tabela_dados'):
+                self.interface.tabela_dados.setSelectionBehavior(QAbstractItemView.SelectItems)
+                self.interface.tabela_dados.setSelectionMode(QAbstractItemView.ExtendedSelection)
+                self.interface.tabela_dados.itemSelectionChanged.connect(self.ajustar_cor_selecao)
 
-        self._itens_selecionados_anteriores = []
-        self._cache_cores = {}
-        self._cache_indices_colunas = {}
-        self.cores_visiveis = True
-        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
-        self._cores_originais_cache = {}
-        self.ordenacao_habilitada = False
-        self._selection_executor = None
-        self._selection_future = None
-        self._debounce_timer = None
-        self._timer_retraducao = QTimer(self)
-        self._timer_retraducao.setSingleShot(True)
-        self._timer_retraducao.timeout.connect(self._executar_retraducao_agendada)
-        self._retraducao_em_andamento = False
-        self._retraducao_agendada = False
-        QTimer.singleShot(0, lambda: self._carregar_configuracoes_cores())
+            self._itens_selecionados_anteriores = []
+            self._cache_cores = {}
+            self._cache_indices_colunas = {}
+            self.cores_visiveis = True
+            self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+            self._cores_originais_cache = {}
+            self.ordenacao_habilitada = False
+            self._selection_executor = None
+            self._selection_future = None
+            self._debounce_timer = None
+            self._timer_retraducao = QTimer(self)
+            self._timer_retraducao.setSingleShot(True)
+            self._timer_retraducao.timeout.connect(self._executar_retraducao_agendada)
+            self._retraducao_em_andamento = False
+            self._retraducao_agendada = False
+            QTimer.singleShot(0, lambda: self._carregar_configuracoes_cores())
 
-        logger.info("GerenciadorTabela inicializado com sucesso.")
+        except Exception as e:
+            logger.error(f"Erro ao inicializar GerenciadorTabela: {e}", exc_info=True)
 
     detectar_tema_windows = detectar_tema_windows
     calcular_cor_texto_ideal = calcular_cor_texto_ideal

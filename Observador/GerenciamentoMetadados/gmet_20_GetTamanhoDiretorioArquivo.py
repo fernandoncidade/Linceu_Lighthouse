@@ -1,6 +1,8 @@
 import os
 import time
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def get_tamanho_diretorio_arquivo(self, item_data, loc):
     try:
@@ -29,7 +31,7 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
                 return resultado
 
             except Exception as e:
-                print(f"Erro ao obter tamanho do arquivo {caminho}: {e}")
+                logger.error(f"Erro ao obter tamanho do arquivo {caminho}: {e}", exc_info=True)
                 return ""
 
         tipo_operacao = item_data.get("tipo_operacao", "")
@@ -42,11 +44,10 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
                 tempo_desde_adicao = (datetime.now() - ts.replace(tzinfo=None)).total_seconds()
 
                 if tempo_desde_adicao < 5:
-                    print(f"Diretório recém-adicionado {caminho}, aguardando cópia dos arquivos...")
                     time.sleep(2)
 
-            except Exception:
-                pass
+            except Exception as e:
+                logger.error(f"Erro ao processar timestamp do item {item_data}: {e}", exc_info=True)
 
         ttl = 3 if tipo_operacao == loc.get_text("op_added") else getattr(self, "dir_size_cache_ttl", 10)
 
@@ -66,7 +67,6 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
             cached_at = cache.get("tamanho_dir_cached_at", 0)
 
             if tipo_operacao == loc.get_text("op_added") and cached_bytes == 0:
-                print(f"Cache zerado para diretório adicionado {caminho}, forçando recálculo...")
                 pass
 
             elif (
@@ -95,11 +95,11 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
                                     calcular_tamanho_dir(entry.path)
 
                             except (OSError, IOError, PermissionError) as e:
-                                print(f"Erro ao processar {entry.path}: {e}")
+                                logger.error(f"Erro ao processar {entry.path}: {e}", exc_info=True)
                                 arquivos_ignorados += 1
 
                 except Exception as e:
-                    print(f"Erro ao escanear diretório {dir_path}: {e}")
+                    logger.error(f"Erro ao escanear diretório {dir_path}: {e}", exc_info=True)
                     arquivos_ignorados += 1
 
             calcular_tamanho_dir(caminho)
@@ -119,13 +119,12 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
                 self.cache_metadados[caminho]["tamanho_dir_mtime"] = dir_mtime if dir_mtime is not None else agora
                 self.cache_metadados[caminho]["tamanho_dir_cached_at"] = agora
 
-            print(f"Tamanho calculado para {caminho}: {resultado} ({total_bytes} bytes)")
             return resultado
 
         except Exception as e:
-            print(f"Erro ao calcular tamanho do diretório {caminho}: {e}")
+            logger.error(f"Erro ao calcular tamanho do diretório {caminho}: {e}", exc_info=True)
             return ""
 
     except Exception as e:
-        print(f"Erro geral no cálculo de tamanho: {e}")
+        logger.error(f"Erro geral no cálculo de tamanho: {e}", exc_info=True)
         return ""

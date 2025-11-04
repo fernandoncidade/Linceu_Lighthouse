@@ -1,11 +1,9 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _atualizar_dados_graficos_com_novos_titulos(self, graficos_atualizados, mapeamento_funcoes):
     try:
         novos_dados = {}
-
         for titulo_antigo, dados in self.graficos_dados.items():
             func = dados['func']
             if func in mapeamento_funcoes:

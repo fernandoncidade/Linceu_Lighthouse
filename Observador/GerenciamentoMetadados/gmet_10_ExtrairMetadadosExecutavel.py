@@ -1,6 +1,8 @@
 import os
 import ctypes
 from ctypes import wintypes
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GUID(ctypes.Structure):
@@ -56,6 +58,12 @@ def verificar_assinatura_executavel(caminho):
     WTD_PROV_FLAGS = 0x00000020
 
     WinVerifyTrust = ctypes.windll.wintrust.WinVerifyTrust
+    WinVerifyTrust.argtypes = [
+        wintypes.HWND,
+        ctypes.POINTER(GUID),
+        ctypes.POINTER(WINTRUST_DATA)
+    ]
+    WinVerifyTrust.restype = wintypes.LONG
 
     file_info = WINTRUST_FILE_INFO(
         cbStruct=ctypes.sizeof(WINTRUST_FILE_INFO),
@@ -80,19 +88,24 @@ def verificar_assinatura_executavel(caminho):
         pSignatureSettings=None
     )
 
-    result = WinVerifyTrust(
-        None,
-        ctypes.byref(WINTRUST_ACTION_GENERIC_VERIFY_V2),
-        ctypes.byref(trust_data)
-    )
+    try:
+        result = WinVerifyTrust(
+            None,
+            ctypes.pointer(WINTRUST_ACTION_GENERIC_VERIFY_V2),
+            ctypes.pointer(trust_data)
+        )
 
-    if result == 0:
-        return "Sim"
+        if result == 0:
+            return "Sim"
 
-    elif result == 0x800B0100:
-        return "Não"
+        elif result == 0x800B0100:
+            return "Não"
 
-    else:
+        else:
+            return "Erro"
+
+    except Exception as e:
+        logger.error(f"Erro ao verificar assinatura do executável {caminho}: {e}", exc_info=True)
         return "Erro"
 
 def extrair_metadados_executavel(caminho, loc=None):
@@ -105,11 +118,11 @@ def extrair_metadados_executavel(caminho, loc=None):
         with open(caminho, 'rb') as f:
             header = f.read(2)
             if header != b'MZ':
-                print(f"Arquivo {caminho} não é um executável válido (cabeçalho não encontrado)")
+                logger.error(f"Arquivo {caminho} não é um executável válido (cabeçalho não encontrado)")
                 return metadados
 
     except Exception as e:
-        print(f"Erro ao verificar cabeçalho do arquivo: {e}")
+        logger.error(f"Erro ao verificar cabeçalho do arquivo: {e}", exc_info=True)
         return metadados
 
     try:
@@ -129,13 +142,11 @@ def extrair_metadados_executavel(caminho, loc=None):
                     try:
                         str_path = f'\\StringFileInfo\\{lang:04x}{codepage:04x}\\{entry}'
                         str_info[entry] = win32api.GetFileVersionInfo(caminho, str_path)
-
-                    except:
-                        pass
+                    except Exception as e:
+                        logger.error(f"Erro ao extrair string {entry} de versão: {e}", exc_info=True)
 
                 if 'FileVersion' in str_info:
                     metadados['versao'] = str_info['FileVersion']
-
                 else:
                     metadados['versao'] = versao
 
@@ -152,16 +163,15 @@ def extrair_metadados_executavel(caminho, loc=None):
                     metadados['copyright'] = str_info['LegalCopyright']
 
             except Exception as e:
-                print(f"Erro ao extrair strings de versão: {e}")
+                logger.error(f"Erro ao extrair strings de versão: {e}", exc_info=True)
                 metadados['versao'] = versao
 
         except Exception as e:
             if "1813" in str(e) or "Não foi possível encontrar o tipo de recurso" in str(e):
-                print(f"Arquivo {os.path.basename(caminho)} não possui informações de versão incorporadas")
+                logger.error(f"Arquivo {os.path.basename(caminho)} não possui informações de versão incorporadas")
                 metadados['versao'] = 'Não disponível'
-
             else:
-                print(f"Erro com win32api: {e}")
+                logger.error(f"Erro com win32api: {e}", exc_info=True)
 
             try:
                 pe = pefile.PE(caminho)
@@ -193,17 +203,17 @@ def extrair_metadados_executavel(caminho, loc=None):
                 pe.close()
 
             except Exception as pe_error:
-                print(f"Erro com pefile: {pe_error}")
+                logger.error(f"Erro com pefile: {pe_error}", exc_info=True)
 
         try:
             metadados['assinado'] = verificar_assinatura_executavel(caminho)
 
         except Exception as sig_error:
-            print(f"Erro ao verificar assinatura: {sig_error}")
+            logger.error(f"Erro ao verificar assinatura: {sig_error}", exc_info=True)
             metadados['assinado'] = 'Erro'
 
     except Exception as sig_error:
-        print(f"Erro ao extrair metadados: {sig_error}")
+        logger.error(f"Erro ao extrair metadados: {sig_error}", exc_info=True)
         metadados['assinado'] = 'Erro'
 
     return metadados

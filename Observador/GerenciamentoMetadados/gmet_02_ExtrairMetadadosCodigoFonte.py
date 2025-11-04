@@ -1,11 +1,12 @@
 import os
 from datetime import datetime
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_codigo_fonte(caminho, loc):
     metadados = {}
     AMOSTRAGEM_LINHAS = 10000
-
     try:
         if not os.path.exists(caminho):
             return metadados
@@ -13,10 +14,8 @@ def extrair_metadados_codigo_fonte(caminho, loc):
         stats = os.stat(caminho)
         tamanho = stats.st_size
         encoding = 'utf-8'
-
         try:
             import chardet
-
             with open(caminho, 'rb') as f:
                 raw_data = f.read(min(tamanho, 100 * 1024))
                 detected = chardet.detect(raw_data)
@@ -28,7 +27,6 @@ def extrair_metadados_codigo_fonte(caminho, loc):
             pass
 
         total_linhas = 0
-
         with open(caminho, 'rb') as f:
             total_linhas = sum(1 for _ in f)
 
@@ -38,7 +36,6 @@ def extrair_metadados_codigo_fonte(caminho, loc):
         linhas_vazias = 0
         autores = set()
         estruturas = {'classes': 0, 'funcoes': 0, 'imports': 0}
-
         is_arquivo_grande = tamanho > 10 * 1024 * 1024
 
         with open(caminho, 'r', encoding=encoding, errors='ignore') as f:
@@ -47,7 +44,6 @@ def extrair_metadados_codigo_fonte(caminho, loc):
                     continue
 
                 linha = linha.strip()
-
                 if linha.startswith(('class ', 'def ', 'function ', 'import ', 'from ')):
                     if linha.startswith(('import ', 'from ')):
                         estruturas['imports'] += 1
@@ -63,7 +59,6 @@ def extrair_metadados_codigo_fonte(caminho, loc):
 
                 elif linha.startswith(('#', '//', '/*', '*', '--', '%', '"', "'")):
                     linhas_comentario += 1
-
                     linha_lower = linha.lower()
                     for indicador in ['@author', 'author:', 'created by', 'developed by', 'copyright']:
                         if indicador in linha_lower:
@@ -81,7 +76,6 @@ def extrair_metadados_codigo_fonte(caminho, loc):
             linhas_codigo = int(linhas_codigo * fator)
             linhas_comentario = int(linhas_comentario * fator)
             linhas_vazias = int(linhas_vazias * fator)
-
             for key in estruturas:
                 estruturas[key] = int(estruturas[key] * fator)
 
@@ -105,5 +99,5 @@ def extrair_metadados_codigo_fonte(caminho, loc):
         return metadados
 
     except Exception as e:
-        print(f"Erro ao extrair metadados do código fonte {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados do código fonte {caminho}: {e}", exc_info=True)
         return metadados

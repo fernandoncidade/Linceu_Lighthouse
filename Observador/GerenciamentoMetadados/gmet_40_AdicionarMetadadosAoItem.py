@@ -1,3 +1,6 @@
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
 def adicionar_metadados_ao_item(gc, item):
     try:
         metadados = gc.get_metadados(item)
@@ -9,5 +12,5 @@ def adicionar_metadados_ao_item(gc, item):
         return item
 
     except Exception as e:
-        print(f"Erro ao adicionar metadados ao item: {e}")
+        logger.error(f"Erro ao adicionar metadados ao item: {e}", exc_info=True)
         return item

@@ -2,7 +2,6 @@ import os
 import sqlite3
 from PySide6.QtWidgets import QTableWidgetItem, QApplication
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def atualizar_linha_mais_recente(self, tabela_dados):
@@ -87,7 +86,7 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                         tabela_dados.setItem(0, col, item)
 
                     except Exception as e:
-                        print(f"Erro ao processar coluna {key}: {e}")
+                        logger.error(f"Erro ao processar coluna {key}: {e}", exc_info=True)
                         if not tabela_dados.item(0, col):
                             tabela_dados.setItem(0, col, QTableWidgetItem(""))
 
@@ -100,7 +99,7 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                     self.interface.atualizar_contador_eventos(total)
 
     except Exception as e:
-        print(f"Erro crítico ao atualizar linha mais recente: {e}")
+        logger.error(f"Erro crítico ao atualizar linha mais recente: {e}", exc_info=True)
 
     finally:
         tabela_dados.viewport().update()

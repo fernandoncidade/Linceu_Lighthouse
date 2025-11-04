@@ -1,3 +1,15 @@
+RELEASE NOTES: Version 0.0.6.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+- Implementierung eines neuen Diagramms; jetzt ist es möglich, die überwachten Daten mittels eines Flussdiagramms - "Sankey" - zu analysieren.
+    - Das Balkendiagramm ermöglicht eine klare und intuitive Visualisierung der Verteilung der Daten und erleichtert die Erkennung von Mustern und Trends.
+    - Die Diagrammoberfläche ist interaktiv und ermöglicht dem Benutzer, die Daten dynamisch und individuell zu erkunden.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.5.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:

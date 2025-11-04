@@ -1,3 +1,6 @@
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
 def scan_directory(self, directory):
     try:
         from Observador.ob_03_DiretorioScanner import DiretorioScanner
@@ -5,4 +8,4 @@ def scan_directory(self, directory):
         scanner.scan_directory(directory)
 
     except Exception as e:
-        print(f"Erro ao escanear diretório: {e}")
+        logger.error(f"Erro ao escanear diretório: {e}", exc_info=True)

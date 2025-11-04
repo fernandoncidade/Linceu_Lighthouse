@@ -1,5 +1,7 @@
 import os
 from .gmet_16_ExtrairMetadadosOlefile import extrair_metadados_olefile
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_documento(caminho, loc):
     metadados = {}
@@ -11,9 +13,7 @@ def extrair_metadados_documento(caminho, loc):
                 from PyPDF2 import PdfReader
                 reader = PdfReader(caminho)
                 paginas = len(reader.pages)
-
                 metadados['paginas'] = str(paginas)
-
                 linhas_estimadas = paginas * 40
                 metadados['linhas'] = str(linhas_estimadas)
 
@@ -36,8 +36,8 @@ def extrair_metadados_documento(caminho, loc):
                     else:
                         metadados['palavras'] = str(palavras_totais)
 
-                except:
-                    pass
+                except Exception as e:
+                    logger.error(f"Erro ao estimar linhas/palavras do PDF {caminho}: {e}", exc_info=True)
 
                 info = reader.metadata
 
@@ -61,7 +61,7 @@ def extrair_metadados_documento(caminho, loc):
                         metadados['data_mod_doc'] = parse_pdf_date(info.modification_date)
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do PDF {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do PDF {caminho}: {e}", exc_info=True)
 
         elif ext in ['.docx', '.doc']:
             try:
@@ -69,9 +69,7 @@ def extrair_metadados_documento(caminho, loc):
                     try:
                         from docx import Document
                         doc = Document(caminho)
-
                         paragrafos = len(doc.paragraphs)
-
                         palavras_totais = 0
                         linhas_totais = 0
 
@@ -80,7 +78,6 @@ def extrair_metadados_documento(caminho, loc):
                             if texto:
                                 palavras_no_paragrafo = len(texto.split())
                                 palavras_totais += palavras_no_paragrafo
-
                                 linhas_no_paragrafo = max(1, len(texto) // 80 + (1 if len(texto) % 80 > 0 else 0))
                                 linhas_totais += linhas_no_paragrafo
 
@@ -124,17 +121,15 @@ def extrair_metadados_documento(caminho, loc):
                                 metadados['protegido'] = loc.get_text("yes") + " (senha)"
 
                             else:
-                                print(f"Erro ao extrair propriedades de DOCX: {prop_err}")
+                                logger.error(f"Erro ao extrair propriedades de DOCX: {prop_err}", exc_info=True)
 
-                    except ImportError:
-                        print("Biblioteca python-docx não encontrada. Tentando alternativa...")
+                    except ImportError as e:
+                        logger.error("Biblioteca python-docx não encontrada. Tentando alternativa...", exc_info=True)
                         try:
                             import docx2txt
                             texto_completo = docx2txt.process(caminho)
-
                             linhas = texto_completo.count('\n') + 1
                             palavras = len(texto_completo.split())
-
                             paginas_estimadas = max(1, palavras // 300)
 
                             metadados['palavras'] = str(palavras)
@@ -142,7 +137,8 @@ def extrair_metadados_documento(caminho, loc):
                             metadados['paginas'] = str(paginas_estimadas)
                             metadados['paginas_estimadas'] = str(paginas_estimadas)
 
-                        except ImportError:
+                        except ImportError as e2:
+                            logger.error("Biblioteca docx2txt não encontrada. Usando fallback por tamanho.", exc_info=True)
                             tamanho = os.path.getsize(caminho)
                             paginas_estimadas = max(1, tamanho // 20000)
                             palavras_estimadas = paginas_estimadas * 300
@@ -173,7 +169,7 @@ def extrair_metadados_documento(caminho, loc):
                             raise Exception("Fallback para estimativas")
 
                     except Exception as e:
-                        print(f"Usando fallback para olefile: {e}")
+                        logger.error(f"Usando fallback para olefile: {e}", exc_info=True)
 
                         import olefile
                         if olefile.isOleFile(caminho):
@@ -206,7 +202,7 @@ def extrair_metadados_documento(caminho, loc):
                                         metadados['protegido'] = loc.get_text("yes") + f" ({info[19]})"
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do documento {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do documento {caminho}: {e}", exc_info=True)
 
         elif ext == '.txt':
             try:
@@ -225,10 +221,10 @@ def extrair_metadados_documento(caminho, loc):
                 metadados['caracteres'] = str(caracteres)
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do TXT {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do TXT {caminho}: {e}", exc_info=True)
 
     except Exception as e:
-        print(f"Erro geral ao extrair metadados do documento {caminho}: {e}")
+        logger.error(f"Erro geral ao extrair metadados do documento {caminho}: {e}", exc_info=True)
 
     return metadados
 
@@ -260,5 +256,5 @@ def parse_pdf_date(date_str):
         return str(date_str)
 
     except Exception as e:
-        print(f"Erro ao parsear data do PDF: {e}")
+        logger.error(f"Erro ao parsear data do PDF: {e}", exc_info=True)
         return str(date_str)

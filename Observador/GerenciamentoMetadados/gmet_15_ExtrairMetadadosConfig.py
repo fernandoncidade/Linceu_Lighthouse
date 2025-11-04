@@ -1,4 +1,6 @@
 import os
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_config(caminho, loc):
     metadados = {}
@@ -83,8 +85,8 @@ def extrair_metadados_config(caminho, loc):
                     if len(keys_nivel1) > 5:
                         metadados['secoes'] += f" {loc.get_text("and_others")} {len(keys_nivel1)-5}"
 
-                except:
-                    pass
+                except Exception as e:
+                    logger.error(f"Erro ao ler arquivo JSON {caminho}: {e}", exc_info=True)
 
             elif ext in ['.yaml', '.yml']:
                 secoes = []
@@ -121,6 +123,6 @@ def extrair_metadados_config(caminho, loc):
             metadados['propriedades'] = props
 
     except Exception as e:
-        print(f"Erro ao extrair metadados da configuração {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados da configuração {caminho}: {e}", exc_info=True)
 
     return metadados

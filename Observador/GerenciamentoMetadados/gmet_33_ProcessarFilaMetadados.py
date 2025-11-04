@@ -3,6 +3,8 @@ import time
 import queue
 from PySide6.QtCore import QMetaObject, Qt
 from Observador.GerenciamentoMetadados import identificar_tipo_arquivo
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def processar_fila_metadados(gc):
     while True:
@@ -27,4 +29,4 @@ def processar_fila_metadados(gc):
             continue
 
         except Exception as e:
-            print(f"Erro no processamento de metadados: {e}")
+            logger.error(f"Erro no processamento de metadados: {e}", exc_info=True)

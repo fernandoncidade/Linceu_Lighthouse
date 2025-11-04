@@ -2,13 +2,11 @@ import os
 import json
 from utils.LogManager import LogManager
 from utils.CaminhoPersistenteUtils import obter_caminho_persistente
-
 logger = LogManager.get_logger()
 
 def _carregar_configuracoes_cores(self):
     try:
         if not hasattr(self.interface, "gerenciador_colunas"):
-            logger.error("A interface ainda não possui o atributo 'gerenciador_colunas'. Adie a chamada de _carregar_configuracoes_cores().")
             return
 
         config_path = os.path.join(obter_caminho_persistente(), "colunas_coloridas.json")
@@ -17,11 +15,6 @@ def _carregar_configuracoes_cores(self):
                 data = json.load(f)
                 self.colunas_para_colorir = set(data.get("colunas_para_colorir", []))
 
-            logger.info(f"Configuração de colunas coloridas carregada de: {config_path}")
-
-        else:
-            logger.info(f"Arquivo de configuração de colunas coloridas não encontrado: {config_path}")
-
         if hasattr(self.interface, "gerenciador_menus_ui") and hasattr(self.interface.gerenciador_menus_ui, "criar_menu_principal"):
             self.interface.gerenciador_menus_ui.criar_menu_principal()
 
@@ -29,4 +22,4 @@ def _carregar_configuracoes_cores(self):
         self.aplicar_cores_todas_colunas()
 
     except Exception as e:
-        logger.error(f"Erro ao carregar configuração de colunas coloridas: {e}")
+        logger.error(f"Erro ao carregar configuração de colunas coloridas: {e}", exc_info=True)

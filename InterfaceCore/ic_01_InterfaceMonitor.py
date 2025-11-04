@@ -2,7 +2,6 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMainWindow, QApplication
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
-log_file = LogManager.get_log_file()
 from .ic_02_Inicializador import Inicializador
 import matplotlib
 matplotlib.use('QtAgg')
@@ -11,7 +10,7 @@ from GerenciamentoUI.ui_08_GerenciadorEventosArquivo import GerenciadorEventosAr
 from GerenciamentoUI.ui_09_GerenciadorMonitoramento import GerenciadorMonitoramento
 from GerenciamentoUI.ui_10_GerenciadorLimpeza import GerenciadorLimpeza
 from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
-from Observador.ob_11_GerenciadorTabela import GerenciadorTabela
+from Observador.ob_10_GerenciadorTabela import GerenciadorTabela
 from .ic_03_Configurador import Configurador
 from .ic_04_Atualizador import Atualizador
 from .ic_05_GerenciadorProgresso import GerenciadorProgresso
@@ -22,12 +21,9 @@ from .ic_08_Internacionalizador import Internacionalizador
 class InterfaceMonitor(QMainWindow):
     def __init__(self):
         try:
-            logger.info("Iniciando a aplicação Linceu_Lighthouse")
             super().__init__()
-            logger.debug("Inicializando sistema de tradução nativo do Qt")
             app = QApplication.instance()
             Internacionalizador.inicializar_sistema_traducao(app)
-            logger.debug("Inicializando o LocalizadorQt")
 
             self.loc = LocalizadorQt()
             self.loc.idioma_alterado.connect(self.atualizar_interface)
@@ -35,13 +31,11 @@ class InterfaceMonitor(QMainWindow):
 
             Inicializador.inicializar_atributos(self)
             Inicializador.inicializar_componentes(self)
-            logger.debug("Inicializando GerenciadorTabela")
 
             self.gerenciador_tabela = GerenciadorTabela(self)
             self.gerenciador_tabela._carregar_configuracoes_cores()
             self.gerenciador_tabela.cores_processadas.connect(self._atualizar_cores_tabela)
             Inicializador.inicializar_gerenciadores(self)
-            logger.debug("Configurando interface principal")
 
             self.configurar_tabela()
             self.setup_ui()
@@ -53,7 +47,6 @@ class InterfaceMonitor(QMainWindow):
             self.gerenciador_dados = GerenciadorDados(self)
             self.gerenciador_monitoramento = GerenciadorMonitoramento(self)
             self.gerenciador_limpeza = GerenciadorLimpeza(self)
-            logger.info("Inicialização da aplicação concluída com sucesso")
 
         except Exception as e:
             logger.critical(f"Erro fatal na inicialização: {e}", exc_info=True)
@@ -98,11 +91,9 @@ class InterfaceMonitor(QMainWindow):
         self.gerenciador_eventos_arquivo.adicionar_evento(evento)
 
     def selecionar_diretorio(self):
-        logger.info("Usuário iniciou seleção de diretório")
         self.gerenciador_botoes.selecionar_diretorio()
 
     def alternar_analise_diretorio(self):
-        logger.info("Usuário alternando análise de diretório")
         self.gerenciador_botoes.alternar_analise_diretorio()
 
     def salvar_dados(self):
@@ -150,8 +141,6 @@ class InterfaceMonitor(QMainWindow):
         self.gerenciador_monitoramento.reiniciar_sistema_monitoramento()
 
     def atualizar_tradutor_qt(self, idioma):
-        logger = LogManager.get_logger()
-        logger.debug(f"Atualizando tradutor Qt para idioma: {idioma}")
         QApplication.processEvents()
 
     @Slot(dict)
@@ -173,14 +162,11 @@ class InterfaceMonitor(QMainWindow):
                     thread_cores.wait()
 
             if hasattr(self, 'gerenciador_tabela') and hasattr(self.gerenciador_tabela, 'executor'):
-                logger.debug("Encerrando ThreadPoolExecutor do GerenciadorTabela")
                 self.gerenciador_tabela.executor.shutdown(wait=True)
 
             if (hasattr(self, 'gerenciador_tabela') and 
                 hasattr(self.gerenciador_tabela, 'timer_atualizacao')):
                 self.gerenciador_tabela.timer_atualizacao.stop()
-
-            logger.info("Recursos da aplicação finalizados adequadamente")
 
         except Exception as e:
             logger.error(f"Erro ao fechar recursos da aplicação: {e}", exc_info=True)

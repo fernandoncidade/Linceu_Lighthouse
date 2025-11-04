@@ -1,6 +1,5 @@
 from PySide6.QtGui import QColor
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def ajustar_cor_selecao(self):

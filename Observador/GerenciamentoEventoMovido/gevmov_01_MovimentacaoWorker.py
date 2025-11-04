@@ -1,5 +1,7 @@
 import threading
 from PySide6.QtCore import QObject, Signal
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class MovimentacaoWorker(QObject):
@@ -13,8 +15,12 @@ class MovimentacaoWorker(QObject):
         self.mutex = threading.Lock()
 
     def adicionar_evento(self, evento):
-        with self.mutex:
-            threading.Thread(target=self._processar_evento_individual, args=(evento,), daemon=True).start()
+        try:
+            with self.mutex:
+                threading.Thread(target=self._processar_evento_individual, args=(evento,), daemon=True).start()
+
+        except Exception as e:
+            logger.error(f"Erro em MovimentacaoWorker.adicionar_evento: {e}", exc_info=True)
 
     def _processar_evento_individual(self, evento):
         try:
@@ -23,13 +29,14 @@ class MovimentacaoWorker(QObject):
             self.atualizacao_progresso.emit(1, 1)
 
         except Exception as e:
-            print(f"Erro ao processar evento individual: {e}")
-            import traceback
-            traceback.print_exc()
-
+            logger.error(f"Erro ao processar evento individual: {e}", exc_info=True)
             self._concluir_processamento()
 
     def _concluir_processamento(self):
-        self.processamento_concluido.emit()
-        if hasattr(self.interface, 'gerenciador_tabela'):
-            self.interface.gerenciador_tabela.atualizacao_pendente = True
+        try:
+            self.processamento_concluido.emit()
+            if hasattr(self.interface, 'gerenciador_tabela'):
+                self.interface.gerenciador_tabela.atualizacao_pendente = True
+
+        except Exception as e:
+            logger.error(f"Erro em MovimentacaoWorker._concluir_processamento: {e}", exc_info=True)

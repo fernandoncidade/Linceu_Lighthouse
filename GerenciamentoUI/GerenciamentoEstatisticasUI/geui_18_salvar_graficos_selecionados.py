@@ -1,10 +1,8 @@
 import os
-import subprocess
 from datetime import datetime
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _salvar_graficos_selecionados(self):
@@ -19,19 +17,11 @@ def _salvar_graficos_selecionados(self):
                     })
 
         if not graficos_selecionados:
-            QMessageBox.warning(
-                self.interface, 
-                self.loc.get_text("warning"), 
-                self.loc.get_text("no_graphs_selected") if "no_graphs_selected" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Nenhum gráfico selecionado"
-            )
+            QMessageBox.warning(self.interface, self.loc.get_text("warning"), self.loc.get_text("no_graphs_selected") if "no_graphs_selected" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Nenhum gráfico selecionado")
             return
 
-        logger.info(f"Iniciando salvamento de {len(graficos_selecionados)} gráficos selecionados")
-
         diretorio = QFileDialog.getExistingDirectory(self.interface, self.loc.get_text("select_save_dir"), "", QFileDialog.ShowDirsOnly)
-
         if not diretorio:
-            logger.debug("Operação de salvamento cancelada pelo usuário")
             return
 
         QApplication.setOverrideCursor(Qt.WaitCursor)
@@ -42,17 +32,13 @@ def _salvar_graficos_selecionados(self):
             selecionados_texto = self.loc.get_text("selected") if "selected" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionados"
             diretorio_graficos = os.path.join(diretorio, f"{estatisticas_texto}_{selecionados_texto}_{timestamp}")
             os.makedirs(diretorio_graficos, exist_ok=True)
-
             resultados = {}
             graficos_salvos = 0
 
             for grafico in graficos_selecionados:
                 try:
                     arquivo_destino = os.path.join(diretorio_graficos, f"{grafico['titulo']}.png")
-                    logger.debug(f"Salvando {grafico['titulo']} em {arquivo_destino}")
-
                     grafico['fig'].savefig(arquivo_destino, bbox_inches='tight', dpi=600)
-                    logger.info(f"Gráfico {grafico['titulo']} salvo com sucesso")
                     resultados[grafico['titulo']] = True
                     graficos_salvos += 1
 
@@ -61,7 +47,6 @@ def _salvar_graficos_selecionados(self):
                     resultados[grafico['titulo']] = False
 
             QApplication.restoreOverrideCursor()
-
             detalhes = []
             for nome, sucesso in resultados.items():
                 status = self.loc.get_text("success") if sucesso else self.loc.get_text("failure")
@@ -89,16 +74,10 @@ def _salvar_graficos_selecionados(self):
             if msg.clickedButton() == btn_open:
                 self._abrir_diretorio(diretorio_graficos)
 
-            logger.info(f"Gráficos selecionados salvos com sucesso: {graficos_salvos}/{len(graficos_selecionados)}")
-
         finally:
             QApplication.restoreOverrideCursor()
 
     except Exception as e:
         QApplication.restoreOverrideCursor()
         logger.error(f"Erro ao salvar gráficos selecionados: {e}", exc_info=True)
-        QMessageBox.critical(
-            self.interface, 
-            self.loc.get_text("error"), 
-            self.loc.get_text("save_graphs_error").format(str(e))
-        )
+        QMessageBox.critical(self.interface, self.loc.get_text("error"), self.loc.get_text("save_graphs_error").format(str(e)))

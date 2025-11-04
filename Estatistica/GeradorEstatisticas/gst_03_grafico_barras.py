@@ -2,17 +2,15 @@ import matplotlib
 matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils.LogManager import LogManager
 from .gst_01_base_gerador import BaseGerador
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GraficoBarras(BaseGerador):
     __slots__ = []
 
     def gerar(self):
-        logger = LogManager.get_logger()
-        logger.debug("Iniciando geração do gráfico de barras")
-
         try:
             df = self._obter_dados()
             titulo = self.loc.get_text("bar_chart") if self.loc else 'Top 30 Tipos de Arquivo'
@@ -21,7 +19,6 @@ class GraficoBarras(BaseGerador):
                 logger.warning("Dataset vazio para geração do gráfico de barras")
                 return self._criar_grafico_sem_dados(titulo)
 
-            logger.debug(f"Processando {len(df)} registros para gráfico de barras")
             contagem = df['tipo'].value_counts()[:30]
 
             if not contagem.empty:
@@ -29,7 +26,6 @@ class GraficoBarras(BaseGerador):
                 fig_width = max(12, max_label_len * 0.3)
                 fig_height = 6 + (len(contagem) > 15) * 2
 
-                logger.debug(f"Criando gráfico de barras com dimensões {fig_width}x{fig_height}")
                 fig, ax = plt.subplots(figsize=(fig_width, fig_height))
                 sns.barplot(x=contagem.index, y=contagem.values, ax=ax)
 
@@ -41,8 +37,6 @@ class GraficoBarras(BaseGerador):
                 bottom_margin = min(0.35, max_label_len * 0.015) + 0.1
                 plt.subplots_adjust(bottom=bottom_margin)
                 fig.tight_layout(pad=1.2, h_pad=None, w_pad=None, rect=[0, 0.05, 1, 0.95])
-
-                logger.debug(f"Gráfico de barras criado com {len(contagem)} tipos de arquivo")
 
             else:
                 logger.warning("Nenhum tipo de arquivo encontrado para gerar o gráfico de barras")

@@ -1,21 +1,22 @@
-from utils.LogManager import LogManager
 from PySide6.QtCore import Slot, QTimer
 from PySide6.QtWidgets import QApplication
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GerenciadorProgresso:
     @staticmethod
     @Slot()
     def criar_barra_progresso(interface):
-        logger = LogManager.get_logger()
-        logger.debug("Criando barra de progresso")
-        interface.gerenciador_progresso_ui.criar_barra_progresso()
+        try:
+            interface.gerenciador_progresso_ui.criar_barra_progresso()
+
+        except Exception as e:
+            logger.error(f"Erro ao criar barra de progresso: {e}", exc_info=True)
 
     @staticmethod
     @Slot(int, int, int)
     def atualizar_progresso_scan(interface, progresso, contador, total):
-        logger = LogManager.get_logger()
-        logger.debug(f"Atualizando progresso: {progresso}% ({contador}/{total})")
         try:
             if not (hasattr(interface, 'observador') and interface.observador and interface.observador.ativo):
                 if hasattr(interface, 'barra_progresso'):
@@ -28,8 +29,8 @@ class GerenciadorProgresso:
                 QApplication.processEvents()
                 return
 
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao atualizar progresso (monitoramento parado): {e}", exc_info=True)
 
         try:
             obs = getattr(interface, 'observador', None)
@@ -61,10 +62,14 @@ class GerenciadorProgresso:
                 QApplication.processEvents()
                 return
 
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao atualizar progresso (pausado): {e}", exc_info=True)
 
-        interface.gerenciador_progresso_ui.atualizar_progresso_scan(progresso, contador, total)
+        try:
+            interface.gerenciador_progresso_ui.atualizar_progresso_scan(progresso, contador, total)
+
+        except Exception as e:
+            logger.error(f"Erro ao atualizar barra de progresso: {e}", exc_info=True)
 
         try:
             if progresso >= 100:
@@ -74,18 +79,20 @@ class GerenciadorProgresso:
                             interface.rotulo_resultado.setText(interface.loc.get_text("monitoring_started"))
                             QApplication.processEvents()
 
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        logger.error(f"Erro ao finalizar pós-scan: {e}", exc_info=True)
 
                 QTimer.singleShot(800, _post_scan_to_monitoring)
-        except Exception:
-            pass
+
+        except Exception as e:
+            logger.error(f"Erro ao agendar pós-scan: {e}", exc_info=True)
 
     @staticmethod
     def esconder_barra_progresso(interface):
-        logger = LogManager.get_logger()
-        logger.debug("Escondendo barra de progresso")
-        if hasattr(interface, 'barra_progresso'):
-            QTimer.singleShot(1000, interface.barra_progresso.hide)
-            interface.barra_progresso.setValue(0)
-            logger.debug("Barra de progresso ocultada")
+        try:
+            if hasattr(interface, 'barra_progresso'):
+                QTimer.singleShot(1000, interface.barra_progresso.hide)
+                interface.barra_progresso.setValue(0)
+
+        except Exception as e:
+            logger.error(f"Erro ao esconder barra de progresso: {e}", exc_info=True)

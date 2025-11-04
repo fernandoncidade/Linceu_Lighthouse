@@ -1,6 +1,8 @@
 import os
 import time
 from .gmet_21_GetFormataTamanho import formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_temporario(caminho, loc):
     metadados = {}
@@ -67,6 +69,6 @@ def extrair_metadados_temporario(caminho, loc):
                 metadados['arquivos_relacionados'] += f" {loc.get_text("and_others")} {len(arquivos_similares)-3}"
 
     except Exception as e:
-        print(f"Erro ao extrair metadados do arquivo temporário {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados do arquivo temporário {caminho}: {e}", exc_info=True)
 
     return metadados

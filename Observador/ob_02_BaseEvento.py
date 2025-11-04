@@ -27,25 +27,26 @@ logger = LogManager.get_logger()
 
 class BaseEvento:
     def __init__(self, observador):
-        self.observador = observador
-        self.db_path = os.path.join(obter_caminho_persistente(), "monitoramento.db")
-        logger.info(f"Caminho do banco de dados: {self.db_path}")
+        try:
+            self.observador = observador
+            self.db_path = os.path.join(obter_caminho_persistente(), "monitoramento.db")
 
-        self.criar_banco_de_dados()
+            self.criar_banco_de_dados()
 
-        self.operacoes = {
-            self.observador.loc.get_text("op_renamed"): self.observador.loc.get_text("op_renamed"),
-            self.observador.loc.get_text("op_added"): self.observador.loc.get_text("op_added"),
-            self.observador.loc.get_text("op_deleted"): self.observador.loc.get_text("op_deleted"),
-            self.observador.loc.get_text("op_modified"): self.observador.loc.get_text("op_modified"),
-            self.observador.loc.get_text("op_moved"): self.observador.loc.get_text("op_moved"),
-            self.observador.loc.get_text("op_scanned"): self.observador.loc.get_text("op_scanned")
-        }
+            self.operacoes = {
+                self.observador.loc.get_text("op_renamed"): self.observador.loc.get_text("op_renamed"),
+                self.observador.loc.get_text("op_added"): self.observador.loc.get_text("op_added"),
+                self.observador.loc.get_text("op_deleted"): self.observador.loc.get_text("op_deleted"),
+                self.observador.loc.get_text("op_modified"): self.observador.loc.get_text("op_modified"),
+                self.observador.loc.get_text("op_moved"): self.observador.loc.get_text("op_moved"),
+                self.observador.loc.get_text("op_scanned"): self.observador.loc.get_text("op_scanned")
+            }
 
-        self.eventos_excluidos = 0
-        self.callback = None
+            self.eventos_excluidos = 0
+            self.callback = None
 
-        logger.info(f"BaseEvento inicializada com caminho do banco de dados: {self.db_path}")
+        except Exception as e:
+            logger.error(f"Erro ao inicializar BaseEvento: {e}", exc_info=True)
 
     set_callback = set_callback
     criar_banco_de_dados = criar_banco_de_dados

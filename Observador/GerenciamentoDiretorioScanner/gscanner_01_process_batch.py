@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _process_batch(self, batch):
     try:
@@ -14,9 +16,7 @@ def _process_batch(self, batch):
                     }
 
                     self.current_item = item
-
                     metadados = self.gerenciador_colunas.get_metadados(item)
-
                     cursor.execute(""" 
                         INSERT INTO snapshot (
                                 nome,
@@ -295,11 +295,11 @@ def _process_batch(self, batch):
                         self._atualizar_progresso()
 
                 except Exception as e:
-                    print(f"Erro ao processar item {nome}: {e}")
+                    logger.error(f"Erro ao processar item {nome}: {e}", exc_info=True)
                     continue
 
             conn.commit()
 
     except Exception as e:
-        print(f"Erro ao processar lote: {e}")
+        logger.error(f"Erro ao processar lote: {e}", exc_info=True)
         raise

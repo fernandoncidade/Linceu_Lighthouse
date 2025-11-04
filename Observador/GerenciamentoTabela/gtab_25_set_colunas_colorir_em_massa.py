@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def set_colunas_colorir_em_massa(self, novas_colunas):
@@ -10,4 +9,4 @@ def set_colunas_colorir_em_massa(self, novas_colunas):
         self.atualizar_cores_colunas(aplicar_em_massa=True)
 
     except Exception as e:
-        logger.error(f"Erro ao definir colunas para colorir em massa: {e}")
+        logger.error(f"Erro ao definir colunas para colorir em massa: {e}", exc_info=True)

@@ -1,13 +1,11 @@
 from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GerenciadorMensagens:
     @staticmethod
     def atualizar_rotulos(interface):
-        logger = LogManager.get_logger()
         try:
-            logger.debug("Atualizando rótulos da interface")
-
             if interface.diretorio_atual:
                 interface.rotulo_diretorio.setText(interface.loc.get_text("dir_selected").format(interface.diretorio_atual))
 
@@ -24,14 +22,12 @@ class GerenciadorMensagens:
                 interface.rotulo_resultado.setText(interface.loc.get_text("select_to_start"))
 
             interface.atualizar_status()
-            logger.debug("Rótulos atualizados com sucesso")
 
         except Exception as e:
             logger.error(f"Erro ao atualizar rótulos: {e}", exc_info=True)
 
     @staticmethod
     def notificar_erro(interface, mensagem):
-        logger = LogManager.get_logger()
         try:
             logger.error(f"Notificando erro: {mensagem}")
             interface.rotulo_resultado.setText(f"Erro: {mensagem}")
@@ -41,7 +37,6 @@ class GerenciadorMensagens:
 
     @staticmethod
     def notificar_sucesso(interface, mensagem):
-        logger = LogManager.get_logger()
         try:
             logger.info(f"Notificando sucesso: {mensagem}")
             interface.rotulo_resultado.setText(mensagem)

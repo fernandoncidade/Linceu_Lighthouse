@@ -1,6 +1,8 @@
 import os
 import chardet
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_dados_estruturados(caminho, loc):
     metadados = {}
@@ -78,7 +80,7 @@ def extrair_metadados_dados_estruturados(caminho, loc):
                     metadados['binario'] = f"{tamanho_arquivo} {loc.get_text('bytes')}"
 
     except Exception as e:
-        print(f"Erro ao extrair metadados de arquivo de dados {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados de arquivo de dados {caminho}: {e}", exc_info=True)
         metadados['binario'] = f"{tamanho_arquivo} {loc.get_text('bytes')}"
 
     return metadados
