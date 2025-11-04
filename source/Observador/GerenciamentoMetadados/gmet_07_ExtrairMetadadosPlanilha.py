@@ -10,71 +10,130 @@ def extrair_metadados_planilha(caminho, loc):
         if ext in ['.xlsx', '.xlsm', '.xls']:
             try:
                 if ext in ['.xlsx', '.xlsm']:
+                    import zipfile
+                    if not zipfile.is_zipfile(caminho):
+                        logger.error(f"Arquivo XLSX inválido (não é ZIP): {caminho}")
+                        return metadados
+
                     from openpyxl import load_workbook
-                    wb = load_workbook(caminho, read_only=True, data_only=True)
+                    try:
+                        wb = load_workbook(caminho, read_only=True, data_only=True)
+                        planilhas = len(wb.sheetnames)
+                        metadados['planilhas'] = planilhas
+                        metadados['nomes_planilhas'] = ", ".join(wb.sheetnames)
 
-                    planilhas = len(wb.sheetnames)
-                    metadados['planilhas'] = planilhas
-                    metadados['nomes_planilhas'] = ", ".join(wb.sheetnames)
+                        linhas_total = 0
+                        colunas_total = 0
 
-                    linhas_total = 0
-                    colunas_total = 0
+                        for sheet_name in wb.sheetnames[:3]:
+                            sheet = wb[sheet_name]
+                            max_row = getattr(sheet, 'max_row', 0) or 0
+                            max_col = getattr(sheet, 'max_column', 0) or 0
+                            try:
+                                linhas_total += int(max_row)
 
-                    for sheet_name in wb.sheetnames[:3]:
-                        sheet = wb[sheet_name]
-                        if hasattr(sheet, 'max_row') and hasattr(sheet, 'max_column'):
-                            linhas_total += sheet.max_row
-                            if sheet.max_column > colunas_total:
-                                colunas_total = sheet.max_column
+                            except Exception:
+                                pass
 
-                    is_protected = False
-                    for sheet_name in wb.sheetnames:
-                        sheet = wb[sheet_name]
-                        if hasattr(sheet, 'protection') and sheet.protection.sheet:
-                            is_protected = True
-                            break
+                            try:
+                                max_col_int = int(max_col)
+                                if max_col_int > colunas_total:
+                                    colunas_total = max_col_int
 
-                    if is_protected:
-                        metadados['protegido'] = loc.get_text("yes") + " (planilhas protegidas)"
+                            except Exception:
+                                pass
 
-                    if wb.properties:
-                        if wb.properties.creator:
-                            metadados['autor'] = wb.properties.creator
+                        metadados['total_linhas'] = str(linhas_total)
+                        metadados['colunas'] = str(colunas_total)
 
-                        if wb.properties.title:
-                            metadados['titulo'] = wb.properties.title
+                        is_protected = False
+                        for sheet_name in wb.sheetnames:
+                            sheet = wb[sheet_name]
+                            if hasattr(sheet, 'protection') and sheet.protection.sheet:
+                                is_protected = True
+                                break
 
-                        if wb.properties.created:
-                            metadados['data_criacao_doc'] = str(wb.properties.created)
+                        if is_protected:
+                            metadados['protegido'] = loc.get_text("yes") + " (planilhas protegidas)"
 
-                        if wb.properties.modified:
-                            metadados['data_mod_doc'] = str(wb.properties.modified)
+                        if wb.properties:
+                            if wb.properties.creator:
+                                metadados['autor'] = wb.properties.creator
 
-                    wb.close()
+                            if wb.properties.title:
+                                metadados['titulo'] = wb.properties.title
+
+                            if wb.properties.created:
+                                metadados['data_criacao_doc'] = str(wb.properties.created)
+
+                            if wb.properties.modified:
+                                metadados['data_mod_doc'] = str(wb.properties.modified)
+
+                        wb.close()
+
+                    except Exception as e_xlsx:
+                        try:
+                            import xml.etree.ElementTree as ET
+                            with zipfile.ZipFile(caminho, 'r') as z:
+                                if 'xl/workbook.xml' in z.namelist():
+                                    xml_bytes = z.read('xl/workbook.xml')
+                                    root = ET.fromstring(xml_bytes)
+                                    ns = {'ns': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                                    sheets = root.findall('.//ns:sheets/ns:sheet', ns) or root.findall('.//sheets/sheet')
+                                    metadados['planilhas'] = len(sheets)
+                                    metadados['nomes_planilhas'] = ", ".join([s.get('name', '') for s in sheets if s is not None and s.get('name')])
+
+                        except Exception as e_xml:
+                            logger.error(f"Erro no fallback XML para XLSX {caminho}: {e_xml}", exc_info=True)
 
                 elif ext == '.xls':
                     import xlrd
-                    wb = xlrd.open_workbook(caminho, on_demand=True)
-                    planilhas = len(wb.sheet_names())
-                    metadados['planilhas'] = planilhas
-                    metadados['nomes_planilhas'] = ", ".join(wb.sheet_names())
+                    try:
+                        wb = xlrd.open_workbook(caminho, on_demand=True)
+                        planilhas = len(wb.sheet_names())
+                        metadados['planilhas'] = planilhas
+                        metadados['nomes_planilhas'] = ", ".join(wb.sheet_names())
 
-                    linhas_total = 0
-                    colunas_total = 0
+                        linhas_total = 0
+                        colunas_total = 0
 
-                    for idx in range(min(3, planilhas)):
-                        sheet = wb.sheet_by_index(idx)
-                        linhas_total += sheet.nrows
-                        if sheet.ncols > colunas_total:
-                            colunas_total = sheet.ncols
+                        for idx in range(min(3, planilhas)):
+                            sheet = wb.sheet_by_index(idx)
+                            linhas_total += sheet.nrows
+                            if sheet.ncols > colunas_total:
+                                colunas_total = sheet.ncols
 
-                    metadados['total_linhas'] = str(linhas_total)
-                    metadados['colunas'] = str(colunas_total)
+                        metadados['total_linhas'] = str(linhas_total)
+                        metadados['colunas'] = str(colunas_total)
 
-                    if hasattr(wb, 'protection_mode') and wb.protection_mode:
-                        metadados['protegido'] = loc.get_text("yes")
+                        if hasattr(wb, 'protection_mode') and wb.protection_mode:
+                            metadados['protegido'] = loc.get_text("yes")
 
-                    wb.release_resources()
+                        wb.release_resources()
+
+                    except Exception as e_xls:
+                        msg = str(e_xls)
+                        if 'Workbook is encrypted' in msg:
+                            metadados['protegido'] = loc.get_text("yes") + " (senha)"
+
+                        elif 'Excel xlsx file; not supported' in msg:
+                            import zipfile, xml.etree.ElementTree as ET
+                            if zipfile.is_zipfile(caminho):
+                                try:
+                                    with zipfile.ZipFile(caminho, 'r') as z:
+                                        if 'xl/workbook.xml' in z.namelist():
+                                            xml_bytes = z.read('xl/workbook.xml')
+                                            root = ET.fromstring(xml_bytes)
+                                            ns = {'ns': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                                            sheets = root.findall('.//ns:sheets/ns:sheet', ns) or root.findall('.//sheets/sheet')
+                                            metadados['planilhas'] = len(sheets)
+                                            metadados['nomes_planilhas'] = ", ".join([s.get('name', '') for s in sheets if s is not None and s.get('name')])
+
+                                except Exception as e_xml2:
+                                    logger.error(f"Erro no fallback XML para XLS renomeado {caminho}: {e_xml2}", exc_info=True)
+
+                        else:
+                            logger.error(f"Erro ao extrair metadados da planilha {caminho}: {e_xls}", exc_info=True)
 
             except Exception as e:
                 logger.error(f"Erro ao extrair metadados da planilha {caminho}: {e}", exc_info=True)
@@ -90,8 +149,8 @@ def extrair_metadados_planilha(caminho, loc):
                     primeira_linha = next(reader, None)
                     if primeira_linha:
                         colunas = len(primeira_linha)
+                        linhas = 1
 
-                    linhas = 1
                     for _ in reader:
                         linhas += 1
 

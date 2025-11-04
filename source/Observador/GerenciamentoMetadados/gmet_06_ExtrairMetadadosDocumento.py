@@ -172,7 +172,7 @@ def extrair_metadados_documento(caminho, loc):
                 elif ext == '.doc':
                     try:
                         doc_metadados = extrair_metadados_olefile(caminho, loc)
-                        if doc_metadados and 'paginas' in doc_metadados:
+                        if doc_metadados:
                             metadados.update(doc_metadados)
 
                         else:
@@ -186,10 +186,8 @@ def extrair_metadados_documento(caminho, loc):
                             metadados['palavras'] = str(palavras_estimadas)
                             metadados['linhas'] = str(linhas_estimadas)
 
-                            raise Exception("Fallback para estimativas")
-
                     except Exception as e:
-                        logger.error(f"Usando fallback para olefile: {e}", exc_info=True)
+                        logger.warning(f"Usando fallback para olefile: {e}", exc_info=True)
 
                         import olefile
                         if olefile.isOleFile(caminho):

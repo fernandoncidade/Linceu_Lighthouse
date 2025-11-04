@@ -1,3 +1,35 @@
+VERSIONSHINWEISE: Version 0.1.0.0:
+
+In dieser Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+Hauptverbesserungen
+- Zuverlässiger: Interne Verbesserungen verringern Abstürze und machen die Überwachung von Ordnern stabiler.
+- Bessere Dateierkennung: Das System erkennt und zeigt nun mehr Dateieigenschaften an (z. B. Autor, Seitenanzahl, Zeilen, Wörter, Bild-/Videoabmessungen, Videodauer, entpackte Größe komprimierter Dateien).
+- Größere Unterstützung: Verbesserte Informations‑Extraktion für viele gängige Formate — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, komprimierte Dateien (zip/rar/7z), E‑Mails (.msg) und Videos/Bilder.
+- Schneller und reaktionsschneller: Hintergrundverarbeitung optimiert, sodass die Benutzeroberfläche beim Sammeln von Datei‑Informationen nicht einfriert.
+- Besserer Umgang mit gesperrten Dateien: Die App versucht, Dateien, die verwendet werden, sicherer zu lesen und arbeitet, wenn das nicht möglich ist, normal weiter, ohne den Rest zu unterbrechen.
+- Lokalisierung/Sprache: Oberflächentexte und Metadaten sind besser übersetzt, was die Nutzung für Anwender in anderen Sprachen verbessert.
+
+Fehlerbehebungen
+- Weniger Fehler beim Öffnen von Ordnern oder beschädigten Dateien: Die App ignoriert nun sicher ungültige Dateien oder Dateien mit unvollständigen Metadaten und verhindert Fehler, die das Programm beenden könnten.
+- Verbesserte Anzeige von Archivinhalt: Zeigt Dateianzahl, geschätzte entpackte Größe und eine Vorschau der ersten Dateien im Archiv an.
+- Genauere Dokument‑Metadaten: Schätzungen zu Seiten, Zeilen und Wörtern wurden für Dokumente (einschließlich PDFs und DOCX) verbessert.
+- Signatur von ausführbaren Dateien: Die App prüft jetzt, ob eine ausführbare Datei signiert ist, und zeigt diese Information, wenn verfügbar.
+- Spalteneinstellungen werden beibehalten: Ansichtseinstellungen der Spalten (welche Spalten anzeigen/ausblenden) werden zuverlässiger geladen und gespeichert.
+- Mehr Informationen zu Medien: Abmessungen von Video/Bild und Dauer werden jetzt konsistenter angezeigt.
+
+Hinweise für Benutzer
+- Keine zusätzlichen Maßnahmen erforderlich; das Update verbessert Stabilität und Qualität der angezeigten Informationen.
+- Falls die App eine Datei nicht lesen kann (z. B. wegen Systemberechtigungen), funktioniert sie weiter und zeigt die Informationen an, die sie sammeln kann.
+- Bei Fragen oder Problemen nach dem Update aktivieren Sie die Protokolle (Logs) in den Einstellungen und teilen diese mit dem Support zur Untersuchung.
+
+Danke
+- Vielen Dank für die Nutzung der App. Diese Version konzentriert sich auf Stabilität und die Qualität der angezeigten Informationen, damit die Verwaltung von Dateien und Ordnern sicherer und effizienter ist.
+
+
+_________________________________________________
+
+
 VERÖFFENTLICHUNGSHINWEISE: Version 0.0.9.0:
 
 In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
