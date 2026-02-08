@@ -1,3 +1,35 @@
+NOTAS DE LANZAMIENTO: Versión 0.1.0.0:
+
+En esta versión se implementaron las siguientes mejoras y funciones:
+
+Mejoras principales
+- Más fiable: mejoras internas reducen fallos y hacen que el monitoreo de carpetas sea más estable.
+- Mejor identificación de archivos: el sistema ahora detecta y muestra más propiedades de los archivos (por ejemplo: autor, número de páginas, líneas, palabras, dimensiones de imágenes/videos, duración de vídeos, tamaño descomprimido de archivos comprimidos).
+- Mayor compatibilidad: extracción de información mejorada para muchos formatos comunes — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, archivos comprimidos (zip/rar/7z), correos (.msg) y vídeos/imagenes.
+- Más rápido y sensible: procesamiento en segundo plano optimizado para evitar que la interfaz se congele mientras se obtienen los datos de los archivos.
+- Mejor manejo de archivos bloqueados: la aplicación intenta leer de forma más segura los archivos en uso y, cuando no es posible, continúa funcionando normalmente sin interrumpir el resto.
+- Localización/idioma: los textos de la interfaz y los metadatos están mejor traducidos, con mejoras para usuarios en otros idiomas.
+
+Correcciones
+- Menos errores al abrir carpetas o archivos corruptos: la aplicación ahora ignora de forma segura archivos inválidos o con metadatos incompletos, evitando fallos que podrían cerrar el programa.
+- Mejor visualización del contenido de archivos comprimidos: muestra la cantidad de archivos, el tamaño estimado descomprimido y una vista previa de los primeros archivos dentro del archivo comprimido.
+- Metadatos de documentos más precisos: se mejoraron las estimaciones de páginas, líneas y palabras para documentos (incluyendo PDFs y DOCX).
+- Firma de ejecutables: la aplicación ahora verifica si un ejecutable está firmado y muestra esa información cuando está disponible.
+- Preferencias de columnas preservadas: las preferencias de visualización de columnas (qué columnas mostrar/ocultar) se cargan y guardan con mayor fiabilidad.
+- Más información para multimedia: las dimensiones de vídeo/imagen y la duración ahora aparecen con mayor consistencia.
+
+Notas para el usuario
+- No se requiere ninguna acción adicional; la actualización mejora la estabilidad y la calidad de la información mostrada.
+- Si la aplicación no puede leer un archivo (por ejemplo por permisos del sistema), seguirá funcionando y mostrará la información que pueda recoger.
+- Si tiene dudas o problemas después de la actualización, active los registros (logs) en la configuración y compártalos con el soporte para investigación.
+
+Agradecimiento
+- Gracias por usar la aplicación. Esta versión se centra en la estabilidad y la calidad de la información mostrada para que la gestión de archivos y carpetas sea más segura y eficiente.
+
+
+_________________________________________________
+
+
 NOTAS DE LANZAMIENTO: Versión 0.0.9.0:
 
 En esta nueva versión se han implementado las siguientes mejoras y funcionalidades:

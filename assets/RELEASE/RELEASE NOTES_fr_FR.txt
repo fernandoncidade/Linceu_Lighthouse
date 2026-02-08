@@ -1,3 +1,35 @@
+NOTES DE VERSION : Version 0.1.0.0 :
+
+Dans cette version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+Principales améliorations
+- Plus fiable : des améliorations internes réduisent les plantages et rendent la surveillance des dossiers plus stable.
+- Meilleure identification des fichiers : le système détecte et affiche désormais davantage de propriétés des fichiers (par ex. : auteur, nombre de pages, lignes, mots, dimensions des images/vidéos, durée des vidéos, taille décompressée des archives).
+- Compatibilité étendue : extraction d'informations améliorée pour de nombreux formats courants — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, archives (zip/rar/7z), e‑mails (.msg) et vidéos/images.
+- Plus rapide et réactif : le traitement en arrière‑plan est optimisé pour éviter que l'interface ne se fige pendant la collecte des informations.
+- Meilleure gestion des fichiers verrouillés : l'application tente de lire de manière plus sûre les fichiers en cours d'utilisation et, lorsque ce n'est pas possible, continue de fonctionner normalement sans interrompre le reste.
+- Localisation/langue : les textes de l'interface et les métadonnées sont mieux traduits, améliorant l'expérience pour les utilisateurs d'autres langues.
+
+Correctifs
+- Moins d'erreurs à l'ouverture de dossiers ou de fichiers corrompus : l'application ignore désormais en toute sécurité les fichiers invalides ou aux métadonnées incomplètes, évitant des erreurs pouvant fermer le programme.
+- Meilleure présentation du contenu des archives : affiche le nombre de fichiers, la taille décompressée estimée et un aperçu des premiers fichiers de l'archive.
+- Métadonnées de documents plus précises : les estimations de pages, lignes et mots ont été améliorées pour les documents (y compris les PDF et DOCX).
+- Signature des exécutables : l'application vérifie désormais si un exécutable est signé et affiche cette information si disponible.
+- Préférences des colonnes préservées : les préférences d'affichage des colonnes (quelles colonnes afficher/masquer) sont chargées et enregistrées de façon plus fiable.
+- Plus d'informations pour les médias : les dimensions des vidéos/images et la durée s'affichent maintenant de façon plus cohérente.
+
+Remarques pour l'utilisateur
+- Aucune action supplémentaire n'est requise ; la mise à jour améliore la stabilité et la qualité des informations affichées.
+- Si l'application ne peut pas lire un fichier (par exemple à cause des permissions), elle continuera à fonctionner et affichera les informations qu'elle peut collecter.
+- Si vous avez des questions ou des problèmes après la mise à jour, activez les journaux (logs) dans les paramètres et partagez‑les avec le support pour enquête.
+
+Remerciement
+- Merci d'utiliser l'application. Cette version met l'accent sur la stabilité et la qualité des informations affichées pour rendre la gestion des fichiers et dossiers plus sûre et efficace.
+
+
+_________________________________________________
+
+
 NOTES DE VERSION : Version 0.0.9.0 :
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :

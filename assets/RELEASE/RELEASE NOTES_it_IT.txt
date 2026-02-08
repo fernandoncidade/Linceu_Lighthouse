@@ -1,3 +1,35 @@
+NOTE DI RILASCIO: Versione 0.1.0.0:
+
+In questa versione sono state implementate le seguenti migliorie e funzionalità:
+
+Migliorie principali
+- Più affidabile: miglioramenti interni riducono i crash e rendono più stabile il monitoraggio delle cartelle.
+- Migliore identificazione dei file: il sistema ora rileva e mostra più proprietà dei file (es.: autore, numero di pagine, righe, parole, dimensioni di immagini/video, durata dei video, dimensione decompattata dei file compressi).
+- Maggiore supporto: estrazione delle informazioni migliorata per molti formati comuni — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, archivi compressi (zip/rar/7z), email (.msg) e video/immagini.
+- Più veloce e reattivo: elaborazione in background ottimizzata per evitare che l'interfaccia si blocchi durante la raccolta delle informazioni sui file.
+- Migliore gestione dei file bloccati: l'app prova a leggere i file in uso in modo più sicuro e, quando non è possibile, continua a funzionare normalmente senza interrompere il resto.
+- Localizzazione/lingua: testi dell'interfaccia e metadati sono meglio tradotti, con miglioramenti per gli utenti in altre lingue.
+
+Correzioni
+- Meno errori durante l'apertura di cartelle o file corrotti: l'app ora ignora in modo sicuro i file non validi o con metadati incompleti, evitando errori che potrebbero chiudere il programma.
+- Migliore visualizzazione del contenuto degli archivi compressi: mostra il conteggio dei file, la dimensione decompattata stimata e un'anteprima dei primi file all'interno dell'archivio.
+- Metadati dei documenti più accurati: stime di pagine, righe e parole migliorate per i documenti (inclusi PDF e DOCX).
+- Firma degli eseguibili: l'app ora verifica se un eseguibile è firmato e mostra questa informazione quando disponibile.
+- Impostazioni delle colonne preservate: le preferenze di visualizzazione delle colonne (quali colonne mostrare/nascondere) vengono caricate e salvate in modo più affidabile.
+- Più informazioni per i media: dimensioni di video/immagini e durata ora appaiono con maggiore coerenza.
+
+Note per l'utente
+- Non è richiesta alcuna azione aggiuntiva; l'aggiornamento migliora la stabilità e la qualità delle informazioni visualizzate.
+- Se l'app non riesce a leggere un file (ad esempio per permessi di sistema), continuerà a funzionare e mostrerà le informazioni che riesce a raccogliere.
+- Se avete domande o problemi dopo l'aggiornamento, attivate i log nelle impostazioni e condivideteli con il supporto per le indagini.
+
+Ringraziamento
+- Grazie per aver scelto l'app. Questa versione si concentra sulla stabilità e sulla qualità delle informazioni visualizzate per rendere la gestione di file e cartelle più sicura ed efficiente.
+
+
+_________________________________________________
+
+
 NOTE DI RILASCIO: Versione 0.0.9.0:
 
 In questa nuova versione sono state implementate le seguenti migliorie e funzionalità:

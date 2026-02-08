@@ -75,7 +75,7 @@ def _exibir_sobre(self):
         texto_release_notes = release_notes_texts.get(self.loc.idioma_atual, release_notes_texts["en_US"])
         cabecalho_fixo = (
             "<h3>LINCEU LIGHTHOUSE</h3>"
-            f"<p><b>{self.loc.get_text('version')}:</b> 0.0.9.0</p>"
+            f"<p><b>{self.loc.get_text('version')}:</b> 0.1.0.0</p>"
             f"<p><b>{self.loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
             f"<p><b>{self.loc.get_text('description')}:</b> {self.loc.get_text('description_text')}</p>"
         )
