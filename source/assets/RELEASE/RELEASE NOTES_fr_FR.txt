@@ -1,0 +1,234 @@
+NOTES DE VERSION : Version 0.1.1.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+Principales améliorations
+- Améliorations de la structure du code source : plusieurs optimisations internes ont été effectuées pour améliorer l'efficacité et la maintenabilité du code.
+- Mises à jour des dépendances : les bibliothèques et frameworks utilisés ont été mis à jour vers leurs dernières versions, garantissant une meilleure compatibilité et sécurité.
+
+Remerciements
+- Merci d'utiliser l'application. Cette version met l'accent sur la stabilité et la qualité des informations affichées afin que la gestion des fichiers et dossiers soit plus sûre et efficace.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.1.0.0 :
+
+Dans cette version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+Principales améliorations
+- Plus fiable : des améliorations internes réduisent les plantages et rendent la surveillance des dossiers plus stable.
+- Meilleure identification des fichiers : le système détecte et affiche désormais davantage de propriétés des fichiers (par ex. : auteur, nombre de pages, lignes, mots, dimensions des images/vidéos, durée des vidéos, taille décompressée des archives).
+- Compatibilité étendue : extraction d'informations améliorée pour de nombreux formats courants — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, archives (zip/rar/7z), e‑mails (.msg) et vidéos/images.
+- Plus rapide et réactif : le traitement en arrière‑plan est optimisé pour éviter que l'interface ne se fige pendant la collecte des informations.
+- Meilleure gestion des fichiers verrouillés : l'application tente de lire de manière plus sûre les fichiers en cours d'utilisation et, lorsque ce n'est pas possible, continue de fonctionner normalement sans interrompre le reste.
+- Localisation/langue : les textes de l'interface et les métadonnées sont mieux traduits, améliorant l'expérience pour les utilisateurs d'autres langues.
+
+Correctifs
+- Moins d'erreurs à l'ouverture de dossiers ou de fichiers corrompus : l'application ignore désormais en toute sécurité les fichiers invalides ou aux métadonnées incomplètes, évitant des erreurs pouvant fermer le programme.
+- Meilleure présentation du contenu des archives : affiche le nombre de fichiers, la taille décompressée estimée et un aperçu des premiers fichiers de l'archive.
+- Métadonnées de documents plus précises : les estimations de pages, lignes et mots ont été améliorées pour les documents (y compris les PDF et DOCX).
+- Signature des exécutables : l'application vérifie désormais si un exécutable est signé et affiche cette information si disponible.
+- Préférences des colonnes préservées : les préférences d'affichage des colonnes (quelles colonnes afficher/masquer) sont chargées et enregistrées de façon plus fiable.
+- Plus d'informations pour les médias : les dimensions des vidéos/images et la durée s'affichent maintenant de façon plus cohérente.
+
+Remarques pour l'utilisateur
+- Aucune action supplémentaire n'est requise ; la mise à jour améliore la stabilité et la qualité des informations affichées.
+- Si l'application ne peut pas lire un fichier (par exemple à cause des permissions), elle continuera à fonctionner et affichera les informations qu'elle peut collecter.
+- Si vous avez des questions ou des problèmes après la mise à jour, activez les journaux (logs) dans les paramètres et partagez‑les avec le support pour enquête.
+
+Remerciement
+- Merci d'utiliser l'application. Cette version met l'accent sur la stabilité et la qualité des informations affichées pour rendre la gestion des fichiers et dossiers plus sûre et efficace.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.9.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Nouveaux Graphiques Statistiques :
+- Deux nouveaux types de graphiques Sankey ont été ajoutés :
+    - Sankey Événement → Chemin : Permet de visualiser le flux des événements surveillés vers les chemins des fichiers et dossiers.
+    - Sankey Type → Chemin : Permet d’analyser le flux des types de fichiers (extensions) vers les chemins surveillés.
+    - Il est désormais possible de visualiser la structure des répertoires via un nouveau graphique interactif, facilitant l’analyse des chemins des fichiers et dossiers surveillés.
+    - Des graphiques statistiques plus complets ont été inclus, avec des options pour différents types de visualisation des données.
+- Les graphiques utilisent la bibliothèque Plotly pour une visualisation interactive et une exportation en haute résolution.
+
+Amélioration de l’Internationalisation :
+- Les titres et textes des graphiques sont désormais traduits automatiquement selon la langue sélectionnée dans l’interface.
+- La liste des graphiques disponibles a été mise à jour, permettant de sélectionner et de visualiser rapidement les principaux types d’analyse.
+- Le panneau de statistiques a été ajusté pour calculer automatiquement la largeur idéale, garantissant une meilleure adaptation des textes et boutons dans l’interface.
+- Ajustements dans la traduction des en-têtes et des types de fichiers/dossiers dans l’arbre des répertoires.
+
+Améliorations de l’Interface des Répertoires :
+- Le widget de structure des répertoires a été amélioré pour permettre des opérations telles que copier, couper, coller, renommer, créer et supprimer des fichiers/dossiers directement via le menu contextuel.
+- Traduction dynamique des boutons et menus du panneau des répertoires mise en œuvre.
+
+Corrections Générales :
+- Ajustements dans la logique de basculement entre les modes de visualisation des performances et de la structure des répertoires, garantissant qu’un seul panneau soit actif à la fois.
+- Corrections de petits bugs liés à la mise à jour des textes traduits et au rendu des graphiques.
+- Petits problèmes dans la génération des graphiques corrigés, rendant le processus plus stable et fiable.
+- Améliorations dans la traduction des textes et titres des graphiques, suivant la langue choisie par l’utilisateur.
+
+Ces améliorations offrent une expérience plus complète et intuitive à l’utilisateur, élargissant les possibilités d’analyse statistique et de gestion des fichiers et dossiers.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.8.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+- Une fonctionnalité a été ajoutée dans le menu des paramètres pour suivre les performances du système en temps réel.
+    - Grâce à des graphiques interactifs, l'utilisateur peut surveiller l'utilisation du processeur (CPU), de la mémoire RAM et du disque, permettant une analyse détaillée de l'impact de la surveillance sur les performances globales du système.
+    - Le panneau de performance est mis à jour en temps réel, offrant des informations précieuses pour l'optimisation et les ajustements nécessaires.
+    - Il est possible de détacher le panneau de performance dans une fenêtre séparée, permettant à l'utilisateur de personnaliser son espace de travail et de se concentrer sur les métriques les plus pertinentes pendant la surveillance.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.7.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+- Correction du système de traduction :
+    - Lors de l'application d'une nouvelle langue, le système applique désormais automatiquement la traduction à tous les widgets du panneau de graphiques et diagrammes, pour l'analyse statistique des données surveillées.
+        - Améliorations dans la détection des changements de langue, garantissant une transition plus fluide et sans interruptions.
+        - Pendant l'application de la nouvelle langue, le système redessine le graphique tout en mettant à jour simultanément les données affichées, garantissant que toutes les informations soient correctes et à jour.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.6.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+- Mise en place d'un nouveau diagramme ; il est désormais possible d'analyser les données surveillées à l'aide d'un graphique de flux - "Sankey".
+    - Le graphique à barres permet une visualisation claire et intuitive de la répartition des données, facilitant l'identification des modèles et des tendances.
+    - L'interface du graphique est interactive, permettant à l'utilisateur d'explorer les données de manière dynamique et personnalisée.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.5.0:
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Amélioration de l'expérience utilisateur :
+- Il est désormais possible de mettre en pause n'importe quelle étape de la surveillance.
+    - Pendant la pause, le système interrompt temporairement la collecte de données, permettant à l'utilisateur d'effectuer des ajustements ou des modifications sans que de nouvelles données soient traitées.
+    - La fonctionnalité de pause peut être activée ou désactivée à tout moment, offrant un meilleur contrôle sur la surveillance.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.4.0
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Corrections de bugs :
+- Un bug lié à la commande de démarrage/arrêt de l'analyse a été corrigé :
+    - Le problème survenait lorsqu'on arrêtait pendant la phase de scan, étape initiale de la surveillance. Désormais, le système gère correctement cette situation, évitant des défaillances inattendues.
+
+- Correction d'un problème lors de l'ouverture du "Sélecteur de Couleurs Avancé" dans le menu des paramètres. En cliquant sur le bouton correspondant, l'exécutable n'ouvrait pas la fenêtre de dialogue des paramètres de couleur avancés, ce qui constituait une erreur.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.3.0:
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Robustesse et stabilité améliorées :
+- Des vérifications d'existence ont été ajoutées avant d'accéder aux méthodes et aux propriétés des objets, rendant le système plus robuste et évitant des erreurs inattendues lors de l'initialisation.
+- La méthode _invalidar_cache_cores_ n'est désormais appelée que si elle existe réellement, évitant les exceptions dues à des appels invalides.
+- L'attribut _cor_selecao_future_, qui n'était pas défini, a été supprimé, éliminant les messages d'erreur inutiles et offrant une expérience plus fluide.
+
+Optimisation des processus et de l'interface :
+- Le contrôle des appels de retraduction des données a été optimisé : lors du changement de langue, le système effectue uniquement les opérations essentielles, évitant un traitement inutile et augmentant l'agilité du changement de langue.
+- Les méthodes de mise à jour des en-têtes, des données et de la visibilité des colonnes ont été refactorisées avec gestion des exceptions et améliorations de la clarté, reflétant les modifications de l'interface de manière plus précise et rapide.
+- La gestion des indices de colonnes a été ajustée pour garantir la cohérence et éviter les erreurs, permettant la manipulation des colonnes sans problèmes de tri ou d'affichage.
+- L'intégration entre la mise à jour des données, des en-têtes et de la visibilité a été améliorée, garantissant que toutes les modifications sont correctement reflétées dans l'interface.
+
+Corrections et améliorations générales :
+- Plusieurs ajustements ont été apportés aux méthodes de traitement, entraînant une plus grande stabilité et des performances accrues, avec moins d'interruptions pour l'utilisateur.
+
+Résumé :
+
+Nouveautés de la Version 0.0.3.0:
+
+- Robustesse et stabilité :
+    - Vérifications d'existence des attributs et des méthodes pour éviter des erreurs inattendues.
+    - Suppression des attributs non définis et des appels invalides.
+
+- Optimisation de l'interface et des processus :
+    - Contrôle efficace de la retraduction lors du changement de langue.
+    - Refactorisation des méthodes de mise à jour de l'interface.
+    - Ajustement et intégration dans la gestion des colonnes.
+
+- Améliorations générales :
+    - Petites corrections et améliorations des méthodes de traitement, augmentant la stabilité et les performances du système.
+
+
+_________________________________________________
+
+
+NOTES DE VERSION : Version 0.0.2.0:
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été mises en œuvre :
+
+Refonte complète du système d'internationalisation :
+- Le système de langue et de traduction a été entièrement réécrit, utilisant désormais les ressources natives du framework PySide6 et de la bibliothèque Qt. Ce changement a entraîné une augmentation significative de la réactivité et des performances.
+- Lors de tests préliminaires, un gain de performance notable a été observé lors de la traduction de tableaux contenant jusqu'à 2 000 événements. Au-delà de ce volume, le processus de redessin de l'interface (repaint) impacte les performances, pouvant provoquer des blocages temporaires de l'interface graphique jusqu'à la fin de la charge de travail.
+- Recommandation importante : Pour éviter la perte de données ou la fermeture inattendue de l'application, la langue doit être définie AVANT de démarrer la surveillance, en particulier dans des scénarios de gros volumes de données. Le changement de langue ne doit être effectué qu'avec la surveillance en pause. NE JAMAIS changer la langue pendant une session de surveillance active.
+
+Fenêtre d'avertissement pour le changement de langue :
+- Une fenêtre de dialogue bilingue a été mise en place pour notifier l'utilisateur à chaque alternance entre les langues prises en charge.
+
+Expansion et granularité des colonnes de données :
+- Les colonnes « Taille », « Décompressé » et « Binaire » ont été subdivisées. Chacune a donné naissance à 5 nouvelles colonnes (soit 15 au total), permettant un filtrage et une analyse plus précis et plus granulaires des tailles de fichiers et de dossiers.
+
+Refonte du module d'analyse statistique :
+- L'analyse statistique des données a été restructurée pour être compatible avec les nouvelles colonnes de métadonnées. Cela a permis d'obtenir des analyses de meilleure qualité, avec des échelles mieux définies et un traitement des données plus robuste.
+
+Amélioration de la surveillance des fichiers :
+- La précision de la surveillance a été améliorée, avec un meilleur niveau de détail dans l'identification des types de fichiers selon leurs extensions.
+
+Refonte de l'interface des menus :
+- Le design du système de menus a été amélioré pour organiser et afficher de manière plus claire et intuitive tous les métadonnées surveillés.
+
+Fenêtres secondaires non modales :
+- Les interfaces secondaires (dialogues interactifs) ne bloquent plus l'interaction avec la fenêtre principale de l'application, permettant un flux de travail plus fluide.
+
+Internationalisation du filtre de date :
+- Le système de filtrage par période a été amélioré. Le composant calendrier pour la sélection des dates est désormais compatible avec le système de traduction, affichant les noms des mois et des jours dans la langue sélectionnée.
+
+
+Résumé :
+
+Nouveautés de la Version 0.0.2.0:
+
+- Système de traduction natif (Qt/PySide6) : Le système de langue a été entièrement réécrit pour utiliser les ressources natives de Qt, offrant de meilleures performances et une plus grande réactivité.
+    - Avertissement : Il est recommandé de définir la langue avant de démarrer la surveillance pour éviter les blocages ou la perte de données en cas de gros volume.
+
+- Améliorations de l'interface (UI/UX) :
+    - Ajout d'une boîte de dialogue de confirmation lors du changement de langue.
+    - Les fenêtres secondaires ne bloquent plus l'interface principale.
+    - Menus repensés pour une meilleure organisation des métadonnées.
+    - Le calendrier du filtre de date est désormais traduit dans la langue sélectionnée.
+
+- Analyse de données plus puissante :
+    - Les colonnes de taille de fichier (« Taille », « Décompressé », « Binaire ») ont été étendues à 15 nouvelles colonnes, permettant des filtres beaucoup plus précis.
+    - Le module d'analyse statistique a été mis à jour pour prendre en charge les nouvelles colonnes, générant des rapports plus détaillés et précis.
+
+- Surveillance améliorée :
+    - Amélioration de la détection des types de fichiers par extension.

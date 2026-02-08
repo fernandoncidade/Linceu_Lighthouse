@@ -1,0 +1,234 @@
+NOTAS DE LANZAMIENTO: Versión 0.1.1.0:
+
+En esta nueva versión se implementaron las siguientes mejoras y funcionalidades:
+
+Mejoras principales
+- Mejoras en la estructura del código fuente: se realizaron varias optimizaciones internas para mejorar la eficiencia y el mantenimiento del código.
+- Actualizaciones de dependencias: las bibliotecas y frameworks utilizados se actualizaron a sus versiones más recientes, garantizando mejor compatibilidad y seguridad.
+
+Agradecimiento
+- Gracias por usar la aplicación. Esta versión se centra en la estabilidad y la calidad de la información mostrada para que la gestión de archivos y carpetas sea más segura y eficiente.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.1.0.0:
+
+En esta versión se implementaron las siguientes mejoras y funciones:
+
+Mejoras principales
+- Más fiable: mejoras internas reducen fallos y hacen que el monitoreo de carpetas sea más estable.
+- Mejor identificación de archivos: el sistema ahora detecta y muestra más propiedades de los archivos (por ejemplo: autor, número de páginas, líneas, palabras, dimensiones de imágenes/videos, duración de vídeos, tamaño descomprimido de archivos comprimidos).
+- Mayor compatibilidad: extracción de información mejorada para muchos formatos comunes — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, archivos comprimidos (zip/rar/7z), correos (.msg) y vídeos/imagenes.
+- Más rápido y sensible: procesamiento en segundo plano optimizado para evitar que la interfaz se congele mientras se obtienen los datos de los archivos.
+- Mejor manejo de archivos bloqueados: la aplicación intenta leer de forma más segura los archivos en uso y, cuando no es posible, continúa funcionando normalmente sin interrumpir el resto.
+- Localización/idioma: los textos de la interfaz y los metadatos están mejor traducidos, con mejoras para usuarios en otros idiomas.
+
+Correcciones
+- Menos errores al abrir carpetas o archivos corruptos: la aplicación ahora ignora de forma segura archivos inválidos o con metadatos incompletos, evitando fallos que podrían cerrar el programa.
+- Mejor visualización del contenido de archivos comprimidos: muestra la cantidad de archivos, el tamaño estimado descomprimido y una vista previa de los primeros archivos dentro del archivo comprimido.
+- Metadatos de documentos más precisos: se mejoraron las estimaciones de páginas, líneas y palabras para documentos (incluyendo PDFs y DOCX).
+- Firma de ejecutables: la aplicación ahora verifica si un ejecutable está firmado y muestra esa información cuando está disponible.
+- Preferencias de columnas preservadas: las preferencias de visualización de columnas (qué columnas mostrar/ocultar) se cargan y guardan con mayor fiabilidad.
+- Más información para multimedia: las dimensiones de vídeo/imagen y la duración ahora aparecen con mayor consistencia.
+
+Notas para el usuario
+- No se requiere ninguna acción adicional; la actualización mejora la estabilidad y la calidad de la información mostrada.
+- Si la aplicación no puede leer un archivo (por ejemplo por permisos del sistema), seguirá funcionando y mostrará la información que pueda recoger.
+- Si tiene dudas o problemas después de la actualización, active los registros (logs) en la configuración y compártalos con el soporte para investigación.
+
+Agradecimiento
+- Gracias por usar la aplicación. Esta versión se centra en la estabilidad y la calidad de la información mostrada para que la gestión de archivos y carpetas sea más segura y eficiente.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.9.0:
+
+En esta nueva versión se han implementado las siguientes mejoras y funcionalidades:
+
+Nuevos Gráficos Estadísticos:
+- Se han añadido dos nuevos tipos de gráficos Sankey:
+    - Sankey Evento → Ruta: Permite visualizar el flujo de los eventos monitoreados hacia las rutas de archivos y carpetas.
+    - Sankey Tipo → Ruta: Permite analizar el flujo de los tipos de archivos (extensiones) hacia las rutas monitoreadas.
+    - Ahora es posible visualizar la estructura de directorios mediante un nuevo gráfico interactivo, facilitando el análisis de las rutas de archivos y carpetas monitoreados.
+    - Se han incluido gráficos estadísticos más completos, con opciones para diferentes tipos de visualización de datos.
+- Los gráficos utilizan la biblioteca Plotly para visualización interactiva y exportación en alta resolución.
+
+Mejoras en la Internacionalización:
+- Los títulos y textos de los gráficos ahora se traducen automáticamente según el idioma seleccionado en la interfaz.
+- La lista de gráficos disponibles ha sido actualizada, permitiendo seleccionar y visualizar rápidamente los principales tipos de análisis.
+- El panel de estadísticas ha sido ajustado para calcular automáticamente el ancho ideal, garantizando mejor adaptación de textos y botones en la interfaz.
+- Ajustes en la traducción de encabezados y tipos de archivos/carpetas en el árbol de directorios.
+
+Mejoras en la Interfaz de Directorios:
+- El widget de estructura de directorios ha sido mejorado para permitir operaciones como copiar, cortar, pegar, renombrar, crear y eliminar archivos/carpetas directamente desde el menú contextual.
+- Se ha implementado la traducción dinámica de los botones y menús del panel de directorios.
+
+Correcciones Generales:
+- Ajustes en la lógica de alternancia entre los modos de visualización de rendimiento y estructura de directorios, asegurando que solo un panel esté activo a la vez.
+- Correcciones de pequeños errores relacionados con la actualización de textos traducidos y la renderización de los gráficos.
+- Se han corregido pequeños problemas en la generación de gráficos, haciendo el proceso más estable y confiable.
+- Mejoras en la traducción de textos y títulos de los gráficos, siguiendo el idioma elegido por el usuario.
+
+Estas mejoras proporcionan una experiencia más completa e intuitiva para el usuario, ampliando las posibilidades de análisis estadístico y gestión de archivos y carpetas.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.8.0:
+
+En esta nueva versión se implementaron las siguientes mejoras y funcionalidades:
+
+- Se añadió en el menú de configuración la funcionalidad para supervisar el rendimiento del sistema en tiempo real.
+    - Mediante gráficos interactivos, el usuario puede monitorear el uso de CPU, memoria RAM y disco, permitiendo un análisis detallado del impacto del monitoreo en el rendimiento general del sistema.
+    - El panel de rendimiento se actualiza en tiempo real, ofreciendo información valiosa para la optimización y ajustes según sea necesario.
+    - Es posible destacar el panel de rendimiento en una ventana separada, permitiendo al usuario personalizar su área de trabajo y centrarse en las métricas más relevantes durante la supervisión.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.7.0:
+
+En esta nueva versión, se han implementado las siguientes mejoras y funcionalidades:
+
+- Corrección del sistema de traducción:
+    - Al aplicar un nuevo idioma, ahora el sistema aplica automáticamente la traducción en todos los widgets del panel de gráficos y diagramas, para análisis estadístico de los datos monitoreados.
+        - Mejoras en la detección de cambios de idioma, garantizando una transición más suave y sin interrupciones.
+        - Durante la aplicación del nuevo idioma, el sistema redibuja la gráfica, al mismo tiempo actualiza los datos mostrados, garantizando que toda la información esté correcta y actualizada.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.6.0:
+
+En esta nueva versión se han implementado las siguientes mejoras y funcionalidades:
+
+- Implementación de un nuevo diagrama; ahora es posible analizar los datos monitorizados mediante un diagrama de flujo - "Sankey".
+    - El gráfico de barras permite una visualización clara e intuitiva de la distribución de los datos, facilitando la identificación de patrones y tendencias.
+    - La interfaz del gráfico es interactiva, permitiendo al usuario explorar los datos de forma dinámica y personalizada.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.5.0:
+
+En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
+
+Mejora de la Experiencia del Usuario:
+- Ahora es posible pausar cualquier etapa del monitoreo.
+    - Durante la pausa, el sistema interrumpe temporalmente la recopilación de datos, permitiendo al usuario realizar ajustes o cambios sin que se procesen nuevos datos.
+    - La funcionalidad de pausa puede activarse o desactivarse en cualquier momento, proporcionando mayor control sobre el monitoreo.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.4.0
+
+En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
+
+Corrección de errores:
+- Se corrigió un error relacionado con el comando de iniciar/detener análisis:
+    - El problema ocurría cuando se detenía durante el escaneo, etapa inicial del monitoreo. Ahora, el sistema maneja correctamente esta situación, evitando fallos inesperados.
+
+- Corregido un problema al abrir el "Selector de Colores Avanzado" en el menú de configuración. Al hacer clic en el botón correspondiente, el ejecutable no abría la ventana de diálogo con las configuraciones avanzadas de color, lo que constituía un error.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.3.0:
+
+En esta nueva versión, se implementaron las siguientes mejoras y funcionalidades:
+
+Mejora de Robustez y Estabilidad:
+- Se añadieron comprobaciones de existencia antes de acceder a métodos y propiedades de los objetos, haciendo el sistema más robusto y evitando errores inesperados durante la inicialización.
+- El método _invalidar_cache_cores_ ahora se llama solo si realmente existe, evitando excepciones por llamadas inválidas.
+- El atributo _cor_selecao_future_, que no estaba definido, fue eliminado, suprimiendo mensajes de error innecesarios y proporcionando una experiencia más fluida.
+
+Optimización de Procesos e Interfaz:
+- Se optimizó el control de llamadas para la retraducción de datos: al cambiar el idioma, el sistema realiza solo las operaciones esenciales, evitando procesamientos innecesarios y aumentando la agilidad en el cambio de idioma.
+- Los métodos de actualización de encabezados, datos y visibilidad de columnas fueron refactorizados con manejo de excepciones y mejoras de claridad, reflejando los cambios en la interfaz de forma más precisa y rápida.
+- La gestión de índices de columnas fue ajustada para garantizar consistencia y evitar errores, permitiendo la manipulación de columnas sin problemas de ordenación o visualización.
+- Se mejoró la integración entre actualización de datos, encabezados y visibilidad, asegurando que todos los cambios se reflejen correctamente en la interfaz.
+
+Correcciones y Mejoras Generales:
+- Se realizaron varios ajustes en los métodos de procesamiento, resultando en mayor estabilidad y rendimiento, con menos interrupciones para el usuario.
+
+Resumen:
+
+Novedades de la Versión 0.0.3.0:
+
+- Robustez y Estabilidad:
+    - Comprobaciones de existencia de atributos y métodos para evitar errores inesperados.
+    - Eliminación de atributos indefinidos y llamadas inválidas.
+
+- Optimización de Interfaz y Procesos:
+    - Control eficiente de retraducción al cambiar de idioma.
+    - Refactorización de los métodos de actualización de la interfaz.
+    - Ajuste e integración en la gestión de columnas.
+
+- Mejoras Generales:
+    - Pequeñas correcciones y mejoras en los métodos de procesamiento, aumentando la estabilidad y el rendimiento del sistema.
+
+
+_________________________________________________
+
+
+NOTAS DE LANZAMIENTO: Versión 0.0.2.0:
+
+En esta nueva versión, se han implementado las siguientes mejoras y funcionalidades:
+
+Refactorización completa del sistema de internacionalización:
+- El sistema de idiomas y traducción ha sido completamente reescrito, utilizando ahora los recursos nativos del framework PySide6 y la biblioteca Qt. Este cambio ha resultado en un aumento significativo de la capacidad de respuesta y el rendimiento.
+- En pruebas preliminares, se observó una mejora significativa en el rendimiento al traducir tablas con hasta 2.000 eventos. Por encima de ese volumen, el proceso de redibujado de la interfaz (repaint) impacta el rendimiento, pudiendo causar bloqueos temporales en la GUI hasta que se complete la carga de trabajo.
+- Recomendación importante: Para evitar la pérdida de datos o el cierre inesperado de la aplicación, el idioma debe definirse ANTES de iniciar el monitoreo, especialmente en escenarios de alto volumen de datos. El cambio de idioma solo debe realizarse con el monitoreo pausado. NUNCA cambie el idioma durante una sesión de monitoreo activa.
+
+Ventana de aviso para cambio de idioma:
+- Se ha implementado una ventana de diálogo bilingüe que se muestra para notificar al usuario siempre que haya un cambio entre los idiomas soportados.
+
+Expansión y granularidad de las columnas de datos:
+- Las columnas "Tamaño", "Descomprimido" y "Binario" se han desglosado. Cada una ha dado lugar a 5 nuevas columnas (totalizando 15), permitiendo un filtrado y análisis más granular y preciso de los tamaños de archivos y directorios.
+
+Reformulación del módulo de análisis estadístico:
+- El análisis estadístico de los datos ha sido reestructurado para ser compatible con las nuevas columnas de metadatos. Esto ha resultado en análisis de mayor calidad, con escalas mejor definidas y un tratamiento de datos más robusto.
+
+Mejora en el monitoreo de archivos:
+- Se ha mejorado la precisión del monitoreo, con mayor detalle en la identificación de tipos de archivo según sus extensiones.
+
+Rediseño de la interfaz de menús:
+- El diseño del sistema de menús se ha perfeccionado para organizar y mostrar de forma más clara e intuitiva todos los metadatos monitoreados.
+
+Ventanas secundarias no modales:
+- Las interfaces secundarias (diálogos interactivos) ya no bloquean la interacción con la ventana principal de la aplicación, permitiendo un flujo de trabajo más fluido.
+
+Internacionalización del filtro de fecha:
+- El sistema de filtrado por período ha sido mejorado. El componente de calendario para la selección de fechas ahora es compatible con el sistema de traducción, mostrando los nombres de los meses y días en el idioma seleccionado.
+
+
+Resumen:
+
+Novedades de la Versión 0.0.2.0:
+
+- Sistema de Traducción Nativo (Qt/PySide6): El sistema de idiomas ha sido completamente reescrito para usar los recursos nativos de Qt, resultando en mayor rendimiento y capacidad de respuesta.
+    - Aviso: Se recomienda definir el idioma antes de iniciar el monitoreo para evitar bloqueos o pérdida de datos en alto volumen.
+
+- Mejoras en la Interfaz (UI/UX):
+    - Se ha añadido un diálogo de confirmación al cambiar de idioma.
+    - Las ventanas secundarias ya no bloquean la interfaz principal.
+    - Menús rediseñados para una mejor organización de los metadatos.
+    - El calendario del filtro de fechas ahora se traduce al idioma seleccionado.
+
+- Análisis de Datos Más Potente:
+    - Las columnas de tamaño de archivo ("Tamaño", "Descomprimido", "Binario") se han expandido a 15 nuevas columnas, permitiendo filtros mucho más precisos.
+    - El módulo de análisis estadístico ha sido actualizado para soportar las nuevas columnas, generando informes más detallados y precisos.
+
+- Monitoreo Mejorado:
+    - Mejorada la detección de tipos de archivo por extensión.

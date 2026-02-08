@@ -1,0 +1,234 @@
+RELEASE NOTES: Version 0.1.1.0:
+
+In this new version, the following improvements and features have been implemented:
+
+Main improvements
+- Improvements to the source code structure: several internal optimizations were made to improve the efficiency and maintainability of the code.
+- Dependency updates: libraries and frameworks used have been updated to their latest versions, ensuring better compatibility and security.
+
+Acknowledgment
+- Thank you for using the application. This version focuses on stability and the quality of the displayed information so that file and folder management is safer and more efficient.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.1.0.0:
+
+In this release we implemented the following improvements and features:
+
+Main improvements
+- More reliable: internal improvements reduce crashes and make folder monitoring more stable.
+- Better file identification: the system now detects and displays more file properties (e.g., author, number of pages, lines, words, image/video dimensions, video duration, uncompressed size of compressed files).
+- Wider support: improved information extraction for many common formats — PDF, Word (doc/docx), Excel (xls/xlsx), PowerPoint, compressed files (zip/rar/7z), emails (.msg) and videos/images.
+- Faster and more responsive: background processing optimized so the interface does not freeze while file information is being collected.
+- Better handling of locked files: the app attempts to read files that are in use more safely and, when not possible, continues to operate normally without interrupting other operations.
+- Localization/language: interface texts and metadata are better translated, improving the experience for users in other languages.
+
+Bug fixes
+- Fewer failures when opening folders or corrupted files: the app now safely ignores invalid files or files with incomplete metadata, preventing errors that could close the program.
+- Improved display of compressed file contents: shows file count, estimated uncompressed size and a preview of the first files inside the archive.
+- More accurate document metadata: estimates for pages, lines and words have been improved for documents (including PDFs and DOCX).
+- Executable signing: the app now checks whether an executable file is signed and displays this information when available.
+- Column settings preserved: column view preferences (which columns to show/hide) are loaded and saved more reliably.
+- More media information: video/image dimensions and duration now appear with better consistency.
+
+User notes
+- No additional action required; the update improves stability and the quality of displayed information.
+- If the app cannot read a file (for example due to system permissions), it will continue working and show the information it can collect.
+- If you have questions or problems after the update, enable logs in settings and share them with support for investigation.
+
+Thanks
+- Thank you for using the app. This version focuses on stability and the quality of displayed information so file and folder management is safer and more efficient.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.9.0:
+
+In this new version, the following improvements and features have been implemented:
+
+New Statistical Charts:
+- Two new types of Sankey charts have been added:
+    - Sankey Event → Path: Allows you to visualize the flow of monitored events to file and folder paths.
+    - Sankey Type → Path: Enables analysis of the flow of file types (extensions) to monitored paths.
+    - It is now possible to view the directory structure through a new interactive chart, making it easier to analyze the paths of monitored files and folders.
+    - More comprehensive statistical charts have been included, with options for different types of data visualization.
+- The charts use the Plotly library for interactive visualization and high-resolution export.
+
+Internationalization Improvements:
+- Chart titles and texts are now automatically translated according to the language selected in the interface.
+- The list of available charts has been updated, allowing quick selection and viewing of the main types of analysis.
+- The statistics panel has been adjusted to automatically calculate the ideal width, ensuring better adaptation of texts and buttons in the interface.
+- Adjustments in the translation of headers and file/folder types in the directory tree.
+
+Directory Interface Improvements:
+- The directory structure widget has been enhanced to allow operations such as copy, cut, paste, rename, create, and delete files/folders directly from the context menu.
+- Dynamic translation of buttons and menus in the directory panel has been implemented.
+
+General Fixes:
+- Adjustments in the logic for switching between performance and directory structure views, ensuring that only one panel is active at a time.
+- Fixes for minor bugs related to updating translated texts and chart rendering.
+- Minor issues in chart generation have been corrected, making the process more stable and reliable.
+- Improvements in the translation of chart texts and titles, following the user's chosen language.
+
+These improvements provide a more complete and intuitive experience for the user, expanding the possibilities for statistical analysis and file and folder management.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.8.0:
+
+In this new release, the following improvements and features have been implemented:
+
+- A feature was added to the settings menu to monitor system performance in real time.
+    - Via interactive charts, the user can monitor CPU, RAM and disk usage, enabling a detailed analysis of the monitoring's impact on overall system performance.
+    - The performance panel is updated in real time, providing valuable insights for optimization and adjustments as needed.
+    - The performance panel can be detached into a separate window, allowing the user to customize their workspace and focus on the most relevant metrics during monitoring.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.7.0:
+
+In this new version, the following improvements and features have been implemented:
+
+- Translation system correction:
+    - When applying a new language, the system now automatically applies translation to all widgets in the charts and diagrams panel for statistical analysis of monitored data.
+        - Improvements in language change detection, ensuring a smoother transition without interruptions.
+        - During the application of the new language, the system redraws the plot while simultaneously updating the displayed data, ensuring all information is correct and up-to-date.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.6.0:
+
+In this new release, the following improvements and features have been implemented:
+
+- Implementation of a new diagram; it is now possible to analyze the monitored data using a flow chart - "Sankey".
+    - The bar chart allows a clear and intuitive visualization of the data distribution, facilitating the identification of patterns and trends.
+    - The chart interface is interactive, allowing the user to explore the data in a dynamic and personalized way.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.5.0:
+
+In this new version, the following improvements and features have been implemented:
+
+User Experience Enhancement:
+- It is now possible to pause any stage of monitoring.
+    - During the pause, the system temporarily stops data collection, allowing the user to make adjustments or changes without new data being processed.
+    - The pause functionality can be activated or deactivated at any time, providing greater control over monitoring.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.4.0
+
+In this new version, the following improvements and features have been implemented:
+
+Bug Fixes:
+- An error related to the start/stop analysis command has been fixed:
+    - The issue occurred when the process was stopped during scanning, the initial stage of monitoring. Now, the system correctly handles this situation, preventing unexpected failures.
+
+- Fixed an issue when opening the "Advanced Color Selector" in the settings menu. Clicking the corresponding button did not open the dialog window with the advanced color settings, which was an error.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.3.0:
+
+In this new release, the following improvements and features have been implemented:
+
+Improved Robustness and Stability:
+- Existence checks were added before accessing object methods and properties, making the system more robust and preventing unexpected errors during initialization.
+- The method _invalidar_cache_cores_ is now called only if it actually exists, preventing exceptions from invalid calls.
+- The attribute _cor_selecao_future_, which was undefined, was removed, eliminating unnecessary error messages and providing a smoother experience.
+
+Optimization of Processes and Interface:
+- The control of calls for retranslation of data was optimized: when changing the language, the system performs only the essential operations, avoiding unnecessary processing and increasing agility in language switching.
+- The methods for updating headers, data and column visibility were refactored with exception handling and clarity improvements, reflecting changes in the interface more accurately and quickly.
+- Column index management was adjusted to ensure consistency and avoid errors, allowing manipulation of columns without sorting or display issues.
+- Integration between data update, headers and visibility was improved, ensuring that all changes are correctly reflected in the interface.
+
+General Fixes and Improvements:
+- Several adjustments were made in processing methods, resulting in greater stability and performance, with fewer interruptions for the user.
+
+Summary:
+
+What's New in Version 0.0.3.0:
+
+- Robustness and Stability:
+    - Existence checks for attributes and methods to avoid unexpected errors.
+    - Removal of undefined attributes and invalid calls.
+
+- Interface and Process Optimization:
+    - Efficient control of retranslation when switching languages.
+    - Refactoring of interface update methods.
+    - Adjustment and integration in column management.
+
+- General Improvements:
+    - Minor fixes and enhancements in processing methods, increasing the system's stability and performance.
+
+
+_________________________________________________
+
+
+RELEASE NOTES: Version 0.0.2.0:
+
+In this new version, the following improvements and features have been implemented:
+
+Complete refactoring of the internationalization system:
+- The language and translation system has been entirely rewritten, now using the native resources of the PySide6 framework and the Qt library. This change has resulted in a significant increase in responsiveness and performance.
+- In preliminary tests, a substantial performance gain was observed when translating tables with up to 2,000 events. Above this volume, the interface repaint process impacts performance, which may cause temporary GUI freezes until the workload is completed.
+- Important recommendation: To avoid data loss or unexpected application closure, the language should be set BEFORE starting monitoring, especially in high data volume scenarios. Language switching should only be performed with monitoring paused. NEVER change the language during an active monitoring session.
+
+Warning window for language switching:
+- A bilingual dialog window has been implemented to notify the user whenever there is a switch between the supported languages.
+
+Expansion and granularity of data columns:
+- The columns "Size", "Uncompressed", and "Binary" have been split. Each has given rise to 5 new columns (totaling 15), allowing for more granular and precise filtering and analysis of file and directory sizes.
+
+Redesign of the statistical analysis module:
+- The statistical data analysis has been restructured to become compatible with the new metadata columns. This has resulted in higher quality analyses, with better-defined scales and more robust data handling.
+
+Improvement in file monitoring:
+- Monitoring accuracy has been enhanced, with greater detail in identifying file types based on their extensions.
+
+Menu interface redesign:
+- The menu system design has been improved to organize and display all monitored metadata more clearly and intuitively.
+
+Non-modal secondary windows:
+- Secondary interfaces (interactive dialogs) no longer block interaction with the application's main window, allowing for a smoother workflow.
+
+Internationalization of the date filter:
+- The period filtering system has been improved. The calendar component for date selection is now compatible with the translation system, displaying month and day names in the selected language.
+
+
+Summary:
+
+What's New in Version 0.0.2.0:
+
+- Native Translation System (Qt/PySide6): The language system has been completely rewritten to use Qt's native resources, resulting in greater performance and responsiveness.
+    - Warning: It is recommended to set the language before starting monitoring to avoid freezes or data loss in high-volume scenarios.
+
+- Interface Improvements (UI/UX):
+    - Added a confirmation dialog when switching languages.
+    - Secondary windows no longer block the main interface.
+    - Redesigned menus for better metadata organization.
+    - The date filter calendar is now translated to the selected language.
+
+- More Powerful Data Analysis:
+    - The file size columns ("Size", "Uncompressed", "Binary") have been expanded to 15 new columns, allowing for much more precise filters.
+    - The statistical analysis module has been updated to support the new columns, generating more detailed and accurate reports.
+
+- Enhanced Monitoring:
+    - Improved detection of file types by extension.

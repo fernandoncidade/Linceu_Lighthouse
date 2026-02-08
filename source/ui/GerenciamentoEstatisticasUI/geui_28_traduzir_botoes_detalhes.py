@@ -1,0 +1,21 @@
+from source.utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
+def _traduzir_botoes_detalhes(self, msg):
+    try:
+        for botao in msg.buttons():
+            if botao.text() == "Show Details..." or botao.text() == "Hide Details...":
+                if "Hide" in botao.text():
+                    botao.setText(self.loc.get_text("hide_details"))
+
+                else:
+                    botao.setText(self.loc.get_text("show_details"))
+
+                fonte_metrica = botao.fontMetrics()
+                texto_largura = fonte_metrica.horizontalAdvance(botao.text())
+                largura_minima = texto_largura + 20
+                botao.setMinimumWidth(largura_minima)
+                botao.adjustSize()
+
+    except Exception as e:
+        logger.error(f"Erro ao traduzir botões de detalhes: {e}", exc_info=True)
