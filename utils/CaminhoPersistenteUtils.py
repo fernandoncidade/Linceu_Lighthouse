@@ -1,6 +1,5 @@
 import os
 from .LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def obter_caminho_persistente():
@@ -8,7 +7,6 @@ def obter_caminho_persistente():
     if not os.path.exists(config_dir):
         try:
             os.makedirs(config_dir)
-            logger.debug(f"Diretório de configuração criado: {config_dir}")
 
         except Exception as e:
             logger.error(f"Erro ao criar diretório de configuração: {e}")

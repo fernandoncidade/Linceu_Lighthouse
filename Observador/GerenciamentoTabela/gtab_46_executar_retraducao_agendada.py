@@ -7,13 +7,11 @@ def _executar_retraducao_agendada(gt):
         return
 
     if gt._retraducao_realizada_para_idioma and gt.loc.idioma_atual == gt._idioma_ultima_retraducao:
-        logger.debug("Ignorando execução de retradução: já concluída para este idioma.")
         return
 
     gt._retraducao_agendada = False
     gt._retraducao_em_andamento = True
     try:
-        logger.debug("Iniciando retradução de dados existentes")
         if not hasattr(gt.interface, 'tabela_dados'):
             return
 
@@ -67,8 +65,6 @@ def _executar_retraducao_agendada(gt):
                 gt.interface.gerenciador_progresso_ui.atualizar_progresso_traducao(progresso, row + 1, total_linhas)
                 QApplication.processEvents()
 
-        logger.debug(f"Retradução concluída para {total_linhas} linhas")
-
     except Exception as e:
         logger.error(f"Erro ao retraduzir dados existentes: {e}", exc_info=True)
 
@@ -81,8 +77,8 @@ def _executar_retraducao_agendada(gt):
                 tabela.viewport().update()
                 QApplication.processEvents()
 
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao finalizar atualização da tabela: {e}", exc_info=True)
 
         try:
             if hasattr(gt.interface, 'gerenciador_progresso_ui'):
@@ -90,8 +86,8 @@ def _executar_retraducao_agendada(gt):
                 GerenciadorProgresso.esconder_barra_progresso(gt.interface)
                 gt.interface.rotulo_resultado.setText(gt.loc.get_text("translation_complete"))
 
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao finalizar barra de progresso: {e}", exc_info=True)
 
         gt._idioma_ultima_retraducao = gt.loc.idioma_atual
         gt._retraducao_realizada_para_idioma = True

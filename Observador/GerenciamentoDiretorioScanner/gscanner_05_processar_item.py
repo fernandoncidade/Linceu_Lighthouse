@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _processar_item(self, nome, caminho, tipo):
     try:
@@ -10,9 +12,7 @@ def _processar_item(self, nome, caminho, tipo):
 
         self.current_item = item
         metadados = self.gerenciador_colunas.get_metadados(item)
-
         tipo = self.get_file_type(caminho)
-
         with self.lock_db:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
@@ -107,4 +107,4 @@ def _processar_item(self, nome, caminho, tipo):
                 conn.commit()
 
     except Exception as e:
-        print(f"Erro ao processar item {nome}: {e}")
+        logger.error(f"Erro ao processar item {nome}: {e}", exc_info=True)

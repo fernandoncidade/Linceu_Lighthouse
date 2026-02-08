@@ -1,4 +1,6 @@
 import sqlite3
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def limpar_registros(self):
     try:
@@ -27,4 +29,4 @@ def limpar_registros(self):
             cursor.execute("VACUUM")
 
     except Exception as e:
-        print(f"Erro ao limpar registros do banco: {e}")
+        logger.error(f"Erro ao limpar registros do banco: {e}", exc_info=True)

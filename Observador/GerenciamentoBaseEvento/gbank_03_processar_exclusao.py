@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def processar_exclusao(self, evento):
     try:
@@ -154,11 +156,9 @@ def processar_exclusao(self, evento):
                 "tabelas",
                 "timestamp"
             ]
-            print(f"Processando exclusão para: {evento.get('nome')}")
 
             if result:
                 metadados = dict(zip(colunas, result))
-                print(f"Metadados encontrados: tipo={metadados.get('tipo')}, dir={metadados.get('dir_anterior')}")
 
             else:
                 metadados = {
@@ -204,7 +204,6 @@ def processar_exclusao(self, evento):
                     "registros": "",
                     "tabelas": ""
                 }
-                print(f"Nenhum metadado encontrado, usando valores default. Tipo identificado: {metadados['tipo']}")
 
             valores = (
                 self.observador.loc.get_text("op_deleted"),
@@ -350,16 +349,15 @@ def processar_exclusao(self, evento):
             """, valores)
 
             cursor.execute("COMMIT")
-            print(f"Registro de exclusão concluído para: {evento.get('nome')}")
 
             if not evento.get("_temporario", False):
                 self._atualizar_interface_apos_exclusao()
 
     except Exception as e:
-        print(f"Erro ao processar exclusão: {e}")
+        logger.error(f"Erro ao processar exclusão: {e}", exc_info=True)
         try:
-            if conn:
+            if 'conn' in locals():
                 cursor.execute("ROLLBACK")
 
-        except Exception:
-            pass
+        except Exception as ex:
+            logger.error(f"Erro ao executar ROLLBACK: {ex}", exc_info=True)

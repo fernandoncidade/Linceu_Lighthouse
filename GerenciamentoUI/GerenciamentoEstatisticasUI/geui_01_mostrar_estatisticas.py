@@ -1,29 +1,18 @@
 import os
-import sys
 import sqlite3
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QDialog, QHBoxLayout, QMessageBox, QApplication, QSplitter)
 from utils.LogManager import LogManager
 from utils.IconUtils import get_icon_path
-
 logger = LogManager.get_logger()
 
 def mostrar_estatisticas(self):
-    statistics_icon_path = get_icon_path("statistics.ico")
-    salvar_icon_path = get_icon_path("salvar.ico")
-    logger.debug(f"Caminho do ícone de estatísticas: {statistics_icon_path}")
-    logger.debug(f"Caminho do ícone de salvar: {salvar_icon_path}")
-    logger.debug(f"Arquivo de ícone de estatísticas existe? {os.path.exists(statistics_icon_path)}")
-    logger.debug(f"Arquivo de ícone de salvar existe? {os.path.exists(salvar_icon_path)}")
-
     try:
         if self.dialog_estatisticas and self.dialog_estatisticas.isVisible():
             self.dialog_estatisticas.raise_()
             self.dialog_estatisticas.activateWindow()
             return
-
-        logger.info("Gerando estatísticas")
 
         try:
             with sqlite3.connect(self.evento_base.db_path) as conn:
@@ -82,7 +71,6 @@ def mostrar_estatisticas(self):
         QApplication.setOverrideCursor(Qt.WaitCursor)
 
         try:
-            logger.debug("Obtendo dados para estatísticas")
             df = gerador._obter_dados()
 
             if df.empty:
@@ -95,7 +83,6 @@ def mostrar_estatisticas(self):
             self.dialog_estatisticas.show()
             QApplication.restoreOverrideCursor()
             self._gerar_todos_graficos(graficos)
-            logger.info("Dialog de estatísticas criado com sucesso")
 
         finally:
             QApplication.restoreOverrideCursor()

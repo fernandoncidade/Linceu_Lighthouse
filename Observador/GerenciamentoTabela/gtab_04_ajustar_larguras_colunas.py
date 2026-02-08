@@ -2,7 +2,6 @@ from PySide6.QtWidgets import QHeaderView
 from PySide6.QtGui import QFontMetrics
 from PySide6.QtCore import Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def ajustar_larguras_colunas(self, tabela_dados, colunas_visiveis):
@@ -30,6 +29,6 @@ def ajustar_larguras_colunas(self, tabela_dados, colunas_visiveis):
                 item.setTextAlignment(Qt.AlignCenter)
                 item.setToolTip(texto_cabecalho)
 
-    except Exception:
-        logger.error("Erro ao ajustar larguras das colunas", exc_info=True)
+    except Exception as e:
+        logger.error(f"Erro ao ajustar larguras das colunas: {e}", exc_info=True)
         raise

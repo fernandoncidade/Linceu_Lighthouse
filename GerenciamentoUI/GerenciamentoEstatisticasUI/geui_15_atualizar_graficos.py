@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import QMessageBox
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _atualizar_graficos(self, dialog_atual):

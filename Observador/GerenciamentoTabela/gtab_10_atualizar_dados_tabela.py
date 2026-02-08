@@ -2,7 +2,6 @@ import os
 import sqlite3
 from PySide6.QtWidgets import QTableWidgetItem, QApplication
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
@@ -108,7 +107,7 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
                                         item.setText(novo_texto)
 
                             except Exception as e:
-                                print(f"Erro ao processar coluna {key}: {e}")
+                                logger.error(f"Erro ao processar coluna {key}: {e}", exc_info=True)
                                 if not tabela_dados.item(row, col):
                                     tabela_dados.setItem(row, col, QTableWidgetItem(""))
 
@@ -116,11 +115,11 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
                             self.aplicar_cores_linha_especifica(tabela_dados, row, tipo_operacao_valor)
 
                 except Exception as e:
-                    print(f"Erro durante processamento: {e}")
+                    logger.error(f"Erro durante processamento: {e}", exc_info=True)
                     raise
 
     except Exception as e:
-        print(f"Erro crítico ao atualizar dados da tabela: {e}")
+        logger.error(f"Erro crítico ao atualizar dados da tabela: {e}", exc_info=True)
 
     finally:
         tabela_dados.viewport().update()

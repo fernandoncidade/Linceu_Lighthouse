@@ -3,7 +3,6 @@ from PySide6.QtCore import QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from utils.LogManager import LogManager
 from .geui_31_worker_grafico import GraficoWorker
-
 logger = LogManager.get_logger()
 
 def _gerar_todos_graficos(self, graficos):
@@ -56,7 +55,6 @@ def _iniciar_geracao_graficos(self):
 
 def _enfileirar_grafico(self, titulo, dados, func, titulo_original):
     try:
-        logger.debug(f"Enfileirando gráfico para processamento: {titulo}")
         self.fila_graficos.append({
             'titulo': titulo, 
             'dados': dados,
@@ -70,7 +68,6 @@ def _enfileirar_grafico(self, titulo, dados, func, titulo_original):
 def _processar_proximo_grafico(self):
     try:
         if not self.fila_graficos:
-            logger.debug("Fila de gráficos vazia, finalizando processo")
             self.gerando_grafico = False
             self._finalizar_processo()
             return
@@ -97,11 +94,7 @@ def _gerar_e_adicionar_grafico(self, grafico):
         titulo = grafico['titulo']
         func = grafico['func']
         titulo_original = grafico['titulo_original']
-
-        logger.debug(f"Gerando gráfico na thread principal: {titulo}")
-
         QApplication.processEvents()
-
         fig = func()
 
         self.graficos_dados[titulo] = {'fig': fig, 'func': func, 'titulo': titulo_original}
@@ -111,12 +104,10 @@ def _gerar_e_adicionar_grafico(self, grafico):
         tab_layout = QVBoxLayout()
         tab_layout.addWidget(canvas)
         tab.setLayout(tab_layout)
-
         QApplication.processEvents()
 
         self.tab_widget.addTab(tab, titulo)
 
-        logger.debug(f"Gráfico adicionado à interface: {titulo}")
         QApplication.processEvents()
 
     except Exception as e:
@@ -136,15 +127,11 @@ def _finalizar_processo(self):
         if hasattr(self, 'progress_dialog') and self.progress_dialog:
             self.progress_dialog.close()
 
-        logger.info(f"Processo de geração de gráficos finalizado. {self.graficos_processados} gráficos gerados.")
-
     except Exception as e:
         logger.error(f"Erro ao finalizar processo: {e}", exc_info=True)
 
 def _cancelar_processo(self):
     try:
-        logger.info("Cancelamento solicitado pelo usuário")
-
         if hasattr(self, 'worker') and self.worker and self.worker.isRunning():
             self.worker.parar()
             self.worker.wait(3000)
@@ -154,8 +141,6 @@ def _cancelar_processo(self):
 
         if hasattr(self, 'progress_dialog') and self.progress_dialog:
             self.progress_dialog.close()
-
-        logger.info("Processo cancelado com sucesso")
 
     except Exception as e:
         logger.error(f"Erro ao cancelar processo: {e}", exc_info=True)

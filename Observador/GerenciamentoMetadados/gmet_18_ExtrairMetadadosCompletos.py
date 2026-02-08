@@ -22,6 +22,7 @@ from .gmet_22_GetAtributosArquivo import get_atributos_arquivo
 from .gmet_23_GetAutorArquivo import get_autor_arquivo
 from .gmet_27_GetProtecaoArquivo import get_protecao_arquivo
 from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_completos(item, loc=None, contexto=None):
     try:
@@ -98,53 +99,53 @@ def extrair_metadados_completos(item, loc=None, contexto=None):
         return metadados
 
     except Exception as e:
-        print(f"Erro ao obter metadados completos: {e}")
+        logger.error(f"Erro ao obter metadados completos: {e}", exc_info=True)
         return {}
 
 def get_metadados(self, item=None):
-    logger = LogManager.get_logger()
+    try:
+        import traceback
+        call_stack = traceback.format_stack()
+        caller_info = call_stack[-2].strip() if len(call_stack) >= 2 else "Desconhecido"
 
-    import traceback
-    call_stack = traceback.format_stack()
-    caller_info = call_stack[-2].strip() if len(call_stack) >= 2 else "Desconhecido"
-
-    if item is None:
-        item = getattr(self, "current_item", None)
         if item is None:
-            logger.warning(f"get_metadados chamado sem 'item' e sem 'current_item' de: {caller_info}")
+            item = getattr(self, "current_item", None)
+            if item is None:
+                return {}
+
+        caminho = item.get("dir_atual") or item.get("dir_anterior")
+        if not caminho or not os.path.exists(caminho):
             return {}
 
-    caminho = item.get("dir_atual") or item.get("dir_anterior")
-    if not caminho or not os.path.exists(caminho):
-        logger.warning(f"Caminho inválido ou inexistente para o item: {caminho}")
-        return {}
+        tipo_operacao = item.get("tipo_operacao", "")
+        ext = os.path.splitext(caminho)[1].lower()
 
-    tipo_operacao = item.get("tipo_operacao", "")
-    ext = os.path.splitext(caminho)[1].lower()
+        if ext == '.txt' and tipo_operacao == self.loc.get_text("op_modified"):
+            try:
+                linhas = 0
+                palavras = 0
+                caracteres = 0
 
-    if ext == '.txt' and tipo_operacao == self.loc.get_text("op_modified"):
-        try:
-            linhas = 0
-            palavras = 0
-            caracteres = 0
+                with open(caminho, 'r', encoding='utf-8', errors='ignore') as f:
+                    for linha in f:
+                        linhas += 1
+                        palavras += len(linha.split())
+                        caracteres += len(linha)
 
-            with open(caminho, 'r', encoding='utf-8', errors='ignore') as f:
-                for linha in f:
-                    linhas += 1
-                    palavras += len(linha.split())
-                    caracteres += len(linha)
+                tamanho = os.path.getsize(caminho)
 
-            tamanho = os.path.getsize(caminho)
+                return {
+                    "linhas": str(linhas),
+                    "palavras": str(palavras),
+                    "caracteres": str(caracteres),
+                    "tamanho": formata_tamanho(tamanho)
+                }
 
-            return {
-                "linhas": str(linhas),
-                "palavras": str(palavras),
-                "caracteres": str(caracteres),
-                "tamanho": formata_tamanho(tamanho)
-            }
+            except Exception as e:
+                logger.error(f"Erro ao extrair metadados do TXT modificado {caminho}: {e}", exc_info=True)
+                return {}
 
-        except Exception as e:
-            logger.error(f"Erro ao extrair metadados do TXT modificado {caminho}: {e}")
-            return {}
+        return extrair_metadados_completos(item, self.loc, self)
 
-    return extrair_metadados_completos(item, self.loc, self)
+    except Exception as e:
+        logger.error(f"Erro ao obter metadados completos: {e}", exc_info=True)

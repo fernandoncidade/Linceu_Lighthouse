@@ -4,7 +4,6 @@ import matplotlib
 matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 
@@ -12,29 +11,19 @@ class BaseGerador:
     __slots__ = ['db_path', 'loc', 'interface', 'cores_operacoes', '__weakref__']
 
     def __init__(self, db_path, localizador=None, interface_principal=None):
-        logger.debug(f"Inicializando BaseGerador com banco de dados: {db_path}")
         self.db_path = db_path
         self.loc = localizador
         self.interface = interface_principal
         self.cores_operacoes = {}
-
-        import logging
-        logging.getLogger('matplotlib').setLevel(logging.WARNING)
-        logger.debug("Nível de log do matplotlib configurado para WARNING")
 
         self._configurar_estilo()
         self._atualizar_textos_traduzidos()
 
         if self.loc and hasattr(self.loc, 'idioma_alterado'):
             self.loc.idioma_alterado.connect(self._atualizar_textos_traduzidos)
-            logger.debug("Sinal de idioma_alterado conectado ao método _atualizar_textos_traduzidos")
-
-        else:
-            logger.debug("Localizador não disponível ou não possui sinal idioma_alterado")
 
     def _configurar_estilo(self):
         try:
-            logger.debug("Configurando estilo dos gráficos")
             plt.style.use('bmh')
 
             plt.rcParams.update({
@@ -56,7 +45,6 @@ class BaseGerador:
             plt.rcParams['xtick.labelsize'] = 9
             plt.rcParams['ytick.labelsize'] = 9
             plt.rcParams['font.family'] = 'sans-serif'
-            logger.debug("Estilo dos gráficos configurado com sucesso")
 
         except Exception as e:
             logger.error(f"Erro ao configurar estilo dos gráficos: {e}", exc_info=True)
@@ -65,13 +53,11 @@ class BaseGerador:
         self._atualizar_textos_traduzidos()
 
     def _atualizar_textos_traduzidos(self):
-        logger.debug("Atualizando textos traduzidos e cores para operações")
         try:
             gerenciador_cores = None
 
             if self.interface and hasattr(self.interface, 'gerenciador_menus_ui') and hasattr(self.interface.gerenciador_menus_ui, 'gerenciador_cores'):
                 gerenciador_cores = self.interface.gerenciador_menus_ui.gerenciador_cores
-                logger.debug("Gerenciador de cores obtido da interface principal")
 
             if gerenciador_cores:
                 self.cores_operacoes = {
@@ -82,8 +68,6 @@ class BaseGerador:
                     self.loc.get_text("op_moved") if self.loc else 'Movido': gerenciador_cores.obter_cor_hex("op_moved"),
                     self.loc.get_text("op_scanned") if self.loc else 'Escaneado': gerenciador_cores.obter_cor_hex("op_scanned"),
                 }
-                logger.debug("Cores personalizadas aplicadas do gerenciador de cores")
-
             else:
                 self.cores_operacoes = {
                     self.loc.get_text("op_renamed") if self.loc else 'Renomeado': '#00ff00',
@@ -93,34 +77,24 @@ class BaseGerador:
                     self.loc.get_text("op_moved") if self.loc else 'Movido': '#ff00ff',
                     self.loc.get_text("op_scanned") if self.loc else 'Escaneado': '#808080',
                 }
-                logger.debug("Cores padrão aplicadas (gerenciador de cores não disponível)")
-
-            logger.debug(f"Cores de operações atualizadas: {list(self.cores_operacoes.keys())}")
 
         except Exception as e:
             logger.error(f"Erro ao atualizar textos traduzidos: {e}", exc_info=True)
 
     def _obter_dados(self):
-        logger.debug("Obtendo dados do banco de dados para geração de gráficos")
-
         try:
             query = """
                 SELECT tipo_operacao, tipo, timestamp, size_mb 
                 FROM monitoramento 
                 WHERE timestamp IS NOT NULL
             """
-            logger.debug(f"Executando query SQL: {query}")
 
             db_uri = f'file:{self.db_path}?mode=ro&cache=shared'
             with sqlite3.connect(db_uri, uri=True, timeout=30) as conn:
                 conn.execute("PRAGMA journal_mode=WAL")
                 df = pd.read_sql_query(query, conn)
 
-            num_registros = len(df)
-            logger.debug(f"Dados obtidos com sucesso: {num_registros} registros")
-
             if self.loc:
-                logger.debug("Traduzindo dados obtidos")
                 df = self._traduzir_dados(df)
 
             return df
@@ -134,18 +108,13 @@ class BaseGerador:
             return pd.DataFrame()
 
     def _traduzir_dados(self, df):
-        logger.debug("Iniciando tradução de dados")
-
         try:
             mapeamento_operacoes = self._obter_mapeamento_operacoes()
-            logger.debug(f"Mapeamento de operações contém {len(mapeamento_operacoes)} entradas")
             df['tipo_operacao'] = df['tipo_operacao'].map(lambda x: mapeamento_operacoes.get(x, x))
 
             mapeamento_tipos = self._obter_mapeamento_tipos()
-            logger.debug(f"Mapeamento de tipos contém {len(mapeamento_tipos)} entradas")
             df['tipo'] = df['tipo'].map(lambda x: mapeamento_tipos.get(x, x))
 
-            logger.debug("Dados traduzidos com sucesso")
             return df
 
         except Exception as e:
@@ -154,7 +123,6 @@ class BaseGerador:
 
     def _obter_mapeamento_operacoes(self):
         try:
-            logger.debug("Obtendo mapeamento de operações para traduções")
             return {
                 # Inglês
                 "Added": self.loc.get_text("op_added"),
@@ -206,7 +174,6 @@ class BaseGerador:
 
     def _obter_mapeamento_tipos(self):
         try:
-            logger.debug("Obtendo mapeamento de tipos de arquivos para traduções")
             return {
                 # Inglês
                 "unknown": self.loc.get_text("unknown"),
@@ -433,7 +400,6 @@ class BaseGerador:
             return {}
 
     def _criar_grafico_sem_dados(self, titulo):
-        logger.warning(f"Criando gráfico sem dados para '{titulo}'")
         try:
             plt.figure(figsize=(12, 6))
             plt.text(0.5, 0.5, self.loc.get_text("no_data_to_plot") if self.loc else 'Sem dados para exibir', 
@@ -442,7 +408,6 @@ class BaseGerador:
 
             plt.title(titulo)
             plt.axis('off')
-            logger.debug("Gráfico sem dados criado com sucesso")
             return plt.gcf()
 
         except Exception as e:

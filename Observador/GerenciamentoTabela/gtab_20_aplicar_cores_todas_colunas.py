@@ -2,7 +2,6 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QColor, QPalette
 from PySide6.QtCore import QTimer, Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def aplicar_cores_todas_colunas(self):

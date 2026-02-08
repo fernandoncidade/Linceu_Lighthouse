@@ -2,13 +2,39 @@ from PySide6.QtWidgets import QVBoxLayout, QApplication, QProgressDialog, QMessa
 from PySide6.QtCore import QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
+
+try:
+    from shiboken6 import isValid as _shiboken_is_valid
+
+except Exception:
+    _shiboken_is_valid = None
+
+def _close_widget_safe(widget):
+    try:
+        if not widget:
+            return
+
+        if _shiboken_is_valid and not _shiboken_is_valid(widget):
+            return
+
+        try:
+            widget.close()
+
+        except RuntimeError:
+            try:
+                widget.deleteLater()
+
+            except Exception:
+                pass
+
+    except Exception:
+        pass
 
 def _regenerar_graficos_existentes(self, graficos_atualizados, mapeamento_funcoes):
     try:
         if hasattr(self, 'progress_regeneracao') and self.progress_regeneracao:
-            self.progress_regeneracao.close()
+            _close_widget_safe(self.progress_regeneracao)
             self.progress_regeneracao = None
 
         if not self.tab_widget or self.tab_widget.count() == 0:
@@ -69,7 +95,6 @@ def _regenerar_proximo_grafico(self):
             if hasattr(self, 'progress_regeneracao') and self.progress_regeneracao:
                 self.progress_regeneracao.close()
 
-            logger.info("Regeneração de gráficos concluída")
             return
 
         grafico_info = self.graficos_para_regenerar[self.indice_regeneracao_atual]
@@ -82,12 +107,8 @@ def _regenerar_proximo_grafico(self):
             QApplication.processEvents()
 
         try:
-            logger.debug(f"Regenerando gráfico: {grafico_atualizado['titulo']}")
-
             QApplication.processEvents()
-
             nova_fig = grafico_atualizado["func"]()
-
             novo_titulo = grafico_atualizado["func"].__self__.loc.get_text(grafico_atualizado["titulo"]) \
                 if hasattr(grafico_atualizado["func"].__self__.loc, 'get_text') else grafico_atualizado["titulo"]
 
@@ -98,9 +119,7 @@ def _regenerar_proximo_grafico(self):
             }
 
             novo_canvas = FigureCanvas(nova_fig)
-
             QApplication.processEvents()
-
             tab_atual = self.tab_widget.widget(i)
             if tab_atual:
                 layout_atual = tab_atual.layout()
@@ -139,14 +158,9 @@ def _regenerar_proximo_grafico(self):
 
 def _cancelar_regeneracao(self):
     try:
-        logger.info("Cancelamento da regeneração solicitado pelo usuário")
-
         self.indice_regeneracao_atual = len(self.graficos_para_regenerar)
-
         if hasattr(self, 'progress_regeneracao') and self.progress_regeneracao:
             self.progress_regeneracao.close()
-
-        logger.info("Processo de regeneração cancelado com sucesso")
 
     except Exception as e:
         logger.error(f"Erro ao cancelar regeneração: {e}", exc_info=True)

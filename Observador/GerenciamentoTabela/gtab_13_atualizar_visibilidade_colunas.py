@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import QApplication
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def atualizar_visibilidade_colunas(self, atualizar_em_massa=False):

@@ -1,5 +1,7 @@
 import os
 from .gmet_21_GetFormataTamanho import formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_backup(caminho, loc):
     metadados = {}
@@ -85,17 +87,17 @@ def extrair_metadados_backup(caminho, loc):
                 metadados['binario'] = formata_tamanho(tamanho)
 
         except Exception as e:
-            print(f"Erro ao contar linhas do arquivo de backup {caminho}: {e}")
+            logger.error(f"Erro ao contar linhas do arquivo de backup {caminho}: {e}", exc_info=True)
 
             try:
                 tamanho = os.path.getsize(caminho)
                 metadados['tamanho'] = formata_tamanho(tamanho)
 
-            except:
-                pass
+            except Exception as e:
+                logger.error(f"Erro ao obter tamanho do arquivo de backup {caminho}: {e}", exc_info=True)
 
     except Exception as e:
-        print(f"Erro ao extrair metadados do backup {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados do backup {caminho}: {e}", exc_info=True)
 
     return metadados
 
@@ -107,7 +109,8 @@ def eh_arquivo_texto(caminho):
         texto_invalido = sum(1 for b in sample if b < 9 or (b > 13 and b < 32 and b != 27))
         return texto_invalido / len(sample) < 0.3 if sample else False
 
-    except Exception:
+    except Exception as e:
+        logger.error(f"Erro ao verificar se o arquivo é texto {caminho}: {e}", exc_info=True)
         return False
 
 def contar_linhas(caminho):
@@ -121,5 +124,5 @@ def contar_linhas(caminho):
                 return sum(1 for _ in f)
 
         except Exception as e:
-            print(f"Erro ao contar linhas: {e}")
+            logger.error(f"Erro ao contar linhas: {e}", exc_info=True)
             return 0

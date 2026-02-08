@@ -3,6 +3,8 @@ import win32file
 import win32con
 import ctypes
 from ctypes import wintypes
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _arquivo_assinado(caminho: str) -> bool:
     try:
@@ -83,7 +85,8 @@ def _arquivo_assinado(caminho: str) -> bool:
 
         return False
 
-    except Exception:
+    except Exception as e:
+        logger.error(f"Erro ao verificar assinatura do arquivo {caminho}: {e}", exc_info=True)
         return False
 
 def get_protecao_arquivo(gerenciador, item, loc):
@@ -240,8 +243,8 @@ def get_protecao_arquivo(gerenciador, item, loc):
                         except ImportError:
                             pass
 
-                except Exception:
-                    pass
+                except Exception as e:
+                    logger.error(f"Erro ao verificar proteção de arquivo compactado {caminho}: {e}", exc_info=True)
 
         try:
             with gerenciador.lock_cache:
@@ -249,12 +252,13 @@ def get_protecao_arquivo(gerenciador, item, loc):
                     entry = gerenciador.cache_metadados.setdefault(caminho, {})
                     entry["protegido"] = bool(protegido)
 
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao salvar proteção em cache: {e}", exc_info=True)
 
         return loc.get_text("yes") if protegido else loc.get_text("no")
 
     except Exception as e:
+        logger.error(f"Erro ao verificar proteção do arquivo {caminho}: {e}", exc_info=True)
         if "protegido" in item and item["protegido"]:
             return loc.traduzir_metadados(item["protegido"], "protegido")
 

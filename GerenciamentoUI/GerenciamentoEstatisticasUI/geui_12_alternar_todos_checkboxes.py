@@ -1,23 +1,21 @@
 from PySide6.QtCore import Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _alternar_todos_checkboxes(self):
-    if self.checkbox_todos.checkState() == Qt.PartiallyChecked:
-        self.checkbox_todos.setCheckState(Qt.Checked)
+    try:
+        if self.checkbox_todos.checkState() == Qt.PartiallyChecked:
+            self.checkbox_todos.setCheckState(Qt.Checked)
 
-    checked = self.checkbox_todos.checkState() == Qt.Checked
+        checked = self.checkbox_todos.checkState() == Qt.Checked
+        self.checkbox_todos.blockSignals(True)
+        for titulo, data in self.checkboxes_graficos.items():
+            checkbox = data['checkbox']
+            checkbox.blockSignals(True)
+            checkbox.setChecked(checked)
+            checkbox.blockSignals(False)
 
-    logger.debug(f"Checkbox 'Selecionar Todos' foi {'marcado' if checked else 'desmarcado'}")
+        self.checkbox_todos.blockSignals(False)
 
-    self.checkbox_todos.blockSignals(True)
-
-    for titulo, data in self.checkboxes_graficos.items():
-        checkbox = data['checkbox']
-        checkbox.blockSignals(True)
-        checkbox.setChecked(checked)
-        checkbox.blockSignals(False)
-        logger.debug(f"Checkbox '{titulo}' definido como: {checked}")
-
-    self.checkbox_todos.blockSignals(False)
+    except Exception as e:
+        logger.error(f"Erro ao alternar todos os checkboxes: {e}", exc_info=True)

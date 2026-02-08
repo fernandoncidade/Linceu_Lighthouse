@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def processar_eventos_movimentacao(self, eventos_movidos, callback=None):
     if not eventos_movidos:
@@ -10,7 +12,6 @@ def processar_eventos_movimentacao(self, eventos_movidos, callback=None):
             cursor = conn.cursor()
             cursor.execute("PRAGMA synchronous = OFF")
             cursor.execute("BEGIN TRANSACTION")
-
             valores_lote = []
             colunas = [
                 'tipo_operacao', 
@@ -83,15 +84,14 @@ def processar_eventos_movimentacao(self, eventos_movidos, callback=None):
 
             cursor.execute("COMMIT")
             cursor.execute("PRAGMA synchronous = NORMAL")
-
             if callback and callable(callback):
                 callback()
 
     except Exception as e:
-        print(f"Erro ao processar lote de eventos movidos: {e}")
+        logger.error(f"Erro ao processar lote de eventos movidos: {e}", exc_info=True)
         try:
             if 'conn' in locals() and conn:
                 cursor.execute("ROLLBACK")
 
-        except:
-            pass
+        except Exception as e:
+            logger.error(f"Erro ao reverter transação: {e}", exc_info=True)

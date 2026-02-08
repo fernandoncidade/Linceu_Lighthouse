@@ -1,4 +1,6 @@
 import os
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def get_autor_arquivo(item, loc):
     caminho = item.get("dir_atual") or item.get("dir_anterior")
@@ -22,7 +24,7 @@ def get_autor_arquivo(item, loc):
                 autor = f"{dominio}\\{nome}"
 
             except Exception as e:
-                print(f"Erro ao obter proprietário da pasta: {e}")
+                logger.error(f"Erro ao obter proprietário da pasta: {e}", exc_info=True)
                 autor = ""
 
         else:
@@ -45,7 +47,7 @@ def get_autor_arquivo(item, loc):
                             autor = autor.strip()
 
                 except Exception as e:
-                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
                     autor = ""
 
             elif ext in [".xlsx", ".xlsm", ".xltx", ".xltm"]:
@@ -58,7 +60,7 @@ def get_autor_arquivo(item, loc):
                     wb.close()
 
                 except Exception as xlsx_err:
-                    print(f"Erro ao ler XLSX com openpyxl: {xlsx_err}")
+                    logger.error(f"Erro ao ler XLSX com openpyxl: {xlsx_err}", exc_info=True)
                     autor = ""
 
             elif ext == ".xls":
@@ -74,7 +76,7 @@ def get_autor_arquivo(item, loc):
                             autor = autor.strip()
 
                 except Exception as e:
-                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
                     autor = ""
 
             elif ext in [".pptx", ".potx", ".ppsx"]:
@@ -95,7 +97,7 @@ def get_autor_arquivo(item, loc):
                             autor = autor.strip()
 
                 except Exception as e:
-                    print(f"Erro ao obter autor de {ext} usando olefile: {e}")
+                    logger.error(f"Erro ao obter autor de {ext} usando olefile: {e}", exc_info=True)
                     autor = ""
 
             elif ext in [".mdb", ".accdb"]:
@@ -130,7 +132,7 @@ def get_autor_arquivo(item, loc):
                             autor = ""
 
                 except Exception as e:
-                    print(f"Erro ao extrair informações do MSG: {e}")
+                    logger.error(f"Erro ao extrair informações do MSG: {e}", exc_info=True)
                     autor = ""
 
             elif ext in [".pst", ".ost"]:
@@ -161,7 +163,7 @@ def get_autor_arquivo(item, loc):
                 autor = ""
 
     except Exception as e:
-        print(f"Erro ao obter autor do arquivo {caminho}: {e}")
+        logger.error(f"Erro ao obter autor do arquivo {caminho}: {e}", exc_info=True)
         pass
 
     return loc.traduzir_metadados(autor, "autor")

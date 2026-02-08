@@ -2,7 +2,6 @@ import os
 import sqlite3
 from PySide6.QtCore import QThread
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def scan_directory(self, directory):
@@ -20,25 +19,21 @@ def scan_directory(self, directory):
         for root, dirs, files in os.walk(directory):
             while hasattr(self, "_pause_event") and not self._pause_event.is_set():
                 if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                    logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
                     return
 
                 import time; time.sleep(0.1)
 
             if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                logger.info("Scan interrompido por requestInterruption ou desligando")
                 return
 
             for d in dirs:
                 while hasattr(self, "_pause_event") and not self._pause_event.is_set():
                     if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                        logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
                         return
 
                     import time; time.sleep(0.1)
 
                 if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                    logger.info("Scan interrompido por requestInterruption ou desligando")
                     return
 
                 caminho = os.path.join(root, d)
@@ -99,13 +94,11 @@ def scan_directory(self, directory):
             for f in files:
                 while hasattr(self, "_pause_event") and not self._pause_event.is_set():
                     if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                        logger.info("Scan interrompido durante pausa por requestInterruption ou desligando")
                         return
 
                     import time; time.sleep(0.1)
 
                 if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
-                    logger.info("Scan interrompido por requestInterruption ou desligando")
                     return
 
                 caminho = os.path.join(root, f)

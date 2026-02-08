@@ -2,7 +2,6 @@ import os
 import time
 from utils.LogManager import LogManager
 from pymediainfo import MediaInfo
-
 logger = LogManager.get_logger()
 
 def extrair_metadados_video(caminho, loc=None):
@@ -15,7 +14,6 @@ def extrair_metadados_video(caminho, loc=None):
     try:
         import win32security
         import ntsecuritycon as con, win32api
-
         try:
             with open(caminho, 'rb') as f:
                 f.read(1)
@@ -33,7 +31,7 @@ def extrair_metadados_video(caminho, loc=None):
             pass
 
     except Exception as e:
-        logger.warning(f"Não foi possível ajustar permissões em '{caminho}': {e}")
+        logger.error(f"Não foi possível ajustar permissões em '{caminho}': {e}", exc_info=True)
 
     max_tentativas = 5
     delays = [0.5, 1.0, 2.0, 3.0, 5.0]
@@ -64,9 +62,8 @@ def extrair_metadados_video(caminho, loc=None):
                 return metadados
 
         except Exception as e:
-            print(f"Tentativa {tentativa + 1} falhou: {e}")
+            logger.error(f"Tentativa {tentativa + 1} falhou: {e}", exc_info=True)
             time.sleep(delays[tentativa])
-
             if tentativa == max_tentativas - 1:
                 try:
                     media_info = MediaInfo.parse(caminho, full=True)
@@ -90,6 +87,6 @@ def extrair_metadados_video(caminho, loc=None):
                             break
 
                 except Exception as me:
-                    print(f"Fallback também falhou: {me}")
+                    logger.error(f"Fallback também falhou: {me}", exc_info=True)
 
     return metadados

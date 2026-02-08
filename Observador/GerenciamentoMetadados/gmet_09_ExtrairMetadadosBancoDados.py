@@ -1,4 +1,6 @@
 import os
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_banco_dados(caminho, loc):
     metadados = {}
@@ -29,8 +31,8 @@ def extrair_metadados_banco_dados(caminho, loc):
                             contagem = cursor.fetchone()[0]
                             total_linhas += contagem
 
-                        except:
-                            pass
+                        except Exception as e:
+                            logger.error(f"Erro ao contar linhas da tabela {nome_tabela} no banco SQLite {caminho}: {e}", exc_info=True)
 
                 metadados['linhas_estimadas'] = total_linhas
                 metadados['registros'] = str(total_linhas)  
@@ -39,7 +41,7 @@ def extrair_metadados_banco_dados(caminho, loc):
                 conexao.close()
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do banco SQLite {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do banco SQLite {caminho}: {e}", exc_info=True)
 
         elif ext == '.mdb' or ext == '.accdb':
             try:
@@ -58,10 +60,10 @@ def extrair_metadados_banco_dados(caminho, loc):
                 conn.close()
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do Access {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do Access {caminho}: {e}", exc_info=True)
                 metadados['tipo_acesso'] = "Microsoft Access Database"
 
     except Exception as e:
-        print(f"Erro geral ao extrair metadados do banco de dados {caminho}: {e}")
+        logger.error(f"Erro geral ao extrair metadados do banco de dados {caminho}: {e}", exc_info=True)
 
     return metadados

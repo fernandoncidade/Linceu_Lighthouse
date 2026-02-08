@@ -22,6 +22,8 @@ from Observador.GerenciamentoMetadados import (
     get_dimensoes_arquivo,
     get_protecao_arquivo
 )
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def get_metadados(gc, item):
     try:
@@ -52,7 +54,6 @@ def get_metadados(gc, item):
                 if (tipo_operacao == gc.loc.get_text("op_added") and 
                     os.path.isdir(caminho) and 
                     gc.cache_metadados[caminho].get("tamanho_dir_bytes", 0) == 0):
-                    print(f"Removendo cache zerado para diretório adicionado: {caminho}")
                     gc.cache_metadados.pop(caminho, None)
 
                 else:
@@ -144,7 +145,7 @@ def get_metadados(gc, item):
                             metadados["binary_file_tb"] = round(tamanho_bytes / 1024**4, 2)
 
                         except Exception as e:
-                            print(f"Erro ao calcular tamanho do executável: {e}")
+                            logger.error(f"Erro ao calcular tamanho do executável: {e}", exc_info=True)
 
                     elif tipo == gc.loc.get_text("file_source_code"):
                         metadados.update(extrair_metadados_codigo_fonte(caminho, gc.loc))
@@ -212,7 +213,7 @@ def get_metadados(gc, item):
                                 item[campo] = gc.cache_metadados[caminho][campo]
 
             except Exception as e:
-                print(f"Erro ao extrair metadados específicos: {e}")
+                logger.error(f"Erro ao extrair metadados específicos: {e}", exc_info=True)
 
             with gc.lock_cache:
                 gc.cache_metadados[caminho] = metadados
@@ -225,5 +226,5 @@ def get_metadados(gc, item):
         return {}
 
     except Exception as e:
-        print(f"Erro ao obter metadados: {e}")
+        logger.error(f"Erro ao obter metadados: {e}", exc_info=True)
         return {}

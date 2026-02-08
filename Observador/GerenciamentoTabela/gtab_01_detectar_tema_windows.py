@@ -1,6 +1,5 @@
 import winreg
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def detectar_tema_windows(self):
@@ -13,6 +12,6 @@ def detectar_tema_windows(self):
         winreg.CloseKey(chave)
         return "claro" if valor == 1 else "escuro"
 
-    except Exception:
-        logger.error("Erro ao detectar tema do Windows", exc_info=True)
+    except Exception as e:
+        logger.error(f"Erro ao detectar tema do Windows: {e}", exc_info=True)
         return "claro"

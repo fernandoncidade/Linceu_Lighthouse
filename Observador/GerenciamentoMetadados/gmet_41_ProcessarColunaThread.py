@@ -1,5 +1,7 @@
 import queue
 from PySide6.QtCore import QMetaObject, Qt
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def processar_coluna_thread(gc, coluna_key):
     while True:
@@ -20,4 +22,4 @@ def processar_coluna_thread(gc, coluna_key):
             continue
 
         except Exception as e:
-            print(f"Erro na thread da coluna '{coluna_key}': {e}")
+            logger.error(f"Erro na thread da coluna '{coluna_key}': {e}", exc_info=True)

@@ -1,3 +1,6 @@
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
 def callback_metadados(gc, futuro):
     try:
         caminho, metadados = futuro.result()
@@ -7,4 +10,4 @@ def callback_metadados(gc, futuro):
         gc.interface.atualizar_status()
 
     except Exception as e:
-        print(f"Erro no callback: {e}")
+        logger.error(f"Erro no callback: {e}", exc_info=True)

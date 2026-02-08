@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def _atualizar_layout_apos_mudanca_botao(self):

@@ -2,7 +2,6 @@ import textwrap
 from PySide6.QtGui import QFontMetrics
 from PySide6.QtCore import Qt
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def aplicar_quebra_linha_cabecalho(self, tabela, coluna_index):
@@ -36,5 +35,5 @@ def aplicar_quebra_linha_cabecalho(self, tabela, coluna_index):
             item.setText(texto_quebrado)
             item.setTextAlignment(Qt.AlignCenter)
 
-    except Exception:
-        logger.error(f"Erro ao aplicar quebra de linha no cabeçalho da coluna {coluna_index}", exc_info=True)
+    except Exception as e:
+        logger.error(f"Erro ao aplicar quebra de linha no cabeçalho da coluna {coluna_index}: {e}", exc_info=True)

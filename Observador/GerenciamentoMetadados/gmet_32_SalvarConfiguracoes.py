@@ -1,4 +1,6 @@
 import json
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def salvar_configuracoes(gc):
     config = {k: {"visivel": v["visivel"], "ordem": v["ordem"]} for k, v in gc.COLUNAS_DISPONIVEIS.items()}
@@ -7,4 +9,4 @@ def salvar_configuracoes(gc):
             json.dump(config, f, indent=4)
 
     except Exception as e:
-        print(f"Erro ao salvar configurações: {e}")
+        logger.error(f"Erro ao salvar configurações: {e}", exc_info=True)

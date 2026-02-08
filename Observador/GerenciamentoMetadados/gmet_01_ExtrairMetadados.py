@@ -1,6 +1,8 @@
 import os
 from pymediainfo import MediaInfo
 from PIL import Image
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados(caminho, loc):
     try:
@@ -35,15 +37,14 @@ def extrair_metadados(caminho, loc):
                             metadados['taxa_bits'] = f"{bit_rate//1000} kbps"
 
             except Exception as e:
-                print(f"Erro ao usar MediaInfo: {e}")
-
+                logger.error(f"Erro ao usar MediaInfo: {e}", exc_info=True)
                 if ext in ['.jpg', '.png']:
                     try:
                         with Image.open(caminho) as img:
                             metadados['dimensoes'] = f"{img.width}x{img.height}"
 
                     except Exception as ie:
-                        print(f"Erro ao abrir imagem: {ie}")
+                        logger.error(f"Erro ao abrir imagem: {ie}", exc_info=True)
 
                 elif ext == '.pdf':
                     try:
@@ -52,10 +53,10 @@ def extrair_metadados(caminho, loc):
                         pages = len(reader.pages)
 
                     except Exception as pe:
-                        print(f"Erro ao ler PDF: {pe}")
+                        logger.error(f"Erro ao ler PDF: {pe}", exc_info=True)
 
         return caminho, metadados
 
     except Exception as e:
-        print(f"Erro extraindo metadados: {e}")
+        logger.error(f"Erro extraindo metadados: {e}", exc_info=True)
         return caminho, {}

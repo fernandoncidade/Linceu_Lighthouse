@@ -1,5 +1,7 @@
 import os
 from .gmet_16_ExtrairMetadadosOlefile import extrair_metadados_olefile
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_apresentacao(caminho, loc):
     metadados = {}
@@ -43,7 +45,7 @@ def extrair_metadados_apresentacao(caminho, loc):
                             raise Exception("Falha ao obter metadados via Tika")
 
                     except Exception as e:
-                        print(f"Usando fallback para olefile: {e}")
+                        logger.error(f"Usando fallback para olefile: {e}", exc_info=True)
 
                         import olefile
                         if olefile.isOleFile(caminho):
@@ -67,9 +69,9 @@ def extrair_metadados_apresentacao(caminho, loc):
                                         metadados['titulo'] = info[2]
 
             except Exception as e:
-                print(f"Erro ao extrair metadados da apresentação {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados da apresentação {caminho}: {e}", exc_info=True)
 
     except Exception as e:
-        print(f"Erro geral ao extrair metadados da apresentação {caminho}: {e}")
+        logger.error(f"Erro geral ao extrair metadados da apresentação {caminho}: {e}", exc_info=True)
 
     return metadados

@@ -1,11 +1,12 @@
 import sqlite3
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _remover_exclusao_temporaria(self, nome, dir_anterior):
     try:
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
             cursor.execute("BEGIN TRANSACTION")
-
             cursor.execute("""
                 SELECT id FROM monitoramento 
                 WHERE tipo_operacao = ? AND nome = ? AND dir_anterior = ?
@@ -15,7 +16,6 @@ def _remover_exclusao_temporaria(self, nome, dir_anterior):
             resultado = cursor.fetchone()
             if resultado:
                 registro_id = resultado[0]
-
                 cursor.execute("""
                     DELETE FROM monitoramento 
                     WHERE id = ?
@@ -38,10 +38,10 @@ def _remover_exclusao_temporaria(self, nome, dir_anterior):
             cursor.execute("COMMIT")
 
     except Exception as e:
-        print(f"Erro ao remover exclusão temporária do banco: {e}")
+        logger.error(f"Erro ao remover exclusão temporária do banco: {e}", exc_info=True)
         if 'conn' in locals():
             try:
                 cursor.execute("ROLLBACK")
 
-            except:
-                pass
+            except Exception as e:
+                logger.error(f"Erro ao realizar rollback: {e}", exc_info=True)

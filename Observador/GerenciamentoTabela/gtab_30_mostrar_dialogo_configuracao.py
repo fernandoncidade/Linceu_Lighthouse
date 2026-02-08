@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import QMenu
 from PySide6.QtGui import QAction, QCursor
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def mostrar_dialogo_configuracao(self, pos=None):

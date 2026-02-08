@@ -1,7 +1,6 @@
-from utils.LogManager import LogManager
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QMessageBox
-
+from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 
@@ -20,25 +19,20 @@ class GerenciadorLimpeza:
             msg_box.setDefaultButton(botao_nao)
             msg_box.exec()
             if msg_box.clickedButton() != botao_sim:
-                logger.debug("Operação de limpeza cancelada pelo usuário")
                 return
 
             QApplication.setOverrideCursor(Qt.WaitCursor)
             try:
-                logger.info("Iniciando limpeza de dados")
                 if hasattr(self.interface, 'observador') and self.interface.observador and self.interface.observador.ativo:
-                    logger.debug("Desativando monitoramento antes de limpar")
                     self.interface.gerenciador_botoes.alternar_analise_diretorio()
 
                 self.interface.evento_base.limpar_registros()
-                logger.debug("Registros do banco de dados limpos")
                 self.interface.tabela_dados.clearContents()
                 self.interface.tabela_dados.setRowCount(0)
                 self.interface.tabela_dados.viewport().update()
                 self.interface.ultimo_salvamento = None
                 if hasattr(self.interface.painel_filtros, 'administrador_filtros'):
                     self.interface.painel_filtros.administrador_filtros.limpar_filtros()
-                    logger.debug("Filtros limpos via administrador")
 
                 else:
                     logger.warning("Não foi possível acessar o administrador de filtros")
@@ -47,7 +41,6 @@ class GerenciadorLimpeza:
                 if (hasattr(self.interface, 'gerenciador_colunas') and 
                     hasattr(self.interface.gerenciador_colunas, 'cache_metadados')):
                     self.interface.gerenciador_colunas.cache_metadados.clear()
-                    logger.debug("Cache de metadados limpo")
 
                 self.interface.rotulo_resultado.setText(self.interface.loc.get_text("data_cleared"))
                 self.interface.rotulo_contador_eventos.setText(f"{self.interface.loc.get_text('events_monitored')}: 0")
@@ -56,7 +49,6 @@ class GerenciadorLimpeza:
                     self.interface.barra_progresso.setValue(0)
 
                 self.interface.rotulo_resultado.setText(self.interface.loc.get_text("data_cleared"))
-                logger.info("Dados limpos com sucesso")
                 QApplication.restoreOverrideCursor()
                 QMessageBox.information(
                     self.interface, 

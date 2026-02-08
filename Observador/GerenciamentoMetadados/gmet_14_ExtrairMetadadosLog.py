@@ -1,5 +1,7 @@
 import os
 import re
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_log(caminho, loc):
     metadados = {}
@@ -22,8 +24,8 @@ def extrair_metadados_log(caminho, loc):
                         primeiras_linhas.append(linha)
                         contador += 1
 
-                except:
-                    pass
+                except Exception as e:
+                    logger.error(f"Erro ao ler linha do log {caminho}: {e}", exc_info=True)
 
                 if f.tell() > 100000: 
                     break
@@ -40,7 +42,7 @@ def extrair_metadados_log(caminho, loc):
                     ultimas_linhas = linhas_finais[-10:] if len(linhas_finais) > 10 else linhas_finais
 
             except Exception as e:
-                print(f"Erro ao ler últimas linhas: {e}")
+                logger.error(f"Erro ao ler últimas linhas: {e}", exc_info=True)
                 ultimas_linhas = []
 
         padroes_data = [
@@ -94,6 +96,7 @@ def extrair_metadados_log(caminho, loc):
                 continue
 
             break
+
         else:
             metadados['tipo_log'] = "Log genérico"
 
@@ -110,6 +113,6 @@ def extrair_metadados_log(caminho, loc):
             metadados['niveis_log'] = ", ".join(niveis_encontrados)
 
     except Exception as e:
-        print(f"Erro ao extrair metadados do log {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados do log {caminho}: {e}", exc_info=True)
 
     return metadados

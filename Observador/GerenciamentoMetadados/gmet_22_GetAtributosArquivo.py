@@ -1,6 +1,8 @@
 import os
 import win32file
 import win32con
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def get_atributos_arquivo(item, loc):
     caminho = item.get("dir_atual") or item.get("dir_anterior")
@@ -35,7 +37,8 @@ def get_atributos_arquivo(item, loc):
 
         return ", ".join(atributos)
 
-    except Exception:
+    except Exception as e:
+        logger.error(f"Erro ao obter atributos do arquivo {caminho}: {e}", exc_info=True)
         if "atributos" in item and item["atributos"]:
             return loc.traduzir_metadados(item["atributos"], "atributos")
 

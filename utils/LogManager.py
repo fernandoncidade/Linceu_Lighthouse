@@ -46,7 +46,6 @@ class LogManager:
             )
 
             cls._logger = logging.getLogger('FileManager')
-            cls._logger.info(f"Sistema de logging configurado com sucesso em {log_dir}")
 
         except Exception as e:
             user_data_dir = os.path.join(os.path.expanduser('~'), 'AppData', 'Local', 'File-Folder-Manager', 'logs')
@@ -63,7 +62,6 @@ class LogManager:
             )
 
             cls._logger = logging.getLogger('FileManager')
-            cls._logger.info(f"Sistema de logging configurado com diretório alternativo: {user_data_dir}")
             cls._logger.error(f"Erro ao configurar logging no diretório padrão: {e}")
 
     @classmethod

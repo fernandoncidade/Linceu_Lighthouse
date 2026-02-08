@@ -1,4 +1,6 @@
 import queue
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def _processar_fila(self):
     while True:
@@ -12,5 +14,5 @@ def _processar_fila(self):
             break
 
         except Exception as e:
-            print(f"Erro no processamento: {e}")
+            logger.error(f"Erro no processamento: {e}", exc_info=True)
             self.fila_processamento.task_done()

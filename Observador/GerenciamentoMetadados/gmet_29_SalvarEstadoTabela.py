@@ -1,3 +1,6 @@
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
 def salvar_estado_tabela(gc, tabela):
     eventos = []
     for row in range(tabela.rowCount()):

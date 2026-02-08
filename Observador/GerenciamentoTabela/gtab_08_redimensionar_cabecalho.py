@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def redimensionar_cabecalho(self, logicalIndex, oldSize, newSize):

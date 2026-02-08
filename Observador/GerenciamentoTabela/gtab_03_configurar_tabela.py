@@ -2,12 +2,10 @@ from PySide6.QtWidgets import QAbstractItemView, QPushButton
 from PySide6.QtCore import Qt, QTimer
 from utils.LogManager import LogManager
 import concurrent.futures
-
 logger = LogManager.get_logger()
 
 def configurar_tabela(self, tabela_dados):
     try:
-        logger.debug("Iniciando configuração da tabela")
         if tabela_dados is None:
             logger.error("Tabela de dados é None, não é possível configurar")
             return
@@ -38,8 +36,6 @@ def configurar_tabela(self, tabela_dados):
                 if self._selection_executor:
                     self._selection_future = self._selection_executor.submit(self._processar_selecao_background)
 
-                logger.debug("Todas as células foram selecionadas")
-
             except Exception as e:
                 logger.error(f"Erro ao selecionar todas as células: {e}", exc_info=True)
                 tabela_dados.blockSignals(False)
@@ -54,8 +50,6 @@ def configurar_tabela(self, tabela_dados):
                 tabela_dados.blockSignals(False)
                 if self._selection_executor:
                     self._selection_future = self._selection_executor.submit(self._processar_selecao_background)
-
-                logger.debug(f"Coluna {logical_index} foi selecionada")
 
             except Exception as e:
                 logger.error(f"Erro ao selecionar coluna {logical_index}: {e}", exc_info=True)
@@ -164,8 +158,6 @@ def configurar_tabela(self, tabela_dados):
         QApplication.processEvents()
         if hasattr(self, 'aplicar_cores_todas_colunas_processamento'):
             QTimer.singleShot(100, lambda: self.aplicar_cores_todas_colunas_processamento({'inicializacao': True}))
-
-        logger.debug("Tabela configurada com sucesso")
 
     except Exception as e:
         logger.error(f"Erro ao configurar tabela: {e}", exc_info=True)

@@ -1,5 +1,4 @@
 from utils.LogManager import LogManager
-
 logger = LogManager.get_logger()
 
 def set_coluna_colorir(self, coluna_key, checked):
@@ -17,4 +16,4 @@ def set_coluna_colorir(self, coluna_key, checked):
             self.remover_cor_coluna(coluna_key)
 
     except Exception as e:
-        logger.error(f"Erro ao definir cor da coluna '{coluna_key}': {e}")
+        logger.error(f"Erro ao definir cor da coluna '{coluna_key}': {e}", exc_info=True)

@@ -3,6 +3,8 @@ import rawpy
 import imageio
 from PIL import Image
 from psd_tools import PSDImage
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_imagem(caminho, loc=None):
     ext = os.path.splitext(caminho)[1].lower()
@@ -29,11 +31,10 @@ def extrair_metadados_imagem(caminho, loc=None):
                 metadados['dimensoes'] = f"{img.shape[1]}x{img.shape[0]}"
 
             except Exception as e1:
-                print(f"Erro com imageio: {e1}")
+                logger.error(f"Erro com imageio: {e1}", exc_info=True)
                 try:
                     import subprocess
                     import tempfile
-
                     with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as temp:
                         temp_filename = temp.name
 
@@ -46,10 +47,10 @@ def extrair_metadados_imagem(caminho, loc=None):
                     os.unlink(temp_filename)
 
                 except Exception as e2:
-                    print(f"Erro com método alternativo: {e2}")
+                    logger.error(f"Erro com método alternativo: {e2}", exc_info=True)
                     metadados['dimensoes'] = "Não disponível"
 
     except Exception as e:
-        print(f"Erro ao extrair metadados da imagem {caminho}: {e}")
+        logger.error(f"Erro ao extrair metadados da imagem {caminho}: {e}", exc_info=True)
 
     return metadados

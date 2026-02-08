@@ -1,5 +1,7 @@
 import os
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 def extrair_metadados_compactados(caminho, loc):
     metadados = {}
@@ -36,7 +38,7 @@ def extrair_metadados_compactados(caminho, loc):
                                 metadados['conteudo'] += f" {loc.get_text("and_others")} {len(arquivos)-5}"
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do ZIP {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do ZIP {caminho}: {e}", exc_info=True)
 
         elif ext == '.rar':
             try:
@@ -68,7 +70,7 @@ def extrair_metadados_compactados(caminho, loc):
                                 metadados['conteudo'] += f" {loc.get_text("and_others")} {len(arquivos)-5}"
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do RAR {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do RAR {caminho}: {e}", exc_info=True)
 
         elif ext == '.7z':
             try:
@@ -101,9 +103,9 @@ def extrair_metadados_compactados(caminho, loc):
                                 metadados['conteudo'] += f" {loc.get_text('and_others')} {len(arquivos)-5}"
 
             except Exception as e:
-                print(f"Erro ao extrair metadados do 7Z {caminho}: {e}")
+                logger.error(f"Erro ao extrair metadados do 7Z {caminho}: {e}", exc_info=True)
 
     except Exception as e:
-        print(f"Erro geral ao extrair metadados do arquivo compactado {caminho}: {e}")
+        logger.error(f"Erro geral ao extrair metadados do arquivo compactado {caminho}: {e}", exc_info=True)
 
     return metadados

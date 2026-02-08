@@ -1,3 +1,6 @@
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
+
 def formata_tamanho(tamanho):
     try:
         if not isinstance(tamanho, (int, float)):
@@ -22,8 +25,13 @@ def formata_tamanho(tamanho):
             return f"{tamanho/1024**4:.2f} TB"
 
     except Exception as e:
-        print(f"Erro ao formatar tamanho: {e}")
+        logger.error(f"Erro ao formatar tamanho: {e}", exc_info=True)
         return "0 B"
 
 def get_formata_tamanho(tamanho):
-    return formata_tamanho(tamanho)
+    try:
+        return formata_tamanho(tamanho)
+
+    except Exception as e:
+        logger.error(f"Erro ao obter tamanho formatado: {e}", exc_info=True)
+        return "0 B"

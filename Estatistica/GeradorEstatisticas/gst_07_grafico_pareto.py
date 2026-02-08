@@ -1,17 +1,15 @@
 import matplotlib
 matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
-from utils.LogManager import LogManager
 from .gst_01_base_gerador import BaseGerador
+from utils.LogManager import LogManager
+logger = LogManager.get_logger()
 
 
 class GraficoPareto(BaseGerador):
     __slots__ = []
 
     def gerar(self):
-        logger = LogManager.get_logger()
-        logger.debug("Iniciando geração do gráfico de pareto")
-
         try:
             df = self._obter_dados()
             titulo = self.loc.get_text("pareto_analysis") if self.loc else 'Análise de Pareto - Operações'
@@ -20,12 +18,10 @@ class GraficoPareto(BaseGerador):
                 logger.warning("Dataset vazio para geração do gráfico de pareto")
                 return self._criar_grafico_sem_dados(titulo)
 
-            logger.debug(f"Processando {len(df)} registros para análise de Pareto")
             contagem = df['tipo_operacao'].value_counts()
 
             if not contagem.empty:
                 freq_cum = contagem.cumsum() / contagem.sum() * 100
-                logger.debug(f"Criando gráfico de Pareto com {len(contagem)} categorias")
 
                 fig, ax1 = plt.subplots(figsize=(12, 6))
                 ax2 = ax1.twinx()
@@ -43,8 +39,6 @@ class GraficoPareto(BaseGerador):
 
                 pareto_dados = {op: {'count': count, 'cum_pct': pct} 
                                for op, count, pct in zip(contagem.index, contagem.values, freq_cum)}
-
-                logger.debug(f"Dados de Pareto calculados: {pareto_dados}")
 
             else:
                 logger.warning("Nenhuma operação encontrada para gerar o gráfico de Pareto")
