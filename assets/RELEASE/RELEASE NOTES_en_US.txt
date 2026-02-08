@@ -1,3 +1,37 @@
+RELEASE NOTES: Version 0.0.9.0:
+
+In this new version, the following improvements and features have been implemented:
+
+New Statistical Charts:
+- Two new types of Sankey charts have been added:
+    - Sankey Event → Path: Allows you to visualize the flow of monitored events to file and folder paths.
+    - Sankey Type → Path: Enables analysis of the flow of file types (extensions) to monitored paths.
+    - It is now possible to view the directory structure through a new interactive chart, making it easier to analyze the paths of monitored files and folders.
+    - More comprehensive statistical charts have been included, with options for different types of data visualization.
+- The charts use the Plotly library for interactive visualization and high-resolution export.
+
+Internationalization Improvements:
+- Chart titles and texts are now automatically translated according to the language selected in the interface.
+- The list of available charts has been updated, allowing quick selection and viewing of the main types of analysis.
+- The statistics panel has been adjusted to automatically calculate the ideal width, ensuring better adaptation of texts and buttons in the interface.
+- Adjustments in the translation of headers and file/folder types in the directory tree.
+
+Directory Interface Improvements:
+- The directory structure widget has been enhanced to allow operations such as copy, cut, paste, rename, create, and delete files/folders directly from the context menu.
+- Dynamic translation of buttons and menus in the directory panel has been implemented.
+
+General Fixes:
+- Adjustments in the logic for switching between performance and directory structure views, ensuring that only one panel is active at a time.
+- Fixes for minor bugs related to updating translated texts and chart rendering.
+- Minor issues in chart generation have been corrected, making the process more stable and reliable.
+- Improvements in the translation of chart texts and titles, following the user's chosen language.
+
+These improvements provide a more complete and intuitive experience for the user, expanding the possibilities for statistical analysis and file and folder management.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.8.0:
 
 In this new release, the following improvements and features have been implemented:

@@ -13,6 +13,9 @@ from .gst_12_grafico_scatter import GraficoScatter
 from .gst_13_grafico_sankey import GraficoSankey
 from .gst_14_grafico_radar import GraficoRadar
 from .gst_15_grafico_dotplot import GraficoDotplot
+from .gst_16_grafico_sankey_evento_caminho import GraficoSankeyEventoCaminho
+from .gst_17_grafico_sankey_tipo_caminho import GraficoSankeyTipoCaminho
+from .gst_18_grafico_arvore_diretorios import GraficoArvoreDiretorios
 
 __all__ = [
     'BaseGerador',
@@ -29,5 +32,8 @@ __all__ = [
     'GraficoScatter',
     'GraficoSankey',
     'GraficoRadar',
-    'GraficoDotplot'
+    'GraficoDotplot',
+    'GraficoSankeyEventoCaminho',
+    'GraficoSankeyTipoCaminho',
+    'GraficoArvoreDiretorios'
 ]

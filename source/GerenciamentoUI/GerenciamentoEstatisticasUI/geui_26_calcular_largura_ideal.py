@@ -4,6 +4,9 @@ logger = LogManager.get_logger()
 
 def _calcular_largura_ideal(self, graficos):
     try:
+        if graficos is None:
+            graficos = []
+
         font = QFont()
         font_metrics = QFontMetrics(font)
         max_text_width = 0
@@ -35,3 +38,4 @@ def _calcular_largura_ideal(self, graficos):
 
     except Exception as e:
         logger.error(f"Erro ao calcular largura ideal: {e}", exc_info=True)
+        return 260

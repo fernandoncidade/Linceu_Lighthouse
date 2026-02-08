@@ -1,5 +1,5 @@
 CONTRAT DE LICENCE COMMERCIALE - Linceu Lighthouse
-Version 0.0.8.0, 28 Octobre 2025
+Version 0.0.9.0, 11 Novembre 2025
 
 Ce Contrat de Licence (« Contrat ») est conclu entre :
 
@@ -60,7 +60,7 @@ Ce Contrat complète les termes du Contrat de Licence Utilisateur Final (CLUF) d
 
 Et étant d'accord, les parties exécutent ce Contrat.
 
-Brésil, Paraná, São José dos Pinhais, 28 Octobre 2025
+Brésil, Paraná, São José dos Pinhais, 11 Novembre 2025
 
 Fernando Nillsson Cidade
 ______________________________

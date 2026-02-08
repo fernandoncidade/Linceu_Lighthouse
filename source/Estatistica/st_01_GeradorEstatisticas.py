@@ -6,7 +6,8 @@ from utils.LogManager import LogManager
 from .GeradorEstatisticas import (GraficoPizza, GraficoBarras, GraficoTimeline, 
                                   GraficoTreemap, GraficoHistograma, GraficoPareto, GraficoLinha, 
                                   GraficoBoxplot, GraficoRadarEventos, GraficoHeatmap, GraficoScatter, 
-                                  GraficoSankey, GraficoRadar, GraficoDotplot)
+                                  GraficoSankey, GraficoRadar, GraficoDotplot,
+                                  GraficoSankeyEventoCaminho, GraficoSankeyTipoCaminho, GraficoArvoreDiretorios)
 logger = LogManager.get_logger()
 
 
@@ -36,7 +37,10 @@ class GeradorEstatisticas:
             'scatter': GraficoScatter,
             'sankey': GraficoSankey,
             'radar': GraficoRadar,
-            'dotplot': GraficoDotplot
+            'dotplot': GraficoDotplot,
+            'sankey_evento_caminho': GraficoSankeyEventoCaminho,
+            'sankey_tipo_caminho': GraficoSankeyTipoCaminho,
+            'arvore_diretorios': GraficoArvoreDiretorios
         }
 
         try:
@@ -216,6 +220,30 @@ class GeradorEstatisticas:
             logger.error(f"Erro ao gerar dotplot: {e}", exc_info=True)
             raise
 
+    def grafico_sankey_evento_caminho(self):
+        try:
+            return self._geradores['sankey_evento_caminho'].gerar()
+
+        except Exception as e:
+            logger.error(f"Erro ao gerar sankey evento→caminho: {e}", exc_info=True)
+            raise
+
+    def grafico_sankey_tipo_caminho(self):
+        try:
+            return self._geradores['sankey_tipo_caminho'].gerar()
+
+        except Exception as e:
+            logger.error(f"Erro ao gerar sankey tipo→caminho: {e}", exc_info=True)
+            raise
+
+    def grafico_arvore_diretorios(self):
+        try:
+            return self._geradores['arvore_diretorios'].gerar()
+
+        except Exception as e:
+            logger.error(f"Erro ao gerar árvore de diretórios: {e}", exc_info=True)
+            raise
+
     def gerar_grafico(self, tipo_grafico):
         try:
             if tipo_grafico in self._geradores:
@@ -246,9 +274,11 @@ class GeradorEstatisticas:
             self.loc.get_text("temporal_distribution") if self.loc else "temporal_distribution": self.grafico_heatmap,
             self.loc.get_text("file_size_analysis") if self.loc else "file_size_analysis": self.grafico_scatter,
             self.loc.get_text("file_operations_flow") if self.loc else "file_operations_flow": self.grafico_sankey,
-            self.loc.get_text("file_operations_flow") if self.loc else "file_operations_flow": self.grafico_sankey,
+            self.loc.get_text("event_to_path_flow") if self.loc else "event_to_path_flow": self.grafico_sankey_evento_caminho,
+            self.loc.get_text("type_to_path_flow") if self.loc else "type_to_path_flow": self.grafico_sankey_tipo_caminho,
             self.loc.get_text("operations_by_file_type") if self.loc else "operations_by_file_type": self.grafico_radar,
-            self.loc.get_text("file_size_distribution") if self.loc else "file_size_distribution": self.grafico_dotplot
+            self.loc.get_text("file_size_distribution") if self.loc else "file_size_distribution": self.grafico_dotplot,
+            self.loc.get_text("directory_tree") if self.loc else "directory_tree": self.grafico_arvore_diretorios
         }
 
         resultados = {}

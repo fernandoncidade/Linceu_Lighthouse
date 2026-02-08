@@ -16,8 +16,11 @@ def _criar_lista_graficos(self, gerador):
             {"titulo": self.loc.get_text("temporal_distribution"), "func": gerador.grafico_heatmap},
             {"titulo": self.loc.get_text("file_size_analysis"), "func": gerador.grafico_scatter},
             {"titulo": self.loc.get_text("file_operations_flow"), "func": gerador.grafico_sankey},
+            {"titulo": self.loc.get_text("event_to_path_flow"), "func": gerador.grafico_sankey_evento_caminho},
+            {"titulo": self.loc.get_text("type_to_path_flow"), "func": gerador.grafico_sankey_tipo_caminho},
             {"titulo": self.loc.get_text("operations_by_file_type"), "func": gerador.grafico_radar},
-            {"titulo": self.loc.get_text("file_size_distribution"), "func": gerador.grafico_dotplot}
+            {"titulo": self.loc.get_text("file_size_distribution"), "func": gerador.grafico_dotplot},
+            {"titulo": self.loc.get_text("directory_tree"), "func": gerador.grafico_arvore_diretorios}
         ]
 
     except Exception as e:

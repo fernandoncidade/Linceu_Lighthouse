@@ -19,16 +19,18 @@ def setup_ui(self):
         self.preview_nova.setLineWidth(1)
         self.preview_nova.setStyleSheet(f"background-color: {self.cor_atual.name()};")
 
-        layout_preview.addWidget(QLabel(f"{self.loc.get_text('current')}:"))
+        self.label_atual = QLabel(f"{self.loc.get_text('current')}:")
+        self.label_novo = QLabel(f"{self.loc.get_text('new')}:")
+        layout_preview.addWidget(self.label_atual)
         layout_preview.addWidget(self.preview_atual)
         layout_preview.addSpacing(20)
-        layout_preview.addWidget(QLabel(f"{self.loc.get_text('new')}:"))
+        layout_preview.addWidget(self.label_novo)
         layout_preview.addWidget(self.preview_nova)
         layout_preview.addStretch(1)
 
         layout_principal.addLayout(layout_preview)
 
-        tab_widget = QTabWidget(self)
+        self.tab_widget = QTabWidget(self)
 
         tab_basicas = QWidget()
         layout_basicas = QVBoxLayout(tab_basicas)
@@ -50,7 +52,7 @@ def setup_ui(self):
         grid_basicas = QGridLayout()
         self._adicionar_grid_cores(grid_basicas, cores_basicas, 7)
         layout_basicas.addLayout(grid_basicas)
-        tab_widget.addTab(tab_basicas, self.loc.get_text("basics"))
+        self.tab_widget.addTab(tab_basicas, self.loc.get_text("basics"))
 
         tab_pasteis = QWidget()
         layout_pasteis = QVBoxLayout(tab_pasteis)
@@ -72,7 +74,7 @@ def setup_ui(self):
         grid_pasteis = QGridLayout()
         self._adicionar_grid_cores(grid_pasteis, cores_pasteis, 7)
         layout_pasteis.addLayout(grid_pasteis)
-        tab_widget.addTab(tab_pasteis, self.loc.get_text("pastels"))
+        self.tab_widget.addTab(tab_pasteis, self.loc.get_text("pastels"))
 
         tab_vibrantes = QWidget()
         layout_vibrantes = QVBoxLayout(tab_vibrantes)
@@ -94,23 +96,23 @@ def setup_ui(self):
         grid_vibrantes = QGridLayout()
         self._adicionar_grid_cores(grid_vibrantes, cores_vibrantes, 7)
         layout_vibrantes.addLayout(grid_vibrantes)
-        tab_widget.addTab(tab_vibrantes, self.loc.get_text("vibrant"))
+        self.tab_widget.addTab(tab_vibrantes, self.loc.get_text("vibrant"))
 
-        layout_principal.addWidget(tab_widget)
+        layout_principal.addWidget(self.tab_widget)
 
-        btn_avancado = QPushButton(self.loc.get_text("advanced_color_picker"))
-        btn_avancado.clicked.connect(self._abrir_seletor_avancado)
-        layout_principal.addWidget(btn_avancado)
+        self.btn_avancado = QPushButton(self.loc.get_text("advanced_color_picker"))
+        self.btn_avancado.clicked.connect(self._abrir_seletor_avancado)
+        layout_principal.addWidget(self.btn_avancado)
 
         layout_botoes = QHBoxLayout()
-        btn_ok = QPushButton(self.loc.get_text("ok"))
-        btn_ok.clicked.connect(self.accept)
-        btn_cancelar = QPushButton(self.loc.get_text("cancel"))
-        btn_cancelar.clicked.connect(self.reject)
+        self.btn_ok = QPushButton(self.loc.get_text("ok"))
+        self.btn_ok.clicked.connect(self.accept)
+        self.btn_cancelar = QPushButton(self.loc.get_text("cancel"))
+        self.btn_cancelar.clicked.connect(self.reject)
 
         layout_botoes.addStretch(1)
-        layout_botoes.addWidget(btn_ok)
-        layout_botoes.addWidget(btn_cancelar)
+        layout_botoes.addWidget(self.btn_ok)
+        layout_botoes.addWidget(self.btn_cancelar)
         layout_principal.addLayout(layout_botoes)
 
         self.setLayout(layout_principal)

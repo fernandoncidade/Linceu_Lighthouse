@@ -1,4 +1,38 @@
-RELEASE NOTES: Version 0.0.8.0:
+VERÖFFENTLICHUNGSHINWEISE: Version 0.0.9.0:
+
+In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
+
+Neue Statistische Diagramme:
+- Es wurden zwei neue Sankey-Diagrammtypen hinzugefügt:
+    - Sankey Ereignis → Pfad: Ermöglicht die Visualisierung des Flusses überwachter Ereignisse zu Datei- und Ordnerpfaden.
+    - Sankey Typ → Pfad: Ermöglicht die Analyse des Flusses von Dateitypen (Erweiterungen) zu überwachten Pfaden.
+    - Die Verzeichnisstruktur kann jetzt über ein neues interaktives Diagramm angezeigt werden, was die Analyse der Pfade überwachter Dateien und Ordner erleichtert.
+    - Es wurden umfassendere statistische Diagramme mit Optionen für verschiedene Arten der Datenvisualisierung hinzugefügt.
+- Die Diagramme verwenden die Plotly-Bibliothek für interaktive Visualisierung und hochauflösenden Export.
+
+Verbesserungen bei der Internationalisierung:
+- Die Titel und Texte der Diagramme werden jetzt automatisch entsprechend der in der Oberfläche ausgewählten Sprache übersetzt.
+- Die Liste der verfügbaren Diagramme wurde aktualisiert, sodass die wichtigsten Analysearten schnell ausgewählt und angezeigt werden können.
+- Das Statistik-Panel wurde angepasst, um die ideale Breite automatisch zu berechnen und so eine bessere Anpassung von Texten und Schaltflächen in der Oberfläche zu gewährleisten.
+- Anpassungen bei der Übersetzung von Kopfzeilen und Datei-/Ordnertypen im Verzeichnisbaum.
+
+Verbesserungen der Verzeichnisoberfläche:
+- Das Widget für die Verzeichnisstruktur wurde verbessert, sodass Vorgänge wie Kopieren, Ausschneiden, Einfügen, Umbenennen, Erstellen und Löschen von Dateien/Ordnern direkt über das Kontextmenü möglich sind.
+- Dynamische Übersetzung der Schaltflächen und Menüs im Verzeichnis-Panel wurde implementiert.
+
+Allgemeine Fehlerbehebungen:
+- Anpassungen in der Logik zum Wechsel zwischen Leistungs- und Verzeichnisstrukturansicht, sodass jeweils nur ein Panel aktiv ist.
+- Behebung kleinerer Fehler im Zusammenhang mit der Aktualisierung übersetzter Texte und der Diagrammdarstellung.
+- Kleine Probleme bei der Diagrammerstellung wurden behoben, wodurch der Prozess stabiler und zuverlässiger wird.
+- Verbesserungen bei der Übersetzung von Diagrammtexten und -titeln, entsprechend der vom Benutzer gewählten Sprache.
+
+Diese Verbesserungen bieten dem Benutzer ein umfassenderes und intuitiveres Erlebnis und erweitern die Möglichkeiten der statistischen Analyse sowie der Verwaltung von Dateien und Ordnern.
+
+
+_________________________________________________
+
+
+VERSIONSHINWEISE: Version 0.0.8.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
 
@@ -11,7 +45,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umges
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.7.0:
+VERSIONSHINWEISE: Version 0.0.7.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -24,7 +58,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen imple
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.6.0:
+VERSIONSHINWEISE: Version 0.0.6.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -36,7 +70,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen imple
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.5.0:
+VERSIONSHINWEISE: Version 0.0.5.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -49,7 +83,7 @@ Verbesserung der Benutzererfahrung:
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.4.0
+VERSIONSHINWEISE: Version 0.0.4.0
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -63,7 +97,7 @@ Fehlerbehebungen:
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.3.0:
+VERSIONSHINWEISE: Version 0.0.3.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -101,7 +135,7 @@ Neuerungen in Version 0.0.3.0:
 _________________________________________________
 
 
-RELEASE NOTES: Version 0.0.2.0:
+VERSIONSHINWEISE: Version 0.0.2.0:
 
 In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
 

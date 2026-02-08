@@ -19,13 +19,14 @@ from utils.IconUtils import get_icon_path
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
+
 class Filtros(QWidget):
     filtroAplicado = Signal()
 
     def __init__(self, tabela_dados, loc=None):
         super().__init__()
         try:
-            self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint)
+            self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint)
             self.setAttribute(Qt.WA_DeleteOnClose, False)
             self.setWindowModality(Qt.NonModal)
             self.loc = loc if loc is not None else LocalizadorQt()

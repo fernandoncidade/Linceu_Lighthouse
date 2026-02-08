@@ -21,6 +21,7 @@ def get_palette_icon_path(tipo="paleta"):
         logger.error(f"Erro ao obter caminho do ícone da paleta: {e}", exc_info=True)
         return ""
 
+
 class GerenciadorCores:
     def __init__(self, interface_principal):
         try:
