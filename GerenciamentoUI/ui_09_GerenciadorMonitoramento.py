@@ -15,7 +15,6 @@ class GerenciadorMonitoramento:
     def reiniciar_sistema_monitoramento(self):
         try:
             logger.info("Reiniciando sistema de monitoramento completo")
-
             rows_antes = self.interface.tabela_dados.rowCount()
             logger.info(f"Eventos exibidos antes do reinício: {rows_antes}")
 
@@ -32,7 +31,6 @@ class GerenciadorMonitoramento:
                 self.interface.exclusao_timer.timeout.disconnect()
 
             self.interface.excluidos_recentemente.clear()
-
             if hasattr(self.interface, 'processador_evento'):
                 try:
                     self.interface.processador_evento.evento_processado.disconnect()
@@ -46,7 +44,6 @@ class GerenciadorMonitoramento:
                 with sqlite3.connect(self.interface.evento_base.db_path) as conn:
                     conn.execute("PRAGMA optimize")
                     conn.execute("VACUUM")
-
                     cursor = conn.cursor()
                     count = cursor.execute("SELECT COUNT(*) FROM monitoramento").fetchone()[0]
                     logger.info(f"Total de eventos no banco de dados: {count}")
@@ -73,7 +70,6 @@ class GerenciadorMonitoramento:
 
                 self.interface.tabela_dados.clearContents()
                 self.interface.tabela_dados.setRowCount(0)
-
                 with sqlite3.connect(self.interface.evento_base.db_path) as conn:
                     cursor = conn.cursor()
                     registros = cursor.execute("""

@@ -285,6 +285,7 @@ class TradutorMetadadosQt:
             "arquivo": "archive",
             "criptografado": "encrypted",
             "compactado": "compressed",
+            "pasta": "folder",
 
             # English
             "read only": "readonly",
@@ -294,6 +295,7 @@ class TradutorMetadadosQt:
             "archive": "archive",
             "encrypted": "encrypted",
             "compressed": "compressed",
+            "folder": "folder",
 
             # Español
             "solo lectura": "readonly",
@@ -302,14 +304,16 @@ class TradutorMetadadosQt:
             "archivo": "archive",
             "cifrado": "encrypted",
             "comprimido": "compressed",
+            "carpeta": "folder",
 
             # Français
             "lecture seule": "readonly",
             "caché": "hidden",
             "système": "system",
-            "archive": "archive",
+            "fichier": "archive",
             "chiffré": "encrypted",
             "compressé": "compressed",
+            "dossier": "folder",
 
             # Italiano
             "sola lettura": "readonly",
@@ -318,14 +322,16 @@ class TradutorMetadadosQt:
             "archivio": "archive",
             "cifrato": "encrypted",
             "compresso": "compressed",
+            "cartella": "folder",
 
             # Deutsch
             "schreibgeschützt": "readonly",
             "versteckt": "hidden",
             "system": "system",
-            "archiv": "archive",
+            "datei": "archive",
             "verschlüsselt": "encrypted",
-            "komprimiert": "compressed"
+            "komprimiert": "compressed",
+            "ordner": "folder",
         }
 
         partes = [parte.strip() for parte in valor.split(",")]

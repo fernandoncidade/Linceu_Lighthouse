@@ -26,7 +26,6 @@ class GerenciadorLimpeza:
             QApplication.setOverrideCursor(Qt.WaitCursor)
             try:
                 logger.info("Iniciando limpeza de dados")
-
                 if hasattr(self.interface, 'observador') and self.interface.observador and self.interface.observador.ativo:
                     logger.debug("Desativando monitoramento antes de limpar")
                     self.interface.gerenciador_botoes.alternar_analise_diretorio()

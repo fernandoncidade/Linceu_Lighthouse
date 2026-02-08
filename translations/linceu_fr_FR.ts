@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>archive</source>
-        <translation>Archive</translation>
+        <translation>Fichier</translation>
     </message>
     <message>
         <source>encrypted</source>
@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Analyse Des Pauses:</translation>
+        <translation>Mettre en pause/Reprendre l'analyse:</translation>
     </message>
     <message>
         <source>export_excel</source>
@@ -458,6 +458,22 @@
     <message>
         <source>scan_complete</source>
         <translation>Analyse terminée !</translation>
+    </message>
+    <message>
+        <source>no_scan_or_monitor_to_pause</source>
+        <translation>Aucun scan ni surveillance en cours à mettre en pause.</translation>
+    </message>
+    <message>
+        <source>paused</source>
+        <translation>En pause</translation>
+    </message>
+    <message>
+        <source>resumed</source>
+        <translation>Repris</translation>
+    </message>
+    <message>
+        <source>monitoring_paused</source>
+        <translation>Surveillance en pause</translation>
     </message>
     <message>
         <source>items</source>

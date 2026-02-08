@@ -30,7 +30,6 @@ class GerenciadorProgressoUI:
         try:
             if hasattr(self.interface, 'rotulo_resultado'):
                 msg = f"{self.loc.get_text('scanning')} {progresso}% ({contador}/{total})"
-
                 if total > 1000 and contador > 0 and progresso < 100:
                     if not hasattr(self.interface, '_scan_start_time'):
                         self.interface._scan_start_time = datetime.now()
@@ -39,10 +38,8 @@ class GerenciadorProgressoUI:
                     if progresso > 0:
                         tempo_estimado_total = tempo_decorrido * (100 / progresso)
                         tempo_restante = tempo_estimado_total - tempo_decorrido
-
                         minutos = int(tempo_restante // 60)
                         segundos = int(tempo_restante % 60)
-
                         if minutos > 0:
                             msg += f" - {self.loc.get_text('remaining')}: {minutos}m {segundos}s"
 
@@ -56,10 +53,8 @@ class GerenciadorProgressoUI:
                     self.interface.barra_progresso.show()
 
                 self.interface.barra_progresso.setValue(progresso)
-
                 if progresso >= 100:
                     QTimer.singleShot(1000, lambda: self.interface.barra_progresso.hide())
-
                     if hasattr(self.interface, '_scan_start_time'):
                         delattr(self.interface, '_scan_start_time')
 
@@ -80,7 +75,6 @@ class GerenciadorProgressoUI:
                     self.interface.barra_progresso.show()
 
                 self.interface.barra_progresso.setValue(progresso)
-
                 if progresso >= 100:
                     QTimer.singleShot(1000, lambda: self.interface.barra_progresso.hide())
                     if hasattr(self.interface, '_scan_start_time'):

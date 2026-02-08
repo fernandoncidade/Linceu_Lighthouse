@@ -17,15 +17,12 @@ class GerenciadorEventosUI:
     def alternar_filtro(self):
         try:
             acao = self.interface.sender()
-
             if acao and isinstance(acao, QAction):
                 filtro = acao.data()
                 esta_marcado = acao.isChecked()
-
                 if (hasattr(self.interface, 'painel_filtros') and 
                     hasattr(self.interface.painel_filtros, 'checkboxes_operacao') and
                     filtro in self.interface.painel_filtros.checkboxes_operacao):
-
                     checkbox = self.interface.painel_filtros.checkboxes_operacao[filtro]
                     checkbox.blockSignals(True)
                     checkbox.setChecked(esta_marcado)
@@ -49,12 +46,10 @@ class GerenciadorEventosUI:
                     "op_modified": self.loc.get_text("op_modified"),
                     "op_scanned": self.loc.get_text("op_scanned")
                 }
-
                 for row in range(self.interface.tabela_dados.rowCount()):
                     tipo_op_cell = self.interface.tabela_dados.item(row, 0)
                     if tipo_op_cell:
                         tipo_op_texto = tipo_op_cell.text()
-
                         if tipo_op_texto == chave_para_operacao.get(filtro):
                             self.interface.tabela_dados.setRowHidden(row, not esta_marcado)
 
@@ -67,10 +62,8 @@ class GerenciadorEventosUI:
     def alternar_visibilidade_coluna(self):
         try:
             acao = self.interface.sender()
-
             if acao and isinstance(acao, QAction):
                 chave_coluna = acao.data()
-
                 if chave_coluna in self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS:
                     visivel = acao.isChecked()
                     self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS[chave_coluna]["visivel"] = visivel
@@ -83,7 +76,6 @@ class GerenciadorEventosUI:
     def resetar_colunas(self):
         try:
             logger.info("Iniciando reset das colunas para configuração padrão")
-
             colunas_padrao = {
                 "tipo_operacao": True,
                 "nome": True,
@@ -145,7 +137,6 @@ class GerenciadorEventosUI:
                         logger.debug(f"Coluna {coluna} definida como False (não está nas colunas padrão)")
 
             self.interface.gerenciador_colunas.salvar_configuracoes()
-
             if hasattr(self.interface.gerenciador_tabela, 'atualizar_visibilidade_colunas'):
                 self.interface.gerenciador_tabela.atualizar_visibilidade_colunas(atualizar_em_massa=True)
 
@@ -172,30 +163,24 @@ class GerenciadorEventosUI:
 
             mensagem = self.loc.get_text("reset_colors_confirm")
             resposta = QMessageBox.question(self.interface, self.loc.get_text("confirm"), mensagem, QMessageBox.Yes | QMessageBox.No)
-
             if resposta == QMessageBox.Yes:
                 exportar_colunas_ativas = acao_exportar_colunas_ativas.isChecked()
                 exportar_filtros_ativos = acao_exportar_filtros_ativos.isChecked()
                 exportar_selecao = acao_exportar_selecao.isChecked()
-
                 for tipo, cor in cores_padrao.items():
                     gerenciador_cores.definir_cor(tipo, cor)
 
                 gerenciador_cores.salvar_cores()
                 gerenciador_cores.atualizar_cores_no_sistema()
-
                 criar_menu_principal()
-
                 acao_exportar_colunas_ativas.setChecked(exportar_colunas_ativas)
                 acao_exportar_filtros_ativos.setChecked(exportar_filtros_ativos)
                 acao_exportar_selecao.setChecked(exportar_selecao)
-
                 if hasattr(self.interface, "gerenciador_tabela"):
                     self.interface.gerenciador_tabela.atualizar_cores_colunas(aplicar_em_massa=True)
 
                 mensagem_sucesso = self.loc.get_text("colors_reset_success")
                 QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem_sucesso)
-
                 logger.info("Cores restauradas para valores padrão")
 
         except Exception as e:
@@ -206,26 +191,20 @@ class GerenciadorEventosUI:
         try:
             mensagem = self.loc.get_text("reset_column_color_confirm")
             resposta = QMessageBox.question(self.interface, self.loc.get_text("confirm"), mensagem, QMessageBox.Yes | QMessageBox.No)
-
             if resposta == QMessageBox.Yes:
                 exportar_colunas_ativas = acao_exportar_colunas_ativas.isChecked()
                 exportar_filtros_ativos = acao_exportar_filtros_ativos.isChecked()
                 exportar_selecao = acao_exportar_selecao.isChecked()
-
                 gerenciador_tabela.colunas_para_colorir.clear()
                 gerenciador_tabela.colunas_para_colorir.add("tipo_operacao")
                 gerenciador_tabela.salvar_configuracoes_cores()
                 gerenciador_tabela.redefinir_cores_todas_colunas()
-
                 criar_menu_principal()
-
                 acao_exportar_colunas_ativas.setChecked(exportar_colunas_ativas)
                 acao_exportar_filtros_ativos.setChecked(exportar_filtros_ativos)
                 acao_exportar_selecao.setChecked(exportar_selecao)
-
                 mensagem_sucesso = self.loc.get_text("column_colors_reset_success")
                 QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem_sucesso)
-
                 logger.info("Colunas coloridas redefinidas para apenas tipo_operacao")
 
         except Exception as e:
@@ -237,16 +216,12 @@ class GerenciadorEventosUI:
             acao = self.interface.sender()
             if acao and isinstance(acao, QAction):
                 novo_idioma = acao.data()
-
                 if novo_idioma != self.loc.idioma_atual:
                     resposta = self._confirmar_mudanca_idioma()
-
                     if resposta == QMessageBox.Yes:
                         idioma_anterior = self.loc.idioma_atual
                         self.loc.set_idioma(novo_idioma)
-
                         self.interface.atualizar_interface()
-
                         if hasattr(self.interface, 'gerenciador_tabela') and hasattr(self.interface, 'tabela_dados'):
                             self.interface.gerenciador_tabela.atualizar_dados_tabela(self.interface.tabela_dados)
 
@@ -257,7 +232,6 @@ class GerenciadorEventosUI:
                                     self.interface.gerenciador_estatisticas_ui._atualizar_graficos(widget)
 
                         logger.info(f"Idioma alterado de {idioma_anterior} para {novo_idioma} sem reiniciar")
-
                         QMessageBox.information(self.interface, self.loc.get_text("success"), self.loc.get_text("language_changed_success"))
 
                     else:
@@ -274,19 +248,15 @@ class GerenciadorEventosUI:
         message_box.setIcon(QMessageBox.Warning)
         message_box.setWindowTitle(self.loc.get_text("warning"))
         message_box.setText(self.loc.get_text("language_change_confirm"))
-
         message_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         message_box.setDefaultButton(QMessageBox.No)
-
         message_box.setButtonText(QMessageBox.Yes, self.loc.get_text("yes"))
         message_box.setButtonText(QMessageBox.No, self.loc.get_text("no"))
-
         return message_box.exec()
 
     def _limpar_dados_monitorados(self):
         try:
             logger.info("Iniciando limpeza de dados para reinício da aplicação")
-
             if hasattr(self.interface, 'observador') and self.interface.observador and self.interface.observador.ativo:
                 logger.debug("Desativando monitoramento antes de reiniciar")
                 self.interface.gerenciador_botoes.alternar_analise_diretorio()
@@ -300,7 +270,6 @@ class GerenciadorEventosUI:
                 os.path.join(os.path.dirname(__file__), "..", "Observador", "monitoramento.db"), 
                 os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Observador", "monitoramento.db")
             ]
-
             db_removido = False
             for db_path in db_paths:
                 if os.path.exists(db_path):
@@ -312,7 +281,6 @@ class GerenciadorEventosUI:
                 logger.warning("Arquivo de banco de dados não encontrado para remoção.")
 
             self._limpar_dados_interface()
-
             logger.info("Limpeza de dados para reinício concluída")
 
         except Exception as e:
@@ -321,7 +289,6 @@ class GerenciadorEventosUI:
     def _limpar_dados_interface(self):
         try:
             logger.info("Iniciando limpeza da interface para reinício")
-
             if hasattr(self.interface, 'tabela_dados'):
                 self.interface.tabela_dados.clearContents()
                 self.interface.tabela_dados.setRowCount(0)
@@ -364,20 +331,15 @@ class GerenciadorEventosUI:
                 self.interface.rotulo_resultado.setText(
                     self.loc.get_text("language_change_confirm").split('?')[0] + "..."
                 )
-
             from PySide6.QtCore import QCoreApplication, QTimer
             QCoreApplication.processEvents()
-
             self._limpar_dados_monitorados()
-
             def executar_reinicio():
                 try:
                     python = sys.executable
                     script_path = sys.argv[0]
                     args = sys.argv[1:]
-
                     logger.info(f"Reiniciando aplicativo para aplicar novo idioma: {self.loc.idioma_atual}")
-
                     subprocess.Popen([python, script_path] + args)
                     sys.exit(0)
 
@@ -394,7 +356,6 @@ class GerenciadorEventosUI:
     def atualizar_interface(self):
         try:
             logger.debug("Atualizando interface do GerenciadorEventosUI após mudança de idioma")
-
             for widget in QApplication.topLevelWidgets():
                 if isinstance(widget, QDialog) and hasattr(widget, 'filtro_panel'):
                     if hasattr(widget.filtro_panel, 'atualizar_interface'):

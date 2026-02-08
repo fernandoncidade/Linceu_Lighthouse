@@ -24,7 +24,6 @@ class GerenciadorMensagens:
                 interface.rotulo_resultado.setText(interface.loc.get_text("select_to_start"))
 
             interface.atualizar_status()
-
             logger.debug("Rótulos atualizados com sucesso")
 
         except Exception as e:

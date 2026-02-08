@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Análisis De Pausa:</translation>
+        <translation>Pausar/Reanudar Análisis:</translation>
     </message>
     <message>
         <source>export_excel</source>
@@ -458,6 +458,22 @@
     <message>
         <source>scan_complete</source>
         <translation>¡Escaneo completado!</translation>
+    </message>
+    <message>
+        <source>no_scan_or_monitor_to_pause</source>
+        <translation>No hay análisis ni monitorización en curso para pausar.</translation>
+    </message>
+    <message>
+        <source>paused</source>
+        <translation>Pausado</translation>
+    </message>
+    <message>
+        <source>resumed</source>
+        <translation>Reanudado</translation>
+    </message>
+    <message>
+        <source>monitoring_paused</source>
+        <translation>Monitoreo pausado</translation>
     </message>
     <message>
         <source>items</source>

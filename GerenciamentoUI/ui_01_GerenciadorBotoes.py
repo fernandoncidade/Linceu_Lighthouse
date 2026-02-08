@@ -18,7 +18,6 @@ class GerenciadorBotoes:
         if dir_selecionado:
             self.interface.diretorio_atual = dir_selecionado
             self.interface.rotulo_diretorio.setText(self.loc.get_text("dir_selected").format(self.interface.diretorio_atual))
-
             if hasattr(self.interface, 'reiniciar_sistema_monitoramento'):
                 self.interface.reiniciar_sistema_monitoramento()
 
@@ -70,7 +69,6 @@ class GerenciadorBotoes:
         apenas_colunas_ativas = False
         apenas_filtros_ativos = False
         apenas_selecao = False
-
         for widget in QApplication.topLevelWidgets():
             if hasattr(widget, 'gerenciador_menus_ui'):
                 apenas_colunas_ativas = widget.gerenciador_menus_ui.acao_exportar_colunas_ativas.isChecked()
@@ -79,10 +77,8 @@ class GerenciadorBotoes:
                 break
 
         dados = []
-
         colunas_para_exportar = []
         gerenciador_colunas = None
-
         for widget in QApplication.topLevelWidgets():
             if hasattr(widget, 'gerenciador_colunas'):
                 gerenciador_colunas = widget.gerenciador_colunas
@@ -103,7 +99,6 @@ class GerenciadorBotoes:
 
         if apenas_selecao:
             selecao = tabela_dados.selectedIndexes()
-
             if not selecao:
                 QMessageBox.warning(None, self.loc.get_text("warning"), 
                     self.loc.get_text("no_selection") if "no_selection" in self.loc.traducoes.get(self.loc.idioma_atual, {}) 
@@ -115,7 +110,6 @@ class GerenciadorBotoes:
             for indice in selecao:
                 row = indice.row()
                 col = indice.column()
-
                 if apenas_colunas_ativas and col not in colunas_para_exportar:
                     continue
 
@@ -158,7 +152,6 @@ class GerenciadorBotoes:
                 dados.append(linha)
 
         df = pd.DataFrame(dados)
-
         try:
             if not nome_arquivo:
                 if formato in ['xlsx', 'csv', 'txt']:
@@ -179,14 +172,10 @@ class GerenciadorBotoes:
                         import os
                         import tempfile
                         import openpyxl
-
                         temp_dir = tempfile.gettempdir()
                         temp_file = os.path.join(temp_dir, "temp_export.xlsx")
-
                         df.to_excel(temp_file, index=False)
-
                         import shutil
-
                         shutil.copy2(temp_file, nome_arquivo)
                         os.remove(temp_file)
 
@@ -238,13 +227,11 @@ class GerenciadorBotoes:
         try:
             conn = sqlite3.connect(nome_arquivo)
             cursor = conn.cursor()
-
             if dados:
                 cursor.execute("DROP TABLE IF EXISTS eventos")
                 colunas = list(dados[0].keys())
                 create_query = f"CREATE TABLE eventos ({', '.join([f'{col.lower().replace(' ', '_')} TEXT' for col in colunas])})"
                 cursor.execute(create_query)
-
                 for evento in dados:
                     placeholders = ','.join(['?' for _ in evento])
                     insert_query = f"INSERT INTO eventos ({','.join([col.lower().replace(' ', '_') for col in evento.keys()])}) VALUES ({placeholders})"
@@ -268,3 +255,58 @@ class GerenciadorBotoes:
 
         except Exception as e:
             print(f"Erro ao limpar dados no gerenciador: {e}")
+
+    def pausar_monitoramento_ou_escaneamento(self):
+        try:
+            if self.interface.observador:
+                obs = self.interface.observador
+                scan_running = False
+                try:
+                    scan_running = bool(getattr(obs, 'thread_scan', None) and obs.thread_scan.isRunning())
+
+                except Exception:
+                    scan_running = False
+
+                if obs.ativo or scan_running:
+                    obs.pausar_monitoramento_ou_escaneamento()
+                    return
+
+                try:
+                    titulo = self.loc.get_text("warning")
+
+                except Exception:
+                    titulo = "Aviso"
+
+                try:
+                    mensagem = self.loc.get_text("no_scan_or_monitor_to_pause")
+
+                except Exception:
+                    mensagem = "Não há escaneamento nem monitoramento em andamento para pausar."
+
+                QMessageBox.information(self.interface, titulo, mensagem)
+                return
+
+            if hasattr(self.interface, "scanner") and self.interface.scanner:
+                try:
+                    self.interface.scanner.pausar()
+                    return
+
+                except Exception:
+                    pass
+
+            try:
+                titulo = self.loc.get_text("warning")
+
+            except Exception:
+                titulo = "Aviso"
+
+            try:
+                mensagem = self.loc.get_text("no_scan_or_monitor_to_pause")
+
+            except Exception:
+                mensagem = "Não há escaneamento nem monitoramento em andamento para pausar."
+
+            QMessageBox.information(self.interface, titulo, mensagem)
+
+        except Exception as e:
+            print(f"Erro ao pausar: {e}")

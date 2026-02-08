@@ -7,7 +7,6 @@ class Inicializador:
 
         from PySide6.QtCore import QMutex
         from PySide6.QtWidgets import QTableWidget, QLabel
-
         interface.mutex = QMutex()
         interface.tabela_dados = QTableWidget()
         interface.status_bar = interface.statusBar()
@@ -15,7 +14,6 @@ class Inicializador:
         interface.rotulo_contador_eventos = QLabel()
         interface.status_bar.addWidget(interface.label_contagem)
         interface.status_bar.addPermanentWidget(interface.rotulo_contador_eventos)
-
         logger.debug("Componentes básicos da UI inicializados com sucesso")
 
     @staticmethod
@@ -45,7 +43,6 @@ class Inicializador:
         interface.gerenciador_eventos_ui = GerenciadorEventosUI(interface)
         interface.gerenciador_progresso_ui = GerenciadorProgressoUI(interface)
         interface.gerenciador_estatisticas_ui = GerenciadorEstatisticasUI(interface)
-
         interface.tipos_operacao = {
             "op_renamed": interface.loc.get_text("op_renamed"),
             "op_added": interface.loc.get_text("op_added"),
@@ -54,7 +51,6 @@ class Inicializador:
             "op_moved": interface.loc.get_text("op_moved"),
             "op_scanned": interface.loc.get_text("op_scanned")
         }
-
         logger.debug("Gerenciadores inicializados com sucesso")
 
     @staticmethod

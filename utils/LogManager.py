@@ -85,3 +85,30 @@ class LogManager:
     @classmethod
     def critical(cls, message, exc_info=True):
         cls.get_logger().critical(cls.ensure_unicode(message), exc_info=exc_info)
+
+# fernandoncidade: 
+# Com base no arquivo em anexo, é possível fazer um código que ao insirir sua chamada num módulo do projeto, ele reporte o erro e o local da linha do código que contém este erro?
+
+# GitHub Copilot:
+# Sim, é possível! O `LogManager` já suporta registrar exceções com informações detalhadas usando o parâmetro `exc_info=True` nos métodos `error` e `critical`.
+# Para reportar o erro e o local da linha, basta chamar `LogManager.error` dentro de um bloco `except`, passando `exc_info=True`.
+# O logger irá registrar a stack trace, incluindo o arquivo e a linha do erro.
+
+
+# Exemplo de uso em outro módulo:
+
+# ````python
+# # ...existing code...
+
+# from utils.LogManager import LogManager
+
+# try:
+#     # Código que pode gerar exceção
+#     resultado = 10 / 0
+# except Exception as e:
+#     LogManager.error(f"Ocorreu um erro: {e}", exc_info=True)
+
+# # ...existing code...
+# ````
+
+# Isso irá registrar no log o erro, a mensagem e o local exato (arquivo e linha) onde ocorreu a exceção.

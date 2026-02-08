@@ -149,7 +149,7 @@
     </message>
     <message>
         <source>pause_analysis</source>
-        <translation>Pause Analysis:</translation>
+        <translation>Pause/Resume Analysis:</translation>
     </message>
     <message>
         <source>save_as</source>
@@ -458,6 +458,22 @@
     <message>
         <source>scan_complete</source>
         <translation>Scan complete!</translation>
+    </message>
+    <message>
+        <source>no_scan_or_monitor_to_pause</source>
+        <translation>No scanning or monitoring in progress to pause.</translation>
+    </message>
+    <message>
+        <source>paused</source>
+        <translation>Paused</translation>
+    </message>
+    <message>
+        <source>resumed</source>
+        <translation>Resumed</translation>
+    </message>
+    <message>
+        <source>monitoring_paused</source>
+        <translation>Monitoring Paused</translation>
     </message>
     <message>
         <source>items</source>

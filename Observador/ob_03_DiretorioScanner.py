@@ -2,7 +2,6 @@ import queue
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from PySide6.QtCore import QObject, Signal, QMetaObject, Qt
-
 from Observador.GerenciamentoDiretorioScanner.gscanner_01_process_batch import _process_batch
 from Observador.GerenciamentoDiretorioScanner.gscanner_02_scan_directory import scan_directory
 from Observador.GerenciamentoDiretorioScanner.gscanner_03_processar_fila import _processar_fila
@@ -30,13 +29,28 @@ class DiretorioScanner(QObject):
         self.lock_db = threading.Lock()
         self.ultimo_progresso = 0
         self.intervalo_atualizacao = 1
-
+        self.pausado = False
+        self._pause_event = threading.Event()
+        self._pause_event.set()
         if hasattr(self.observador, 'interface'):
             QMetaObject.invokeMethod(self.observador.interface, "criar_barra_progresso",
                                      Qt.ConnectionType.QueuedConnection)
 
             self.progresso_atualizado.connect(self._atualizar_interface)
             self.scan_finalizado.connect(self._finalizar_scan)
+
+    def pausar(self):
+        if not self.pausado:
+            self.pausado = True
+            self._pause_event.clear()
+
+        else:
+            self.pausado = False
+            self._pause_event.set()
+
+        if hasattr(self.observador, "interface") and hasattr(self.observador.interface, "rotulo_resultado"):
+            status = self.observador.loc.get_text("paused") if self.pausado else self.observador.loc.get_text("resumed")
+            self.observador.interface.rotulo_resultado.setText(status)
 
     _process_batch = _process_batch
     scan_directory = scan_directory

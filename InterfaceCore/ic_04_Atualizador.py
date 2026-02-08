@@ -87,9 +87,7 @@ class Atualizador:
             from Filtros.fil_01_Filtros import Filtros
             from utils.LogManager import LogManager
             logger = LogManager.get_logger()
-
             logger.info("Abrindo janela de filtros avançados")
-
             if hasattr(interface, 'painel_filtros') and interface.painel_filtros:
                 if interface.painel_filtros.isVisible():
                     interface.painel_filtros.raise_()
@@ -102,7 +100,6 @@ class Atualizador:
             interface.painel_filtros = Filtros(interface.tabela_dados, interface.loc)
             interface.painel_filtros.setWindowModality(Qt.NonModal)
             interface.painel_filtros.show()
-
             interface.painel_filtros.filtroAplicado.connect(interface.atualizar_status)
             logger.info("Janela de filtros avançados exibida com sucesso")
 
