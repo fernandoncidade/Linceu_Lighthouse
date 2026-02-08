@@ -1,3 +1,16 @@
+RELEASE NOTES : Version 0.0.8.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+- Une fonctionnalité a été ajoutée dans le menu des paramètres pour suivre les performances du système en temps réel.
+    - Grâce à des graphiques interactifs, l'utilisateur peut surveiller l'utilisation du processeur (CPU), de la mémoire RAM et du disque, permettant une analyse détaillée de l'impact de la surveillance sur les performances globales du système.
+    - Le panneau de performance est mis à jour en temps réel, offrant des informations précieuses pour l'optimisation et les ajustements nécessaires.
+    - Il est possible de détacher le panneau de performance dans une fenêtre séparée, permettant à l'utilisateur de personnaliser son espace de travail et de se concentrer sur les métriques les plus pertinentes pendant la surveillance.
+
+
+_________________________________________________
+
+
 NOTES DE VERSION : Version 0.0.7.0 :
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :

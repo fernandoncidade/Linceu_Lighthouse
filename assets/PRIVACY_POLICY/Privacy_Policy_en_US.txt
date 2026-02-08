@@ -1,6 +1,6 @@
 Linceu Lighthouse Privacy Policy
-Last updated: October 14, 2025
-Version 0.0.7.0
+Last updated: October 28, 2025
+Version 0.0.8.0
 
 Your privacy is fundamental to us. This Privacy Policy explains what information Linceu Lighthouse ("Software") uses and, more importantly, how it remains under your control.
 

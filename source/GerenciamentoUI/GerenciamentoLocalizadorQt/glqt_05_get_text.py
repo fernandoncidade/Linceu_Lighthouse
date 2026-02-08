@@ -15,9 +15,10 @@ def get_text(self, key: str, *args) -> str:
             seen.add(cand)
 
             texto = QCoreApplication.translate("LinceuLighthouse", cand)
-            if texto != cand:
-                result = texto
-                break
+            if texto:
+                if texto != cand or cand == key:
+                    result = texto
+                    break
 
             try:
                 fallback = self._get_fallback_text(cand)

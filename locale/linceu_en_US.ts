@@ -1411,6 +1411,42 @@ pip install plotly</translation>
         <translation>Warning: Changing the language will reload translations across the entire UI and may temporarily impact performance until completion. If monitoring is running, this operation can cause missed events or temporary freezes. It is strongly recommended to change the language before starting monitoring. Do you want to proceed?</translation>
     </message>
     <message>
+        <source>performance_charts</source>
+        <translation>Performance Charts</translation>
+    </message>
+    <message>
+        <source>CPU</source>
+        <translation>CPU</translation>
+    </message>
+    <message>
+        <source>CPU_Porcentagem</source>
+        <translation>CPU (%)</translation>
+    </message>
+    <message>
+        <source>RAM</source>
+        <translation>RAM</translation>
+    </message>
+    <message>
+        <source>Memoria_RAM</source>
+        <translation>Memory RAM</translation>
+    </message>
+    <message>
+        <source>Memoria_RAM_Porcentagem</source>
+        <translation>Memory RAM (%)</translation>
+    </message>
+    <message>
+        <source>Discos</source>
+        <translation>Disks</translation>
+    </message>
+    <message>
+        <source>Discos_Porcentagem</source>
+        <translation>Disks (kB/s)</translation>
+    </message>
+    <message>
+        <source>Destacado</source>
+        <translation>Highlighted</translation>
+    </message>
+    <message>
         <source>jpg</source>
         <translation>jpg</translation>
     </message>

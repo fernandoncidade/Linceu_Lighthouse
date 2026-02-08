@@ -1,6 +1,9 @@
 import os
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QProgressBar
+from PySide6.QtWidgets import QSizePolicy
+from PySide6.QtWidgets import QSplitter
+from PySide6.QtCore import Qt
 from utils.IconUtils import get_icon_path
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
@@ -18,13 +21,27 @@ class Configurador:
             interface.setWindowTitle(interface.loc.get_text("window_title"))
             interface.setWindowIcon(QIcon(icon_file))
             interface.setCentralWidget(widget_central)
-            interface.setGeometry(100, 100, 900, 500)
+            interface.setGeometry(100, 100, 1300, 800)
 
-            layout_principal = QHBoxLayout(widget_central)
-            layout_lateral = QVBoxLayout()
+            splitter_principal = QSplitter(Qt.Horizontal, widget_central)
+            splitter_lateral = QSplitter(Qt.Vertical)
+
+            try:
+                interface.gerenciador_desempenho = None
+                widget_desempenho = QWidget()
+
+            except Exception as e:
+                logger.error(f"Erro ao preparar área de desempenho: {e}", exc_info=True)
+                widget_desempenho = QWidget()
+
             layout_lateral_inferior = QVBoxLayout()
-            layout_lateral_inferior.addStretch(1)
             layout_lateral_inferior.setContentsMargins(10, 10, 10, 10)
+            layout_lateral_inferior.setSpacing(8)
+
+            container_botoes = QWidget()
+            container_botoes.setLayout(layout_lateral_inferior)
+            container_botoes.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+            container_botoes.setMaximumHeight(200)
 
             interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("select_dir"), 'selecione.ico', interface.selecionar_diretorio, icon_file, "select_dir")
             interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("start_stop"), 'analyze.ico', interface.alternar_analise_diretorio, icon_file, "start_stop")
@@ -33,15 +50,22 @@ class Configurador:
             interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("statistics"), 'statistics.ico', interface.mostrar_estatisticas, icon_file, "statistics")
             interface.gerenciador_botoes_ui.add_button_with_label(layout_lateral_inferior, interface.loc.get_text("clear_data"), 'clear.ico', interface.limpar_dados, icon_file, "clear_data")
 
-            layout_lateral.addLayout(layout_lateral_inferior)
+            splitter_lateral.addWidget(widget_desempenho)
+            splitter_lateral.addWidget(container_botoes)
+            splitter_lateral.setStretchFactor(0, 7)
+            splitter_lateral.setStretchFactor(1, 1)
+            interface.splitter_lateral = splitter_lateral
+            interface.widget_desempenho = widget_desempenho
 
             layout_conteudo = QVBoxLayout()
+            container_conteudo = QWidget()
+            container_conteudo.setLayout(layout_conteudo)
 
             interface.rotulo_diretorio = QLabel(interface.loc.get_text("no_dir"))
             interface.rotulo_resultado = QLabel(interface.loc.get_text("select_to_start"))
 
-            layout_info = QHBoxLayout()
-            layout_info.addWidget(interface.rotulo_resultado, 1)
+            layout_info_h = QHBoxLayout()
+            layout_info_h.addWidget(interface.rotulo_resultado, 1)
 
             interface.loc.idioma_alterado.connect(lambda _: interface.atualizar_status())
             interface.barra_progresso = QProgressBar(interface)
@@ -53,13 +77,31 @@ class Configurador:
             interface.barra_progresso.setFixedHeight(20)
             interface.barra_progresso.hide()
 
-            layout_conteudo.addWidget(interface.rotulo_diretorio)
-            layout_conteudo.addLayout(layout_info)
-            layout_conteudo.addWidget(interface.barra_progresso)
-            layout_conteudo.addWidget(interface.tabela_dados)
+            info_widget = QWidget()
+            info_layout = QVBoxLayout(info_widget)
+            info_layout.setContentsMargins(0, 0, 0, 0)
+            info_layout.setSpacing(4)
+            info_layout.addWidget(interface.rotulo_diretorio)
+            info_layout.addLayout(layout_info_h)
+            info_layout.addWidget(interface.barra_progresso)
 
-            layout_principal.addLayout(layout_lateral)
-            layout_principal.addLayout(layout_conteudo, stretch=1)
+            content_splitter = QSplitter(Qt.Vertical)
+            content_splitter.addWidget(info_widget)
+            content_splitter.addWidget(interface.tabela_dados)
+            content_splitter.setStretchFactor(0, 0)
+            content_splitter.setStretchFactor(1, 1)
+            info_widget.setMaximumHeight(160)
+
+            layout_conteudo.addWidget(content_splitter)
+
+            splitter_principal.addWidget(splitter_lateral)
+            splitter_principal.addWidget(container_conteudo)
+            splitter_principal.setStretchFactor(0, 0)
+            splitter_principal.setStretchFactor(1, 1)
+
+            layout_wrapper = QHBoxLayout(widget_central)
+            layout_wrapper.setContentsMargins(0, 0, 0, 0)
+            layout_wrapper.addWidget(splitter_principal)
 
             interface.atualizar_status()
 

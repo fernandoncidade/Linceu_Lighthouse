@@ -1,5 +1,5 @@
 CONTRATO DE LICENCIA COMERCIAL - Linceu Lighthouse
-Versión 0.0.7.0, 14 de Octubre de 2025
+Versión 0.0.8.0, 28 de Octubre de 2025
 
 Este Contrato de Licencia ("Contrato") se celebra entre:
 
@@ -60,7 +60,7 @@ Este Contrato complementa los términos del Contrato de Licencia de Usuario Fina
 
 Y de común acuerdo, las partes firman el presente Contrato.
 
-Brasil, Paraná, São José dos Pinhais, 14 de Octubre de 2025
+Brasil, Paraná, São José dos Pinhais, 28 de Octubre de 2025
 
 Fernando Nillsson Cidade
 ______________________________

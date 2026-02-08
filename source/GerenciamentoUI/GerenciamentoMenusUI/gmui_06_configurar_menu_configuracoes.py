@@ -26,6 +26,7 @@ def _configurar_menu_configuracoes(self, menu_configuracoes):
         self._criar_submenu_colunas_coloridas(menu_configuracoes)
         self._criar_submenu_cores(menu_configuracoes)
         self._criar_submenu_exportacao(menu_configuracoes)
+        self._criar_acao_toggle_desempenho(menu_configuracoes)
 
     except Exception as e:
         logger.error(f"Erro ao configurar menu configurações: {e}", exc_info=True)

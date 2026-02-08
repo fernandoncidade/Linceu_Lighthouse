@@ -16,6 +16,7 @@ from .ic_04_Atualizador import Atualizador
 from .ic_05_GerenciadorProgresso import GerenciadorProgresso
 from .ic_07_ManipuladorTabela import ManipuladorTabela
 from .ic_08_Internacionalizador import Internacionalizador
+from .GerenciadorDesempenho.gdesemp_13_alternar_graficos_desempenho import alternar_graficos_desempenho as _alternar_graficos_desempenho
 
 
 class InterfaceMonitor(QMainWindow):
@@ -28,6 +29,7 @@ class InterfaceMonitor(QMainWindow):
             self.loc = LocalizadorQt()
             self.loc.idioma_alterado.connect(self.atualizar_interface)
             self.loc.traducoes_carregadas.connect(self.atualizar_tradutor_qt)
+            self.desempenho_ativo = False
 
             Inicializador.inicializar_atributos(self)
             Inicializador.inicializar_componentes(self)
@@ -172,4 +174,14 @@ class InterfaceMonitor(QMainWindow):
             logger.error(f"Erro ao fechar recursos da aplicação: {e}", exc_info=True)
 
         finally:
+            try:
+                if hasattr(self, 'gerenciador_desempenho') and self.gerenciador_desempenho:
+                    self.gerenciador_desempenho.stop()
+
+            except Exception as e:
+                logger.error(f"Erro ao parar gerenciador de desempenho: {e}", exc_info=True)
+
             super().closeEvent(event)
+
+    def alternar_graficos_desempenho(self, checked=None):
+        return _alternar_graficos_desempenho(self, checked)
