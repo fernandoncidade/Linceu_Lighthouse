@@ -1,6 +1,8 @@
 import sqlite3
 from datetime import datetime
 from source.utils.LogManager import LogManager
+from source.services.GerenciamentoBaseEvento.gbank_20_db_writer import DatabaseWriter
+
 logger = LogManager.get_logger()
 
 def registrar_evento_no_banco(self, evento):
@@ -33,9 +35,9 @@ def registrar_evento_no_banco(self, evento):
             return
 
         campos_opcionais = [
-            'dir_anterior', 
-            'dir_atual', 
-            'data_criacao', 
+            'dir_anterior',
+            'dir_atual',
+            'data_criacao',
             'data_modificacao',
             'data_acesso',
             'tipo',
@@ -48,8 +50,8 @@ def registrar_evento_no_banco(self, evento):
             'autor',
             'dimensoes',
             'duracao',
-            'taxa_bits', 
-            'protegido', 
+            'taxa_bits',
+            'protegido',
             'paginas',
             'linhas',
             'palavras',
@@ -82,71 +84,83 @@ def registrar_evento_no_banco(self, evento):
         if "timestamp" not in evento:
             evento["timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("BEGIN TRANSACTION")
-            try:
-                colunas = [
-                    'tipo_operacao', 
-                    'nome', 
-                    'dir_anterior', 
-                    'dir_atual', 
-                    'data_criacao', 
-                    'data_modificacao',
-                    'data_acesso',
-                    'tipo',
-                    'size_b',
-                    'size_kb',
-                    'size_mb',
-                    'size_gb',
-                    'size_tb',
-                    'atributos',
-                    'autor',
-                    'dimensoes',
-                    'duracao',
-                    'taxa_bits', 
-                    'protegido', 
-                    'paginas',
-                    'linhas',
-                    'palavras',
-                    'paginas_estimadas',
-                    'linhas_codigo',
-                    'total_linhas',
-                    'slides_estimados',
-                    'arquivos',
-                    'unzipped_b',
-                    'unzipped_kb',
-                    'unzipped_mb',
-                    'unzipped_gb',
-                    'unzipped_tb',
-                    'slides',
-                    'binary_file_b',
-                    'binary_file_kb',
-                    'binary_file_mb',
-                    'binary_file_gb',
-                    'binary_file_tb',
-                    'planilhas',
-                    'colunas',
-                    'registros',
-                    'tabelas',
-                    'timestamp'
-                ]
+        try:
+            writer = DatabaseWriter.get_instance(self.db_path)
+            writer.enqueue_event(tabela_especifica, evento)
 
-                valores = [evento.get(coluna.replace("tipo_operacao", "tipo_operacao"), "") for coluna in colunas]
-                valores[0] = tipo_operacao_original
-                placeholders = ", ".join(["?" for _ in colunas])
-                colunas_str = ", ".join(colunas)
-                query_tabela = f"INSERT INTO {tabela_especifica} ({colunas_str}) VALUES ({placeholders})"
-                cursor.execute(query_tabela, valores)
-                query_monitoramento = f"INSERT INTO monitoramento ({colunas_str}) VALUES ({placeholders})"
-                cursor.execute(query_monitoramento, valores)
-                cursor.execute("COMMIT")
+        except Exception as e:
+            logger.error(f"Falha ao enfileirar evento para escrita: {e}", exc_info=True)
+            try:
+                with sqlite3.connect(self.db_path) as conn:
+                    cursor = conn.cursor()
+                    colunas = [
+                        'tipo_operacao',
+                        'nome',
+                        'dir_anterior',
+                        'dir_atual',
+                        'data_criacao',
+                        'data_modificacao',
+                        'data_acesso',
+                        'tipo',
+                        'size_b',
+                        'size_kb',
+                        'size_mb',
+                        'size_gb',
+                        'size_tb',
+                        'atributos',
+                        'autor',
+                        'dimensoes',
+                        'duracao',
+                        'taxa_bits',
+                        'protegido',
+                        'paginas',
+                        'linhas',
+                        'palavras',
+                        'paginas_estimadas',
+                        'linhas_codigo',
+                        'total_linhas',
+                        'slides_estimados',
+                        'arquivos',
+                        'unzipped_b',
+                        'unzipped_kb',
+                        'unzipped_mb',
+                        'unzipped_gb',
+                        'unzipped_tb',
+                        'slides',
+                        'binary_file_b',
+                        'binary_file_kb',
+                        'binary_file_mb',
+                        'binary_file_gb',
+                        'binary_file_tb',
+                        'planilhas',
+                        'colunas',
+                        'registros',
+                        'tabelas',
+                        'timestamp'
+                    ]
+                    valores = [evento.get(col, "") for col in colunas]
+                    valores[0] = tipo_operacao_original
+                    placeholders = ", ".join(["?" for _ in colunas])
+                    colunas_str = ", ".join(colunas)
+                    query_tabela = f"INSERT INTO {tabela_especifica} ({colunas_str}) VALUES ({placeholders})"
+                    cursor.execute(query_tabela, valores)
+                    query_monitoramento = f"INSERT INTO monitoramento ({colunas_str}) VALUES ({placeholders})"
+                    cursor.execute(query_monitoramento, valores)
+                    conn.commit()
+
+            except Exception as e2:
+                logger.error(f"Erro ao gravar evento em fallback: {e2}", exc_info=True)
+                return
+
+        try:
+            if tipo_operacao_original == self.observador.loc.get_text("op_deleted"):
+                self._atualizar_interface_apos_exclusao(evento)
+
+            else:
                 self._atualizar_interface_apos_evento(evento)
 
-            except Exception as e:
-                cursor.execute("ROLLBACK")
-                logger.error(f"Erro durante registro de evento, transação cancelada: {e}", exc_info=True)
-                raise
+        except Exception as e:
+            logger.error(f"Erro ao acionar atualização de interface após evento: {e}", exc_info=True)
 
     except Exception as e:
         logger.error(f"Erro ao registrar evento no banco: {e}", exc_info=True)

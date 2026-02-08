@@ -1,5 +1,5 @@
 from PySide6.QtCore import Slot
-from PySide6.QtWidgets import QMainWindow, QApplication
+from PySide6.QtWidgets import QMainWindow, QApplication, QTableView
 from source.utils.LogManager import LogManager
 logger = LogManager.get_logger()
 from .ic_02_Inicializador import Inicializador
@@ -18,6 +18,8 @@ from .ic_07_ManipuladorTabela import ManipuladorTabela
 from .ic_08_Internacionalizador import Internacionalizador
 from .GerenciadorDesempenho.gdesemp_13_alternar_graficos_desempenho import alternar_graficos_desempenho as _alternar_graficos_desempenho
 from .GerenciadorEstruturaDiretoriosWidget.gedw_15_alternar_estrutura_diretorios import alternar_estrutura_diretorios as _alternar_estrutura_diretorios
+from source.services.GerenciamentoTabela.gtab_47_event_table_model import EventTableModel
+from source.services.GerenciamentoBaseEvento.gbank_20_db_writer import DatabaseWriter
 
 
 class InterfaceMonitor(QMainWindow):
@@ -42,6 +44,8 @@ class InterfaceMonitor(QMainWindow):
 
             self.configurar_tabela()
             self.setup_ui()
+            self._ativar_model_view_streaming()
+
             self.setup_menu_bar()
             if hasattr(self, 'painel_filtros'):
                 self.painel_filtros.sincronizar_com_menu_principal()
@@ -86,6 +90,70 @@ class InterfaceMonitor(QMainWindow):
 
     def configurar_tabela(self):
         ManipuladorTabela.configurar_tabela(self)
+
+    def _ativar_model_view_streaming(self):
+        try:
+            if not hasattr(self, 'tabela_dados'):
+                return
+
+            if isinstance(self.tabela_dados, QTableView):
+                if self.tabela_dados.model() is None:
+                    self.event_table_model = EventTableModel(self)
+                    self.tabela_dados.setModel(self.event_table_model)
+
+                return
+
+            antigo = self.tabela_dados
+            parent = antigo.parent()
+            layout = parent.layout() if parent else None
+
+            self.event_table_model = EventTableModel(self)
+            view = QTableView(parent)
+            view.setObjectName("tabela_dados")
+            view.setModel(self.event_table_model)
+            view.setSortingEnabled(False)
+            view.setAlternatingRowColors(True)
+            vh = view.verticalHeader()
+            if vh:
+                vh.setVisible(False)
+
+            hh = view.horizontalHeader()
+            if hh:
+                try:
+                    from PySide6.QtWidgets import QHeaderView
+                    hh.setStretchLastSection(False)
+                    hh.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+
+                except Exception:
+                    pass
+
+            if layout:
+                try:
+                    layout.addWidget(view)
+                    antigo.hide()
+
+                except Exception:
+                    pass
+
+            else:
+                antigo.hide()
+
+            self.tabela_dados = view
+
+        except Exception as e:
+            logger.warning(f"Falha ao ativar Model/View: {e}", exc_info=True)
+
+    @Slot(dict)
+    def inserir_evento_streaming(self, evento):
+        try:
+            if hasattr(self, 'tabela_dados') and isinstance(self.tabela_dados, QTableView) and hasattr(self, 'event_table_model'):
+                self.event_table_model.prepend_event(evento)
+            elif hasattr(self, 'gerenciador_tabela'):
+                # Fallback: QTableWidget
+                self.gerenciador_tabela.atualizar_linha_mais_recente(self.tabela_dados, evento=evento)
+            self.atualizar_status()
+        except Exception as e:
+            logger.error(f"Erro ao inserir evento em streaming: {e}", exc_info=True)
 
     def verificar_movimentacao(self, evento):
         return self.gerenciador_eventos_arquivo.verificar_movimentacao(evento)
@@ -170,6 +238,13 @@ class InterfaceMonitor(QMainWindow):
             if (hasattr(self, 'gerenciador_tabela') and 
                 hasattr(self.gerenciador_tabela, 'timer_atualizacao')):
                 self.gerenciador_tabela.timer_atualizacao.stop()
+
+            try:
+                if hasattr(self, 'evento_base') and hasattr(self.evento_base, 'db_path'):
+                    DatabaseWriter.get_instance(self.evento_base.db_path).stop()
+
+            except Exception as e:
+                logger.warning(f"Falha ao parar DatabaseWriter no encerramento: {e}", exc_info=True)
 
         except Exception as e:
             logger.error(f"Erro ao fechar recursos da aplicação: {e}", exc_info=True)
