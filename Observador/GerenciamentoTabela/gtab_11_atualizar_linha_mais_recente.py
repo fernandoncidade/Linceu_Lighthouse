@@ -19,12 +19,12 @@ def atualizar_linha_mais_recente(self, tabela_dados):
                 colunas_db = [desc[0] for desc in cursor.description]
                 evento = dict(zip(colunas_db, registro))
                 tabela_dados.insertRow(0)
-                colunas_visiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
+                colunas_disponiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"])]
                 getters = {key: getattr(self.interface.gerenciador_colunas, f"get_{key}", None)
-                            for key, _ in colunas_visiveis}
+                            for key, _ in colunas_disponiveis}
 
                 tipo_operacao_valor = None
-                for col, (key, _) in enumerate(colunas_visiveis):
+                for col, (key, _) in enumerate(colunas_disponiveis):
                     try:
                         getter = getters[key]
                         valor = getter(evento) if getter else evento.get(key, "")

@@ -51,11 +51,14 @@ class GerenciadorTabela(QObject):
         self.interface = interface_monitor
         self.lock_db = threading.Lock()
         self.loc = interface_monitor.loc
-        self.loc.idioma_alterado.connect(self.atualizar_cabecalhos)
-        self._idioma_ultima_retraducao = self.loc.idioma_atual
+
+        if hasattr(self.loc, 'idioma_alterado'):
+            self.loc.idioma_alterado.connect(self.atualizar_cabecalhos)
+            self.loc.idioma_alterado.connect(self._on_idioma_alterado)
+
+        self._idioma_ultima_retraducao = getattr(self.loc, 'idioma_atual', None)
         self._retraducao_realizada_para_idioma = False
-        self._idioma_alvo_retraducao = self.loc.idioma_atual
-        self.loc.idioma_alterado.connect(self._on_idioma_alterado)
+        self._idioma_alvo_retraducao = getattr(self.loc, 'idioma_atual', None)
         self._monitor_tema = MonitorTemaWindows()
         self._monitor_tema.tema_alterado.connect(self.atualizar_estilo_tema)
         self._monitor_tema.iniciar_monitoramento()
@@ -65,9 +68,12 @@ class GerenciadorTabela(QObject):
         self.atualizacao_pendente = False
         self.texto_original_cabecalhos = {}
         self.colunas_para_colorir = set()
-        self.interface.tabela_dados.setSelectionBehavior(QAbstractItemView.SelectItems)
-        self.interface.tabela_dados.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.interface.tabela_dados.itemSelectionChanged.connect(self.ajustar_cor_selecao)
+
+        if hasattr(self.interface, 'tabela_dados'):
+            self.interface.tabela_dados.setSelectionBehavior(QAbstractItemView.SelectItems)
+            self.interface.tabela_dados.setSelectionMode(QAbstractItemView.ExtendedSelection)
+            self.interface.tabela_dados.itemSelectionChanged.connect(self.ajustar_cor_selecao)
+
         self._itens_selecionados_anteriores = []
         self._cache_cores = {}
         self._cache_indices_colunas = {}
@@ -251,8 +257,23 @@ class GerenciadorTabela(QObject):
         except Exception as e:
             logger.error(f"Erro ao encerrar executors: {e}", exc_info=True)
 
+    def atualizar_cabecalhos(self):
+        if not hasattr(self, 'interface') or not hasattr(self.interface, 'tabela_dados') or not hasattr(self.interface, 'gerenciador_colunas'):
+            logger.warning("Interface ou atributos necessários não estão prontos para atualizar cabeçalhos.")
+            return
+
+        try:
+            atualizar_cabecalhos(self)
+
+        except Exception as e:
+            logger.error(f"Erro ao atualizar cabeçalhos: {e}", exc_info=True)
+
     def _on_idioma_alterado(self, idioma: str):
         try:
+            if self._retraducao_realizada_para_idioma and getattr(self.loc, 'idioma_atual', None) == self._idioma_ultima_retraducao:
+                logger.debug("Retradução já realizada para este idioma; ignorando chamada.")
+                return
+
             self._idioma_alvo_retraducao = idioma
             self._retraducao_realizada_para_idioma = False
             self.retraduzir_dados_existentes()
@@ -291,13 +312,12 @@ class GerenciadorTabela(QObject):
         self._retraducao_em_andamento = True
         try:
             logger.debug("Iniciando retradução de dados existentes")
-
             if not hasattr(self.interface, 'tabela_dados'):
                 return
 
             tabela = self.interface.tabela_dados
             tabela.blockSignals(True)
-            tabela.setUpdatesEnabled(False)
+            tabela.viewport().setUpdatesEnabled(False)
             if hasattr(self.interface, 'gerenciador_progresso_ui'):
                 self.interface.gerenciador_progresso_ui.criar_barra_progresso()
                 self.interface.rotulo_resultado.setText(self.loc.get_text("translating_table"))
@@ -354,7 +374,7 @@ class GerenciadorTabela(QObject):
             try:
                 if hasattr(self.interface, 'tabela_dados'):
                     tabela = self.interface.tabela_dados
-                    tabela.setUpdatesEnabled(True)
+                    tabela.viewport().setUpdatesEnabled(True)
                     tabela.blockSignals(False)
                     tabela.viewport().update()
                     QApplication.processEvents()

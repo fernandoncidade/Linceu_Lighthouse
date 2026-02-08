@@ -12,6 +12,7 @@ from InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor
 from InterfaceCore.ic_08_Internacionalizador import Internacionalizador
 from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from utils.LogManager import LogManager
+# from utils.TrialManager import TrialManager
 
 logger = LogManager.get_logger()
 
@@ -19,6 +20,8 @@ if __name__ == '__main__':
     try:
         logger.info("=== Iniciando aplicação Linceu_Lighthouse ===")
         app = QApplication(sys.argv)
+        # TrialManager.enforce_trial()  # Descomente esta linha para forçar o uso da versão de avaliação
+        # TrialManager.delete_first_run_timestamp()  # Use esta linha para testes, removendo o timestamp de primeiro uso
         Internacionalizador.inicializar_sistema_traducao(app)
         loc_temp = LocalizadorQt()
         idioma = loc_temp.idioma_atual

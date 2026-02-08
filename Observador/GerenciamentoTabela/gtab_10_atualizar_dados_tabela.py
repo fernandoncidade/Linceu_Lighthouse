@@ -11,7 +11,7 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
         with self.lock_db:
             with sqlite3.connect(db_path) as conn:
                 cursor = conn.cursor()
-                colunas_visiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
+                colunas_disponiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"])]
                 try:
                     if row_especifico is not None:
                         cursor.execute("""
@@ -25,9 +25,7 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
 
                     registros = cursor.fetchall()
                     colunas_db = [desc[0] for desc in cursor.description]
-
                     total_registros = len(registros)
-
                     if hasattr(self.interface, 'atualizar_contador_eventos'):
                         self.interface.atualizar_contador_eventos(total_registros)
 
@@ -35,18 +33,16 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
                         tabela_dados.setRowCount(total_registros)
 
                     getters = {key: getattr(self.interface.gerenciador_colunas, f"get_{key}", None)
-                                for key, _ in colunas_visiveis}
+                                for key, _ in colunas_disponiveis}
 
                     for idx, registro in enumerate(registros):
                         row = idx if row_especifico is None else row_especifico
                         evento = dict(zip(colunas_db, registro))
                         tipo_operacao_valor = None
-
-                        for col, (key, _) in enumerate(colunas_visiveis):
+                        for col, (key, _) in enumerate(colunas_disponiveis):
                             try:
                                 getter = getters[key]
                                 valor = getter(evento) if getter else evento.get(key, "")
-
                                 if key == "tipo_operacao" and valor:
                                     valor = self.loc.traduzir_tipo_operacao(valor)
                                     tipo_operacao_valor = valor
@@ -102,22 +98,10 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
                                         valor = ""
 
                                 novo_texto = str(valor)
-
-                                indice_coluna = None
-                                for i in range(tabela_dados.columnCount()):
-                                    header_item = tabela_dados.horizontalHeaderItem(i)
-                                    if header_item and header_item.text().replace('\n', ' ').strip() == self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS[key]["nome"].replace('\n', ' ').strip():
-                                        indice_coluna = i
-                                        break
-
-                                if indice_coluna is None:
-                                    continue
-
-                                item = tabela_dados.item(row, indice_coluna)
-
+                                item = tabela_dados.item(row, col)
                                 if item is None:
                                     item = QTableWidgetItem(novo_texto)
-                                    tabela_dados.setItem(row, indice_coluna, item)
+                                    tabela_dados.setItem(row, col, item)
 
                                 else:
                                     if item.text() != novo_texto:
@@ -125,15 +109,8 @@ def atualizar_dados_tabela(self, tabela_dados, row_especifico=None):
 
                             except Exception as e:
                                 print(f"Erro ao processar coluna {key}: {e}")
-                                indice_coluna = None
-                                for i in range(tabela_dados.columnCount()):
-                                    header_item = tabela_dados.horizontalHeaderItem(i)
-                                    if header_item and header_item.text().replace('\n', ' ').strip() == self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS[key]["nome"].replace('\n', ' ').strip():
-                                        indice_coluna = i
-                                        break
-
-                                if indice_coluna is not None and not tabela_dados.item(row, indice_coluna):
-                                    tabela_dados.setItem(row, indice_coluna, QTableWidgetItem(""))
+                                if not tabela_dados.item(row, col):
+                                    tabela_dados.setItem(row, col, QTableWidgetItem(""))
 
                         if tipo_operacao_valor:
                             self.aplicar_cores_linha_especifica(tabela_dados, row, tipo_operacao_valor)

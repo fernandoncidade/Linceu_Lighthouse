@@ -7,7 +7,6 @@ class ManipuladorTabela:
         logger = LogManager.get_logger()
         try:
             logger.debug("Configurando tabela de dados")
-
             if not hasattr(interface, 'gerenciador_tabela'):
                 logger.error("GerenciadorTabela não foi inicializado")
                 return
@@ -17,7 +16,6 @@ class ManipuladorTabela:
                 return
 
             interface.gerenciador_tabela.configurar_tabela(interface.tabela_dados)
-
             if not hasattr(interface.gerenciador_tabela, '_conexoes_configuradas'):
                 interface.gerenciador_tabela.cores_processadas.connect(interface._atualizar_cores_tabela)
                 interface.gerenciador_tabela._conexoes_configuradas = True
@@ -34,7 +32,6 @@ class ManipuladorTabela:
             logger.debug("Atualizando visibilidade das colunas")
             if hasattr(interface, 'gerenciador_tabela'):
                 interface.gerenciador_tabela.atualizar_visibilidade_colunas(atualizar_em_massa)
-
                 if hasattr(interface, 'tabela_dados'):
                     interface.gerenciador_tabela.ajustar_altura_cabecalho(interface.tabela_dados)
 
@@ -78,11 +75,9 @@ class ManipuladorTabela:
             if hasattr(interface, 'gerenciador_tabela') and hasattr(interface.gerenciador_tabela, 'executor'):
                 import time
                 start_time = time.time()
-
+                executor = interface.gerenciador_tabela.executor
                 while time.time() - start_time < timeout:
-                    if (hasattr(interface.gerenciador_tabela, '_cor_selecao_future') and 
-                        interface.gerenciador_tabela._cor_selecao_future is not None and
-                        not interface.gerenciador_tabela._cor_selecao_future.done()):
+                    if hasattr(executor, '_threads') and any(t.is_alive() for t in executor._threads):
                         time.sleep(0.1)
                         continue
 

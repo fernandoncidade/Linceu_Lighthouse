@@ -46,17 +46,14 @@ class GerenciadorColunas:
             self.loc = interface_monitor.observador.loc
 
         self.loc.idioma_alterado.connect(self.atualizar_interface)
-
         self.config_path = os.path.join(obter_caminho_persistente(), "colunas_config.json")
         print(f"Caminho de configuração das colunas: {self.config_path}")
-
         self.cache_metadados = {}
         self.fila_metadados = queue.Queue()
         self.executor = ThreadPoolExecutor(max_workers=2)
         self.executor_metadados = ThreadPoolExecutor(max_workers=4)
         self.lock_cache = threading.Lock()
         self.processando_metadados = False
-
         if hasattr(interface_monitor, "tabela_dados"):
             self.gerenciador_tabela = GerenciadorTabela(interface_monitor)
 
@@ -65,7 +62,6 @@ class GerenciadorColunas:
 
         self.thread_metadados = threading.Thread(target=self.processar_fila_metadados, daemon=True)
         self.thread_metadados.start()
-
         self.COLUNAS_DISPONIVEIS = {
             "tipo_operacao": {
                 "translation_key": "operation_type",
@@ -369,14 +365,11 @@ class GerenciadorColunas:
                 "getter": lambda item: item.get("timestamp", "")
             }
         }
-
         self.carregar_configuracoes()
-
         self.filas_colunas = {}
         self.threads_colunas = {}
         self.resultados_colunas = {}
         self.lock_resultados = threading.Lock()
-
         for coluna_key in self.COLUNAS_DISPONIVEIS.keys():
             self.filas_colunas[coluna_key] = queue.Queue()
             thread = threading.Thread(
@@ -418,14 +411,11 @@ class GerenciadorColunas:
     def restaurar_estado_tabela(self, tabela, eventos):
         tabela.clearContents()
         tabela.setRowCount(len(eventos))
-
         colunas_visiveis = [(key, col) for key, col in sorted(self.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
-
         for row, evento in enumerate(eventos):
             for col, (key, coluna) in enumerate(colunas_visiveis):
                 valor = evento.get(coluna["nome"], "")
                 item = QTableWidgetItem(str(valor))
-
                 if key == "tipo_operacao":
                     cores = {
                         self.loc.get_text("op_renamed"): QColor(0, 255, 0),
@@ -435,7 +425,6 @@ class GerenciadorColunas:
                         self.loc.get_text("op_moved"): QColor(255, 0, 255),
                         self.loc.get_text("op_scanned"): QColor(128, 128, 128)
                     }
-
                     item.setBackground(cores.get(valor, QColor(255, 255, 255)))
 
                 tabela.setItem(row, col, item)
@@ -456,7 +445,6 @@ class GerenciadorColunas:
 
     def salvar_configuracoes(self):
         config = {k: {"visivel": v["visivel"], "ordem": v["ordem"]} for k, v in self.COLUNAS_DISPONIVEIS.items()}
-
         try:
             with open(self.config_path, 'w') as f:
                 json.dump(config, f, indent=4)
@@ -469,17 +457,14 @@ class GerenciadorColunas:
             try:
                 item = self.fila_metadados.get(timeout=1)
                 caminho = item.get("dir_atual") or item.get("dir_anterior")
-
                 if not caminho or not os.path.exists(caminho):
                     tipo = identificar_tipo_arquivo(caminho, self.loc, item.get("nome"))
                     metadados = {"tipo": tipo}
                     return metadados
 
                 time.sleep(0.1)
-
                 if os.path.exists(caminho):
                     metadados = self.get_metadados(item)
-
                     if metadados:
                         with self.lock_cache:
                             self.cache_metadados[caminho] = metadados
@@ -558,8 +543,6 @@ class GerenciadorColunas:
 
     def get_metadados(self, item):
         try:
-            from Observador.GerenciamentoMetadados.gmet_21_GetFormataTamanho import get_formata_tamanho
-
             caminho = item.get("dir_atual") or item.get("dir_anterior")
             if not caminho or not os.path.exists(caminho):
                 tipo = identificar_tipo_arquivo(caminho, self.loc, item.get("nome"))
@@ -637,11 +620,9 @@ class GerenciadorColunas:
                     "autor": get_autor_arquivo(item, self.loc),
                     "protegido": get_protecao_arquivo(self, item, self.loc)
                 }
-
                 try:
                     tipo = identificar_tipo_arquivo(caminho, self.loc)
                     metadados["tipo"] = tipo
-
                     ext = os.path.splitext(caminho)[1].lower()
                     if ext == '.dat':
                         from Observador.GerenciamentoMetadados.gmet_17_ExtrairMetadadosDadosEstruturados import extrair_metadados_dados_estruturados
@@ -718,7 +699,6 @@ class GerenciadorColunas:
                     metadados["protegido"] = get_protecao_arquivo(self, item, self.loc)
 
                     get_dimensoes_arquivo(self, item, self.loc)
-
                     with self.lock_cache:
                         if caminho in self.cache_metadados:
                             for campo in [

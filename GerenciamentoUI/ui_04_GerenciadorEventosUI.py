@@ -1,10 +1,10 @@
 import os
 import sys
-from utils.LogManager import LogManager
 import subprocess
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMessageBox, QApplication, QDialog
 from Filtros.fil_01_Filtros import Filtros
+from utils.LogManager import LogManager
 
 logger = LogManager.get_logger()
 
@@ -126,7 +126,8 @@ class GerenciadorEventosUI:
                 "planilhas": False,
                 "colunas": False,
                 "registros": False,
-                "tabelas": False
+                "tabelas": False,
+                "timestamp": True
             }
 
             for coluna, visivel in colunas_padrao.items():

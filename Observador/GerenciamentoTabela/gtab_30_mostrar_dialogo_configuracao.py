@@ -8,12 +8,10 @@ def mostrar_dialogo_configuracao(self, pos=None):
     try:
         menu = QMenu()
         menu.setToolTipsVisible(True)
-
         titulo = QAction(self.loc.get_text("configure_columns"), menu)
         titulo.setEnabled(False)
         menu.addAction(titulo)
         menu.addSeparator()
-
         acoes = {}
         for key, coluna in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]):
             acao = QAction(coluna["nome"], menu)
@@ -29,10 +27,8 @@ def mostrar_dialogo_configuracao(self, pos=None):
         acao_cores.setChecked(self.cores_visiveis)
         acao_cores.setToolTip("Ativa ou oculta a exibição das cores nas colunas coloridas")
         menu.addAction(acao_cores)
-
         menu.aboutToShow.connect(lambda: menu.move(QCursor.pos()))
         pos = pos or QCursor.pos()
-
         resultado = menu.exec(pos)
         if resultado:
             mudancas = False
@@ -52,7 +48,6 @@ def mostrar_dialogo_configuracao(self, pos=None):
             if mudancas:
                 self.interface.gerenciador_colunas.salvar_configuracoes()
                 self.atualizar_visibilidade_colunas()
-
                 if hasattr(self.interface, 'atualizar_status'):
                     self.interface.atualizar_status()
 

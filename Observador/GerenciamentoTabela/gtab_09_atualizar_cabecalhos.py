@@ -9,20 +9,24 @@ def atualizar_cabecalhos(self):
             return
 
         tabela = self.interface.tabela_dados
-        colunas_visiveis = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]) if col["visivel"]]
-
-        if tabela.columnCount() != len(colunas_visiveis):
+        colunas_ordenadas = [(key, col) for key, col in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"])]
+        if tabela.columnCount() != len(colunas_ordenadas):
             self.configurar_tabela(tabela)
             return
 
         headers = []
         self.texto_original_cabecalhos = {}
-        for i, (key, coluna) in enumerate(colunas_visiveis):
+        for i, (key, coluna) in enumerate(colunas_ordenadas):
             texto = coluna["nome"]
             self.texto_original_cabecalhos[i] = texto
             headers.append(texto)
 
         tabela.setHorizontalHeaderLabels(headers)
+        try:
+            self._cache_indices_colunas = {}
+
+        except Exception:
+            pass
 
         header = tabela.horizontalHeader()
         for i in range(tabela.columnCount()):
@@ -34,12 +38,11 @@ def atualizar_cabecalhos(self):
 
         self._suspender_quebra_cabecalho = True
         try:
-            self.ajustar_larguras_colunas(tabela, colunas_visiveis)
+            self.ajustar_larguras_colunas(tabela, colunas_ordenadas)
             self.ajustar_altura_cabecalho(tabela)
-
             if not getattr(self, "_retraducao_realizada_para_idioma", False):
                 self.retraduzir_dados_existentes()
-                self.ajustar_larguras_colunas(tabela, colunas_visiveis)
+                self.ajustar_larguras_colunas(tabela, colunas_ordenadas)
                 self.ajustar_altura_cabecalho(tabela)
 
             for i in range(tabela.columnCount()):
@@ -53,6 +56,9 @@ def atualizar_cabecalhos(self):
             self._suspender_quebra_cabecalho = False
 
         tabela.viewport().update()
+        if hasattr(self, '_invalidar_cache_cores'):
+            self._invalidar_cache_cores()
+
         QApplication.processEvents()
 
     except Exception as e:

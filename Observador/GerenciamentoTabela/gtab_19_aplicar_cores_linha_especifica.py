@@ -46,7 +46,8 @@ def aplicar_cores_linha_especifica(self, tabela, row, tipo_operacao_valor=None):
 
             if key == "tipo_operacao":
                 cor = cores.get(tipo_operacao_valor, cor_padrao)
-                cor_texto = self.calcular_cor_texto_ideal(cor, False)
+                eh_personalizada = self.eh_coluna_personalizada_colorida(key) if hasattr(self, 'eh_coluna_personalizada_colorida') else False
+                cor_texto = self.calcular_cor_texto_ideal(cor, eh_personalizada)
 
             elif key in self.colunas_para_colorir:
                 cor = cores.get(tipo_operacao_valor, cor_padrao)
