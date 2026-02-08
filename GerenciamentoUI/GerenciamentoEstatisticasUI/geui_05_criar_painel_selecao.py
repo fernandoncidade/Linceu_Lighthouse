@@ -1,5 +1,3 @@
-import os
-import sys
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
@@ -15,7 +13,7 @@ def _criar_painel_selecao(self, graficos=None):
     container_layout.setContentsMargins(0, 0, 0, 0)
     container_layout.setSpacing(0)
 
-    texto_ocultar = (self.loc.get_text("hide_selection_panel") if "hide_selection_panel" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Ocultar Painel de Seleção")
+    texto_ocultar = self.loc.get_text("hide_selection_panel")
     self.btn_toggle_painel = self._criar_botao_toggle_painel(texto_ocultar)
 
     largura_botao = 25
@@ -32,14 +30,14 @@ def _criar_painel_selecao(self, graficos=None):
     layout = QVBoxLayout()
     layout.setContentsMargins(5, 5, 5, 5)
 
-    self.titulo_selecionar_graficos = QLabel(self.loc.get_text("select_graphs") if "select_graphs" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionar Gráficos")
+    self.titulo_selecionar_graficos = QLabel(self.loc.get_text("select_graphs"))
     layout.addWidget(self.titulo_selecionar_graficos)
 
     scroll_area = QScrollArea()
     scroll_widget = QWidget()
 
     self.checkboxes_layout = QVBoxLayout()
-    self.checkbox_todos = QCheckBox(self.loc.get_text("select_all") if "select_all" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Selecionar Todos")
+    self.checkbox_todos = QCheckBox(self.loc.get_text("select_all"))
     self.checkbox_todos.setChecked(True)
     self.checkbox_todos.setTristate(True)
     self.checkbox_todos.clicked.connect(self._alternar_todos_checkboxes)
@@ -59,7 +57,7 @@ def _criar_painel_selecao(self, graficos=None):
     buttons_layout = QVBoxLayout()
     buttons_layout.setSpacing(5)
 
-    self.btn_salvar_selecionados = QPushButton(self.loc.get_text("save_selected") if "save_selected" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Salvar Selecionados")
+    self.btn_salvar_selecionados = QPushButton(self.loc.get_text("save_selected"))
     self.btn_salvar_selecionados.setIcon(QIcon(get_icon_path("salvar.ico")))
     self.btn_salvar_selecionados.clicked.connect(self._salvar_graficos_selecionados)
     buttons_layout.addWidget(self.btn_salvar_selecionados)

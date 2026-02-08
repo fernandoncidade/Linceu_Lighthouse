@@ -9,8 +9,6 @@ def _traduzir_botoes_detalhes(self, msg):
 
             fonte_metrica = botao.fontMetrics()
             texto_largura = fonte_metrica.horizontalAdvance(botao.text())
-
             largura_minima = texto_largura + 20
-
             botao.setMinimumWidth(largura_minima)
             botao.adjustSize()

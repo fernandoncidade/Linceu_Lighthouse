@@ -1,5 +1,5 @@
 CONTRATTO DI LICENZA COMMERCIALE - Linceu Lighthouse
-Versione 0.0.1.0, 2 agosto 2025
+Versione 0.0.2.0, 17 agosto 2025
 
 Questo Contratto di Licenza ("Contratto") è stipulato tra:
 

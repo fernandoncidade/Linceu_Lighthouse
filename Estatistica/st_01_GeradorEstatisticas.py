@@ -299,7 +299,7 @@ class GeradorEstatisticas:
 
         graficos = {
             self.loc.get_text("operations_pie") if self.loc else "operations_pie": self.grafico_operacoes_pizza,
-            self.loc.get_text("file_types") if self.loc else "file_types": self.grafico_tipos_arquivo_barras,
+            self.loc.get_text("bar_chart") if self.loc else "bar_chart": self.grafico_tipos_arquivo_barras,
             self.loc.get_text("timeline") if self.loc else "timeline": self.grafico_timeline_operacoes,
             self.loc.get_text("tree_map") if self.loc else "tree_map": self.grafico_treemap_tipos,
             self.loc.get_text("hour_histogram") if self.loc else "hour_histogram": self.grafico_histograma_horarios,

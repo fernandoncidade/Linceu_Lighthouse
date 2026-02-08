@@ -418,8 +418,8 @@ class AdministradorFiltros:
             main_loc = self.parent.loc if hasattr(self.parent, 'loc') else None
 
             if main_loc is None:
-                from GerenciamentoUI.ui_12_Localizador import Localizador
-                main_loc = Localizador()
+                from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+                main_loc = LocalizadorQt()
 
             if self.parent and hasattr(self.parent, 'tabela_dados'):
                 try:
@@ -451,8 +451,8 @@ class AdministradorFiltros:
             main_loc = self.parent.loc if hasattr(self.parent, 'loc') else None
 
             if main_loc is None:
-                from GerenciamentoUI.ui_12_Localizador import Localizador
-                main_loc = Localizador()
+                from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+                main_loc = LocalizadorQt()
 
             if self.parent and hasattr(self.parent, 'tabela_dados'):
                 try:

@@ -1,7 +1,7 @@
 import concurrent.futures
 import threading
 from PySide6.QtCore import QTimer, Signal, QObject
-from PySide6.QtWidgets import QAbstractItemView
+from PySide6.QtWidgets import QAbstractItemView, QApplication
 from utils.LogManager import LogManager
 
 from Observador.GerenciamentoTabela.gtab_01_detectar_tema_windows import detectar_tema_windows
@@ -52,6 +52,10 @@ class GerenciadorTabela(QObject):
         self.lock_db = threading.Lock()
         self.loc = interface_monitor.loc
         self.loc.idioma_alterado.connect(self.atualizar_cabecalhos)
+        self._idioma_ultima_retraducao = self.loc.idioma_atual
+        self._retraducao_realizada_para_idioma = False
+        self._idioma_alvo_retraducao = self.loc.idioma_atual
+        self.loc.idioma_alterado.connect(self._on_idioma_alterado)
         self._monitor_tema = MonitorTemaWindows()
         self._monitor_tema.tema_alterado.connect(self.atualizar_estilo_tema)
         self._monitor_tema.iniciar_monitoramento()
@@ -74,6 +78,12 @@ class GerenciadorTabela(QObject):
         self._selection_executor = None
         self._selection_future = None
         self._debounce_timer = None
+        self._timer_retraducao = QTimer(self)
+        self._timer_retraducao.setSingleShot(True)
+        self._timer_retraducao.timeout.connect(self._executar_retraducao_agendada)
+        self._retraducao_em_andamento = False
+        self._retraducao_agendada = False
+        QTimer.singleShot(0, lambda: self._carregar_configuracoes_cores())
 
         logger.info("GerenciadorTabela inicializado com sucesso.")
 
@@ -142,10 +152,8 @@ class GerenciadorTabela(QObject):
         cores_operacao = self._obter_cores_operacao()
         cor_padrao = cores_operacao.get(self.loc.get_text("op_scanned"))
         cor_texto_padrao = self.calcular_cor_texto_ideal(cor_padrao)
-
         header_indices = self._obter_indices_colunas(tabela)
         colunas = list(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items())
-
         for row in range(tabela.rowCount()):
             tipo_operacao_valor = ""
             indice_tipo_operacao = header_indices.get(
@@ -242,3 +250,128 @@ class GerenciadorTabela(QObject):
 
         except Exception as e:
             logger.error(f"Erro ao encerrar executors: {e}", exc_info=True)
+
+    def _on_idioma_alterado(self, idioma: str):
+        try:
+            self._idioma_alvo_retraducao = idioma
+            self._retraducao_realizada_para_idioma = False
+            self.retraduzir_dados_existentes()
+
+        except Exception as e:
+            logger.error(f"Erro no handler de idioma_alterado: {e}", exc_info=True)
+
+    def retraduzir_dados_existentes(self):
+        try:
+            if self._retraducao_realizada_para_idioma and self.loc.idioma_atual == self._idioma_ultima_retraducao:
+                logger.debug("Retradução já realizada para este idioma; ignorando chamada.")
+                return
+
+            if self._retraducao_em_andamento:
+                self._retraducao_agendada = True
+                return
+
+            if self._timer_retraducao.isActive():
+                return
+
+            self._retraducao_agendada = True
+            self._timer_retraducao.start(50)
+
+        except Exception as e:
+            logger.error(f"Erro ao agendar retradução: {e}", exc_info=True)
+
+    def _executar_retraducao_agendada(self):
+        if not self._retraducao_agendada:
+            return
+
+        if self._retraducao_realizada_para_idioma and self.loc.idioma_atual == self._idioma_ultima_retraducao:
+            logger.debug("Ignorando execução de retradução: já concluída para este idioma.")
+            return
+
+        self._retraducao_agendada = False
+        self._retraducao_em_andamento = True
+        try:
+            logger.debug("Iniciando retradução de dados existentes")
+
+            if not hasattr(self.interface, 'tabela_dados'):
+                return
+
+            tabela = self.interface.tabela_dados
+            tabela.blockSignals(True)
+            tabela.setUpdatesEnabled(False)
+            if hasattr(self.interface, 'gerenciador_progresso_ui'):
+                self.interface.gerenciador_progresso_ui.criar_barra_progresso()
+                self.interface.rotulo_resultado.setText(self.loc.get_text("translating_table"))
+
+            header_indices = self._obter_indices_colunas(tabela)
+            colunas_traduziveis = ["tipo_operacao","atributos","protegido"]
+            mapa_colunas = {}
+            for key, coluna in self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items():
+                nome_coluna = coluna["nome"].replace('\n', ' ').strip()
+                mapa_colunas[nome_coluna] = key
+
+            total_linhas = tabela.rowCount()
+            for row in range(total_linhas):
+                tipo_operacao_valor = None
+                for nome_coluna, indice_coluna in header_indices.items():
+                    key = mapa_colunas.get(nome_coluna)
+                    if key == "tipo_operacao":
+                        item = tabela.item(row, indice_coluna)
+                        if item:
+                            valor_atual = item.text()
+                            valor_retraduzido = self.loc.traduzir_tipo_operacao(valor_atual)
+                            if valor_atual != valor_retraduzido:
+                                item.setText(valor_retraduzido)
+
+                            tipo_operacao_valor = valor_retraduzido
+
+                        break
+
+                for nome_coluna, indice_coluna in header_indices.items():
+                    key = mapa_colunas.get(nome_coluna)
+                    if key and key in colunas_traduziveis and key != "tipo_operacao":
+                        item = tabela.item(row, indice_coluna)
+                        if item:
+                            valor_atual = item.text()
+                            if valor_atual:
+                                valor_retraduzido = self.loc.traduzir_metadados(valor_atual, key)
+                                if valor_atual != valor_retraduzido:
+                                    item.setText(valor_retraduzido)
+
+                if tipo_operacao_valor and self.cores_visiveis:
+                    self.aplicar_cores_linha_especifica(tabela, row, tipo_operacao_valor)
+
+                if hasattr(self.interface, 'gerenciador_progresso_ui') and row % 100 == 0:
+                    progresso = int((row + 1) * 100 / total_linhas) if total_linhas else 100
+                    self.interface.gerenciador_progresso_ui.atualizar_progresso_traducao(progresso, row + 1, total_linhas)
+                    QApplication.processEvents()
+
+            logger.debug(f"Retradução concluída para {total_linhas} linhas")
+
+        except Exception as e:
+            logger.error(f"Erro ao retraduzir dados existentes: {e}", exc_info=True)
+
+        finally:
+            try:
+                if hasattr(self.interface, 'tabela_dados'):
+                    tabela = self.interface.tabela_dados
+                    tabela.setUpdatesEnabled(True)
+                    tabela.blockSignals(False)
+                    tabela.viewport().update()
+                    QApplication.processEvents()
+
+            except Exception:
+                pass
+
+            try:
+                if hasattr(self.interface, 'gerenciador_progresso_ui'):
+                    from InterfaceCore.ic_05_GerenciadorProgresso import GerenciadorProgresso
+                    GerenciadorProgresso.esconder_barra_progresso(self.interface)
+                    self.interface.rotulo_resultado.setText(self.loc.get_text("translation_complete"))
+
+            except Exception:
+                pass
+
+            self._idioma_ultima_retraducao = self.loc.idioma_atual
+            self._retraducao_realizada_para_idioma = True
+            self._retraducao_em_andamento = False
+            self._retraducao_agendada = False

@@ -24,7 +24,7 @@ class GraficoScatter(BaseGerador):
         match = re.match(pattern, tamanho_str)
 
         if not match:
-            logger.debug(f"Scatter - Não foi possível parsear o tamanho: '{tamanho_str}'")
+            logger.debug(f"Scatter - Não foi possível parsear o size_mb: '{tamanho_str}'")
             return None
 
         numero_str = match.group(1).replace(',', '.')
@@ -164,6 +164,25 @@ class GraficoScatter(BaseGerador):
         except Exception as e:
             logger.error(f"Scatter - Erro ao configurar eixo X: {e}", exc_info=True)
 
+    def _extrair_tamanho_bytes(self, row):
+        campos = [
+            ('size_tb', 1024**4),
+            ('size_gb', 1024**3),
+            ('size_mb', 1024**2),
+            ('size_kb', 1024),
+            ('size_b', 1)
+        ]
+        for campo, fator in campos:
+            valor = row.get(campo)
+            if pd.notna(valor) and str(valor).strip() != '':
+                try:
+                    return float(str(valor).replace(',', '.')) * fator
+
+                except Exception:
+                    continue
+
+        return None
+
     def gerar(self):
         logger = LogManager.get_logger()
         logger.debug("Iniciando geração do gráfico scatter")
@@ -178,7 +197,7 @@ class GraficoScatter(BaseGerador):
             return self._criar_grafico_sem_dados(titulo)
 
         try:
-            df['tamanho_bytes'] = df['tamanho'].apply(self._parse_tamanho)
+            df['tamanho_bytes'] = df.apply(self._extrair_tamanho_bytes, axis=1)
             df_filtrado = df.dropna(subset=['tamanho_bytes'])
 
             tamanhos_invalidos = len(df) - len(df_filtrado)
@@ -219,7 +238,6 @@ class GraficoScatter(BaseGerador):
 
             if formato_tick is not None:
                 x_values = df_ajustado['x_plot']
-
             else:
                 x_values = df_ajustado['timestamp']
 

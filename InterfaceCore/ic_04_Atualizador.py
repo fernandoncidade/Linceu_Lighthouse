@@ -1,5 +1,6 @@
 from utils.LogManager import LogManager
-from PySide6.QtWidgets import QApplication, QDialog, QVBoxLayout
+from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Qt
 
 
 class Atualizador:
@@ -82,21 +83,29 @@ class Atualizador:
 
     @staticmethod
     def abrir_janela_filtros(interface):
-        logger = LogManager.get_logger()
         try:
-            logger.debug("Abrindo janela de filtros")
-            janela_filtros = QDialog(interface)
-            janela_filtros.setWindowTitle(interface.loc.get_text("filters"))
-            layout = QVBoxLayout(janela_filtros)
-
             from Filtros.fil_01_Filtros import Filtros
-            painel_filtros = Filtros(interface.tabela_dados)
-            painel_filtros.filtroAplicado.connect(interface.atualizar_status)
+            from utils.LogManager import LogManager
+            logger = LogManager.get_logger()
 
-            layout.addWidget(painel_filtros)
-            janela_filtros.setLayout(layout)
-            janela_filtros.exec()
-            logger.debug("Janela de filtros exibida")
+            logger.info("Abrindo janela de filtros avançados")
+
+            if hasattr(interface, 'painel_filtros') and interface.painel_filtros:
+                if interface.painel_filtros.isVisible():
+                    interface.painel_filtros.raise_()
+                    interface.painel_filtros.activateWindow()
+                    return
+
+                interface.painel_filtros.deleteLater()
+                interface.painel_filtros = None
+
+            interface.painel_filtros = Filtros(interface.tabela_dados, interface.loc)
+            interface.painel_filtros.setWindowModality(Qt.NonModal)
+            interface.painel_filtros.show()
+
+            interface.painel_filtros.filtroAplicado.connect(interface.atualizar_status)
+            logger.info("Janela de filtros avançados exibida com sucesso")
 
         except Exception as e:
+            logger = LogManager.get_logger()
             logger.error(f"Erro ao abrir janela de filtros: {e}", exc_info=True)

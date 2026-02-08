@@ -35,57 +35,57 @@ class GraficoRadar(BaseGerador):
                 logger.warning("Radar - Sem dados válidos após filtrar valores nulos")
                 return self._criar_grafico_sem_dados(titulo)
 
-            tipos_top = df_radar['tipo'].value_counts().nlargest(6).index.tolist()
-            operacoes = df_radar['tipo_operacao'].unique().tolist()
+            tipos_top = df_radar['tipo'].value_counts().nlargest(10).index.tolist()
+            operacoes = [self.loc.get_text('op_added'), 
+                         self.loc.get_text('op_deleted'), 
+                         self.loc.get_text('op_renamed'), 
+                         self.loc.get_text('op_modified'), 
+                         self.loc.get_text('op_moved'), 
+                         self.loc.get_text('op_scanned')]
 
             logger.debug(f"Radar - Usando {len(tipos_top)} tipos de arquivo mais comuns")
             logger.debug(f"Radar - {len(operacoes)} tipos de operações encontradas")
 
-            matriz_radar = np.zeros((len(operacoes), len(tipos_top)))
-
-            for i, operacao in enumerate(operacoes):
-                for j, tipo in enumerate(tipos_top):
-                    count = len(df_radar[(df_radar['tipo_operacao'] == operacao) & (df_radar['tipo'] == tipo)])
-                    matriz_radar[i, j] = count
-                    logger.debug(f"Radar - {operacao} em {tipo}: {count} ocorrências")
-
-            for j in range(len(tipos_top)):
-                total = matriz_radar[:, j].sum()
-                if total > 0:
-                    matriz_radar[:, j] = matriz_radar[:, j] / total * 100
-
-            logger.debug("Radar - Matriz de dados normalizada para percentual")
-
-            fig, ax = plt.subplots(figsize=(10, 8), subplot_kw={'projection': 'polar'})
+            n_operacoes = len(operacoes)
+            n_cols = 3
+            n_rows = int(np.ceil(n_operacoes / n_cols))
+            fig, axs = plt.subplots(n_rows, n_cols, figsize=(16, 8), subplot_kw={'projection': 'polar'})
+            axs = axs.flatten()
 
             angulos = np.linspace(0, 2*np.pi, len(tipos_top), endpoint=False).tolist()
             angulos += angulos[:1]
-
             tipos_top_show = [t if len(t) < 15 else t[:12] + '...' for t in tipos_top]
 
-            for i, operacao in enumerate(operacoes):
-                valores = matriz_radar[i].tolist()
+            for idx, operacao in enumerate(operacoes):
+                matriz = []
+                for tipo in tipos_top:
+                    count = len(df_radar[(df_radar['tipo_operacao'] == operacao) & (df_radar['tipo'] == tipo)])
+                    matriz.append(count)
+
+                matriz = np.array(matriz)
+                total = matriz.sum()
+                valores = (matriz / total * 100) if total > 0 else np.zeros_like(matriz)
+                valores = valores.tolist()
                 valores += valores[:1]
+
                 cor = self.cores_operacoes.get(operacao, '#333333')
+                ax = axs[idx]
                 ax.plot(angulos, valores, linewidth=2, linestyle='solid', label=operacao, color=cor)
                 ax.fill(angulos, valores, alpha=0.1, color=cor)
-                logger.debug(f"Radar - Plotando operação '{operacao}' com cor {cor}")
+                ax.set_theta_offset(np.pi / 2)
+                ax.set_theta_direction(-1)
+                ax.set_xticks(angulos[:-1])
+                ax.set_xticklabels(tipos_top_show)
+                ax.yaxis.grid(True)
+                ax.set_ylim(0, 100)
+                ax.set_title(f"{titulo} - {operacao}", y=1.08)
+                ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.0))
 
-            ax.set_theta_offset(np.pi / 2)
-            ax.set_theta_direction(-1)
-
-            ax.set_xticks(angulos[:-1])
-            ax.set_xticklabels(tipos_top_show)
-
-            ax.yaxis.grid(True)
-            ax.set_ylim(0, 100)
-
-            plt.title(titulo, y=1.08)
-            plt.legend(loc='upper right', bbox_to_anchor=(1.3, 1.0))
+            for i in range(len(operacoes), len(axs)):
+                fig.delaxes(axs[i])
 
             plt.tight_layout()
-            logger.debug("Radar - Gráfico gerado com sucesso")
-
+            logger.debug("Radar - Gráficos gerados por operação com sucesso")
             return plt.gcf()
 
         except Exception as e:

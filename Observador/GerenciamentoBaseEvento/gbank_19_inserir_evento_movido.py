@@ -6,37 +6,49 @@ def _inserir_evento_movido(self, cursor, evento):
 
     try:
         colunas = [
-            "tipo_operacao", 
-            "nome", 
-            "dir_anterior", 
-            "dir_atual",
-            "data_criacao", 
-            "data_modificacao", 
-            "data_acesso", 
-            "tipo", 
-            "tamanho",
-            "atributos", 
-            "autor", 
-            "dimensoes", 
-            "duracao", 
-            "taxa_bits", 
-            "protegido",
-            "paginas",
-            "linhas",
-            "palavras",
-            "paginas_estimadas",
-            "linhas_codigo",
-            "total_linhas",
-            "slides_estimados",
-            "arquivos",
-            "descompactados",
-            "slides",
-            "binario",
-            "planilhas",
-            "colunas",
-            "registros",
-            "tabelas", 
-            "timestamp"
+            'tipo_operacao', 
+            'nome', 
+            'dir_anterior', 
+            'dir_atual', 
+            'data_criacao', 
+            'data_modificacao',
+            'data_acesso',
+            'tipo',
+            'size_b',
+            'size_kb',
+            'size_mb',
+            'size_gb',
+            'size_tb',
+            'atributos',
+            'autor',
+            'dimensoes',
+            'duracao',
+            'taxa_bits', 
+            'protegido', 
+            'paginas',
+            'linhas',
+            'palavras',
+            'paginas_estimadas',
+            'linhas_codigo',
+            'total_linhas',
+            'slides_estimados',
+            'arquivos',
+            'unzipped_b',
+            'unzipped_kb',
+            'unzipped_mb',
+            'unzipped_gb',
+            'unzipped_tb',
+            'slides',
+            'binary_file_b',
+            'binary_file_kb',
+            'binary_file_mb',
+            'binary_file_gb',
+            'binary_file_tb',
+            'planilhas',
+            'colunas',
+            'registros',
+            'tabelas',
+            'timestamp'
         ]
 
         valores = []
@@ -45,7 +57,7 @@ def _inserir_evento_movido(self, cursor, evento):
                 valores.append(self.observador.loc.get_text("op_moved"))
 
             elif coluna == "timestamp" and "timestamp" not in evento:
-                valores.append(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+                valores.append(datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"))
 
             else:
                 valores.append(evento.get(coluna, ""))

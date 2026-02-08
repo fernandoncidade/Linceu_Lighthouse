@@ -2,7 +2,7 @@ import os
 
 def get_file_type(self, caminho):
     if not caminho or not os.path.exists(caminho):
-        return self.observador.loc.get_text("unknown")
+        return ""
 
     if os.path.isdir(caminho):
         return self.observador.loc.get_text("folder")
@@ -46,6 +46,9 @@ def get_file_type(self, caminho):
         '.swo': 'swo',
         '.old': 'old',
         '.part': 'part',
+        '.dat': 'dat',
+        '.bin': 'bin',
+        '.db': 'db',
 
         # Imagens
         '.jpg': 'jpg',
@@ -102,6 +105,9 @@ def get_file_type(self, caminho):
         # Executáveis
         '.exe': 'exe',
         '.msi': 'msi',
+        '.msix': 'msix',
+        '.app': 'app',
+        '.apk': 'apk',
         '.bat': 'bat',
 
         # Código fonte
@@ -138,7 +144,63 @@ def get_file_type(self, caminho):
         '.psd1': 'psd1',
         '.ps1xml': 'ps1xml',
         '.pssc': 'pssc',
-        '.psc1': 'psc1'
+        '.psc1': 'psc1',
+
+        # Adicionando extensões faltantes
+        '.download': 'download',
+        '.syms': 'syms',
+        '.$$': '$$',
+        '.cache': 'cache',
+        '.crdownload': 'crdownload',
+        '.partial': 'partial',
+        '.lock': 'lock',
+        '.thumb': 'thumb',
+        '.numbers': 'numbers',
+        '.odp': 'odp',
+        '.key': 'key',
+        '.db-journal': 'db-journal',
+        '.sav': 'sav',
+        '.spss': 'spss',
+        '.binarypb': 'binarypb',
+        '.tflite': 'tflite',
+        '.fst': 'fst',
+        '.otf': 'otf',
+        '.ldb': 'ldb',
+        '.leveldb': 'leveldb',
+        '.blob': 'blob',
+        '.lnk': 'lnk',
+        '.hyb': 'hyb',
+        '.pb': 'pb',
+        '.pb.gz': 'pb.gz',
+        '.tgz': 'tgz',
+        '.tar.gz': 'tar.gz',
+        '.bkp': 'bkp',
+        '.backup': 'backup',
+        '.orig': 'orig',
+        '.save': 'save',
+        '.auto': 'auto',
+        '.trace': 'trace',
+        '.dmp': 'dmp',
+        '.dump': 'dump',
+        '.hprof': 'hprof',
+        '.core': 'core',
+        '.err': 'err',
+        '.out': 'out',
+        '.config': 'config',
+        '.properties': 'properties',
+        '.plist': 'plist',
+        '.toml': 'toml',
+        '.settings': 'settings',
+        '.pages': 'pages',
+        '.map': 'map',
+        '.md5': 'md5',
+        '.ico': 'ico',
+        '.pbtxt': 'pbtxt',
+        '.dll': 'dll'
     }
 
-    return TIPOS_ARQUIVO.get(ext, ext[1:].upper() if ext else self.observador.loc.get_text("unknown"))
+    tipo = TIPOS_ARQUIVO.get(ext, "")
+    if tipo and hasattr(self.observador.loc, "get_text"):
+        return self.observador.loc.get_text(tipo)
+
+    return tipo

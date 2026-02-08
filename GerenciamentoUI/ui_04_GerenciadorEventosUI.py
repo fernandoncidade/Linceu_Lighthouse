@@ -93,7 +93,11 @@ class GerenciadorEventosUI:
                 "data_modificacao": True,
                 "data_acesso": False,
                 "tipo": True,
-                "tamanho": False,
+                "size_b": False,
+                "size_kb": True,
+                "size_mb": False,
+                "size_gb": False,
+                "size_tb": False,
                 "atributos": False,
                 "autor": False,
                 "dimensoes": False,
@@ -106,11 +110,19 @@ class GerenciadorEventosUI:
                 "paginas_estimadas": False,
                 "linhas_codigo": False,
                 "total_linhas": False,
-                "slides_estimadas": False,
+                "slides_estimados": False,
                 "arquivos": False,
-                "descompactados": False,
+                "unzipped_b": False,
+                "unzipped_kb": False,
+                "unzipped_mb": False,
+                "unzipped_gb": False,
+                "unzipped_tb": False,
                 "slides": False,
-                "binario": False,
+                "binary_file_b": False,
+                "binary_file_kb": False,
+                "binary_file_mb": False,
+                "binary_file_gb": False,
+                "binary_file_tb": False,
                 "planilhas": False,
                 "colunas": False,
                 "registros": False,
@@ -157,7 +169,7 @@ class GerenciadorEventosUI:
                 "op_scanned": "#808080"
             }
 
-            mensagem = self.loc.get_text("reset_colors_confirm") if "reset_colors_confirm" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Deseja restaurar todas as cores para os valores padrão?"
+            mensagem = self.loc.get_text("reset_colors_confirm")
             resposta = QMessageBox.question(self.interface, self.loc.get_text("confirm"), mensagem, QMessageBox.Yes | QMessageBox.No)
 
             if resposta == QMessageBox.Yes:
@@ -180,7 +192,7 @@ class GerenciadorEventosUI:
                 if hasattr(self.interface, "gerenciador_tabela"):
                     self.interface.gerenciador_tabela.atualizar_cores_colunas(aplicar_em_massa=True)
 
-                mensagem_sucesso = self.loc.get_text("colors_reset_success") if "colors_reset_success" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Cores restauradas com sucesso!"
+                mensagem_sucesso = self.loc.get_text("colors_reset_success")
                 QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem_sucesso)
 
                 logger.info("Cores restauradas para valores padrão")
@@ -191,7 +203,7 @@ class GerenciadorEventosUI:
 
     def redefinir_todas_colunas_cores(self, gerenciador_cores, acao_exportar_colunas_ativas, acao_exportar_filtros_ativos, acao_exportar_selecao, criar_menu_principal, gerenciador_tabela):
         try:
-            mensagem = self.loc.get_text("reset_column_color_confirm") if "reset_column_color_confirm" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Deseja restaurar as cores das colunas para os valores padrão?"
+            mensagem = self.loc.get_text("reset_column_color_confirm")
             resposta = QMessageBox.question(self.interface, self.loc.get_text("confirm"), mensagem, QMessageBox.Yes | QMessageBox.No)
 
             if resposta == QMessageBox.Yes:
@@ -210,7 +222,7 @@ class GerenciadorEventosUI:
                 acao_exportar_filtros_ativos.setChecked(exportar_filtros_ativos)
                 acao_exportar_selecao.setChecked(exportar_selecao)
 
-                mensagem_sucesso = self.loc.get_text("column_colors_reset_success") if "column_colors_reset_success" in self.loc.traducoes.get(self.loc.idioma_atual, {}) else "Cores das colunas restauradas com sucesso!"
+                mensagem_sucesso = self.loc.get_text("column_colors_reset_success")
                 QMessageBox.information(self.interface, self.loc.get_text("success"), mensagem_sucesso)
 
                 logger.info("Colunas coloridas redefinidas para apenas tipo_operacao")

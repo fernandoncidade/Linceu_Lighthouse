@@ -1,7 +1,7 @@
 import os
 from .gmet_21_GetFormataTamanho import get_formata_tamanho
 
-def extrair_metadados_arquivo(caminho, loc):
+def extrair_metadados_compactados(caminho, loc):
     metadados = {}
     ext = os.path.splitext(caminho)[1].lower()
 
@@ -24,6 +24,7 @@ def extrair_metadados_arquivo(caminho, loc):
 
                     metadados['arquivos'] = qtd_arquivos
                     metadados['tamanho_descompactado'] = get_formata_tamanho(tamanho_total)
+                    metadados['tamanho_descompactado_bytes'] = tamanho_total
                     metadados['taxa_compressao'] = f"{taxa_compressao:.1f}%"
                     metadados['descompactados'] = metadados['tamanho_descompactado']
 
@@ -55,6 +56,7 @@ def extrair_metadados_arquivo(caminho, loc):
 
                     metadados['arquivos'] = qtd_arquivos
                     metadados['tamanho_descompactado'] = get_formata_tamanho(tamanho_total)
+                    metadados['tamanho_descompactado_bytes'] = tamanho_total
                     metadados['taxa_compressao'] = f"{taxa_compressao:.1f}%"
                     metadados['descompactados'] = metadados['tamanho_descompactado']
 
@@ -87,6 +89,7 @@ def extrair_metadados_arquivo(caminho, loc):
 
                     metadados['arquivos'] = qtd_arquivos
                     metadados['tamanho_descompactado'] = get_formata_tamanho(tamanho_total)
+                    metadados['tamanho_descompactado_bytes'] = tamanho_total
                     metadados['taxa_compressao'] = f"{taxa_compressao:.1f}%"
                     metadados['descompactados'] = metadados['tamanho_descompactado']
 

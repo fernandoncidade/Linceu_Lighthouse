@@ -2,8 +2,10 @@ from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QPushButton,
                                QLabel, QGridLayout, QFrame, QWidget, QTabWidget,
                                QColorDialog)
 from PySide6.QtGui import QColor
-from PySide6.QtCore import Signal
+from PySide6.QtCore import Signal, Qt
 from utils.LogManager import LogManager
+
+logger = LogManager.get_logger()
 
 
 class BotaoCor(QPushButton):
@@ -21,6 +23,9 @@ class DialogoPaletaCores(QDialog):
     def __init__(self, cor_atual, interface_principal, titulo=None, parent=None):
         super().__init__(parent)
 
+        self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint)
+        self.setModal(False)
+
         logger = LogManager.get_logger()
         logger.debug(f"Iniciando DialogoPaletaCores com cor inicial: {cor_atual.name()}")
 
@@ -32,14 +37,14 @@ class DialogoPaletaCores(QDialog):
                 logger.debug("Usando localizador da interface principal")
 
             else:
-                from GerenciamentoUI.ui_12_Localizador import Localizador
-                self.loc = Localizador()
+                from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+                self.loc = LocalizadorQt()
                 logger.debug("Criando novo localizador para o diálogo")
 
         except Exception as e:
             logger.error(f"Erro ao obter localizador: {e}", exc_info=True)
-            from GerenciamentoUI.ui_12_Localizador import Localizador
-            self.loc = Localizador()
+            from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+            self.loc = LocalizadorQt()
 
         if titulo is None:
             titulo = self.loc.get_text("select_color")
@@ -199,7 +204,6 @@ class DialogoPaletaCores(QDialog):
             cor = QColor(cor_hex)
             self.preview_nova.setStyleSheet(f"background-color: {cor_hex};")
             self.cor_selecionada = cor
-            self.corSelecionada.emit(cor)
             logger.debug(f"Cor selecionada: {cor_hex}")
 
         except Exception as e:
@@ -210,53 +214,170 @@ class DialogoPaletaCores(QDialog):
         logger.debug("Abrindo seletor avançado de cores")
 
         try:
+            from PySide6.QtCore import QLocale, QTranslator
+            from PySide6.QtWidgets import QApplication
+            import os
+
+            app = QApplication.instance()
+            if app:
+                locale_map = {
+                    "pt_BR": "pt_BR",
+                    "en_US": "en_US", 
+                    "es_ES": "es_ES",
+                    "fr_FR": "fr_FR",
+                    "it_IT": "it_IT",
+                    "de_DE": "de_DE"
+                }
+
+                locale_code = locale_map.get(self.loc.idioma_atual, "en_US")
+                qt_locale = QLocale(locale_code)
+                QLocale.setDefault(qt_locale)
+
+                qt_translator = QTranslator()
+                translations_paths = [
+                    os.path.join(os.path.dirname(os.path.dirname(__file__)), "translations", "qt"),
+                    "/usr/share/qt6/translations",
+                    "C:/Qt/Tools/QtCreator/share/qtcreator/translations",
+                ]
+
+                for path in translations_paths:
+                    if os.path.exists(path):
+                        if qt_translator.load(qt_locale, "qtbase", "_", path):
+                            app.installTranslator(qt_translator)
+                            logger.debug(f"Tradutor Qt carregado de: {path}")
+                            break
+
             dialogo = QColorDialog(self.cor_atual, self)
             dialogo.setWindowTitle(self.loc.get_text("advanced_color_picker"))
             dialogo.setOption(QColorDialog.ShowAlphaChannel, False)
 
+            dialogo.setModal(False)
+            dialogo.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint)
+
+            app.processEvents()
+
             if self.loc.idioma_atual != "en_US":
-                logger.debug(f"Traduzindo diálogo de cores para idioma: {self.loc.idioma_atual}")
+                logger.debug(f"Aplicando tradução manual para idioma: {self.loc.idioma_atual}")
 
-                def traduzir_label_seguro(nome, texto_traducao):
-                    label = dialogo.findChild(QLabel, nome)
-                    if label is not None:
-                        label.setText(f"{self.loc.get_text(texto_traducao)}:")
+                from PySide6.QtCore import QTimer
+                timer = QTimer()
+                timer.singleShot(50, lambda: self._traduzir_dialogo_cores(dialogo))
 
-                traduzir_label_seguro("hLabel", "hue")
-                traduzir_label_seguro("sLabel", "sat")
-                traduzir_label_seguro("vLabel", "val")
-                traduzir_label_seguro("rLabel", "red")
-                traduzir_label_seguro("gLabel", "green")
-                traduzir_label_seguro("bLabel", "blue")
+                self._traduzir_dialogo_cores(dialogo)
 
-                labels_a_traduzir = {
-                    "Basic colors": "basic_colors",
-                    "Custom colors": "custom_colors",
-                    "Hue:": "hue",
-                    "Sat:": "sat", 
-                    "Val:": "val",
-                    "Red:": "red",
-                    "Green:": "green",
-                    "Blue:": "blue",
-                    "&Add to Custom Colors": "add_custom_colors"
-                }
+            dialogo.show()
 
-                for child in dialogo.findChildren(QLabel):
-                    texto_atual = child.text()
-                    if texto_atual in labels_a_traduzir:
-                        child.setText(f"{self.loc.get_text(labels_a_traduzir[texto_atual])}")
-                        if texto_atual.endswith(':'):
-                            child.setText(f"{self.loc.get_text(labels_a_traduzir[texto_atual])}:")
+            def on_color_selected(color):
+                if color.isValid():
+                    self.preview_nova.setStyleSheet(f"background-color: {color.name()};")
+                    self.cor_selecionada = color
+                    logger.debug(f"Cor selecionada no seletor avançado: {color.name()}")
+                    dialogo.close()
 
-            if dialogo.exec():
-                cor = dialogo.selectedColor()
-                self.preview_nova.setStyleSheet(f"background-color: {cor.name()};")
-                self.cor_selecionada = cor
-                self.corSelecionada.emit(cor)
-                logger.debug(f"Cor selecionada no seletor avançado: {cor.name()}")
+            dialogo.colorSelected.connect(on_color_selected)
 
         except Exception as e:
             logger.error(f"Erro ao abrir seletor avançado de cores: {e}", exc_info=True)
+
+    def accept(self):
+        logger = LogManager.get_logger()
+        try:
+            if self.cor_selecionada and self.cor_selecionada.isValid():
+                self.corSelecionada.emit(self.cor_selecionada)
+                logger.debug(f"Cor confirmada e aplicada: {self.cor_selecionada.name()}")
+
+            super().accept()
+
+        except Exception as e:
+            logger.error(f"Erro ao confirmar seleção de cor: {e}", exc_info=True)
+
+    def _traduzir_dialogo_cores(self, dialogo):
+        try:
+            from PySide6.QtWidgets import QLabel, QPushButton, QGroupBox
+
+            mapeamento_traducoes = {
+                "Basic colors": self.loc.get_text("basic_colors"),
+                "&Basic colors": self.loc.get_text("basic_colors"),
+                "Custom colors": self.loc.get_text("custom_colors"),
+                "&Custom colors": self.loc.get_text("custom_colors"),
+                "Pick Screen Color": self.loc.get_text("pick_screen_color"),
+                "&Pick Screen Color": self.loc.get_text("pick_screen_color"),
+                "Add to Custom Colors": self.loc.get_text("add_to_custom_colors"),
+                "&Add to Custom Colors": self.loc.get_text("add_to_custom_colors"),
+                "Hue:": f"{self.loc.get_text('hue')}",
+                "&Hue:": f"{self.loc.get_text('hue')}",
+                "Hue": self.loc.get_text("hue"),
+                "&Hue": self.loc.get_text("hue"),
+                "Sat:": f"{self.loc.get_text('sat')}",
+                "&Sat:": f"{self.loc.get_text('sat')}",
+                "Sat": self.loc.get_text("sat"),
+                "&Sat": self.loc.get_text("sat"),
+                "Val:": f"{self.loc.get_text('val')}",
+                "&Val:": f"{self.loc.get_text('val')}",
+                "Val": self.loc.get_text("val"),
+                "&Val": self.loc.get_text("val"),
+                "Red:": f"{self.loc.get_text('red')}",
+                "&Red:": f"{self.loc.get_text('red')}",
+                "Red": self.loc.get_text("red"),
+                "&Red": self.loc.get_text("red"),
+                "Green:": f"{self.loc.get_text('green')}",
+                "&Green:": f"{self.loc.get_text('green')}",
+                "Green": self.loc.get_text("green"),
+                "&Green": self.loc.get_text("green"),
+                "Blue:": f"{self.loc.get_text('blue')}",
+                "&Blue:": f"{self.loc.get_text('blue')}",
+                "Blue": self.loc.get_text("blue"),
+                "&Blue": self.loc.get_text("blue"),
+                "HTML:": f"{self.loc.get_text('html')}",
+                "&HTML:": f"{self.loc.get_text('html')}",
+                "HTML": self.loc.get_text("html"),
+                "&HTML": self.loc.get_text("html"),
+                "OK": self.loc.get_text("ok"),
+                "&OK": self.loc.get_text("ok"),
+                "Cancel": self.loc.get_text("cancel"),
+                "&Cancel": self.loc.get_text("cancel")
+            }
+
+            def normalizar(texto):
+                return texto.strip().replace(":", "").replace("&", "")
+
+            for label in dialogo.findChildren(QLabel):
+                texto_original = label.text().strip()
+                texto_norm = normalizar(texto_original)
+                for chave, traducao in mapeamento_traducoes.items():
+                    if normalizar(chave) == texto_norm:
+                        label.setText(traducao if ":" not in texto_original else f"{traducao}:")
+                        break
+
+            for button in dialogo.findChildren(QPushButton):
+                texto_original = button.text().strip()
+                texto_norm = normalizar(texto_original)
+                for chave, traducao in mapeamento_traducoes.items():
+                    if normalizar(chave) == texto_norm:
+                        button.setText(traducao)
+                        break
+
+            for groupbox in dialogo.findChildren(QGroupBox):
+                texto_original = groupbox.title().strip()
+                texto_norm = normalizar(texto_original)
+                for chave, traducao in mapeamento_traducoes.items():
+                    if normalizar(chave) == texto_norm:
+                        groupbox.setTitle(traducao)
+                        break
+
+            elementos_por_nome = {
+                "qt_colorname_label": self.loc.get_text("html"),
+            }
+
+            for nome, traducao in elementos_por_nome.items():
+                elemento = dialogo.findChild(QLabel, nome)
+                if elemento:
+                    elemento.setText(f"{traducao}:")
+
+            logger.debug("Tradução manual do diálogo de cores aplicada")
+
+        except Exception as e:
+            logger.error(f"Erro ao traduzir diálogo de cores: {e}", exc_info=True)
 
     def obter_cor(self):
         resultado = self.cor_selecionada if self.cor_selecionada else self.cor_atual

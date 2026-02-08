@@ -1,22 +1,17 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMainWindow, QApplication
-
 from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 log_file = LogManager.get_log_file()
-
 from .ic_02_Inicializador import Inicializador
-
 import matplotlib
 matplotlib.use('QtAgg')
-
 from GerenciamentoUI.ui_07_GerenciadorDados import GerenciadorDados
 from GerenciamentoUI.ui_08_GerenciadorEventosArquivo import GerenciadorEventosArquivo
 from GerenciamentoUI.ui_09_GerenciadorMonitoramento import GerenciadorMonitoramento
 from GerenciamentoUI.ui_10_GerenciadorLimpeza import GerenciadorLimpeza
-from GerenciamentoUI.ui_12_Localizador import Localizador
+from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from Observador.ob_11_GerenciadorTabela import GerenciadorTabela
-
 from .ic_03_Configurador import Configurador
 from .ic_04_Atualizador import Atualizador
 from .ic_05_GerenciadorProgresso import GerenciadorProgresso
@@ -30,11 +25,14 @@ class InterfaceMonitor(QMainWindow):
             logger.info("Iniciando a aplicação Linceu_Lighthouse")
             super().__init__()
 
-            logger.debug("Inicializando o localizador")
-            self.loc = Localizador()
-            self.loc.verificar_traducoes_ausentes()
+            logger.debug("Inicializando sistema de tradução nativo do Qt")
+            app = QApplication.instance()
+            Internacionalizador.inicializar_sistema_traducao(app)
+
+            logger.debug("Inicializando o LocalizadorQt")
+            self.loc = LocalizadorQt()
             self.loc.idioma_alterado.connect(self.atualizar_interface)
-            self.loc.idioma_alterado.connect(self.atualizar_tradutor_qt)
+            self.loc.traducoes_carregadas.connect(self.atualizar_tradutor_qt)
 
             Inicializador.inicializar_atributos(self)
             Inicializador.inicializar_componentes(self)
@@ -72,7 +70,6 @@ class InterfaceMonitor(QMainWindow):
         Configurador.setup_menu_bar(self)
 
     def atualizar_interface(self, *args):
-        from .ic_04_Atualizador import Atualizador
         Atualizador.atualizar_interface(self)
         self.atualizar_status()
         if hasattr(self, 'gerenciador_menus_ui'):
@@ -83,6 +80,9 @@ class InterfaceMonitor(QMainWindow):
 
         if hasattr(self, 'painel_filtros'):
             self.painel_filtros.atualizar_interface()
+
+        if hasattr(self, 'gerenciador_tabela'):
+            self.gerenciador_tabela.retraduzir_dados_existentes()
 
         self.atualizar_tradutor_qt(self.loc.idioma_atual)
 
@@ -154,7 +154,9 @@ class InterfaceMonitor(QMainWindow):
         self.gerenciador_monitoramento.reiniciar_sistema_monitoramento()
 
     def atualizar_tradutor_qt(self, idioma):
-        Internacionalizador.atualizar_tradutor_qt(self, idioma)
+        logger = LogManager.get_logger()
+        logger.debug(f"Atualizando tradutor Qt para idioma: {idioma}")
+        QApplication.processEvents()
 
     @Slot(dict)
     def _atualizar_cores_tabela(self, resultado_cores):

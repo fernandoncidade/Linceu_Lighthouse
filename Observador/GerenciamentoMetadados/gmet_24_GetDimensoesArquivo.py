@@ -12,6 +12,19 @@ def get_dimensoes_arquivo(self, item, loc):
 
         return ""
 
+    if os.path.isdir(caminho):
+        total_arquivos = 0
+        for root, dirs, files in os.walk(caminho):
+            total_arquivos += len(files)
+
+        with self.lock_cache:
+            if caminho not in self.cache_metadados:
+                self.cache_metadados[caminho] = {}
+
+            self.cache_metadados[caminho]["arquivos"] = str(total_arquivos)
+
+        return str(total_arquivos)
+
     ext = os.path.splitext(caminho)[1].lower()
     tipo = identificar_tipo_arquivo(caminho, loc)
 

@@ -22,7 +22,7 @@ Um die Anforderungen der LGPL-Lizenz zu erfüllen, stellen wir folgende Informat
    - Stellen Sie sicher, dass die neuen DLLs mit der verwendeten PySide6-Version (6.6.0+) kompatibel sind
 
 3. Schriftliches Angebot:
-   Wenn Sie über den obigen Link nicht auf den Quellcode zugreifen können, können wir auf Anfrage eine vollständige Kopie des Quellcodes bereitstellen, der der in dieser Anwendung verwendeten Version entspricht. Um anzufragen, kontaktieren Sie uns bitte per E-Mail: [fernando.nillsson.cidade@outlook.com]
+   Wenn Sie über den obigen Link nicht auf den Quellcode zugreifen können, können wir auf Anfrage eine vollständige Kopie des Quellcodes bereitstellen, der der in dieser Anwendung verwendeten Version entspricht. Um anzufragen, kontaktieren Sie uns bitte per E-Mail: [linceu_lighthouse@outlook.com]
 
 PySide6-Version
 Diese Anwendung verwendet PySide6 Version 6.6.0 oder höher.

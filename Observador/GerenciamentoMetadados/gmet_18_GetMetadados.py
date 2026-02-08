@@ -10,7 +10,7 @@ from .gmet_08_ExtrairMetadadosApresentacao import extrair_metadados_apresentacao
 from .gmet_09_ExtrairMetadadosBancoDados import extrair_metadados_banco_dados
 from .gmet_10_ExtrairMetadadosExecutavel import extrair_metadados_executavel
 from .gmet_11_ExtrairMetadadosTemporario import extrair_metadados_temporario
-from .gmet_12_ExtrairMetadadosArquivo import extrair_metadados_arquivo
+from .gmet_12_ExtrairMetadadosCompactados import extrair_metadados_compactados
 from .gmet_13_ExtrairMetadadosBackup import extrair_metadados_backup
 from .gmet_14_ExtrairMetadadosLog import extrair_metadados_log
 from .gmet_15_ExtrairMetadadosConfig import extrair_metadados_config
@@ -46,6 +46,9 @@ def extrair_metadados_completos(item, loc=None, contexto=None):
 
         tipo_arquivo = identificar_tipo_arquivo(caminho, loc)
 
+        if not tipo_arquivo:
+            return metadados
+
         ext = os.path.splitext(caminho)[1].lower()
         if ext == '.dat':
             metadados.update(extrair_metadados_dados_estruturados(caminho, loc))
@@ -80,8 +83,8 @@ def extrair_metadados_completos(item, loc=None, contexto=None):
         elif tipo_arquivo == loc.get_text("file_temp"):
             metadados.update(extrair_metadados_temporario(caminho, loc))
 
-        elif tipo_arquivo == loc.get_text("file_archive"):
-            metadados.update(extrair_metadados_arquivo(caminho, loc))
+        elif tipo_arquivo == loc.get_text("file_compressed"):
+            metadados.update(extrair_metadados_compactados(caminho, loc))
 
         elif tipo_arquivo == loc.get_text("file_backup"):
             metadados.update(extrair_metadados_backup(caminho, loc))
