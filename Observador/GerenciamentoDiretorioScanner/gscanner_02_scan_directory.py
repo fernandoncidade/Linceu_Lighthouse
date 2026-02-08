@@ -1,5 +1,9 @@
 import os
 import sqlite3
+from PySide6.QtCore import QThread
+from utils.LogManager import LogManager
+
+logger = LogManager.get_logger()
 
 def scan_directory(self, directory):
     try:
@@ -14,10 +18,15 @@ def scan_directory(self, directory):
 
         contador = 0
         for root, dirs, files in os.walk(directory):
-            if self.observador.desligando:
+            if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                logger.info("Scan interrompido por requestInterruption ou desligando")
                 return
 
             for d in dirs:
+                if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                    logger.info("Scan interrompido por requestInterruption ou desligando")
+                    return
+
                 caminho = os.path.join(root, d)
                 tipo = self.get_file_type(caminho)
                 item = {
@@ -74,6 +83,10 @@ def scan_directory(self, directory):
                 self.progresso_atualizado.emit(int(contador * 100 / self.total_arquivos), contador, self.total_arquivos)
 
             for f in files:
+                if QThread.currentThread().isInterruptionRequested() or self.observador.desligando:
+                    logger.info("Scan interrompido por requestInterruption ou desligando")
+                    return
+
                 caminho = os.path.join(root, f)
                 tipo = self.get_file_type(caminho)
                 item = {
@@ -132,5 +145,5 @@ def scan_directory(self, directory):
         self.scan_finalizado.emit()
 
     except Exception as e:
-        print(f"Erro no scan_directory: {e}")
+        logger.error(f"Erro no scan_directory: {e}", exc_info=True)
         raise

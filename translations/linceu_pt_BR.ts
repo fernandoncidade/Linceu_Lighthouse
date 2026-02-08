@@ -148,6 +148,10 @@
         <translation>Iniciar/Parar Análise:</translation>
     </message>
     <message>
+        <source>pause_analysis</source>
+        <translation>Pausar Análise:</translation>
+    </message>
+    <message>
         <source>save_as</source>
         <translation>Salvar como:</translation>
     </message>

@@ -580,7 +580,7 @@ class GerenciadorMenusUI:
 
             cabecalho_fixo = (
                 "<h3>LINCEU LIGHTHOUSE</h3>"
-                f"<p><b>{self.loc.get_text('version')}:</b> 0.0.3.0</p>"
+                f"<p><b>{self.loc.get_text('version')}:</b> 0.0.4.0</p>"
                 f"<p><b>{self.loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
                 f"<p><b>{self.loc.get_text('description')}:</b> {self.loc.get_text('description_text')}</p>"
             )

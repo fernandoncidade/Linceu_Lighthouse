@@ -15,19 +15,15 @@ class GerenciadorLimpeza:
             msg_box.setWindowTitle(self.interface.loc.get_text("confirm"))
             msg_box.setText(self.interface.loc.get_text("clear_confirm"))
             msg_box.setIcon(QMessageBox.Question)
-
             botao_sim = msg_box.addButton(self.interface.loc.get_text("yes"), QMessageBox.YesRole)
             botao_nao = msg_box.addButton(self.interface.loc.get_text("no"), QMessageBox.NoRole)
             msg_box.setDefaultButton(botao_nao)
-
             msg_box.exec()
-
             if msg_box.clickedButton() != botao_sim:
                 logger.debug("Operação de limpeza cancelada pelo usuário")
                 return
 
             QApplication.setOverrideCursor(Qt.WaitCursor)
-
             try:
                 logger.info("Iniciando limpeza de dados")
 
@@ -37,13 +33,10 @@ class GerenciadorLimpeza:
 
                 self.interface.evento_base.limpar_registros()
                 logger.debug("Registros do banco de dados limpos")
-
                 self.interface.tabela_dados.clearContents()
                 self.interface.tabela_dados.setRowCount(0)
                 self.interface.tabela_dados.viewport().update()
-
                 self.interface.ultimo_salvamento = None
-
                 if hasattr(self.interface.painel_filtros, 'administrador_filtros'):
                     self.interface.painel_filtros.administrador_filtros.limpar_filtros()
                     logger.debug("Filtros limpos via administrador")
@@ -52,17 +45,18 @@ class GerenciadorLimpeza:
                     logger.warning("Não foi possível acessar o administrador de filtros")
 
                 self.interface.atualizar_status()
-
                 if (hasattr(self.interface, 'gerenciador_colunas') and 
                     hasattr(self.interface.gerenciador_colunas, 'cache_metadados')):
                     self.interface.gerenciador_colunas.cache_metadados.clear()
                     logger.debug("Cache de metadados limpo")
 
                 self.interface.rotulo_resultado.setText(self.interface.loc.get_text("data_cleared"))
-                self.interface.rotulo_contador_eventos.setText(
-                    f"{self.interface.loc.get_text('events_monitored')}: 0"
-                )
+                self.interface.rotulo_contador_eventos.setText(f"{self.interface.loc.get_text('events_monitored')}: 0")
+                if hasattr(self.interface, 'barra_progresso'):
+                    self.interface.barra_progresso.hide()
+                    self.interface.barra_progresso.setValue(0)
 
+                self.interface.rotulo_resultado.setText(self.interface.loc.get_text("data_cleared"))
                 logger.info("Dados limpos com sucesso")
                 QApplication.restoreOverrideCursor()
                 QMessageBox.information(

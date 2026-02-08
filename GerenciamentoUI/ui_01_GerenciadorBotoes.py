@@ -39,6 +39,18 @@ class GerenciadorBotoes:
                 self.interface.observador = Observador(self.interface.diretorio_atual, self.interface.adicionar_evento)
                 self.interface.observador.interface = self.interface
 
+            if self.interface.observador.thread_scan:
+                try:
+                    if self.interface.observador.thread_scan and self.interface.observador.thread_scan.isRunning():
+                        self.interface.observador.parar_scan()
+                        self.interface.rotulo_resultado.setText(self.loc.get_text("monitoring_stopped"))
+                        return
+
+                except Exception as e:
+                    print(f"Erro ao parar escaneamento: {e}")
+                    self.interface.observador.thread_scan = None
+                    self.interface.observador.scan_worker = None
+
             if not self.interface.observador.ativo:
                 self.interface.observador.iniciar()
                 self.interface.rotulo_resultado.setText(self.loc.get_text("monitoring_started"))
