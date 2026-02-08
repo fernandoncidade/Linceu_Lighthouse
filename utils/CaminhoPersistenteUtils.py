@@ -1,5 +1,5 @@
 import os
-from .LogManager import LogManager
+from utils.LogManager import LogManager
 logger = LogManager.get_logger()
 
 def obter_caminho_persistente():

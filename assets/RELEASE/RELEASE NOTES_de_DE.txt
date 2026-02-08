@@ -1,3 +1,16 @@
+RELEASE NOTES: Version 0.0.7.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
+
+- Korrektur des Übersetzungssystems:
+    - Bei der Anwendung einer neuen Sprache wendet das System nun automatisch die Übersetzung auf alle Widgets im Diagramm- und Grafikpanel für die statistische Analyse der überwachten Daten an.
+        - Verbesserungen bei der Erkennung von Sprachänderungen, die einen reibungsloseren Übergang ohne Unterbrechungen gewährleisten.
+        - Während der Anwendung der neuen Sprache zeichnet das System die Darstellung neu und aktualisiert gleichzeitig die angezeigten Daten, um sicherzustellen, dass alle Informationen korrekt und aktuell sind.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.0.6.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:

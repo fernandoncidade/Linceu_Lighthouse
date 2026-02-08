@@ -8,9 +8,9 @@ else:
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from PySide6.QtWidgets import QApplication
-from InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor
-from InterfaceCore.ic_08_Internacionalizador import Internacionalizador
-from GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
+from source.InterfaceCore.ic_01_InterfaceMonitor import InterfaceMonitor
+from source.InterfaceCore.ic_08_Internacionalizador import Internacionalizador
+from source.GerenciamentoUI.ui_12_LocalizadorQt import LocalizadorQt
 from utils.LogManager import LogManager
 # from utils.TrialManager import TrialManager
 

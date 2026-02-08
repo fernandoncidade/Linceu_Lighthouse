@@ -1,3 +1,16 @@
+NOTE DI RILASCIO: Versione 0.0.7.0:
+
+In questa nuova versione sono stati implementati i seguenti miglioramenti e funzionalità:
+
+- Correzione del sistema di traduzione:
+    - Quando si applica una nuova lingua, ora il sistema applica automaticamente la traduzione a tutti i widget del pannello di grafici e diagrammi, per l'analisi statistica dei dati monitorati.
+        - Miglioramenti nel rilevamento dei cambiamenti di lingua, garantendo una transizione più fluida e senza interruzioni.
+        - Durante l'applicazione della nuova lingua, il sistema ridisegna il grafico aggiornando simultaneamente i dati visualizzati, garantendo che tutte le informazioni siano corrette e aggiornate.
+
+
+_________________________________________________
+
+
 NOTE DI RILASCIO: Versione 0.0.6.0:
 
 In questa nuova versione sono stati implementati i seguenti miglioramenti e funzionalità:
