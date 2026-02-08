@@ -684,6 +684,10 @@
         <translation>Datei- und Ordnermanager, der Änderungen in einem bestimmten Verzeichnis überwacht</translation>
     </message>
     <message>
+        <source>manual</source>
+        <translation>Handbuch</translation>
+    </message>
+    <message>
         <source>about</source>
         <translation>Über</translation>
     </message>
@@ -5625,6 +5629,74 @@ pip install plotly</translation>
     <message>
         <source>TEMP</source>
         <translation>TEMP</translation>
+    </message>
+    <message>
+        <source>help</source>
+        <translation>Hilfe</translation>
+    </message>
+    <message>
+        <source>help_description</source>
+        <translation>Zeigt die Liste der Tastenkürzel und Beschreibungen an.</translation>
+    </message>
+    <message>
+        <source>open_manual</source>
+        <translation>Öffnet das Handbuch der Anwendung.</translation>
+    </message>
+    <message>
+        <source>open_about</source>
+        <translation>Zeigt Informationen zur Anwendung an.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_desc</source>
+        <translation>Markiert alle sichtbaren Spalten.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_colors_desc</source>
+        <translation>Wählt alles in den Einstellungen für Spaltenfarben aus.</translation>
+    </message>
+    <message>
+        <source>toggle_sort_rows_desc</source>
+        <translation>Schaltet die automatische Sortierung der Zeilen ein/aus.</translation>
+    </message>
+    <message>
+        <source>toggle_performance_desc</source>
+        <translation>Wechselt die Anzeige der Leistungsdiagramme.</translation>
+    </message>
+    <message>
+        <source>keyboard_shortcuts</source>
+        <translation>Tastenkombinationen</translation>
+    </message>
+    <message>
+        <source>select_dir_desc</source>
+        <translation>Öffnet einen Dialog zum Auswählen eines Verzeichnisses.</translation>
+    </message>
+    <message>
+        <source>start_stop_desc</source>
+        <translation>Startet oder stoppt die Analyse des Verzeichnisses.</translation>
+    </message>
+    <message>
+        <source>pause_analysis_desc</source>
+        <translation>Unterbricht / nimmt die Überwachung oder das Scannen wieder auf.</translation>
+    </message>
+    <message>
+        <source>save_as_desc</source>
+        <translation>Öffnet einen Dialog, um Daten unter einem anderen Namen zu speichern.</translation>
+    </message>
+    <message>
+        <source>save_desc</source>
+        <translation>Speichert die aktuellen Daten.</translation>
+    </message>
+    <message>
+        <source>statistics_desc</source>
+        <translation>Zeigt Projektstatistiken an.</translation>
+    </message>
+    <message>
+        <source>clear_data_desc</source>
+        <translation>Löscht die geladenen Daten.</translation>
+    </message>
+    <message>
+        <source>exit_desc</source>
+        <translation>Beendet die Anwendung.</translation>
     </message>
 </context>
 </TS>

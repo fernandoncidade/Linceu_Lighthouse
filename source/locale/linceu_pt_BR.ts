@@ -684,6 +684,10 @@
         <translation>Gerenciador de arquivos e pastas que monitora mudanças em um diretório específico</translation>
     </message>
     <message>
+        <source>manual</source>
+        <translation>Manual</translation>
+    </message>
+    <message>
         <source>about</source>
         <translation>Sobre</translation>
     </message>
@@ -5625,6 +5629,74 @@ pip install plotly</translation>
     <message>
         <source>TEMP</source>
         <translation>TEMP</translation>
+    </message>
+    <message>
+        <source>help</source>
+        <translation>Ajuda</translation>
+    </message>
+    <message>
+        <source>help_description</source>
+        <translation>Exibe a lista de atalhos e descrições.</translation>
+    </message>
+    <message>
+        <source>open_manual</source>
+        <translation>Abre o manual da aplicação.</translation>
+    </message>
+    <message>
+        <source>open_about</source>
+        <translation>Exibe informações sobre o aplicativo.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_desc</source>
+        <translation>Marca todas as colunas visíveis.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_colors_desc</source>
+        <translation>Seleciona todas nas configurações de coloração de colunas.</translation>
+    </message>
+    <message>
+        <source>toggle_sort_rows_desc</source>
+        <translation>Ativa/desativa ordenação automática das linhas.</translation>
+    </message>
+    <message>
+        <source>toggle_performance_desc</source>
+        <translation>Alterna a exibição de gráficos de desempenho.</translation>
+    </message>
+    <message>
+        <source>keyboard_shortcuts</source>
+        <translation>Atalhos de teclado</translation>
+    </message>
+    <message>
+        <source>select_dir_desc</source>
+        <translation>Abre diálogo para selecionar diretório.</translation>
+    </message>
+    <message>
+        <source>start_stop_desc</source>
+        <translation>Inicia ou para a análise do diretório.</translation>
+    </message>
+    <message>
+        <source>pause_analysis_desc</source>
+        <translation>Pausa/retoma o monitoramento ou escaneamento.</translation>
+    </message>
+    <message>
+        <source>save_as_desc</source>
+        <translation>Abre diálogo para salvar dados com outro nome.</translation>
+    </message>
+    <message>
+        <source>save_desc</source>
+        <translation>Salva os dados atuais.</translation>
+    </message>
+    <message>
+        <source>statistics_desc</source>
+        <translation>Exibe estatísticas do projeto.</translation>
+    </message>
+    <message>
+        <source>clear_data_desc</source>
+        <translation>Limpa os dados carregados.</translation>
+    </message>
+    <message>
+        <source>exit_desc</source>
+        <translation>Encerra a aplicação.</translation>
     </message>
 </context>
 </TS>

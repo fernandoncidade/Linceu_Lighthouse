@@ -12,6 +12,7 @@ def _criar_submenu_colunas(self, menu_configuracoes):
         grupo_colunas = QActionGroup(self.interface)
         grupo_colunas.setExclusive(False)
         self.acoes_colunas.clear()
+
         for key, coluna in sorted(self.interface.gerenciador_colunas.COLUNAS_DISPONIVEIS.items(), key=lambda x: x[1]["ordem"]):
             acao_coluna = QAction(coluna["nome"], self.interface)
             acao_coluna.setCheckable(True)
@@ -24,6 +25,13 @@ def _criar_submenu_colunas(self, menu_configuracoes):
 
         submenu_colunas.addSeparator()
         acao_selecionar_todas = QAction(self.loc.get_text("select_all_columns"), self.interface)
+
+        try:
+            acao_selecionar_todas.setShortcut("Ctrl+A")
+
+        except Exception:
+            pass
+
         acao_selecionar_todas.triggered.connect(self.selecionar_todas_colunas)
         submenu_colunas.addAction(acao_selecionar_todas)
         acao_resetar_colunas = QAction(self.loc.get_text("reset_columns"), self.interface)
@@ -34,6 +42,13 @@ def _criar_submenu_colunas(self, menu_configuracoes):
         self.acao_ordenar_linhas.setCheckable(True)
         self.acao_ordenar_linhas.setChecked(getattr(self.interface, '_ordenacao_linhas_habilitada', False))
         self.acao_ordenar_linhas.triggered.connect(self._alternar_ordenacao_linhas)
+
+        try:
+            self.acao_ordenar_linhas.setShortcut("Ctrl+O")
+
+        except Exception:
+            pass
+
         submenu_colunas.addAction(self.acao_ordenar_linhas)
 
     except Exception as e:

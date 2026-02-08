@@ -76,13 +76,13 @@ def _exibir_sobre(self):
 
         cabecalho_fixo = (
             "<h3>LINCEU LIGHTHOUSE</h3>"
-            f"<p><b>{self.loc.get_text('version')}:</b> 0.1.2.0</p>"
+            f"<p><b>{self.loc.get_text('version')}:</b> 0.1.3.0</p>"
             f"<p><b>{self.loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
             f"<p><b>{self.loc.get_text('description')}:</b> {self.loc.get_text('description_text')}</p>"
         )
 
         dialog = SobreDialog(
-            self.interface,
+            None,
             titulo=f"{self.loc.get_text('about')} - LINCEU LIGHTHOUSE",
             texto_fixo=cabecalho_fixo,
             texto_history=texto_history,
@@ -113,6 +113,22 @@ def _exibir_sobre(self):
         largura_dialog = int(tamanho_base_largura * 1)
         altura_dialog = int(tamanho_base_altura * 1.8)
         dialog.resize(largura_dialog, altura_dialog)
+
+        try:
+            dialog._parent = self.interface
+            dialog._loc = getattr(self, 'loc', None)
+            if getattr(self, 'loc', None) is not None and hasattr(self.loc, 'idioma_alterado') and hasattr(dialog, '_on_idioma_alterado'):
+                self.loc.idioma_alterado.connect(dialog._on_idioma_alterado)
+
+        except Exception:
+            pass
+
+        try:
+            self.interface._sobre_dialog = dialog
+
+        except Exception:
+            pass
+
         dialog.show()
 
     except Exception as e:

@@ -684,6 +684,10 @@
         <translation>Gestore di file e cartelle che monitora le modifiche in una directory specifica</translation>
     </message>
     <message>
+        <source>manual</source>
+        <translation>Manuale</translation>
+    </message>
+    <message>
         <source>about</source>
         <translation>Informazioni</translation>
     </message>
@@ -5625,6 +5629,74 @@ pip install plotly</translation>
     <message>
         <source>TEMP</source>
         <translation>TEMP</translation>
+    </message>
+    <message>
+        <source>help</source>
+        <translation>Aiuto</translation>
+    </message>
+    <message>
+        <source>help_description</source>
+        <translation>Mostra l'elenco delle scorciatoie e delle descrizioni.</translation>
+    </message>
+    <message>
+        <source>open_manual</source>
+        <translation>Apre il manuale dell'applicazione.</translation>
+    </message>
+    <message>
+        <source>open_about</source>
+        <translation>Mostra informazioni sull'applicazione.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_desc</source>
+        <translation>Seleziona tutte le colonne visibili.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_colors_desc</source>
+        <translation>Seleziona tutto nelle impostazioni dei colori delle colonne.</translation>
+    </message>
+    <message>
+        <source>toggle_sort_rows_desc</source>
+        <translation>Attiva/disattiva l'ordinamento automatico delle righe.</translation>
+    </message>
+    <message>
+        <source>toggle_performance_desc</source>
+        <translation>Alterna la visualizzazione dei grafici delle prestazioni.</translation>
+    </message>
+    <message>
+        <source>keyboard_shortcuts</source>
+        <translation>Scorciatoie da tastiera</translation>
+    </message>
+    <message>
+        <source>select_dir_desc</source>
+        <translation>Apre una finestra di dialogo per selezionare una directory.</translation>
+    </message>
+    <message>
+        <source>start_stop_desc</source>
+        <translation>Avvia o interrompe l'analisi della directory.</translation>
+    </message>
+    <message>
+        <source>pause_analysis_desc</source>
+        <translation>Sospende/riprende il monitoraggio o la scansione.</translation>
+    </message>
+    <message>
+        <source>save_as_desc</source>
+        <translation>Apre una finestra di dialogo per salvare i dati con un nome diverso.</translation>
+    </message>
+    <message>
+        <source>save_desc</source>
+        <translation>Salva i dati correnti.</translation>
+    </message>
+    <message>
+        <source>statistics_desc</source>
+        <translation>Mostra le statistiche del progetto.</translation>
+    </message>
+    <message>
+        <source>clear_data_desc</source>
+        <translation>Cancella i dati caricati.</translation>
+    </message>
+    <message>
+        <source>exit_desc</source>
+        <translation>Chiude l'applicazione.</translation>
     </message>
 </context>
 </TS>

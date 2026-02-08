@@ -1,7 +1,7 @@
 COPYRIGHT AND TRADEMARK NOTICE
 ======================================
 
-Copyright (C) 2026 Fernando Nillsson Cidade. All rights reserved.
+Copyright (C) 2025-2026 Fernando Nillsson Cidade. All rights reserved.
 
 The Linceu Lighthouse software and all associated documentation, including all content of the Software and Dependencies, are the intellectual property of Fernando Nillsson Cidade. Copyright protection covers, but is not limited to, the program's source code, graphical interface, texts, manuals, and project description.
 

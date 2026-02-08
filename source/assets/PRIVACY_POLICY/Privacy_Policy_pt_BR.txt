@@ -1,6 +1,6 @@
 Política de Privacidade do Linceu Lighthouse
-Última atualização: 31 de Janeiro de 2026
-Versão 0.1.2.0
+Última atualização: 19 de janeiro de 2026
+Versão 0.1.3.0
 
 A sua privacidade é fundamental para nós. Esta Política de Privacidade explica quais informações o Linceu Lighthouse ("Software") utiliza e, mais importante, como elas permanecem sob seu controle.
 

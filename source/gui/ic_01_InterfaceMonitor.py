@@ -148,10 +148,12 @@ class InterfaceMonitor(QMainWindow):
         try:
             if hasattr(self, 'tabela_dados') and isinstance(self.tabela_dados, QTableView) and hasattr(self, 'event_table_model'):
                 self.event_table_model.prepend_event(evento)
+
             elif hasattr(self, 'gerenciador_tabela'):
-                # Fallback: QTableWidget
                 self.gerenciador_tabela.atualizar_linha_mais_recente(self.tabela_dados, evento=evento)
+
             self.atualizar_status()
+
         except Exception as e:
             logger.error(f"Erro ao inserir evento em streaming: {e}", exc_info=True)
 
@@ -256,6 +258,39 @@ class InterfaceMonitor(QMainWindow):
 
             except Exception as e:
                 logger.error(f"Erro ao parar gerenciador de desempenho: {e}", exc_info=True)
+
+            try:
+                if hasattr(self, '_sobre_dialog') and self._sobre_dialog is not None:
+                    try:
+                        self._sobre_dialog.close()
+
+                    except Exception:
+                        pass
+
+            except Exception:
+                pass
+
+            try:
+                if hasattr(self, '_manual_dialog') and self._manual_dialog is not None:
+                    try:
+                        self._manual_dialog.close()
+
+                    except Exception:
+                        pass
+
+            except Exception:
+                pass
+
+            try:
+                if hasattr(self, '_ajuda_dialog') and self._ajuda_dialog is not None:
+                    try:
+                        self._ajuda_dialog.close()
+
+                    except Exception:
+                        pass
+
+            except Exception:
+                pass
 
             super().closeEvent(event)
 

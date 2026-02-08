@@ -20,6 +20,8 @@ from source.ui.GerenciamentoMenusUI.gmui_20_confirmar_alteracao_idioma import _c
 from source.ui.GerenciamentoMenusUI.gmui_21_on_traducoes_carregadas import _on_traducoes_carregadas
 from source.ui.GerenciamentoMenusUI.gmui_22_exibir_sobre import _exibir_sobre
 from source.ui.GerenciamentoMenusUI.gmui_23_toggle_desempenho import _criar_acao_toggle_desempenho
+from source.ui.GerenciamentoMenusUI.gmui_24_exibir_manual import _exibir_manual
+from source.ui.GerenciamentoMenusUI.gmui_25_exibir_ajuda import _exibir_ajuda
 logger = LogManager.get_logger()
 
 
@@ -33,6 +35,7 @@ class GerenciadorMenusUI:
         self._acoes_idioma = {}
         self._trocando_idioma = False
         self._aguardando_conclusao_traducao = False
+
         try:
             if hasattr(self.interface, "loc") and hasattr(self.interface.loc, "traducoes_carregadas"):
                 self.interface.loc.traducoes_carregadas.connect(self._on_traducoes_carregadas)
@@ -59,4 +62,6 @@ class GerenciadorMenusUI:
     _confirmar_alteracao_idioma = _confirmar_alteracao_idioma
     _on_traducoes_carregadas = _on_traducoes_carregadas
     _exibir_sobre = _exibir_sobre
+    _exibir_manual = _exibir_manual
+    _exibir_ajuda = _exibir_ajuda
     _criar_acao_toggle_desempenho = _criar_acao_toggle_desempenho

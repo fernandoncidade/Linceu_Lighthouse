@@ -10,6 +10,7 @@ def _criar_submenu_colunas_coloridas(self, menu_configuracoes):
         submenu_colunas_interno = MenuPersistente(self.loc.get_text("columns"), self.interface)
         submenu_colorir_colunas.addMenu(submenu_colunas_interno)
         colunas_coloridas = set()
+
         if hasattr(self.interface, 'gerenciador_tabela') and hasattr(self.interface.gerenciador_tabela, 'colunas_para_colorir'):
             colunas_coloridas = self.interface.gerenciador_tabela.colunas_para_colorir
 
@@ -28,6 +29,13 @@ def _criar_submenu_colunas_coloridas(self, menu_configuracoes):
 
         submenu_colorir_colunas.addSeparator()
         acao_selecionar_todas = QAction(self.loc.get_text("select_all_columns"), self.interface)
+
+        try:
+            acao_selecionar_todas.setShortcut("Ctrl+Shift+A")
+
+        except Exception:
+            pass
+
         acao_selecionar_todas.triggered.connect(self.selecionar_todas_cores_colunas)
         submenu_colorir_colunas.addAction(acao_selecionar_todas)
         acao_resetar_cores_tipo_operacao = QAction(self.loc.get_text("reset_column_colors"), self.interface)

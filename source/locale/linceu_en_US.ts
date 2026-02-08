@@ -684,6 +684,10 @@
         <translation>File and folder manager that monitors changes in a specific directory</translation>
     </message>
     <message>
+        <source>manual</source>
+        <translation>Manual</translation>
+    </message>
+    <message>
         <source>about</source>
         <translation>About</translation>
     </message>
@@ -5625,6 +5629,74 @@ pip install plotly</translation>
     <message>
         <source>TEMP</source>
         <translation>TEMP</translation>
+    </message>
+    <message>
+        <source>help</source>
+        <translation>Help</translation>
+    </message>
+    <message>
+        <source>help_description</source>
+        <translation>Displays the list of shortcuts and descriptions.</translation>
+    </message>
+    <message>
+        <source>open_manual</source>
+        <translation>Opens the application manual.</translation>
+    </message>
+    <message>
+        <source>open_about</source>
+        <translation>Displays information about the application.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_desc</source>
+        <translation>Marks all visible columns.</translation>
+    </message>
+    <message>
+        <source>select_all_columns_colors_desc</source>
+        <translation>Selects all in the column coloring settings.</translation>
+    </message>
+    <message>
+        <source>toggle_sort_rows_desc</source>
+        <translation>Enables/disables automatic row sorting.</translation>
+    </message>
+    <message>
+        <source>toggle_performance_desc</source>
+        <translation>Alternates the display of performance charts.</translation>
+    </message>
+    <message>
+        <source>keyboard_shortcuts</source>
+        <translation>Keyboard shortcuts</translation>
+    </message>
+    <message>
+        <source>select_dir_desc</source>
+        <translation>Opens a dialog to select a directory.</translation>
+    </message>
+    <message>
+        <source>start_stop_desc</source>
+        <translation>Starts or stops the directory analysis.</translation>
+    </message>
+    <message>
+        <source>pause_analysis_desc</source>
+        <translation>Pauses/resumes monitoring or scanning.</translation>
+    </message>
+    <message>
+        <source>save_as_desc</source>
+        <translation>Opens a dialog to save data under a different name.</translation>
+    </message>
+    <message>
+        <source>save_desc</source>
+        <translation>Saves the current data.</translation>
+    </message>
+    <message>
+        <source>statistics_desc</source>
+        <translation>Displays project statistics.</translation>
+    </message>
+    <message>
+        <source>clear_data_desc</source>
+        <translation>Clears the loaded data.</translation>
+    </message>
+    <message>
+        <source>exit_desc</source>
+        <translation>Exits the application.</translation>
     </message>
 </context>
 </TS>

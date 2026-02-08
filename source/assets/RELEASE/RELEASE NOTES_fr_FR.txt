@@ -1,3 +1,38 @@
+NOTES DE VERSION : Version 0.1.3.0 :
+
+Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
+
+Améliorations
+- Interface : mises à jour des textes et des traductions pour plusieurs langues, avec ajustements du titre du manuel et cohérence des messages affichés.
+- Manuel intégré : index navigable, corrections de formatage et meilleure synchronisation entre l'index et le contenu affiché.
+- Aide et raccourcis : refonte du panneau d'aide avec liste des raccourcis, meilleure présentation et prise en charge du changement de langue en temps réel.
+- Démarrage : introduction d'un écran de chargement avec barre de progression et journal résumé pour suivre le processus de démarrage.
+- Icône de l'application : amélioration du chargement de l'icône avec fallback robuste et messages de diagnostic lorsque l'icône est invalide ou absente.
+- Expérience de démarrage : réduction des impacts lors d'importations lourdes, avec retour visuel sur les modules chargés.
+- Affichage du manuel : panneau divisé ajustable (index + lecteur), meilleur redimensionnement et comportement des liens/ancrages.
+- Robustesse à l'arrêt : arrêt plus sûr des tâches en arrière-plan et des workers pour éviter les ressources en suspens après la fermeture de l'application.
+- Traitement par lots : plus de résilience lors de l'extraction de métadonnées en masse, meilleur traitement des erreurs et indicateurs de progression plus fiables.
+- Interface des tableaux : améliorations de l'activation du mode model/view pour l'affichage d'événements en streaming et réduction des risques d'incohérence visuelle.
+
+Corrections de bugs
+- Correction d'un problème provoquant des plantages ou des échecs lors du démarrage dans certains scénarios de traduction.
+- Correction du comportement où les dialogues (manuel, aide, à propos) ne mettaient pas correctement à jour le texte lors du changement de langue.
+- Correction de fuites/continuations de threads qui pouvaient rester en cours d'exécution après la fermeture de l'application.
+- Correction d'erreurs dans la configuration des raccourcis qui empêchaient l'exécution d'actions rapides sur certaines plateformes.
+- Correction d'un problème de chargement du modèle de tableau dans certains scénarios, évitant la perte d'événements en streaming.
+- Correction de cas limites de chargement d'icônes entraînant des icônes nulles ou l'absence d'icône de fenêtre.
+- Correction d'une incohérence dans l'application des couleurs des colonnes et de l'option de réinitialisation des couleurs, garantissant la restauration de l'état attendu.
+- Correction de cas où la progression du splash n'affichait pas correctement la séquence d'importation des modules.
+- Correction de situations où l'écriture/l'utilisation de la base de données n'était pas initialisée de manière déterministe à l'ouverture de l'application.
+
+Remarques
+- Les logs et messages de diagnostic ont été renforcés pour faciliter l'investigation des problèmes en production.
+- Il est recommandé de mettre à jour vers cette version dans les environnements de production pour bénéficier des corrections de stabilité et des améliorations du démarrage.
+
+
+_________________________________________________
+
+
 NOTES DE VERSION : Version 0.1.2.0 :
 
 Cette version apporte des optimisations d'architecture et des améliorations de performance centrées sur le streaming d'événements, l'écriture asynchrone et la scalabilité de l'interface.

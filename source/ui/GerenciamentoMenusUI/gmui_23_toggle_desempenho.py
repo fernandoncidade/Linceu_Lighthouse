@@ -13,6 +13,7 @@ def _criar_acao_toggle_desempenho(self, menu_configuracoes):
             label = "Gráficos de desempenho"
 
         acao = getattr(self, "acao_toggle_desempenho", None)
+
         if acao is None:
             acao = QAction(label, self.interface)
             acao.setCheckable(True)
@@ -23,6 +24,13 @@ def _criar_acao_toggle_desempenho(self, menu_configuracoes):
             acao.setText(label)
 
         acao.setChecked(getattr(self.interface, "desempenho_ativo", False))
+
+        try:
+            acao.setShortcut("Ctrl+T")
+
+        except Exception:
+            pass
+
         menu_configuracoes.addAction(acao)
 
     except Exception as e:

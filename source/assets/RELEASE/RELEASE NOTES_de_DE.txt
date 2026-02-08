@@ -1,4 +1,39 @@
-VERSIONSHINWEISE: Version 0.1.2.0:
+RELEASE-HINWEISE: Version 0.1.3.0:
+
+In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
+
+Verbesserungen
+- Oberfläche: Aktualisierungen von Texten und Übersetzungen für mehrere Sprachen, mit Anpassungen am Handbuchtitel und Konsistenz der angezeigten Meldungen.
+- Integriertes Handbuch: durchsuchbares Inhaltsverzeichnis, Formatierungskorrekturen und bessere Synchronisation zwischen Inhaltsverzeichnis und angezeigtem Inhalt.
+- Hilfe und Shortcuts: Überarbeitung des Hilfepanels mit einer Liste von Tastenkürzeln, bessere Darstellung und Unterstützung für Echtzeit-Sprachwechsel.
+- Startvorgang: Einführung eines Ladebildschirms mit Fortschrittsbalken und einer kompakten Protokollansicht zur Verfolgung des Startprozesses.
+- Anwendungsicon: verbesserte Icon-Ladung mit robustem Fallback und Diagnosemeldungen, wenn das Icon ungültig oder nicht vorhanden ist.
+- Start-Erlebnis: geringere Auswirkungen bei umfangreichen Importvorgängen, mit visueller Rückmeldung über geladene Module.
+- Handbuchansicht: anpassbares Geteilt-Panel (Inhaltsverzeichnis + Leser), besseres Skalieren und verbessertes Verhalten von Links/Ankern.
+- Robustheit beim Herunterfahren: sichereres Beenden von Hintergrundaufgaben und Workern, um hängende Ressourcen nach dem Schließen der Anwendung zu vermeiden.
+- Stapelverarbeitung: höhere Widerstandsfähigkeit bei der Massenauslesung von Metadaten, verbesserte Fehlerbehandlung und zuverlässigere Fortschrittsanzeigen.
+- Tabellenoberfläche: Verbesserungen bei der Aktivierung des Model/View-Modus zur Darstellung von Streaming-Ereignissen und geringere Wahrscheinlichkeit visueller Inkonsistenzen.
+
+Fehlerbehebungen
+- Problem behoben, das in bestimmten Übersetzungsszenarien zu Startfehlern oder Abstürzen führen konnte.
+- Verhalten behoben, bei dem Dialoge (Handbuch, Hilfe, Info) beim Sprachwechsel nicht korrekt aktualisierten.
+- Lecks/Weiterlaufen von Threads behoben, die nach dem Beenden der Anwendung weiterliefen.
+- Fehler in der Shortcut-Konfiguration behoben, die die Ausführung schneller Aktionen auf einigen Plattformen verhinderten.
+- Problem beim Laden des Tabellenmodells in bestimmten Szenarien behoben, wodurch Verluste von Streaming-Ereignissen verhindert werden.
+- Randfälle beim Laden von Icons behoben, die zu null-Icons oder fehlendem Fenster-Icon führten.
+- Inkonsistenz bei der Anwendung von Spaltenfarben und der Option zum Zurücksetzen der Farben behoben, sodass der erwartete Zustand wiederhergestellt wird.
+- Fälle behoben, in denen der Splash-Fortschritt die Reihenfolge der Modulimporte nicht korrekt widerspiegelte.
+- Situationen behoben, in denen das Schreiben/der Gebrauch der Datenbank beim Öffnen der Anwendung nicht deterministisch initialisiert wurde.
+
+Anmerkungen
+- Logs und Diagnosemeldungen wurden verstärkt, um die Fehlersuche in Produktionsumgebungen zu erleichtern.
+- Es wird empfohlen, in Produktionsumgebungen auf diese Version zu aktualisieren, um von Stabilitätskorrekturen und Verbesserungen beim Start zu profitieren.
+
+
+_________________________________________________
+
+
+RELEASE-HINWEISE: Version 0.1.2.0:
 
 Dieses Release enthält Architekturoptimierungen und Leistungsverbesserungen mit Fokus auf Event-Streaming, asynchrones Schreiben und Skalierbarkeit der Benutzeroberfläche.
 
@@ -60,7 +95,7 @@ Wesentliche Verbesserungen
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.1.0.0:
+RELEASE-HINWEISE: Version 0.1.0.0:
 
 In dieser Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -89,7 +124,7 @@ Hinweise für Benutzer
 _________________________________________________
 
 
-VERÖFFENTLICHUNGSHINWEISE: Version 0.0.9.0:
+RELEASE-HINWEISE: Version 0.0.9.0:
 
 In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
 
@@ -123,7 +158,7 @@ Diese Verbesserungen bieten dem Benutzer ein umfassenderes und intuitiveres Erle
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.8.0:
+RELEASE-HINWEISE: Version 0.0.8.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umgesetzt:
 
@@ -136,7 +171,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen umges
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.7.0:
+RELEASE-HINWEISE: Version 0.0.7.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -149,7 +184,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen imple
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.6.0:
+RELEASE-HINWEISE: Version 0.0.6.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -161,7 +196,7 @@ In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen imple
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.5.0:
+RELEASE-HINWEISE: Version 0.0.5.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -174,7 +209,7 @@ Verbesserung der Benutzererfahrung:
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.4.0
+RELEASE-HINWEISE: Version 0.0.4.0
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -188,7 +223,7 @@ Fehlerbehebungen:
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.3.0:
+RELEASE-HINWEISE: Version 0.0.3.0:
 
 In dieser neuen Version wurden die folgenden Verbesserungen und Funktionen implementiert:
 
@@ -226,7 +261,7 @@ Neuerungen in Version 0.0.3.0:
 _________________________________________________
 
 
-VERSIONSHINWEISE: Version 0.0.2.0:
+RELEASE-HINWEISE: Version 0.0.2.0:
 
 In dieser neuen Version wurden folgende Verbesserungen und Funktionen implementiert:
 

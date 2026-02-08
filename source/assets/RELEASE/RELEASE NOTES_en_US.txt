@@ -1,3 +1,38 @@
+RELEASE NOTES: Version 0.1.3.0:
+
+In this new release the following improvements and features were implemented:
+
+Improvements
+- Interface: updates to texts and translations for multiple languages, with adjustments to the manual title and consistency in displayed messages.
+- Integrated manual: navigable index, formatting fixes and better synchronization between the index and the displayed content.
+- Help and shortcuts: overhaul of the help panel with a shortcuts list, improved presentation and support for real-time language switching.
+- Startup: introduction of a loading screen with progress bar and a summarized log to follow the startup process.
+- Application icon: improved icon loading with robust fallback and diagnostic messages when invalid or missing.
+- Startup experience: reduced impact during heavy imports, with visual feedback about loaded modules.
+- Manual view: adjustable split panel (index + reader), better scaling and improved link/anchor behavior.
+- Shutdown robustness: safer termination of background tasks and workers to avoid dangling resources after closing the application.
+- Batch processing: greater resilience when extracting metadata in bulk, improved error handling and more reliable progress indicators.
+- Table interface: improvements to enabling model/view mode for streaming event display and reduced likelihood of visual inconsistency.
+
+Bug fixes
+- Fixed an issue that could cause failure or crash during startup in certain translation scenarios.
+- Fixed behavior where dialogs (manual, help, about) did not correctly update text when changing language.
+- Fixed thread leaks/continuations that could remain running after application shutdown.
+- Fixed failures in shortcut configuration that prevented quick actions on some platforms.
+- Fixed an issue loading the table model in certain scenarios, preventing loss of streaming events.
+- Fixed edge cases in icon loading that resulted in null icons or missing window icon.
+- Fixed inconsistency in applying column colors and in the reset-colors option, ensuring the expected state is restored.
+- Fixed cases where the splash progress did not correctly reflect the sequence of module imports.
+- Fixed situations where database writing/usage was not deterministically initialized when opening the application.
+
+Notes
+- Logs and diagnostic messages have been reinforced to ease investigation of issues in production.
+- It is recommended to upgrade to this version in production environments to benefit from stability fixes and startup improvements.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.1.2.0:
 
 This release introduces architecture optimizations and performance improvements focused on event streaming, asynchronous writing and UI scalability.

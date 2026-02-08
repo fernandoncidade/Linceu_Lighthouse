@@ -9,6 +9,7 @@ def _configurar_menu_configuracoes(self, menu_configuracoes):
         menu_configuracoes.addMenu(submenu_filtros)
         grupo_filtros = QActionGroup(self.interface)
         grupo_filtros.setExclusive(False)
+
         for op in ["op_moved", "op_renamed", "op_added", "op_deleted", "op_modified", "op_scanned"]:
             acao_filtro = QAction(self.loc.get_text(op), self.interface)
             acao_filtro.setCheckable(True)
