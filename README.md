@@ -14,7 +14,7 @@
 
 <h2 id="ptbr">🇧🇷 Português (BR)</h2>
 
-> **Observação:** Este repositório refere-se à versão **v0.1.3.0** do Projeto Linceu Lighthouse. Apoie o projeto e adquira a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Observação:** Este repositório refere-se à versão **v0.1.4.0** do Projeto Linceu Lighthouse. Apoie o projeto e adquira a versão paga através do link: [Instalar via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Clique para expandir o README em português</summary>
@@ -29,7 +29,7 @@
 </p>
 
 Projeto: LINCEU LIGHTHOUSE  
-Versão: v0.1.3.0  
+Versão: v0.1.4.0
 Autores: Fernando Nillsson Cidade  
 
 Descrição: Visibilidade e Controle sobre Seus Arquivos
@@ -612,7 +612,7 @@ Sistema de logs com rotação automática em:
 ### 📄 Licença e Autoria
 
 **Autores:** Fernando Nillsson Cidade  
-**Versão:** v0.1.3.0  
+**Versão:** v0.1.4.0
 **Licença:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 Para mais informações, consulte a documentação específica de cada módulo no código-fonte.
@@ -625,7 +625,7 @@ Para mais informações, consulte a documentação específica de cada módulo n
 
 <h2 id="enus">🇺🇸 English (US)</h2>
 
-> **Note:** This repository refers to the **v0.1.3.0** version of the Linceu Lighthouse Project. Support the project and purchase the paid version through the link: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Note:** This repository refers to the **v0.1.4.0** version of the Linceu Lighthouse Project. Support the project and purchase the paid version through the link: [Install via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Click to expand the README in English</summary>
@@ -640,7 +640,7 @@ Para mais informações, consulte a documentação específica de cada módulo n
 </p>
 
 Project: LINCEU LIGHTHOUSE  
-Version: v0.1.3.0  
+Version: v0.1.4.0
 Authors: Fernando Nillsson Cidade  
 
 Description: Visibility and Control Over Your Files
@@ -1223,7 +1223,7 @@ Logging system with automatic rotation at:
 ### 📄 License and Authorship
 
 **Authors:** Fernando Nillsson Cidade  
-**Version:** v0.1.3.0  
+**Version:** v0.1.4.0
 **License:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 For more information, consult the specific documentation of each module in the source code.
@@ -1236,7 +1236,7 @@ For more information, consult the specific documentation of each module in the s
 
 <h2 id="eses">🇪🇸 Español (ES)</h2>
 
-> **Nota:** Este repositorio se refere à versão **v0.1.3.0** do Projeto Linceu Lighthouse. Apoya el proyecto y adquiere la versión de pago a través del enlace: [Instalar vía Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Nota:** Este repositorio se refere à versão **v0.1.4.0** do Projeto Linceu Lighthouse. Apoya el proyecto y adquiere la versión de pago a través del enlace: [Instalar vía Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Haz clic para expandir el README en español</summary>
@@ -1251,7 +1251,7 @@ For more information, consult the specific documentation of each module in the s
 </p>
 
 Proyecto: LINCEU LIGHTHOUSE  
-Versión: v0.1.3.0  
+Versión: v0.1.4.0
 Autores: Fernando Nillsson Cidade  
 
 Descripción: Visibilidad y Control sobre Tus Archivos
@@ -1834,7 +1834,7 @@ Sistema de logs con rotación automática en:
 ### 📄 Licencia y Autoría
 
 **Autores:** Fernando Nillsson Cidade  
-**Versión:** v0.1.3.0  
+**Versión:** v0.1.4.0
 **Licencia:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 Para más información, consulte la documentación específica de cada módulo en el código fuente.
@@ -1847,7 +1847,7 @@ Para más información, consulte la documentación específica de cada módulo e
 
 <h2 id="frfr">🇫🇷 Français (FR)</h2>
 
-> **Note :** Ce référentiel fait référence à la version **v0.1.3.0** du projet Linceu Lighthouse. Soutenez le projet et achetez la version payante via le lien : [Installer via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Note :** Ce référentiel fait référence à la version **v0.1.4.0** du projet Linceu Lighthouse. Soutenez le projet et achetez la version payante via le lien : [Installer via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Cliquez pour développer le README en français</summary>
@@ -1862,7 +1862,7 @@ Para más información, consulte la documentación específica de cada módulo e
 </p>
 
 Projet : LINCEU LIGHTHOUSE  
-Version : v0.1.3.0  
+Version : v0.1.4.0
 Auteurs : Fernando Nillsson Cidade  
 
 Description : Visibilité et Contrôle sur Vos Fichiers
@@ -2445,7 +2445,7 @@ Système de journalisation avec rotation automatique dans:
 ### 📄 Licence et Paternité
 
 **Auteurs:** Fernando Nillsson Cidade  
-**Version:** v0.1.3.0  
+**Version:** v0.1.4.0
 **Licence:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 Pour plus d'informations, consultez la documentation spécifique de chaque module dans le code source.
@@ -2458,7 +2458,7 @@ Pour plus d'informations, consultez la documentation spécifique de chaque modul
 
 <h2 id="itit">🇮🇹 Italiano (IT)</h2>
 
-> **Nota:** Questo repository si riferisce alla versione **v0.1.3.0** del Progetto Linceu Lighthouse. Supporta il progetto e acquista la versione a pagamento tramite il link: [Installa via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Nota:** Questo repository si riferisce alla versione **v0.1.4.0** del Progetto Linceu Lighthouse. Supporta il progetto e acquista la versione a pagamento tramite il link: [Installa via Microsoft Store](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Clicca per espandere il README in italiano</summary>
@@ -2473,7 +2473,7 @@ Pour plus d'informations, consultez la documentation spécifique de chaque modul
 </p>
 
 Progetto: LINCEU LIGHTHOUSE  
-Versione: v0.1.3.0  
+Versione: v0.1.4.0
 Autori: Fernando Nillsson Cidade  
 
 Descrizione: Visibilità e Controllo sui Tuoi File
@@ -3056,7 +3056,7 @@ Sistema log con rotazione automatica in:
 ### 📄 Licenza e Paternità
 
 **Autori:** Fernando Nillsson Cidade  
-**Versione:** v0.1.3.0  
+**Versione:** v0.1.4.0
 **Licenza:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 Per maggiori informazioni, consultare la documentazione specifica di ogni modulo nel codice sorgente.
@@ -3069,7 +3069,7 @@ Per maggiori informazioni, consultare la documentazione specifica di ogni modulo
 
 <h2 id="dede">🇩🇪 Deutsch (DE)</h2>
 
-> **Hinweis:** Dieses Repository bezieht sich auf die Version **v0.1.3.0** des Linceu Lighthouse Projekts. Unterstützen Sie das Projekt und erwerben Sie die kostenpflichtige Version über den Link: [Über Microsoft Store installieren](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
+> **Hinweis:** Dieses Repository bezieht sich auf die Version **v0.1.4.0** des Linceu Lighthouse Projekts. Unterstützen Sie das Projekt und erwerben Sie die kostenpflichtige Version über den Link: [Über Microsoft Store installieren](https://apps.microsoft.com/detail/9NN8Z5Z700TM)
 
 <details>
 <summary>Klicken Sie hier, um die README auf Deutsch zu erweitern</summary>
@@ -3084,7 +3084,7 @@ Per maggiori informazioni, consultare la documentazione specifica di ogni modulo
 </p>
 
 Projekt: LINCEU LIGHTHOUSE  
-Version: v0.1.3.0  
+Version: v0.1.4.0
 Autoren: Fernando Nillsson Cidade  
 
 Beschreibung: Sichtbarkeit und Kontrolle über Ihre Dateien
@@ -3667,7 +3667,7 @@ Protokollsystem mit automatischer Rotation unter:
 ### 📄 Lizenz und Urheberschaft
 
 **Autoren:** Fernando Nillsson Cidade  
-**Version:** v0.1.3.0  
+**Version:** v0.1.4.0
 **Lizenz:** [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/fernandoncidade/Linceu_Lighthouse/blob/main/LICENSE)
 
 Für weitere Informationen siehe die spezifische Dokumentation jedes Moduls im Quellcode.

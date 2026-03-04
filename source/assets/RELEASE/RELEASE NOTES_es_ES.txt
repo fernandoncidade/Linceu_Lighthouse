@@ -1,3 +1,30 @@
+NOTAS DE LANZAMIENTO: Versión 0.1.4.0:
+
+En esta versión se incorporan mejoras de rendimiento en el pipeline de monitoreo y correcciones de estabilidad en el flujo del editor de versiones.
+
+Mejoras principales
+- Monitoreo y escaneo: optimización del escaneo inicial con control de frecuencia en la emisión de progreso, reduciendo la sobrecarga en directorios grandes.
+- Metadatos por lotes y caché inteligente: procesamiento en lotes de la cola de metadatos con reutilización por firma de archivo (mtime_ns + size), reduciendo recálculos.
+- Cálculo de tamaño de directorios: eliminación de espera bloqueante y ajuste del comportamiento de caché TTL para mejorar la capacidad de respuesta bajo cargas altas.
+- Escritura en base de datos: mejora de DatabaseWriter con inserciones por lotes mediante executemany por tabla dentro de una sola transacción, aumentando el throughput de eventos.
+- Tabla y selección: corrección del debounce de selección para reutilizar correctamente el temporizador y reducir trabajo redundante en el hilo de interfaz.
+
+Correcciones de errores
+- Corregido un error de ejecución en el escáner relacionado con el manejo de import/ámbito de time.
+- Corregido el riesgo de cierre inesperado en VersionEditor durante interrupciones (Ctrl+C) al guardar.
+- Corregida la actualización de líneas de versión en README/EULA/CLC multilingües, incluyendo patrones con prefijo v.
+- Corregida la salida de verificación para mostrar efectivamente las líneas de versión del README por idioma.
+
+Impacto observado
+- Los benchmarks internos indicaron mejoras en tiempo de escaneo y throughput de escritura de eventos, incluyendo un escenario real de directorio de gran volumen.
+
+Observaciones
+- Se recomienda actualizar a esta versión para obtener mayor rendimiento en monitoreo continuo y mayor robustez en el versionado de artefactos.
+
+
+_________________________________________________
+
+
 NOTAS DE LANZAMIENTO: Versión 0.1.3.0:
 
 En esta nueva versión se implementaron las siguientes mejoras y funcionalidades:

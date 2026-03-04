@@ -35,19 +35,6 @@ def get_tamanho_diretorio_arquivo(self, item_data, loc):
                 return ""
 
         tipo_operacao = item_data.get("tipo_operacao", "")
-        timestamp_item = item_data.get("timestamp", "")
-
-        if tipo_operacao == loc.get_text("op_added") and timestamp_item:
-            try:
-                from datetime import datetime
-                ts = datetime.fromisoformat(timestamp_item.replace('Z', '+00:00'))
-                tempo_desde_adicao = (datetime.now() - ts.replace(tzinfo=None)).total_seconds()
-
-                if tempo_desde_adicao < 5:
-                    time.sleep(2)
-
-            except Exception as e:
-                logger.error(f"Erro ao processar timestamp do item {item_data}: {e}", exc_info=True)
 
         ttl = 3 if tipo_operacao == loc.get_text("op_added") else getattr(self, "dir_size_cache_ttl", 10)
 

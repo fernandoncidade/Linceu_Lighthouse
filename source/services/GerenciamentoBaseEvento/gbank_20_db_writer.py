@@ -151,17 +151,31 @@ class DatabaseWriter:
                     placeholders = ", ".join(["?" for _ in colunas])
                     colunas_str = ", ".join(colunas)
                     stmt_cache = {}
+                    valores_por_tabela = {}
+                    valores_monitoramento = []
                     for tabela, evento in batch:
                         valores = [evento.get(c, "") for c in colunas]
                         valores[0] = evento.get("tipo_operacao", valores[0])
+                        valores_tpl = tuple(valores)
                         if tabela not in stmt_cache:
                             stmt_cache[tabela] = (
                                 f"INSERT INTO {tabela} ({colunas_str}) VALUES ({placeholders})",
                                 f"INSERT INTO monitoramento ({colunas_str}) VALUES ({placeholders})"
                             )
-                        stmt_tab, stmt_mon = stmt_cache[tabela]
-                        cursor.execute(stmt_tab, valores)
-                        cursor.execute(stmt_mon, valores)
+
+                        if tabela not in valores_por_tabela:
+                            valores_por_tabela[tabela] = []
+
+                        valores_por_tabela[tabela].append(valores_tpl)
+                        valores_monitoramento.append(valores_tpl)
+
+                    for tabela, valores_tabela in valores_por_tabela.items():
+                        stmt_tab, _ = stmt_cache[tabela]
+                        cursor.executemany(stmt_tab, valores_tabela)
+
+                    if valores_monitoramento:
+                        _, stmt_mon = next(iter(stmt_cache.values()))
+                        cursor.executemany(stmt_mon, valores_monitoramento)
 
                     cursor.execute("COMMIT")
 

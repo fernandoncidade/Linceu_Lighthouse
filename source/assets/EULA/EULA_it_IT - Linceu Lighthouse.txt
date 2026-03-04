@@ -1,5 +1,5 @@
 CONTRATTO DI LICENZA PER L'UTENTE FINALE - Linceu Lighthouse
-Versione 0.1.3.0, 19 Gennaio 2026
+Versione v0.1.4.0, 3 Marzo 2026
 
 Copyright (c) 2026 Fernando Nillsson Cidade. Tutti i diritti riservati.
 

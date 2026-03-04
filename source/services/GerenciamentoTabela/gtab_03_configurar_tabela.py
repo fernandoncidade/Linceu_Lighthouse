@@ -133,15 +133,16 @@ def configurar_tabela(self, tabela_dados):
 
         def ajustar_cor_selecao_debounced():
             try:
-                if hasattr(self, '_debounce_timer') and self._debounce_timer is not None:
-                    if self._debounce_timer.isActive():
-                        self._debounce_timer.stop()
-
+                if not hasattr(self, '_debounce_timer') or self._debounce_timer is None:
                     self._debounce_timer = QTimer()
                     self._debounce_timer.setSingleShot(True)
                     if self._selection_executor:
                         self._debounce_timer.timeout.connect(lambda: self._selection_executor.submit(self._processar_selecao_background))
-                        self._debounce_timer.start(50)
+
+                if self._debounce_timer.isActive():
+                    self._debounce_timer.stop()
+
+                self._debounce_timer.start(50)
 
             except Exception as e:
                 logger.error(f"Erro no debounce de seleção: {e}", exc_info=True)

@@ -246,7 +246,7 @@ class SobreDialog(QDialog):
             try:
                 cabecalho_fixo = (
                     f"<h3>LINCEU LIGHTHOUSE</h3>"
-                    f"<p><b>{loc.get_text('version')}:</b> 0.1.3.0</p>"
+                    f"<p><b>{loc.get_text('version')}:</b> 0.1.4.0</p>"
                     f"<p><b>{loc.get_text('authors')}:</b> Fernando Nillsson Cidade</p>"
                     f"<p><b>{loc.get_text('description')}:</b> {loc.get_text('description_text')}</p>"
                 )

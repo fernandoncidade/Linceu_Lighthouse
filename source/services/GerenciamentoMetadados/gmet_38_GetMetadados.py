@@ -28,30 +28,56 @@ logger = LogManager.get_logger()
 def get_metadados(gc, item):
     try:
         caminho = item.get("dir_atual") or item.get("dir_anterior")
+        tipo_operacao = item.get("tipo_operacao", "")
+
+        ops_cache = getattr(gc, "_ops_cache", None)
+        if ops_cache is None:
+            ops_cache = {
+                "op_added": gc.loc.get_text("op_added"),
+                "op_deleted": gc.loc.get_text("op_deleted"),
+                "op_modified": gc.loc.get_text("op_modified"),
+                "op_moved": gc.loc.get_text("op_moved"),
+                "op_renamed": gc.loc.get_text("op_renamed"),
+            }
+            gc._ops_cache = ops_cache
+
         if not caminho or not os.path.exists(caminho):
             tipo = identificar_tipo_arquivo(caminho, gc.loc, item.get("nome"))
             metadados = {"tipo": tipo}
             return metadados
 
-        tipo_operacao = item.get("tipo_operacao", "")
         ops_invalida = {
-            gc.loc.get_text("op_added"),
-            gc.loc.get_text("op_deleted"),
-            gc.loc.get_text("op_modified"),
-            gc.loc.get_text("op_moved"),
-            gc.loc.get_text("op_renamed"),
+            ops_cache["op_added"],
+            ops_cache["op_deleted"],
+            ops_cache["op_modified"],
+            ops_cache["op_moved"],
+            ops_cache["op_renamed"],
         }
         if tipo_operacao in ops_invalida:
             gc._invalidar_cache_diretorios_relacionados(caminho)
 
-        if tipo_operacao == gc.loc.get_text("op_added") and os.path.isfile(caminho):
+        if tipo_operacao == ops_cache["op_added"] and os.path.isfile(caminho):
             with gc.lock_cache:
                 if caminho in gc.cache_metadados:
                     gc.cache_metadados.pop(caminho, None)
 
+        try:
+            stat_arquivo = os.stat(caminho)
+            assinatura_cache = (int(stat_arquivo.st_mtime_ns), int(stat_arquivo.st_size))
+
+        except Exception:
+            stat_arquivo = None
+            assinatura_cache = None
+
+        if assinatura_cache is not None:
+            with gc.lock_cache:
+                cache_existente = gc.cache_metadados.get(caminho)
+                if cache_existente and cache_existente.get("_assinatura") == assinatura_cache:
+                    return cache_existente
+
         with gc.lock_cache:
             if caminho in gc.cache_metadados:
-                if (tipo_operacao == gc.loc.get_text("op_added") and 
+                if (tipo_operacao == ops_cache["op_added"] and 
                     os.path.isdir(caminho) and 
                     gc.cache_metadados[caminho].get("tamanho_dir_bytes", 0) == 0):
                     gc.cache_metadados.pop(caminho, None)
@@ -88,7 +114,7 @@ def get_metadados(gc, item):
                     return gc.cache_metadados[caminho]
 
         if os.path.exists(caminho):
-            stats = os.stat(caminho)
+            stats = stat_arquivo or os.stat(caminho)
             tamanho_bytes = stats.st_size if os.path.isfile(caminho) else gc._get_tamanho_bytes(item)
             metadados = {
                 "size_b": int(tamanho_bytes),
@@ -216,6 +242,9 @@ def get_metadados(gc, item):
                 logger.error(f"Erro ao extrair metadados específicos: {e}", exc_info=True)
 
             with gc.lock_cache:
+                if assinatura_cache is not None:
+                    metadados["_assinatura"] = assinatura_cache
+
                 gc.cache_metadados[caminho] = metadados
 
             for campo, valor in metadados.items():

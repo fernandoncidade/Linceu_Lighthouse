@@ -18,7 +18,6 @@ def invalidar_cache_diretorios_relacionados(gc, caminho: str):
                     for k in list(chaves_tamanho):
                         if k in gc.cache_metadados[dir_pai]:
                             gc.cache_metadados[dir_pai].pop(k, None)
-                            print(f"Cache invalidado para diretório pai: {dir_pai}")
 
                     if not gc.cache_metadados[dir_pai]:
                         gc.cache_metadados.pop(dir_pai, None)

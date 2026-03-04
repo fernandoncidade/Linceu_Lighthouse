@@ -1,3 +1,30 @@
+NOTE DI RILASCIO: Versione 0.1.4.0:
+
+Questa versione introduce miglioramenti di prestazioni nella pipeline di monitoraggio e correzioni di stabilità nel flusso dell'editor delle versioni.
+
+Migliorie principali
+- Monitoraggio e scansione: ottimizzazione della scansione iniziale con controllo della frequenza di emissione del progresso, riducendo l'overhead su directory grandi.
+- Metadati in batch e cache intelligente: elaborazione a lotti della coda metadati con riuso basato su firma file (mtime_ns + size), riducendo i ricalcoli.
+- Calcolo dimensione directory: rimossa un'attesa bloccante e affinato il comportamento della cache TTL per migliorare la reattività sotto carico elevato.
+- Scrittura su database: migliorato DatabaseWriter con insert batch tramite executemany per tabella in un'unica transazione, aumentando il throughput eventi.
+- Tabella e selezione: corretto il debounce della selezione per riutilizzare correttamente il timer e ridurre lavoro ridondante nel thread UI.
+
+Correzioni di bug
+- Corretto un errore di runtime nello scanner legato alla gestione di import/scope di time.
+- Corretto il rischio di chiusura inattesa in VersionEditor durante interruzioni (Ctrl+C) in fase di salvataggio.
+- Corretto l'aggiornamento delle righe di versione nei file README/EULA/CLC multilingua, inclusi i pattern con prefisso v.
+- Corretto l'output di verifica per mostrare effettivamente le righe di versione del README per lingua.
+
+Impatto osservato
+- I benchmark interni hanno indicato miglioramenti nel tempo di scansione e nel throughput di scrittura eventi, incluso uno scenario reale su directory ad alto volume.
+
+Note
+- Si raccomanda l'aggiornamento a questa versione per ottenere migliori prestazioni nel monitoraggio continuo e maggiore robustezza nel versionamento degli artefatti.
+
+
+_________________________________________________
+
+
 NOTE DI RILASCIO: Versione 0.1.3.0:
 
 In questa nuova versione sono state implementate le seguenti migliorie e funzionalità:

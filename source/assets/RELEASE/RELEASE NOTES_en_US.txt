@@ -1,3 +1,30 @@
+RELEASE NOTES: Version 0.1.4.0:
+
+This release delivers performance improvements in the monitoring pipeline and stability fixes in the version editor workflow.
+
+Main improvements
+- Monitoring and scanning: initial scan optimized with throttled progress emission, reducing overhead on large directories.
+- Batched metadata and smart cache: metadata queue processing now runs in batches with file-signature reuse (mtime_ns + size), reducing recomputation.
+- Directory size calculation: blocking wait removed and TTL cache behavior refined to improve responsiveness under heavy event load.
+- Database writing: DatabaseWriter improved with per-table executemany batch inserts inside a single transaction, increasing event throughput.
+- Table and selection flow: selection debounce fixed to properly reuse timer instances and reduce redundant UI-thread work.
+
+Bug fixes
+- Fixed a runtime scanner error related to time import/scope handling.
+- Fixed risk of unexpected shutdown in VersionEditor during interruption handling (Ctrl+C) while saving.
+- Fixed version-line updates in multilingual README/EULA/CLC files, including patterns with v prefix.
+- Fixed verification output to effectively show README version lines per language.
+
+Observed impact
+- Internal benchmarks indicated improvements in scan time and event-write throughput, including a real-world high-volume directory scenario.
+
+Notes
+- Upgrading to this version is recommended to improve continuous monitoring performance and increase robustness in artifact versioning flows.
+
+
+_________________________________________________
+
+
 RELEASE NOTES: Version 0.1.3.0:
 
 In this new release the following improvements and features were implemented:

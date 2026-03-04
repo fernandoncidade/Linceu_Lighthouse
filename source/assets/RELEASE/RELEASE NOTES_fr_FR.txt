@@ -1,3 +1,30 @@
+NOTES DE VERSION : Version 0.1.4.0 :
+
+Cette version apporte des améliorations de performance du pipeline de surveillance ainsi que des correctifs de stabilité dans le flux de l'éditeur de versions.
+
+Principales améliorations
+- Surveillance et scan : optimisation du scan initial avec limitation de fréquence de l'émission de progression, réduisant la surcharge sur les grands répertoires.
+- Métadonnées en batch et cache intelligent : traitement par lots de la file de métadonnées avec réutilisation par signature de fichier (mtime_ns + size), réduisant les recalculs.
+- Calcul de taille des répertoires : suppression d'une attente bloquante et ajustement du cache TTL pour améliorer la réactivité sous forte charge d'événements.
+- Écriture en base : amélioration du DatabaseWriter avec insertions par lots via executemany par table dans une transaction unique, augmentant le débit d'événements.
+- Tableau et sélection : correction du debounce de sélection pour réutiliser correctement le timer et réduire le travail redondant du thread UI.
+
+Corrections de bugs
+- Correction d'une erreur d'exécution du scanner liée à la gestion d'import/portée de time.
+- Correction d'un risque de fermeture inattendue dans VersionEditor lors d'interruptions (Ctrl+C) pendant l'enregistrement.
+- Correction des mises à jour de lignes de version dans les fichiers README/EULA/CLC multilingues, y compris les motifs avec préfixe v.
+- Correction de l'affichage de vérification pour montrer effectivement les lignes de version du README par langue.
+
+Impact observé
+- Les benchmarks internes ont indiqué des améliorations sur le temps de scan et le débit d'écriture des événements, y compris sur un scénario réel de répertoire à grand volume.
+
+Remarques
+- La mise à jour vers cette version est recommandée pour améliorer les performances de surveillance continue et la robustesse du flux de versionnement des artefacts.
+
+
+_________________________________________________
+
+
 NOTES DE VERSION : Version 0.1.3.0 :
 
 Dans cette nouvelle version, les améliorations et fonctionnalités suivantes ont été implémentées :
